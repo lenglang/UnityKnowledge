@@ -1,0 +1,4 @@
+加粗：We are <b>not</b> amused.
+斜体：We are <i>usually</i> not amused.
+大小：We are <size=50>largely</size> unaffected.
+颜色：<color=#00ffffff>…

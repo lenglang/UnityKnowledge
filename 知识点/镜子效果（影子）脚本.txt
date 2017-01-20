@@ -1,0 +1,4 @@
+//ShadowShow存放阴影（镜子效果）
+
+//若拖动赋值可以不用代码（经测试）
+ShadowShow.transform.renderer.material.mainTexture = ShadowCamera.camera.targetTexture;

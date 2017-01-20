@@ -1,0 +1,16 @@
+This example scene uses the scheduler helper scripts. The ShatterScheduler script is attached to the game object with the same name and all other helper scripts have been set to use this game object as Scheduler, instead of Null as in the other example scenes.
+
+The ShatterScheduler script makes sure that there is always a certain number of frames in between a shatter or split call in order to improve the overall performance.
+
+
+To use a ShatterScheduler in a custom script replace your SendMessage() call...
+
+gameObject.SendMessage("Shatter", point, SendMessageOptions.DontRequireReceiver);
+or
+gameObject.SendMessage("Split", planes, SendMessageOptions.DontRequireReceiver);
+
+...with a call to the scheduler:
+
+scheduler.AddTask(new ShatterTask(gameObject, point));
+or
+scheduler.AddTask(new SplitTask(gameObject, planes));

@@ -1,0 +1,19 @@
+public string deviceName;
+WebCamTexture tex;//接收返回的图片数据
+/// <summary>
+/// 实现IEnumerator接口，这里使用了一个协程，相当于多线程。
+/// 这里是调用摄像头的方法。
+/// </summary>
+/// <returns></returns>
+IEnumerator test()
+{
+    yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);//授权
+    if (Application.HasUserAuthorization(UserAuthorization.WebCam))
+    {
+        WebCamDevice[] devices = WebCamTexture.devices;
+        deviceName = devices[0].name;
+        //设置摄像机摄像的区域
+        tex = new WebCamTexture(deviceName, 400, 300, 12);
+        tex.Play();//开始摄像
+    }
+}

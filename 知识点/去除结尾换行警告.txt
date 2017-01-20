@@ -1,0 +1,4 @@
+将Unity安装目录\Editor\Data\Resources\ScriptTemplates\目录下的所有文件用上面的方式修改换行编码，以后通过Unity3D编辑器创建的文件将默认以“CR LF”换行，一劳永逸。
+
+
+文件-高级保存

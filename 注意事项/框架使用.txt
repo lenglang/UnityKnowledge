@@ -1,0 +1,11 @@
+﻿AnalyticsUtility.Event 友盟统计
+
+产品名，添加
+
+使用自定义打包场景（通过包名），不用PlayerSettings中的，在JenkinsBuilder类添加
+
+屏幕打印信息 ScreenPrinter
+
+更改打包的Resource资源 BuildAndroidPlayer
+
+AnalyticsUtility.Event(_key[12]);友盟统计

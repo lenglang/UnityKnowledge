@@ -1,0 +1,65 @@
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
+/// <summary>
+/// 脚本位于Canvas画布上
+/// </summary>
+public class PointerPenetrate : MonoBehaviour
+{
+    /// <summary>
+    /// cube
+    /// </summary>
+    public GameObject cube;
+
+    void Update()
+    {
+        //按下鼠标左键
+        if (Input.GetMouseButtonDown(0))
+        {
+            //当前检测到的是否是UI层   
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                //是UI的时候，执行相关的UI操作
+                Debug.Log("是UI");
+            }
+            else
+            {
+                //不是UI层的时候，执行其它操作
+                Debug.Log("不是UI");
+
+                //射线检测
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                //定义射线检测器
+                RaycastHit hitInfo;
+
+                if (Physics.Raycast(ray, out hitInfo))
+                {
+                    //如果当前射线检测到的对象的名字是cube
+                    if (hitInfo.collider.name == "Cube")
+                    {
+                        //改变cube的颜色，随机一个颜色
+                        cube.GetComponent<MeshRenderer>().material.color =
+                            new Color(Random.value, Random.value, Random.value, 1.0f);
+                    }
+                }
+            }
+        }
+       //【更新内容】安卓上判断是否点击在UI还是3D物体
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+
+        {
+            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+
+            {
+                Debug.Log("Hit UI, Ignore Touch");
+            }
+
+            else
+
+            {
+                Debug.Log("Handle Touch");
+            }
+        }
+
+    }
+}

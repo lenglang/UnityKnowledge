@@ -1,0 +1,218 @@
+﻿lineRenderer.SetPosition(0, transform.position);
+Ray ray = new Ray(transform.position, transform.forward);
+RaycastHit hitInfo;
+if (Physics.Raycast(ray, out hitInfo)) 
+{
+lineRenderer.SetPosition(1, hitInfo.point);
+            //判断当前的射击有没有碰撞到敌人
+if (hitInfo.collider.tag == Tags.enemy) {
+hitInfo.collider.GetComponent<EnemyHealth>().TakeDamage(attack,hitInfo.point);
+}
+
+} else {
+            lineRenderer.SetPosition(1, transform.position + transform.forward * 100);
+        }
+
+private GameObject[,] _map = new GameObject[5, 5];//二维地图数组
+
+//string filename = Application.dataPath + “/Imgs/Img”
+ 
+//                  + System.DateTime.Now.ToString（“yyyy-MM-dd_HH-mm-ss”） + “.png”;
+
+foreach (Transform item in foods[i].GetComponentsInChildren<Transform>())
+            {
+                item.transform.gameObject.layer = 0;
+            }
+脚本复用最好使用enabled关闭开启，尤其是监听点击类事件
+System.DateTime.Now 
+hour = currentTime.Hour;
+
+if (Input.GetAxis("Mouse ScrollWheel") != 0)
+{
+   transform.position += Vector3.forward * Input.GetAxis("Mouse ScrollWheel") * speed;
+}
+
+_currentCoin.SetAsLastSibling();最上层
+
+[HideInInspector]//隐藏属性
+
+[RequireComponent(typeof(Rigidbody))]
+
+transform.RotateAround(sun.Transform.position,Vector3.up,3);
+
+//上下左右移动
+transform.Translate(Vector3.up*Speed*Time.deltaTime);
+down left right
+
+//2d风扇转
+transform.Rotate(vector3.back,1f);
+back即z轴
+//要碰撞，需加collider
+
+public Textture2D Cursor1;
+Cursor.SetCursor(Cursor1,new Vector2(Cursor1.width/2f,Cursor1.height/2f),CursorMode.Auto);
+
+_tjrtf = _tj.GetComponent<RectTransform>();
+Vector3 p = _tjrtf.localPosition;
+_p = new Vector3(_canvas.GetComponent<RectTransform>().sizeDelta.x / 2+110, p.y);
+
+_tjrtf.DOLocalMoveX(_p.x-200, 0.5f);
+
+
+float XX = Input.GetAxis("Mouse X");
+                float YY = Input.GetAxis("Mouse Y");
+                #region
+                //判断左右滑动的距离与上下滑动距离大小
+                if (Mathf.Abs(XX) >= Mathf.Abs(YY))
+                {
+                    //单指向左滑动情况
+                    if (XX < 0)
+                    {
+                        transform.Rotate(Vector3.up, 45 * Time.deltaTime, Space.World);
+                    }
+                    //单指向右滑动情况
+                    if (XX > 0)
+                    {
+                        transform.Rotate(-Vector3.up, 45 * Time.deltaTime, Space.World);
+                    }
+                }
+                else
+                {
+                    //单指向下滑动情况
+                    if (YY < 0)
+                    {
+                        transform.Rotate(Vector3.left, 45 * Time.deltaTime, Space.World);
+                    }
+                    //单指向上滑动情况
+                    if (YY > 0)
+                    {
+                        transform.Rotate(-Vector3.left, 45 * Time.deltaTime, Space.World);
+                    }
+                }
+
+IEnumerator LoadLevelAsyncCoroutine(string levelName)
+    {
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(levelName);
+        asyncOperation.allowSceneActivation = false;
+        while(asyncOperation.progress < 0.9f)
+        {
+            float progress = asyncOperation.progress;
+            if(progressImage != null)
+                progressImage.fillAmount = progress;
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (Utility.loadedLevelName != SceneName.loading)
+            yield return new WaitForSeconds(2);
+
+
+        if (progressImage != null)
+            progressImage.fillAmount = 1;
+
+        yield return new WaitForEndOfFrame();
+
+        asyncOperation.allowSceneActivation = true;
+        yield return asyncOperation;
+    }
+	//血条朝向摄像机
+	transform.rotation=Camera.main.transform.rotation
+	//血条跟随
+	//获取跟随目标的位置
+	Vector3 tarPos=target.transform.position;
+	//将目标的世界坐标转换为屏幕坐标
+	vector2 pos=RectTransformUtility.WorldToScreenPoint(Camera.main,tarPos);
+	//将获取到的屏幕坐标赋给血条，并加上偏移值
+	rectTrans.position=pos+offsetPos;
+
+	《涂鸦跳跃》
+	public class PlayerController : MonoBehaviour
+{
+    public Vector3 jumpForce = new Vector3(10, 35, 0);
+    private Rigidbody mRigidbody;
+    private BoxCollider boxCollider;
+ 
+    // 是否处于碰撞状态   
+    private bool stayCollision = false;
+ 
+    void Awake()
+    {
+        this.mRigidbody = this.GetComponent<Rigidbody>();
+        this.boxCollider = this.GetComponent<BoxCollider>();
+    }
+ 
+    void Update()
+    {
+        // 当刚体静止时，按空格键跳跃才有效  
+        if (mRigidbody.IsSleeping() && Input.GetKeyDown(KeyCode.Space))
+        {
+            // 给刚体施加一个力，是其运动起来  
+            this.mRigidbody.AddForce(jumpForce);
+        }
+ 
+        if (this.mRigidbody.velocity.y > 0) // 速度方向向上  
+        {
+            // 这里不能重复设置isTrigger,否则IsSleeping()方法会失效  
+            // 这里具体原因不得而知，因为被官方封装起来了，  
+            // 但是猜测是因为刚体规定自身方法没有调用时为休眠状态  
+            if (!this.boxCollider.isTrigger)
+                this.boxCollider.isTrigger = true;
+        }
+        else if (!stayCollision) // Player没有发生碰撞  
+        {
+            if (this.boxCollider.isTrigger)
+                this.boxCollider.isTrigger = false;
+        }
+    }
+ 
+    void OnTriggerEnter(Collider collider)
+    {
+        stayCollision = true;
+    }
+ 
+    void OnTriggerExit(Collider collider)
+    {
+        stayCollision = false;
+    }
+}
+
+
+void ShowAnimation()
+{
+     StartCoroutine(Show());
+}
+IEnumerator Show()
+{
+    //items数组引用了图片中的那几个长条Transform
+    foreach(var item in items)
+    {
+        item.DOLocalMoveX(-1000,1f,false).From().SetEase(Ease.OutBack);
+        yield return new WaitForSeconds(0.02f);
+    }
+}
+
+
+void Start () {
+        StartCoroutine(LoadSceneAsync("摇杆"));
+        Debug.Log(Application.persistentDataPath);
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+    IEnumerator LoadSceneAsync(string name)
+    {
+        AsyncOperation ao = SceneManager.LoadSceneAsync(name);
+        ao.allowSceneActivation=false;
+        while (ao.progress < 0.9f)
+        {
+            Debug.Log(ao.progress);
+            yield return new WaitForEndOfFrame();
+        }
+        //ao.allowSceneActivation = true;
+    }
+
+
+
+

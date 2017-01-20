@@ -1,0 +1,8 @@
+foreach(Touch touch in Input.touchs){
+Ray ray=Camera.main.ScreenPointToRay(touch.position);
+RaycastHit hit;
+if(Physics.Raycast(ray,out hit))
+{
+touchname=hit.transform.name;
+}
+}

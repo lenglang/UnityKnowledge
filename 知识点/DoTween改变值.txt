@@ -1,0 +1,10 @@
+Tween t = DOTween.To(() => number, x => number = x, 1f, 1f).SetEase(Ease.Linear);
+t.OnUpdate(() => UpdateTween(number));
+
+void UpdateTween(float num)
+{
+   for (int i = 0; i < _pzfgs.Count; i++)
+      {
+            _pzfgs[i].GetComponent<ParticleSystem>().startColor = new Color(255 / 255f, 255 / 255f, 255 / 255f, num);
+     }
+ }

@@ -1,0 +1,38 @@
+﻿//中间点
+Vector3 PosOne = itemOne.transform.position;
+Vector3 PosTwo = itemTwo.transform.position;
+Vector3 Pos = Vector3.Lerp(itemOne.transform.position,itemTwo.transform.position,0.5f);
+//画线
+LineRenderer line = EffectController.Instance.AddLinePoint(itemOne.transform.position, itemTwo.transform.position);
+public LineRenderer AddLinePoint(Vector3 from,Vector3 to)
+{
+   GameObject clone = Instantiate(MatchLine);
+   LineRenderer line = clone.GetComponent<LineRenderer>();
+   line.SetPositions(new Vector3[2] {from,to});
+   Destroy(clone,0.4f);
+   _lineList.Add(clone);
+   return line;
+}
+//Tween
+itemTwo.transform.DOMove(Pos, durition).OnUpdate(delegate
+{
+  if(line != null)
+  line.SetPositions(new Vector3[2] { itemOne.transform.position, itemTwo.transform.position });
+});
+//距离
+foreach (var item in _eraseList)
+{
+    if (Vector3.Distance(item.transform.position, point) <= 0.25f)
+     return;
+}
+//震动
+public void IsShake(bool isSet)
+{
+    DOTween.Kill(transform);
+    transform.eulerAngles = Vector3.zero;
+    transform.localScale = Vector3.one * 0.75f;
+    if (isSet)
+    {
+       transform.DOShakeRotation(1, new Vector3(0,0,30)).SetLoops(-1);
+    }
+}

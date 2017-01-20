@@ -1,0 +1,15 @@
+if(Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if(Physics.Raycast(ray,out hit))
+            {
+                if (hit.transform.name=="Plane")
+                {
+                    Vector3 point = hit.point;
+                    //transform.LookAt(new Vector3(point.x, transform.position.y, point.z));
+                    //设置寻路的目标点
+                    agnet.SetDestination(point);
+                }
+            }
+        }

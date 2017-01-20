@@ -1,0 +1,153 @@
+﻿/*
+Touch Orbit
+Programmed by: Randal J. Phillips (Caliber Mengsk)
+Original Creation Date: 12/16/2011
+Last Updated:                   12/16/2011
+Desctiption: Simple orbit by one touch and drag, as well as pinch to zoom with two fingers.
+*/
+
+
+var x:float;
+
+var y:float;
+
+var xSpeed:float;
+
+var ySpeed:float;
+
+var pinchSpeed:float;
+
+var distance:float = 10;
+
+var minimumDistance:float = 5;
+
+var maximumDistance:float = 100;
+
+private var touch:Touch;
+
+private var lastDist:float = 0;
+
+private var curDist:float = 0;
+
+private var gameCamera:Camera;
+
+function Start ()
+
+{
+
+        gameCamera = Camera.mainCamera;
+
+}
+
+
+function Update ()
+
+{
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+
+        {
+
+                Application.Quit();
+
+        }
+
+       
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
+
+        {
+
+                //One finger touch does orbit
+
+                touch = Input.GetTouch(0);
+
+                x += touch.deltaPosition.x * xSpeed * 0.02;
+
+                y -= touch.deltaPosition.y * ySpeed * 0.02;
+
+        }
+
+        if (Input.touchCount > 1 && (Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(1).phase == TouchPhase.Moved))
+
+        {
+
+                //Two finger touch does pinch to zoom
+
+                var touch1 = Input.GetTouch(0);
+
+                var touch2 = Input.GetTouch(1);
+
+                curDist = Vector2.Distance(touch1.position, touch2.position);
+
+                if(curDist > lastDist)
+
+                {
+
+                        distance += Vector2.Distance(touch1.deltaPosition, touch2.deltaPosition)*pinchSpeed/10;
+
+                }else{
+
+                        distance -= Vector2.Distance(touch1.deltaPosition, touch2.deltaPosition)*pinchSpeed/10;
+
+                }
+
+ 
+
+                lastDist = curDist;
+
+        }
+
+       
+        if(distance <= minimumDistance)
+
+        {
+
+                //minimum camera distance
+
+                distance = minimumDistance;
+
+        }
+
+       
+
+        if(distance >= maximumDistance)
+
+        {
+
+                //maximum camera distance
+
+                distance = maximumDistance;
+
+        }
+       
+       
+
+        //Sets rotation
+
+        var rotation = Quaternion.Euler(y, x, 0);
+
+       
+
+        //Sets zoom
+
+        var position = rotation * Vector3(0.0, 0.0, -distance) + Vector3(0,0,0);
+
+   //Applies rotation and position
+
+        transform.rotation = rotation;
+
+        transform.position = position;
+
+}
+
+ 
+
+function OnGUI()
+
+{
+
+        //Simple output to display the distance from the center
+
+        GUI.Label(Rect(0,0,Screen.width, Screen.height),distance.ToString());
+
+}

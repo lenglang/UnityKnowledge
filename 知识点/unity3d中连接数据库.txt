@@ -1,0 +1,154 @@
+﻿/*
+在unity3d中连接数据库 收藏
+
+1.C#代码：
+*/
+using UnityEngine;
+using System;
+using System.Collections;
+using System.Data;
+using MySql.Data.MySqlClient;
+public class CMySql : MonoBehaviour {
+    // Global variables
+    public static MySqlConnection dbConnection;//Just like MyConn.conn in StoryTools before
+     static string host = "192.168.1.100";
+     static string id = "mysql";//这里是你自己的数据库的用户名字，我一开始想用root，发现不行，后来添加了新的用户才可以
+     static string pwd = "123456";
+     static string database = "test";
+     static string result = "";
+    
+private string strCommand = "Select * from unity3d_test ORDER BY id;";
+public static DataSet MyObj;
+     void OnGUI()
+     {
+         host = GUILayout.TextField( host, 200, GUILayout.Width(200));
+         id = GUILayout.TextField( id, 200, GUILayout.Width(200));
+         pwd = GUILayout.TextField( pwd, 200, GUILayout.Width(200));
+         if(GUILayout.Button("Test"))
+         {
+    string connectionString = string.Format("Server = {0}; Database = {1}; User ID = {2}; Password = {3};",host,database,id,pwd);
+    openSqlConnection(connectionString);
+    
+    MyObj = GetDataSet(strCommand);
+         } 
+         GUILayout.Label(result);
+     }  
+    // On quit
+    public static void OnApplicationQuit() {
+        closeSqlConnection();
+    }
+   
+    // Connect to database
+    private static void openSqlConnection(string connectionString) {
+        dbConnection = new MySqlConnection(connectionString);
+        dbConnection.Open();
+        result = dbConnection.ServerVersion;
+        //Debug.Log("Connected to database."+result);
+    }
+   
+    // Disconnect from database
+    private static void closeSqlConnection() {
+        dbConnection.Close();
+        dbConnection = null;
+        //Debug.Log("Disconnected from database."+result);
+    }
+    
+    // MySQL Query
+    public static void doQuery(string sqlQuery) {
+        IDbCommand dbCommand = dbConnection.CreateCommand();    
+        dbCommand.CommandText = sqlQuery;
+        IDataReader reader = dbCommand.ExecuteReader();
+        reader.Close();
+        reader = null;
+        dbCommand.Dispose();
+        dbCommand = null;
+    }
+    #region Get DataSet
+    public  DataSet GetDataSet(string sqlString)
+    {
+        //string sql = UnicodeAndANSI.UnicodeAndANSI.UnicodeToUtf8(sqlString);
+  
+  
+  DataSet ds = new DataSet();
+        try
+        {
+            MySqlDataAdapter da = new MySqlDataAdapter(sqlString, dbConnection);
+            da.Fill(ds);
+   
+        }
+        catch (Exception ee)
+        {
+   
+            throw new Exception("SQL:" + sqlString + "\n" + ee.Message.ToString());
+        }
+        return ds;
+  
+    }
+    #endregion 
+}
+
+using UnityEngine;
+using System;
+using System.Collections;
+using System.Data;
+public class DataBaseTest : MonoBehaviour {
+public GUISkin myGUISkin = new GUISkin();
+string strID = "";
+string strName = "";
+string strSex = "";
+int Index = 1;
+// Use this for initialization
+void Start () {
+}
+void OnGUI()
+{
+  GUI.skin = myGUISkin;
+  if (GUI.Button(new Rect(100,320,100,100),"Click Me"))
+  {
+   foreach(DataRow dr in CMySql.MyObj.Tables[0].Rows)
+   {
+    if (Index.ToString() == dr["ID"].ToString())
+    {
+     strID = dr["ID"].ToString();
+     strName =  dr["Name"].ToString();
+     strSex = dr["Sex"].ToString();
+     
+     break;
+    }
+   }   
+   Index++;
+    if(Index > 5)
+   {
+    Index = 1; 
+   }  
+   
+  }
+  GUI.Label(new Rect(320,100,150,70),"DataBaseTest");
+  GUI.Label(new Rect(300,210,150,70),strID);
+  GUI.Label(new Rect(300,320,150,70),strName);
+  GUI.Label(new Rect(300,430,150,70),strSex);
+  
+}
+}
+
+2.導入dll
+  同先前的帖子 , 將MySql.data.dll Import至Assets底下 , 然後再到Unity\Editor\Data\Frameworks\Mono.framework 中
+將System.Data.dll 也一起Import至Assets內 , 當然 , 如果想顯示中文的話 , 請參考中文視頻教學 , 建立一個GUISkin與字型
+
+3.建立數據庫內容
+  主要是因為代碼中的這段內容
+     static string host = "192.168.1.100";
+     static string id = "mysql";
+     static string pwd = "123456";
+     static string database = "test";
+     private string strCommand = "Select * from unity3d_test ORDER BY id;";
+其中host ,id , pwd 請自行設定 , 簡單的說就是連進你的MySQL啦~
+然後建立一個名為test的Database , 在這個test下建立一張table , 取名為 unity3d_test ,
+接下來就為這張unity3d_test建立3個欄位 : ID , Name , Sex (記得將ID設定為primary key 且默認值為1)
+再來自行填入5筆資料(5筆資料的原因是腳本那邊是設定成5筆資料一個循環 , 使用者可以自行更改腳本試試)
+
+4.建立GameObject
+  建立完GameObject後將上面兩個腳本掛上去 , 如果有建立GUISkin , 記得指定GUISkin
+
+5.執行
+  執行後先按Test按鈕來連接數據庫 , 然後再按"Click Me"來顯示數據庫內的內容

@@ -1,0 +1,1 @@
+﻿加個UGUI內建的CanvasGroup組件, 把Interactable和Blocks Raycasts選項取消。

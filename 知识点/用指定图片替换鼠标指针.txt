@@ -1,0 +1,17 @@
+//用指定图片替换鼠标指针
+ 
+var mouse:Texture;
+ 
+function Update(){
+ 
+Screen.showCursor=false;//隐藏鼠标指针
+ 
+}
+ 
+function OnGUI{
+ 
+var msPos=Input.mousePosition;//鼠标的位置
+ 
+GUI.DrawTexture(Rect(msPos.x,Screen.height-msPos.y,20,20),mouse);
+ 
+}

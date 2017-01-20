@@ -1,0 +1,5 @@
+﻿在我们做项目的过程中，我们会用到SmartGit这个软件来将本地的ＭＡＶＥＮ项目push到国内的码云（https://git.oschina.net）或者是国外的github网站进行项目的管理，这个时候需要用到Smartgit。但是SmartGit是收费的，可以30天的试用期，30天试用期过后，smartgit 需要输入序列号解决办法，可以通过下面的小方法来获取永久的使用，但是这个仅供个人的试用，公司的嘛还是应该花钱买正版的。
+
+smartgit 需要输入序列号解决办法 ,找到路径： %APPDATA%\syntevo\SmartGit\<main-smartgit-version> 然后删除： settings.xml 再重新打开smartgit
+
+windows+R：输入%APPDATA%\syntevo\SmartGit\查找，或直接输入地址在文件夹栏输入

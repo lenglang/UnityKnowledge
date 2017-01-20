@@ -1,0 +1,27 @@
+﻿var speed = 1.0;
+ 
+var range = Vector3 (1.0, 1.0, 1.0);
+ 
+private var noise = new Perlin();
+ 
+private var position : Vector3;
+ 
+function Start()
+ 
+{
+ 
+position = transform.position;
+ 
+}
+ 
+function Update () {
+ 
+transform.position = position + Vector3.Scale(SmoothRandom.GetVector3(speed), range);
+ 
+}
+
+把上述代码写入文件，拖放在准星上，可实现FPS射击游戏的准星抖动效果。
+
+　　最好是设置打开瞄准镜时生效，平时一直有效人眼会受不了。
+
+　　speed值为抖动的厉害程度；range是抖动的范围

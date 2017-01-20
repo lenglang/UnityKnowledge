@@ -1,0 +1,21 @@
+The HierarchyHandler helper script makes it possible to use the ShatterTool script within game object hierarchies. Attach a ShatterTool script and a HierarchyHandler script to all game objects in the hierarchy that will be shattered, or are parents to/children of game objects that will be shattered. Make sure that PreSplitMsg and PostSplitMsg are enabled on the ShatterTool scripts.
+
+Whenever a game object in the hierarchy is shattered, the HierarchyHandler will detach and reattach the other game objects in the hierarchy to account for the newly created pieces.
+
+See the Hierarchy scene for an example.
+
+
+The following settings can be tweaked on the HierarchyHandler on a game object basis:
+
+Attach Piece To Parent - If enabled, will attach the piece closest to the parent as a child to the parent
+
+Max Piece To Parent Distance - A cut-off value that determines when not to connect a piece to the parent
+
+Add Rb To Detached Pieces - If enabled, will add a Rigidbody component to all pieces that are no longer part of the hierarchy
+
+
+Attach Children To Pieces - If enabled, will attach each child of this game object to the piece that is closest
+
+Max Child To Piece Distance - A cut-off value that determines when not to connect a child to a piece
+
+Add Rb To Detached Children - If enabled, will add a Rigidbody component to all children that are no longer part of the hierarchy

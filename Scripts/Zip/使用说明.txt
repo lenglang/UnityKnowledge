@@ -1,0 +1,9 @@
+﻿默认使用ZipHelper，代码里面有设置编码格式，先改成了gbk格式，解压不会乱码
+如果Zip不好使，可试着使用另外两个类
+
+使用方法
+UnZipFloClass UnZc = new UnZipFloClass();
+string filePath = @"C:\Users\Administrator.SKY-20160818IDX\Desktop\com.sinyee.babybus.pasture-8.8.10.00@881000-A004.apk";
+string outPath = @"C:\Users\Administrator.SKY-20160818IDX\Desktop\apk";
+UnZc.unZipFile(filePath,outPath);
+压缩同上

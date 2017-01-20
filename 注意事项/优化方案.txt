@@ -1,0 +1,2 @@
+﻿1.一般UI里也就是按钮才需要接收响应事件，那么大部分image和text是是不需要开RaycastTarget的。为了提高运行速度，可以取消勾选！
+2.使用 UGUI 制作背包的时候，同事发现如果背包中添加了大量的物品，比如两百个，Unity就会出错，提示 Canvas element contains more than 65535 vertices. This is not supported 。意思就是 Canvas下面的顶点数过多。禁用Outline可解决  在Text 上发现挂了 Outline 组件，把Outline 禁用之后，发现Verts 锐减

@@ -1,0 +1,36 @@
+﻿void OnApplicationFocus( bool  isFocus )
+    {
+//        Debug.Log("--------OnApplicationPause---" + isFocus);
+
+
+        if( isFocus )
+        {
+            Debug.Log("返回到游戏 刷新用户数据");  //  返回游戏的时候触发     执行顺序 2
+            if( Global.USER_DATA != null)
+            {
+                ReqLogin l = new ReqLogin();
+                l.EnegryRecover(EnegryRocoverBack); 
+            }
+            
+        }
+        else
+        {
+
+            Debug.Log("离开游戏 激活推送");  //  返回游戏的时候触发     执行顺序 1
+        }
+    }
+
+
+    void OnApplicationPause(bool isPause)
+    { 
+
+        if( isPause)
+        {
+
+            PNotification.instance.sendMessageAfterConnect();
+            Debug.Log("游戏暂停 一切停止");  // 缩到桌面的时候触发
+        }else
+        {
+            Debug.Log("游戏开始  万物生机");  //回到游戏的时候触发 最晚
+        }
+    }

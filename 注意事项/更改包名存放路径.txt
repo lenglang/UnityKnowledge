@@ -1,0 +1,1 @@
+﻿\\10.1.1.250\Jenkins\JenkinsBuilder\JenkinsApktoolBuilder\workspace

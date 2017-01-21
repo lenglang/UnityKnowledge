@@ -61,20 +61,20 @@ public class RotateGestures : MonoBehaviour
         previousDragDir = currentDragDir;
         currentDragDir = (dragPos - targetPos).normalized;
         int rotateDir = RotationDirection(currentDragDir.normalized, previousDragDir.normalized);
-        if (rotateDir == direction)
+        if (rotateDir == direction||direction==0)
         {
             angle += Vector2.Angle(currentDragDir, previousDragDir);
             Vector3 currentHandleBarAngles=Vector3.one;
             switch (shaft)
             {
                 case 0:
-                    currentHandleBarAngles = new Vector3(startDragAngle.x + angle * direction, startDragAngle.y, startDragAngle.z);
+                    currentHandleBarAngles = new Vector3(startDragAngle.x + angle * rotateDir, startDragAngle.y, startDragAngle.z);
                     break;
                 case 1:
-                    currentHandleBarAngles = new Vector3(startDragAngle.x, startDragAngle.y + angle * direction, startDragAngle.z);
+                    currentHandleBarAngles = new Vector3(startDragAngle.x, startDragAngle.y + angle * rotateDir, startDragAngle.z);
                     break;
                 case 2:
-                    currentHandleBarAngles = new Vector3(startDragAngle.x, startDragAngle.y, startDragAngle.z - angle * direction);
+                    currentHandleBarAngles = new Vector3(startDragAngle.x, startDragAngle.y, startDragAngle.z - angle * rotateDir);
                     break;
                 default:
                     break;

@@ -1,0 +1,6 @@
+﻿//是否编辑器模式
+#if UNITY_EDITOR
+
+#endif
+//获取是否开发模式
+EditorUserBuildSettings.development

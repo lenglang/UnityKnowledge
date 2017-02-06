@@ -46,6 +46,7 @@ public class AssetBundleCreate : Editor {
     [MenuItem("打包AssetBundle/网络加载资源")]
     static void BuildAssetBundle()
     {
+        Debug.LogError("打包成package需将后缀unity删除");
         if (Selection.objects.Length == 0)
             return;
         AssetBundleBuild assetBundleBuild = new AssetBundleBuild();

@@ -213,6 +213,12 @@ void Start () {
         //ao.allowSceneActivation = true;
     }
 
+	Transform bigImagesContainer = transform.FindChild("图大");
+            foreach (Transform child in bigImagesContainer)
+            {
+                _bigImages.Add(child.gameObject);
+            }
+
 
 
 

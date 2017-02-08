@@ -12,7 +12,7 @@ public static class GameObjectUtility
     {
         obj.layer = layer;
         if (obj.transform.childCount == 0) return;
-        foreach (Transform child in obj.transform)
+        foreach (Transform child in obj.GetComponentsInChildren<Transform>())
         {
             child.gameObject.layer = layer;
         }

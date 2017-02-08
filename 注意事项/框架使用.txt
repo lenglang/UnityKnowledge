@@ -9,3 +9,10 @@
 更改打包的Resource资源 BuildAndroidPlayer
 
 AnalyticsUtility.Event(_key[12]);友盟统计
+
+
+var qiqiSuit = Resources.Load<GameObject>("换装/春节套装_奇奇");
+var MiaomiaoSuit = Resources.Load<GameObject>("换装/春节套装_妙妙");
+
+Utility.AddSkinnedMeshFromModle(QiqiObj.transform, qiqiSuit.transform);//QiqiObj奇奇对象
+Utility.AddSkinnedMeshFromModle(MiaoMiaoObj.transform, MiaomiaoSuit.transform);

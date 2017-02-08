@@ -6,17 +6,17 @@ using System.Linq;
 
 public class SoundManager : MonoBehaviour
 {
-    private static SoundManager main;
-    public static SoundManager Main
+    private static SoundManager instance;
+    public static SoundManager Instance
     {
         get
         {
-            if (main == null)
+            if (instance == null)
             {
                 GameObject obj = new GameObject("SoundManager");
-                main = obj.AddComponent<SoundManager>();
+                instance = obj.AddComponent<SoundManager>();
             }
-            return main;
+            return instance;
         }
     }
     private List<Sound> soundList = new List<Sound>();
@@ -50,9 +50,7 @@ public class SoundManager : MonoBehaviour
     public Sound PlayFromResource(string path, string name)
     {
         AudioClip clip = Resources.Load<AudioClip>(path + name);
-
         return PlaySound(clip, name);
-
     }
     public Sound PlaySound(AudioClip clip, string soundName, bool isScaleTime = false)
     {
@@ -66,11 +64,6 @@ public class SoundManager : MonoBehaviour
         soundList.Add(sound);
         return sound;
     }
-    //	IEnumerator FinishSound(Sound sound,float sec){
-    //		yield return new WaitForSeconds (sec);
-    //		sound.Finish ();
-    //		DebugBuild.Log (sound.clip.name + "音频播放结束");
-    //	}
     public void DestorySound(string name)
     {
         List<Sound> destoryList = SearchSound(name);
@@ -111,7 +104,6 @@ public class SoundManager : MonoBehaviour
             soundList[i].audioSource.Pause();
         }
     }
-
     public void ResumeAllSound()
     {
         for (int i = 0; i < soundList.Count; i++)
@@ -119,10 +111,20 @@ public class SoundManager : MonoBehaviour
             soundList[i].audioSource.UnPause();
         }
     }
-
     public void ClearSound()
     {
         soundList.ToList().ForEach(x => x.FinishNoComplete());
     }
-
+    float GetSoundLeftTime(string soundName)
+    {
+        List<Sound> sounds = SoundManager.Instance.SearchSound(soundName);
+        return sounds.Last().audioSource.clip.length - sounds.Last().playTime;
+    }
+    bool IsPlaying(string soundName)
+    {
+        List<Sound> sounds = SoundManager.Instance.SearchSound(soundName);
+        if (sounds.Count != 0)
+            return true;
+        return false;
+    }
 }

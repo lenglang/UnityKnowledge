@@ -3,4 +3,5 @@
 
 #endif
 //获取是否开发模式
+用SystemSet类中方法
 EditorUserBuildSettings.development

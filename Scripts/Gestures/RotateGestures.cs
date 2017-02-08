@@ -15,12 +15,14 @@ public class RotateGestures : MonoBehaviour
     Vector2 previousDragDir;
     Vector3 startDragAngle;
     /// <summary>
-    /// 1为顺时针 -1为逆时针
+    /// 0顺逆,1为顺时针 -1为逆时针
     /// </summary>
+    [MyRange(0,2,"旋转方向（0顺逆,1顺时针，2逆时针）")]
     public int direction =1;
     /// <summary>
     /// 0为沿着x轴旋转 1为沿着y轴旋转 2为沿着z轴旋转
     /// </summary>
+    [MyRange(0,2,"旋转轴（0x轴，1y轴，2z轴）")]
     public int shaft = 2;
     public Action onBeginDrag;
     public Action onEndDrag;
@@ -32,9 +34,16 @@ public class RotateGestures : MonoBehaviour
     {
         //场景中需要一个Tag为MainCamera摄像机
         targetPos = Camera.main.WorldToScreenPoint(this.transform.position);
+    }
+    void OnEnable()
+    {
         EventTriggerListener.Get(gameObject).onBeginDrag = OnBeginDrag;
         EventTriggerListener.Get(gameObject).onDrag = OnDrag;
         EventTriggerListener.Get(gameObject).onEndDrag = OnEndDrag;
+    }
+    void OnDisable()
+    {
+        OnDestroy();
     }
     /// <summary>
     /// 开始拖拽
@@ -114,11 +123,14 @@ public class RotateGestures : MonoBehaviour
     }
     void OnDestroy()
     {
+        EventTriggerListener etl=gameObject.GetComponent<EventTriggerListener>();
+        if ( etl== null) return;
         EventTriggerListener.Get(gameObject).onBeginDrag = null;
         EventTriggerListener.Get(gameObject).onDrag = null;
         EventTriggerListener.Get(gameObject).onEndDrag = null;
         onRotateAngle = null;
         onEndDrag = null;
 		onBeginDrag = null;
+        Destroy(etl);
     }
 }

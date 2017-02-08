@@ -218,7 +218,7 @@ void Start () {
             {
                 _bigImages.Add(child.gameObject);
             }
-
+transform.DOShakeRotation(1, new Vector3(0,0,30)).SetLoops(-1);
 
 
 

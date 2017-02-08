@@ -1,17 +1,12 @@
-﻿#define LocalTest
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.IO;
-
-
 public class AssetBundleLoader : MonoBehaviour
 {
     [HideInInspector]
     public static AssetBundle assetBundle;
-
     private static AssetBundleLoader main;
-
+    //loadPath=DataPrefs.persistentDataPath + "/" + "游戏" + "/" + filename;
     public static string loadPath;
     public static AssetBundleLoader Main
     {
@@ -25,48 +20,37 @@ public class AssetBundleLoader : MonoBehaviour
             return main;
         }
     }
-
     public void LoadAssetBundle(string name, System.Action completeAction)
     {
         assetBundle = null;
         string path = "";
 #if UNITY_ANDROID
         path = "Android/";
+
 #elif UNITY_IOS
         path = "IOS/";
 #endif
-#if UNITY_EDITOR &&  LocalTest
-        Debug.Log(path + name);
+#if UNITY_EDITOR
         assetBundle = AssetBundle.LoadFromMemory(Resources.Load<TextAsset>(path + name).bytes);
         //assetBundle = GetAssetBundle();
         if (completeAction != null)
             completeAction();
 #endif
-
-#if UNITY_EDITOR && !LocalTest
-        assetBundle = GetAssetBundle();
-        if (completeAction != null)
-            completeAction();
-#endif
-
-#if !UNITY_EDITOR && LocalTest
-        StartCoroutine(LoadAsset(name, completeAction));
-#endif
-
-
-#if UNITY_ANDROID && !UNITY_EDITOR && !LocalTest
+//#if !UNITY_EDITOR
+//        StartCoroutine(LoadAsset(name, completeAction));
+//#endif
+#if UNITY_ANDROID && !UNITY_EDITOR
         //assetBundle = MemoryPrefs.GetObject<AssetBundle>("SceneAssetBundle");
          assetBundle = GetAssetBundle();
                 if (completeAction != null)
                 completeAction();
 #endif
-#if UNITY_IOS && !UNITY_EDITOR && !LocalTest
+#if UNITY_IOS && !UNITY_EDITOR
         //assetBundle = MemoryPrefs.GetObject<AssetBundle>("SceneAssetBundle");
         assetBundle = GetAssetBundle();
                 if (completeAction != null)
                 completeAction();
 #endif
-
     }
     IEnumerator LoadAsset(string name, System.Action completeAction)
     {

@@ -108,7 +108,7 @@ public class RotateGestures : MonoBehaviour
     /// <param name="currentDir"></param>
     /// <param name="previousDir"></param>
     /// <returns></returns>
-    public static int RotationDirection(Vector3 currentDir, Vector3 previousDir)
+    public int RotationDirection(Vector3 currentDir, Vector3 previousDir)
     {
         if (Vector3.Cross(currentDir, previousDir).z > 0)
         {
@@ -128,9 +128,6 @@ public class RotateGestures : MonoBehaviour
         EventTriggerListener.Get(gameObject).onBeginDrag = null;
         EventTriggerListener.Get(gameObject).onDrag = null;
         EventTriggerListener.Get(gameObject).onEndDrag = null;
-        onRotateAngle = null;
-        onEndDrag = null;
-		onBeginDrag = null;
         Destroy(etl);
     }
 }

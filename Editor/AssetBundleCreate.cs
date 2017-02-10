@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEditor;
 using System.IO;
 public class AssetBundleCreate : Editor {
-
     [MenuItem("打包AssetBundle/本地测试资源")]
     public static void BuildResources()
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AudioManager  {
     //static 静态  const是常量
-    private static string audioTextPathPrefix = Application.dataPath + "\\Framework\\Resources\\";
+    private static string audioTextPathPrefix = Application.dataPath + "/UnityKnowledge/Resources/";
     private const string audioTextPathMiddle = "audiolist";
     private const string audioTextPathPostfix = ".txt";
 

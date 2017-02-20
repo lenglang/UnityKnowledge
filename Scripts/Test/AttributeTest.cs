@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SocialPlatforms;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 [RequireComponent(typeof(RotateGestures))]
 [AddComponentMenu("Attribute/AttributeTest")]
 public class AttributeTest : MonoBehaviour
@@ -47,7 +49,9 @@ public class AttributeTest : MonoBehaviour
     //{
         //Debug.Log("在游戏启动时，会自动调用添加了该属性的方法。该类无需AddComponent到面板");
     //}
+#if UNITY_EDITOR
     [MenuItem("Attribute/DebugMessage")]
+#endif
     public static void CreateGameObject()
     {
         Debug.Log("DebugMessage");

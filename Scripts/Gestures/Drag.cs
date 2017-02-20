@@ -7,7 +7,6 @@ public class Drag : MonoBehaviour {
     //值得注意的是世界坐标系转化为屏幕坐标系，Z轴是不变的  
     IEnumerator OnMouseDown()
     {
-        Debug.LogError("只适用于电脑平台！");
         //将物体由世界坐标系转化为屏幕坐标系 ，由vector3 结构体变量ScreenSpace存储，以用来明确屏幕坐标系Z轴的位置  
         Vector3 ScreenSpace = Camera.main.WorldToScreenPoint(transform.position);
         //完成了两个步骤，1由于鼠标的坐标系是2维的，需要转化成3维的世界坐标系，2只有三维的情况下才能来计算鼠标位置与物体的距离，offset即是距离  

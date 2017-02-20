@@ -3,6 +3,7 @@ using System.Collections;
 
 public class IOSLocalNotifition : MonoBehaviour
 {
+#if UNITY_EDITOR
     //本地推送
     public static void NotificationMessage(string message, int hour, bool isRepeatDay)
     {
@@ -60,10 +61,13 @@ public class IOSLocalNotifition : MonoBehaviour
     //清空所有本地消息
     void CleanNotification()
     {
+
         UnityEngine.iOS.LocalNotification l = new UnityEngine.iOS.LocalNotification();
         l.applicationIconBadgeNumber = -1;
         UnityEngine.iOS.NotificationServices.PresentLocalNotificationNow(l);
         UnityEngine.iOS.NotificationServices.CancelAllLocalNotifications();
         UnityEngine.iOS.NotificationServices.ClearLocalNotifications();
+
     }
+#endif
 }

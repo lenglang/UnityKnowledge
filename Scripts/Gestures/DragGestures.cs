@@ -13,7 +13,8 @@ public class DragGestures : MonoBehaviour {
     public Action onUp;
     public  Vector3 _position;
 	// Use this for initialization
-	void Start () {
+    void Awake()
+    {
         EventTriggerListener.Get(gameObject).onDown = OnDown;
         EventTriggerListener.Get(gameObject).onBeginDrag = OnBeginDrag;
         EventTriggerListener.Get(gameObject).onDrag = OnDrag;
@@ -21,7 +22,7 @@ public class DragGestures : MonoBehaviour {
         EventTriggerListener.Get(gameObject).onUp = OnUp;
         _position = this.transform.position;
 	}
-    private void OnDown(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
+    public void OnDown(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
         if (onDown != null) onDown();
         if (_camera == null)
@@ -35,17 +36,25 @@ public class DragGestures : MonoBehaviour {
             _offset = this.transform.position - _camera.ScreenToWorldPoint(new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z));
         } 
     }
-    private void OnBeginDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
+    public void CancelOnDown()
+    {
+        EventTriggerListener.Get(gameObject).onDown = null;
+    }
+    public void AddOnDown()
+    {
+        EventTriggerListener.Get(gameObject).onDown = OnDown;
+    }
+    public void OnBeginDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
         if (onBeginDrag != null) onBeginDrag();
         UpdatePosition(evenData);
     }
-    private void OnDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
+    public void OnDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
         if (onDrag != null) onDrag();
         UpdatePosition(evenData);
     }
-    private void UpdatePosition(UnityEngine.EventSystems.PointerEventData evenData)
+    public void UpdatePosition(UnityEngine.EventSystems.PointerEventData evenData)
     {
         Vector3 curScreenSpace = new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z);
         if (_camera == null)
@@ -59,12 +68,12 @@ public class DragGestures : MonoBehaviour {
             this.transform.position = CurPosition;
         }
     }
-    private void OnEndDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
+    public void OnEndDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
         //有拖动才有结束
         if (onEndDrag != null) onEndDrag();
     }
-    private void OnUp(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
+    public void OnUp(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
         if (onUp != null) onUp();
     }
@@ -79,5 +88,19 @@ public class DragGestures : MonoBehaviour {
         {
             //游戏开始-回到游戏的时候触发
         }
+    }
+    void OnDestroy()
+    {
+        Destroy(this.GetComponent<EventTriggerListener>());
+    }
+    void OnEnable()
+    {
+        EventTriggerListener etl = this.GetComponent<EventTriggerListener>();
+        if (etl) etl.enabled = true;
+    }
+    void OnDisable()
+    {
+        EventTriggerListener etl = this.GetComponent<EventTriggerListener>();
+        if (etl) etl.enabled = false;
     }
 }

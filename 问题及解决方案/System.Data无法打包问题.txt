@@ -1,0 +1,2 @@
+﻿点击Player Settings按钮，找到Api Compatibility Level选项，选择".Net 2.0"，而非".Net 2.0 Subset"，
+这个选项的意思是说，要使用.NET 2.0的完整版本，而非其子集。经过此设置，终于可以打包发布成功

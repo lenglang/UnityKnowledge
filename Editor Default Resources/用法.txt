@@ -1,0 +1,2 @@
+﻿TextAsset text = 	EditorGUIUtility.Load("test.txt")as TextAsset;
+Debug.Log(text.text);

@@ -31,13 +31,10 @@ public class RotateGestures : MonoBehaviour
     /// 定义角度委托变量
     /// </summary>
     public Action<float> onRotateAngle;
-    void Start()
+    void Awake()
     {
         //场景中需要一个Tag为MainCamera摄像机
         targetPos = Camera.main.WorldToScreenPoint(this.transform.position);
-    }
-    void OnEnable()
-    {
         EventTriggerListener.Get(gameObject).onBeginDrag = OnBeginDrag;
         EventTriggerListener.Get(gameObject).onDrag = OnDrag;
         EventTriggerListener.Get(gameObject).onEndDrag = OnEndDrag;
@@ -55,10 +52,6 @@ public class RotateGestures : MonoBehaviour
         previousDragDir = currentDragDir;
         startDragAngle = this.transform.localEulerAngles;
         if (onDown != null) onDown();
-    }
-    void OnDisable()
-    {
-        OnDestroy();
     }
     /// <summary>
     /// 开始拖拽
@@ -132,13 +125,18 @@ public class RotateGestures : MonoBehaviour
             return -1;
         }
     }
+    void OnEnable()
+    {
+        EventTriggerListener.Get(gameObject).enabled = true;
+    }
+    void OnDisable()
+    {
+        EventTriggerListener.Get(gameObject).enabled = false;
+    }
     void OnDestroy()
     {
         EventTriggerListener etl=gameObject.GetComponent<EventTriggerListener>();
         if ( etl== null) return;
-        EventTriggerListener.Get(gameObject).onBeginDrag = null;
-        EventTriggerListener.Get(gameObject).onDrag = null;
-        EventTriggerListener.Get(gameObject).onEndDrag = null;
         Destroy(etl);
     }
 }

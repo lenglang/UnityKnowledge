@@ -1,0 +1,7 @@
+﻿void Update()  
+    {  
+    if (EventSystem.current.IsPointerOverGameObject())  
+        Debug.Log("鼠标在UI上");  
+    else  
+        Debug.Log("鼠标没在UI上");  
+    } 

@@ -2,6 +2,6 @@
 图片透明做法(如果图片使用材质，会使整个Canvas缺少材质的图片，全部透明)
 Image image = bg.GetComponent<Image>();
 image.DOFade(0, 0f);
-3D物体透明做法（需要将材质球的shader设置为透明通道）
+3D物体透明做法（需要将材质球的shader设置为透明通道）否则无效 LegacyShaders/Transparent/Diffuse
 GameObject cube = GameObject.Find("Cube");
 cube.GetComponent<MeshRenderer>().material.DOFade(0f, 5f);

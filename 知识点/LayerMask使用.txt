@@ -1,0 +1,21 @@
+﻿void Update ()
+	{
+		if (Input.GetMouseButtonDown(0)) {
+			// 只检测第6层
+			LayerMask mask1 = 1 << 6;
+			// 只不检测第7层
+			LayerMask mask2 = ~(1 << 7);
+			// 只检测第8层和第9层
+			LayerMask mask3 = (1 << 8)|(1 << 9);
+
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit, mask1)) {
+				Debug.Log("test");
+			}
+			//if (Physics.Raycast(ray, out hit, LayerMask.GetMask("MapCube"))) {
+				//Debug.Log("test");
+			//}
+		}
+
+	}

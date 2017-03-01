@@ -1,0 +1,69 @@
+﻿地址：http://blog.csdn.net/sinat_20559947/article/details/49755415
+iOS
+How do I make a splash screen?
+如何制作启动画面？
+As part of your game publishing process, you may want to customize the splash screen that appears when launching your game on the device. Unity iOS Basic users can choose between four different orientations of the included splash screen, and Unity iOS Advanced users can use any texture to create their own unique splash screens to be displayed.
+作为游戏发布过程的一部分，你可能希望你的游戏启动时能播放自己定制的画面。 Unity iOS初级用户可以从两个已定义好画面方向的启动画面中选择一个，高级用户可以使用任何素材创建自己独特的启动画面。
+The splash screen can be customized in Player Settings. The desired splash orientation is specified via the "Default Screen Orientation" Player Settings (Resolution and Presentation section) property.
+可以在Player Settings中完成启动画面的定制。 在 Player Settings面板的(Resolution and Presentation section)属性中，通过"Default Screen Orientation"项选择所需的启动画面的方向。
+Using one of the included splash screens
+使用其中的一个启动画面
+You can choose one of four default splash screen orientations:
+可以选择4个默认的启动画面方向之一：
+Portrait - The user interface and splash screen are oriented vertically. The home button is on the bottom of the device. 
+纵向 - 用户界面和启动画面是垂直方向。home按钮在设备的底部。
+Portrait Upside Down - The user interface and splash screen are oriented vertically. The home button is on the top of the device. 
+纵向倒置 - 用户界面和启动画面是垂直方向。home按钮在设备的顶部。
+Landscape Right - The user interface and splash screen are oriented horizontally. The home button is on the left side of the device. 
+右横向 - 用户界面和启动画面是水平方向。home按钮在设备的左边。
+Landscape Left - The user interface and splash screen are oriented horizontally. The home button is on the right side of the device. 
+左横向 - 用户界面和启动画面是水平方向。home按钮在设备的右边。
+Using a unique splash screen (Pro License feature)
+使用独特的启动画面(专业版功能)
+Unity iOS Pro users can use any texture as a splash screen. The standard splash screen size varies with the device (320x480 pixels for 1-3rd gen devices, 1024x768 for iPad, 640x960 for 4th gen devices). Textures not matching this size will be automatically re-sized. Instructions:
+Unity iOS Pro版用户可以使用任意纹理作为启动画面。标准的启动画面大小随设备不同而变化（320x480像素，用于1-3代设备；1024x768像素，用于iPad；640x960像素，用户第4代设备）。如果纹理不匹配设备大小，将被自动重新调整大小。说明：
+Drop your splash screen texture anywhere in the Assets folder. 
+拖动任意启动画面纹理到资源文件夹。
+In Player Settings (Splash Image section), select your texture for Mobile Splash Screen, High Res. iPhone or iPad Portrait/Landscape properties. You need to specify only the ones that are applicable for your target device. 
+在Player Settings（Splash Image部分），选择你刚才的纹理作为启动画面，注意，高分辨率，iPhone或iPad 纵向/横向属性。需要设备指定一个合适的纹理。
+That's it! When your game is built, your custom image will be used.
+就这样！当编译游戏时，将使用你自定的图片。
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Android
+How do I make a Splash Screen?
+如何制作启动画面？
+As part of your game publishing process, you may want to customize the splash screen that appears when launching your game on the device. Unity Android Basic users can choose between two orientations of the included splash screen, and Unity Android Advanced users can use any texture to create their own unique splash screen to be displayed.
+作为游戏发布过程的一部分，你可能希望你的游戏启动时能播放自己定制的画面。 Unity Android初级用户可以从两个已定义好画面方向的启动画面中选择一个，高级用户可以使用任何素材创建自己独特的启动画面。
+Customizing the splash screen is performed in Player Settings. The desired splash orientation is specified via "Default Screen Orientation" Player Settings (Resolution and Presentation section) property.
+可以在Player Settings中完成启动画面的定制。 在 Player Settings面板的(Resolution and Presentation section)属性中，通过"Default Screen Orientation"项选择所需的启动画面的播放方向。
+Using One of the Included Splash Screens
+使用其中的一个启动画面
+You can choose one of four default Splash Screen orientations:
+可以选择4个默认的启动画面方向之一：
+Portrait - user interface and Splash Screen is oriented vertically. Home button is on the bottom of device. 
+纵向 – 用户界面和启动画面是垂直的，主界面按钮在设备的正下方。
+Portrait Upside Down - falls back to Portrait. 
+纵向倒置 – 启动画面是倒挂的。
+Landscape Left - user interface and Splash Screen is oriented horizontally. Home button is on right side of device. 
+左横向 – 用户界面和启动画面是水平的，主界面按钮在设备的右边。
+Landscape Right - falls back to Landscape Left. 
+右横向 – 跟Landscape Left的设置是相反的。
+Using a Unique Splash Screen (Pro License feature)
+使用独特的启动画面(专业版功能)
+Unity Android Pro users can use any texture as a splash screen. Instructions:
+Unity Pro版用户可以使用任意材质去实现启动画面：
+Drop your texture for Splash Screen anywhere in Assets folder. 
+将用于启动画面的材质拖拉到Assets 目录下。
+In Player Settings (Splash Image section) select your texture for Mobile Splash Screen property. 
+在 Player Settings (Splash Image section) 中选择好为启动画面准备好的素材。
+Select a Splash scaling that best suit your needs.
+选择适合自己的缩放效果。
+Center (only scale down) will try to draw your image "pixel correct", with no scaling unless needed to fit it on screen. 
+居中(只是缩小)，以正确的像素显示图片，不会缩放图片除非需要。
+Scale to fit (letter-boxed) will try to draw your image full screen, but without cropping it, an fill the empty space with black pixels. 
+自适应缩放大小(高宽比不变)尝试满屏显示，但不会裁剪，并用黑色填充空白的地方。
+Scale to fill (cropped) will draw your image full screen, and cut the parts which extend outside the screen. 
+自适应填充(裁切不正的)满屏显示，屏幕外的部分将不显示。
+That's it! When your game is built, your custom image will be used.
+就这样！当编译游戏时，你自定图片将被使用上。

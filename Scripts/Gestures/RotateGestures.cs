@@ -17,12 +17,12 @@ public class RotateGestures : MonoBehaviour
     /// <summary>
     /// 0顺逆,1为顺时针 -1为逆时针
     /// </summary>
-    [MyRange(-1,1,"旋转方向（0顺逆,1顺时针，-1逆时针）")]
+    [Header("旋转方向（0顺逆,1顺时针，-1逆时针）")]
     public int direction =1;
     /// <summary>
     /// 0为沿着x轴旋转 1为沿着y轴旋转 2为沿着z轴旋转
     /// </summary>
-    [MyRange(0,2,"旋转轴（0x轴，1y轴，2z轴）")]
+    [Header("旋转轴（0x轴，1y轴，2z轴）")]
     public int shaft = 2;
     public Action onBeginDrag;
     public Action onEndDrag;
@@ -60,7 +60,6 @@ public class RotateGestures : MonoBehaviour
     /// <param name="obj"></param>
     private void OnBeginDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
-        
         if (onBeginDrag != null) onBeginDrag();
     }
     /// <summary>

@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-
+using DG.Tweening;
 public class TurnGestures : MonoBehaviour {
     public float angle = 0;
+    [Header("放开之后是否继续转动")]
+    public bool isGo=false;
+    private float disAngle;//转动角度距离
     Vector2 targetPos;
     Vector2 currentDragPos;
     Vector2 previousDragPos;
@@ -24,6 +27,7 @@ public class TurnGestures : MonoBehaviour {
     /// 定义角度委托变量
     /// </summary>
     public Action<float> onRotateAngle;
+    public Tween t;
     void Awake()
     {
         //场景中需要一个Tag为MainCamera摄像机
@@ -40,6 +44,7 @@ public class TurnGestures : MonoBehaviour {
     /// <param name="obj"></param>
     private void OnDown(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
+        if (t != null) t.Kill();
         currentDragPos = previousDragPos = evenData.position;
         if (onDown != null) onDown();
     }
@@ -60,8 +65,8 @@ public class TurnGestures : MonoBehaviour {
     public void OnDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
         currentDragPos = evenData.position;
-        float disAngle=MathTool.GetAngle2(currentDragPos, targetPos)-MathTool.GetAngle2(previousDragPos, targetPos);
-        if ((disAngle > -200 && disAngle < 0 && direction == 1) || (disAngle < 200 && disAngle > 0 && direction == -1) || direction == 0)
+        disAngle=MathTool.GetAngle2(currentDragPos, targetPos)-MathTool.GetAngle2(previousDragPos, targetPos);
+        if ((( disAngle < 0 && direction == 1) || (disAngle > 0 && direction == -1) || direction == 0)&&Math.Abs(disAngle)<100)
         {
             angle += disAngle;
             switch (shaft)
@@ -90,6 +95,32 @@ public class TurnGestures : MonoBehaviour {
     private void OnEndDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
         if (onEndDrag != null) onEndDrag();
+        if (isGo == false) return;
+        currentDragPos = evenData.position;
+        disAngle = MathTool.GetAngle2(currentDragPos, targetPos) - MathTool.GetAngle2(previousDragPos, targetPos);
+        if (((disAngle < 0 && direction == 1) || (disAngle > 0 && direction == -1) || direction == 0) && Math.Abs(disAngle) < 100)
+        {
+            t = DOTween.To(() => disAngle, x => disAngle = x, 0f, Math.Abs(disAngle/40)).SetEase(Ease.Linear).OnUpdate(() => UpdateTween(disAngle));
+        }
+    }
+    void UpdateTween(float num)
+    {
+        angle += num;
+        switch (shaft)
+        {
+            case 0:
+                this.transform.Rotate(new Vector3(num, 0, 0));
+                break;
+            case 1:
+                this.transform.Rotate(new Vector3(0, num, 0));
+                break;
+            case 2:
+                this.transform.Rotate(new Vector3(0, 0, num));
+                break;
+            default:
+                break;
+        }
+        if (onRotateAngle != null) onRotateAngle(Math.Abs(angle));
     }
     /// <summary>
     /// 拖动方向

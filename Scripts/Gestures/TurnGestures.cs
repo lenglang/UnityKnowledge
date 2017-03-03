@@ -26,7 +26,7 @@ public class TurnGestures : MonoBehaviour {
     /// <summary>
     /// 定义角度委托变量
     /// </summary>
-    public Action<float> onRotateAngle;
+    public Action<float> onTurnAngle;
     public Tween t;
     void Awake()
     {
@@ -83,7 +83,7 @@ public class TurnGestures : MonoBehaviour {
                 default:
                     break;
             }
-            if (onRotateAngle != null) onRotateAngle(Math.Abs(angle));
+            if (onTurnAngle != null) onTurnAngle(Math.Abs(angle));
         }
         previousDragPos = currentDragPos;
     }
@@ -120,7 +120,7 @@ public class TurnGestures : MonoBehaviour {
             default:
                 break;
         }
-        if (onRotateAngle != null) onRotateAngle(Math.Abs(angle));
+        if (onTurnAngle != null) onTurnAngle(Math.Abs(angle));
     }
     /// <summary>
     /// 拖动方向
@@ -144,12 +144,12 @@ public class TurnGestures : MonoBehaviour {
     void OnEnable()
     {
         EventTriggerListener etl = gameObject.GetComponent<EventTriggerListener>();
-        if (etl == null) etl.enabled = true;
+        if (etl != null) etl.enabled = true;
     }
     void OnDisable()
     {
         EventTriggerListener etl = gameObject.GetComponent<EventTriggerListener>();
-        if (etl == null) etl.enabled = false;
+        if (etl != null) etl.enabled = false;
     }
     void OnDestroy()
     {

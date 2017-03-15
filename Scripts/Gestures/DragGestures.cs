@@ -2,10 +2,11 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using UnityEngine.EventSystems;
 public class DragGestures : MonoBehaviour {
     public Camera _camera;
     private Vector3 _screenSpace;
-    private Vector3 _offset;
+    public Vector3 _offset;
     public Action onDown;
     public Action onBeginDrag;
     public Action onDrag;
@@ -13,6 +14,7 @@ public class DragGestures : MonoBehaviour {
     public Action onUp;
     public  Vector3 _position;
     public bool _isDown = false;
+    public PointerEventData _evenData;
 	// Use this for initialization
     void Awake()
     {
@@ -21,12 +23,10 @@ public class DragGestures : MonoBehaviour {
         EventTriggerListener.Get(gameObject).onDrag = OnDrag;
         EventTriggerListener.Get(gameObject).onEndDrag = OnEndDrag;
         EventTriggerListener.Get(gameObject).onUp = OnUp;
-        _position = this.transform.position;
 	}
     public void OnDown(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
         _isDown = true;
-        if (onDown != null) onDown();
         if (_camera == null)
         {
             _screenSpace = Camera.main.WorldToScreenPoint(this.transform.position);
@@ -36,7 +36,9 @@ public class DragGestures : MonoBehaviour {
         {
             _screenSpace = _camera.WorldToScreenPoint(this.transform.position);
             _offset = this.transform.position - _camera.ScreenToWorldPoint(new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z));
-        } 
+        }
+        _evenData = evenData;
+        if (onDown != null) onDown();
     }
     public void CancelOnDown()
     {
@@ -98,6 +100,7 @@ public class DragGestures : MonoBehaviour {
     }
     void OnEnable()
     {
+        _position = this.transform.position;
         EventTriggerListener etl = this.GetComponent<EventTriggerListener>();
         if (etl) etl.enabled = true;
     }

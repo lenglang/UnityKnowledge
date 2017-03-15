@@ -143,6 +143,7 @@ public class TurnGestures : MonoBehaviour {
     }
     void OnEnable()
     {
+        targetPos = Camera.main.WorldToScreenPoint(this.transform.position);
         EventTriggerListener etl = gameObject.GetComponent<EventTriggerListener>();
         if (etl != null) etl.enabled = true;
     }

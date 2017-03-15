@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 public enum VoiceType
     {
-        None,
         把相同的东西找出来吧,
     }
     public enum SoundType
     {
-        None,
         出场可爱的嚎叫的声音,
     }
     public enum SoundID
     {
-        None,
         背景,
         语音,
         音效,
@@ -32,8 +29,6 @@ public enum VoiceType
         {
             switch (type)
             {
-                case VoiceType.None:
-                    return "";
                 case VoiceType.把相同的东西找出来吧:
                     return "01001把相同的东西找出来吧~";
             }
@@ -43,8 +38,6 @@ public enum VoiceType
         {
             switch (type)
             {
-                case SoundType.None:
-                    return "";
                 case SoundType.出场可爱的嚎叫的声音:
                     return "出场可爱的嚎叫的声音";
             }
@@ -54,8 +47,6 @@ public enum VoiceType
         {
             switch (id)
             {
-                case SoundID.None:
-                    return "";
                 case SoundID.背景:
                     return "背景";
                 case SoundID.语音:

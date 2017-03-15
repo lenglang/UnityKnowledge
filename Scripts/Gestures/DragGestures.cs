@@ -12,6 +12,7 @@ public class DragGestures : MonoBehaviour {
     public Action onEndDrag;
     public Action onUp;
     public  Vector3 _position;
+    public bool _isDown = false;
 	// Use this for initialization
     void Awake()
     {
@@ -24,6 +25,7 @@ public class DragGestures : MonoBehaviour {
 	}
     public void OnDown(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
+        _isDown = true;
         if (onDown != null) onDown();
         if (_camera == null)
         {
@@ -75,6 +77,7 @@ public class DragGestures : MonoBehaviour {
     }
     public void OnUp(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
+        _isDown = false;
         if (onUp != null) onUp();
     }
     void OnApplicationPause(bool isPause)
@@ -82,7 +85,7 @@ public class DragGestures : MonoBehaviour {
         if (isPause)
         {
             //游戏暂停-缩到桌面的时候触发
-            if (onUp != null) onUp();
+            if (onUp != null&&_isDown) onUp();
         }
         else
         {

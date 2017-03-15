@@ -1,4 +1,5 @@
-﻿lineRenderer.SetPosition(0, transform.position);
+﻿OnColliderEnter方法有效需要该物体添加刚体组件
+lineRenderer.SetPosition(0, transform.position);
 Ray ray = new Ray(transform.position, transform.forward);
 RaycastHit hitInfo;
 if (Physics.Raycast(ray, out hitInfo)) 

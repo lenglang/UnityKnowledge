@@ -2,10 +2,17 @@
 using System.Collections;
 using System;
 /// <summary>
-/// 使用说明：直接添加脚本到物体从下到上即可，然后设置物体旋转的方向，物体旋转的轴
+/// 使用说明：直接添加脚本到物体
 /// </summary>
 public class SlideGestures : MonoBehaviour
 {
+    public enum Direction
+    {
+        从下到上,
+        从上到下,
+        从右到左,
+        从左到右
+    }
     Vector2 currentDragDir;
     Vector2 previousDragDir;
     Vector2 startDragDir;
@@ -121,13 +128,6 @@ public class SlideGestures : MonoBehaviour
                 return Direction.从右到左;
             }
         }
-    }
-    public enum Direction
-    {
-        从下到上,
-        从上到下,
-        从右到左,
-        从左到右
     }
     void OnDestroy()
     {

@@ -3,7 +3,7 @@
 // - no lightmap support
 // - no per-material color
 
-Shader "Custom/TextureCurved" {
+Shader "Unlit/TextureCurved" {
 Properties {
 	_MainTex ("Base (RGB)", 2D) = "white" {}
 	_QOffset("Offset", Vector) = (0,0,0,0)

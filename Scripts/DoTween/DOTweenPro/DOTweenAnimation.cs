@@ -37,13 +37,18 @@ namespace DG.Tweening
         public bool isValid;
         public Component target;
         public DOTweenAnimationType animationType;
+        public TargetType targetType;
+        public TargetType forcedTargetType; // Used when choosing between multiple targets
         public bool autoPlay = true;
+        public bool useTargetAsV3;
 
         public float endValueFloat;
         public Vector3 endValueV3;
+        public Vector2 endValueV2;
         public Color endValueColor = new Color(1, 1, 1, 1);
         public string endValueString = "";
         public Rect endValueRect = new Rect(0, 0, 0, 0);
+        public Transform endValueTransform;
 
         public bool optionalBool0;
         public float optionalFloat0;
@@ -52,6 +57,7 @@ namespace DG.Tweening
         public ScrambleMode optionalScrambleMode = ScrambleMode.None;
         public string optionalString;
 
+        bool _tweenCreated; // TRUE after the tweens have been created
         int _playCount = -1; // Used when calling DOPlayNext
 
         #region Unity Methods
@@ -60,7 +66,20 @@ namespace DG.Tweening
         {
             if (!isActive || !isValid) return;
 
+            if (animationType != DOTweenAnimationType.Move || !useTargetAsV3) {
+                // Don't create tweens if we're using a RectTransform as a Move target,
+                // because that will work only inside Start
+                CreateTween();
+                _tweenCreated = true;
+            }
+        }
+
+        void Start()
+        {
+            if (_tweenCreated) return;
+
             CreateTween();
+            _tweenCreated = true;
         }
 
         void OnDestroy()
@@ -77,52 +96,69 @@ namespace DG.Tweening
                 return;
             }
 
-            Type t = target.GetType();
+            if (forcedTargetType != TargetType.Unset) targetType = forcedTargetType;
+            if (targetType == TargetType.Unset) {
+                // Legacy DOTweenAnimation (made with a version older than 0.9.450) without stored targetType > assign it now
+                targetType = TypeToDOTargetType(target.GetType());
+            }
 
-//            Component c;
             switch (animationType) {
             case DOTweenAnimationType.None:
                 break;
             case DOTweenAnimationType.Move:
-                if (t.IsSameOrSubclassOf(typeof(RectTransform))) tween = ((RectTransform)target).DOAnchorPos3D(endValueV3, duration, optionalBool0);
-                else if (t.IsSameOrSubclassOf(typeof(Transform))) tween = ((Transform)target).DOMove(endValueV3, duration, optionalBool0);
-                else if (t.IsSameOrSubclassOf(typeof(Rigidbody2D))) tween = ((Rigidbody2D)target).DOMove(endValueV3, duration, optionalBool0);
-                else if (t.IsSameOrSubclassOf(typeof(Rigidbody))) tween = ((Rigidbody)target).DOMove(endValueV3, duration, optionalBool0);
-//                c = this.GetComponent<Rigidbody2D>();
-//                if (c != null) {
-//                    tween = ((Rigidbody2D)c).DOMove(endValueV3, duration, optionalBool0);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<Rigidbody>();
-//                if (c != null) {
-//                    tween = ((Rigidbody)c).DOMove(endValueV3, duration, optionalBool0);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<RectTransform>();
-//                if (c != null) {
-//                    tween = ((RectTransform)c).DOAnchorPos3D(endValueV3, duration, optionalBool0);
-//                    goto SetupTween;
-//                }
-//                tween = transform.DOMove(endValueV3, duration, optionalBool0);
+                if (useTargetAsV3) {
+                    isRelative = false;
+                    if (endValueTransform == null) {
+                        Debug.LogWarning(string.Format("{0} :: This tween's TO target is NULL, a Vector3 of (0,0,0) will be used instead", this.gameObject.name), this.gameObject);
+                        endValueV3 = Vector3.zero;
+                    } else {
+                        if (targetType == TargetType.RectTransform) {
+                            RectTransform endValueT = endValueTransform as RectTransform;
+                            if (endValueT == null) {
+                                Debug.LogWarning(string.Format("{0} :: This tween's TO target should be a RectTransform, a Vector3 of (0,0,0) will be used instead", this.gameObject.name), this.gameObject);
+                                endValueV3 = Vector3.zero;
+                            } else {
+                                RectTransform rTarget = target as RectTransform;
+                                if (rTarget == null) {
+                                    Debug.LogWarning(string.Format("{0} :: This tween's target and TO target are not of the same type. Please reassign the values", this.gameObject.name), this.gameObject);
+                                } else {
+                                    // Problem: doesn't work inside Awake (ararargh!)
+                                    endValueV3 = DOTweenUtils46.SwitchToRectTransform(endValueT, rTarget);
+                                }
+                            }
+                        } else endValueV3 = endValueTransform.position;
+                    }
+                }
+                switch (targetType) {
+                case TargetType.RectTransform:
+                    tween = ((RectTransform)target).DOAnchorPos3D(endValueV3, duration, optionalBool0);
+                    break;
+                case TargetType.Transform:
+                    tween = ((Transform)target).DOMove(endValueV3, duration, optionalBool0);
+                    break;
+                case TargetType.Rigidbody2D:
+                    tween = ((Rigidbody2D)target).DOMove(endValueV3, duration, optionalBool0);
+                    break;
+                case TargetType.Rigidbody:
+                    tween = ((Rigidbody)target).DOMove(endValueV3, duration, optionalBool0);
+                    break;
+                }
                 break;
             case DOTweenAnimationType.LocalMove:
                 tween = transform.DOLocalMove(endValueV3, duration, optionalBool0);
                 break;
             case DOTweenAnimationType.Rotate:
-                if (t.IsSameOrSubclassOf(typeof(Transform))) tween = ((Transform)target).DORotate(endValueV3, duration, optionalRotationMode);
-                else if (t.IsSameOrSubclassOf(typeof(Rigidbody2D))) tween = ((Rigidbody2D)target).DORotate(endValueFloat, duration);
-                else if (t.IsSameOrSubclassOf(typeof(Rigidbody))) tween = ((Rigidbody)target).DORotate(endValueV3, duration, optionalRotationMode);
-//                c = this.GetComponent<Rigidbody2D>();
-//                if (c != null) {
-//                    tween = ((Rigidbody2D)c).DORotate(endValueFloat, duration);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<Rigidbody>();
-//                if (c != null) {
-//                    tween = ((Rigidbody)c).DORotate(endValueV3, duration, optionalRotationMode);
-//                    goto SetupTween;
-//                }
-//                tween = transform.DORotate(endValueV3, duration, optionalRotationMode);
+                switch (targetType) {
+                case TargetType.Transform:
+                    tween = ((Transform)target).DORotate(endValueV3, duration, optionalRotationMode);
+                    break;
+                case TargetType.Rigidbody2D:
+                    tween = ((Rigidbody2D)target).DORotate(endValueFloat, duration);
+                    break;
+                case TargetType.Rigidbody:
+                    tween = ((Rigidbody)target).DORotate(endValueV3, duration, optionalRotationMode);
+                    break;
+                }
                 break;
             case DOTweenAnimationType.LocalRotate:
                 tween = transform.DOLocalRotate(endValueV3, duration, optionalRotationMode);
@@ -130,140 +166,113 @@ namespace DG.Tweening
             case DOTweenAnimationType.Scale:
                 tween = transform.DOScale(optionalBool0 ? new Vector3(endValueFloat, endValueFloat, endValueFloat) : endValueV3, duration);
                 break;
+            case DOTweenAnimationType.UIWidthHeight:
+                tween = ((RectTransform)target).DOSizeDelta(optionalBool0 ? new Vector2(endValueFloat, endValueFloat) : endValueV2, duration);
+                break;
             case DOTweenAnimationType.Color:
                 isRelative = false;
-                if (t.IsSameOrSubclassOf(typeof(SpriteRenderer))) tween = ((SpriteRenderer)target).DOColor(endValueColor, duration);
-                else if (t.IsSameOrSubclassOf(typeof(Renderer))) tween = ((Renderer)target).material.DOColor(endValueColor, duration);
-                else if (t.IsSameOrSubclassOf(typeof(Image))) tween = ((Image)target).DOColor(endValueColor, duration);
-                else if (t.IsSameOrSubclassOf(typeof(Text))) tween = ((Text)target).DOColor(endValueColor, duration);
+                switch (targetType) {
+                case TargetType.SpriteRenderer:
+                    tween = ((SpriteRenderer)target).DOColor(endValueColor, duration);
+                    break;
+                case TargetType.Renderer:
+                    tween = ((Renderer)target).material.DOColor(endValueColor, duration);
+                    break;
+                case TargetType.Image:
+                    tween = ((Image)target).DOColor(endValueColor, duration);
+                    break;
+                case TargetType.Text:
+                    tween = ((Text)target).DOColor(endValueColor, duration);
+                    break;
+                case TargetType.Light:
+                    tween = ((Light)target).DOColor(endValueColor, duration);
+                    break;
 #if DOTWEEN_TK2D
-                else if (t.IsSameOrSubclassOf(typeof(tk2dTextMesh))) tween = ((tk2dTextMesh)target).DOColor(endValueColor, duration);
-                else if (t.IsSameOrSubclassOf(typeof(tk2dBaseSprite))) tween = ((tk2dBaseSprite)target).DOColor(endValueColor, duration);
-//                c = this.GetComponent<tk2dBaseSprite>();
-//                if (c != null) {
-//                   tween = ((tk2dBaseSprite)c).DOColor(endValueColor, duration);
-//                    goto SetupTween;
-//                }
+                case TargetType.tk2dTextMesh:
+                    tween = ((tk2dTextMesh)target).DOColor(endValueColor, duration);
+                    break;
+                case TargetType.tk2dBaseSprite:
+                    tween = ((tk2dBaseSprite)target).DOColor(endValueColor, duration);
+                    break;
 #endif
 #if DOTWEEN_TMP
-                else if (t.IsSameOrSubclassOf(typeof(TextMeshProUGUI))) tween = ((TextMeshProUGUI)target).DOColor(endValueColor, duration);
-                else if (t.IsSameOrSubclassOf(typeof(TextMeshPro))) tween = ((TextMeshPro)target).DOColor(endValueColor, duration);
-//                c = this.GetComponent<TextMeshPro>();
-//                if (c != null) {
-//                   tween = ((TextMeshPro)c).DOColor(endValueColor, duration);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<TextMeshProUGUI>();
-//                if (c != null) {
-//                   tween = ((TextMeshProUGUI)c).DOColor(endValueColor, duration);
-//                    goto SetupTween;
-//                }
+                case TargetType.TextMeshProUGUI:
+                    tween = ((TextMeshProUGUI)target).DOColor(endValueColor, duration);
+                    break;
+                case TargetType.TextMeshPro:
+                    tween = ((TextMeshPro)target).DOColor(endValueColor, duration);
+                    break;
 #endif
-//                c = this.GetComponent<SpriteRenderer>();
-//                if (c != null) {
-//                    tween = ((SpriteRenderer)c).DOColor(endValueColor, duration);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<Renderer>();
-//                if (c != null) {
-//                    tween = ((Renderer)c).material.DOColor(endValueColor, duration);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<Image>();
-//                if (c != null) {
-//                    tween = ((Image)c).DOColor(endValueColor, duration);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<Text>();
-//                if (c != null) {
-//                    tween = ((Text)c).DOColor(endValueColor, duration);
-//                    goto SetupTween;
-//                }
+                }
                 break;
             case DOTweenAnimationType.Fade:
                 isRelative = false;
-                if (t.IsSameOrSubclassOf(typeof(SpriteRenderer))) tween = ((SpriteRenderer)target).DOFade(endValueFloat, duration);
-                else if (t.IsSameOrSubclassOf(typeof(Renderer))) tween = ((Renderer)target).material.DOFade(endValueFloat, duration);
-                else if (t.IsSameOrSubclassOf(typeof(Image))) tween = ((Image)target).DOFade(endValueFloat, duration);
-                else if (t.IsSameOrSubclassOf(typeof(Text))) tween = ((Text)target).DOFade(endValueFloat, duration);
+                switch (targetType) {
+                case TargetType.SpriteRenderer:
+                    tween = ((SpriteRenderer)target).DOFade(endValueFloat, duration);
+                    break;
+                case TargetType.Renderer:
+                    tween = ((Renderer)target).material.DOFade(endValueFloat, duration);
+                    break;
+                case TargetType.Image:
+                    tween = ((Image)target).DOFade(endValueFloat, duration);
+                    break;
+                case TargetType.Text:
+                    tween = ((Text)target).DOFade(endValueFloat, duration);
+                    break;
+                case TargetType.Light:
+                    tween = ((Light)target).DOIntensity(endValueFloat, duration);
+                    break;
+                case TargetType.CanvasGroup:
+                    tween = ((CanvasGroup)target).DOFade(endValueFloat, duration);
+                    break;
 #if DOTWEEN_TK2D
-                else if (t.IsSameOrSubclassOf(typeof(tk2dTextMesh))) tween = ((tk2dTextMesh)target).DOFade(endValueFloat, duration);
-                else if (t.IsSameOrSubclassOf(typeof(tk2dBaseSprite))) tween = ((tk2dBaseSprite)target).DOFade(endValueFloat, duration);
-//                c = this.GetComponent<tk2dBaseSprite>();
-//                if (c != null) {
-//                   tween = ((tk2dBaseSprite)c).DOFade(endValueFloat, duration);
-//                    goto SetupTween;
-//                }
+                case TargetType.tk2dTextMesh:
+                    tween = ((tk2dTextMesh)target).DOFade(endValueFloat, duration);
+                    break;
+                case TargetType.tk2dBaseSprite:
+                    tween = ((tk2dBaseSprite)target).DOFade(endValueFloat, duration);
+                    break;
 #endif
 #if DOTWEEN_TMP
-                else if (t.IsSameOrSubclassOf(typeof(TextMeshProUGUI))) tween = ((TextMeshProUGUI)target).DOFade(endValueFloat, duration);
-                else if (t.IsSameOrSubclassOf(typeof(TextMeshPro))) tween = ((TextMeshPro)target).DOFade(endValueFloat, duration);
-//                c = this.GetComponent<TextMeshPro>();
-//                if (c != null) {
-//                   tween = ((TextMeshPro)c).DOFade(endValueFloat, duration);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<TextMeshProUGUI>();
-//                if (c != null) {
-//                   tween = ((TextMeshProUGUI)c).DOFade(endValueFloat, duration);
-//                    goto SetupTween;
-//                }
+                case TargetType.TextMeshProUGUI:
+                    tween = ((TextMeshProUGUI)target).DOFade(endValueFloat, duration);
+                    break;
+                case TargetType.TextMeshPro:
+                    tween = ((TextMeshPro)target).DOFade(endValueFloat, duration);
+                    break;
 #endif
-//                c = this.GetComponent<SpriteRenderer>();
-//                if (c != null) {
-//                    tween = ((SpriteRenderer)c).DOFade(endValueFloat, duration);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<Renderer>();
-//                if (c != null) {
-//                    tween = ((Renderer)c).material.DOFade(endValueFloat, duration);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<Image>();
-//                if (c != null) {
-//                    tween = ((Image)c).DOFade(endValueFloat, duration);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<Text>();
-//                if (c != null) {
-//                    tween = ((Text)c).DOFade(endValueFloat, duration);
-//                    goto SetupTween;
-//                }
+                }
                 break;
             case DOTweenAnimationType.Text:
-                if (t.IsSameOrSubclassOf(typeof(Text))) tween = ((Text)target).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
-//                c = this.GetComponent<Text>();
-//                if (c != null) {
-//                    tween = ((Text)c).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
-//                    goto SetupTween;
-//                }
+                switch (targetType) {
+                case TargetType.Text:
+                    tween = ((Text)target).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
+                    break;
 #if DOTWEEN_TK2D
-                else if (t.IsSameOrSubclassOf(typeof(tk2dTextMesh))) tween = ((tk2dTextMesh)target).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
-//                c = this.GetComponent<tk2dTextMesh>();
-//                if (c != null) {
-//                   tween = ((tk2dTextMesh)c).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
-//                    goto SetupTween;
-//                }
+                case TargetType.tk2dTextMesh:
+                    tween = ((tk2dTextMesh)target).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
+                    break;
 #endif
 #if DOTWEEN_TMP
-                else if (t.IsSameOrSubclassOf(typeof(TextMeshProUGUI))) tween = ((TextMeshProUGUI)target).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
-                else if (t.IsSameOrSubclassOf(typeof(TextMeshPro))) tween = ((TextMeshPro)target).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
-//                c = this.GetComponent<TextMeshPro>();
-//                if (c != null) {
-//                   tween = ((TextMeshPro)c).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
-//                    goto SetupTween;
-//                }
-//                c = this.GetComponent<TextMeshProUGUI>();
-//                if (c != null) {
-//                   tween = ((TextMeshProUGUI)c).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
-//                    goto SetupTween;
-//                }
+                case TargetType.TextMeshProUGUI:
+                    tween = ((TextMeshProUGUI)target).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
+                    break;
+                case TargetType.TextMeshPro:
+                    tween = ((TextMeshPro)target).DOText(endValueString, duration, optionalBool0, optionalScrambleMode, optionalString);
+                    break;
 #endif
+                }
                 break;
             case DOTweenAnimationType.PunchPosition:
-                if (t.IsSameOrSubclassOf(typeof(RectTransform))) tween = ((RectTransform)target).DOPunchAnchorPos(endValueV3, duration, optionalInt0, optionalFloat0, optionalBool0);
-                else if (t.IsSameOrSubclassOf(typeof(Transform))) tween = ((Transform)target).DOPunchPosition(endValueV3, duration, optionalInt0, optionalFloat0, optionalBool0);
-//                tween = transform.DOPunchPosition(endValueV3, duration, optionalInt0, optionalFloat0, optionalBool0);
+                switch (targetType) {
+                case TargetType.RectTransform:
+                    tween = ((RectTransform)target).DOPunchAnchorPos(endValueV3, duration, optionalInt0, optionalFloat0, optionalBool0);
+                    break;
+                case TargetType.Transform:
+                    tween = ((Transform)target).DOPunchPosition(endValueV3, duration, optionalInt0, optionalFloat0, optionalBool0);
+                    break;
+                }
                 break;
             case DOTweenAnimationType.PunchScale:
                 tween = transform.DOPunchScale(endValueV3, duration, optionalInt0, optionalFloat0);
@@ -272,9 +281,14 @@ namespace DG.Tweening
                 tween = transform.DOPunchRotation(endValueV3, duration, optionalInt0, optionalFloat0);
                 break;
             case DOTweenAnimationType.ShakePosition:
-                if (t.IsSameOrSubclassOf(typeof(RectTransform))) tween = ((RectTransform)target).DOShakeAnchorPos(duration, endValueV3, optionalInt0, optionalFloat0, optionalBool0);
-                if (t.IsSameOrSubclassOf(typeof(Transform))) tween = ((Transform)target).DOShakePosition(duration, endValueV3, optionalInt0, optionalFloat0, optionalBool0);
-//                tween = transform.DOShakePosition(duration, endValueV3, optionalInt0, optionalFloat0, optionalBool0);
+                switch (targetType) {
+                case TargetType.RectTransform:
+                    tween = ((RectTransform)target).DOShakeAnchorPos(duration, endValueV3, optionalInt0, optionalFloat0, optionalBool0);
+                    break;
+                case TargetType.Transform:
+                    tween = ((Transform)target).DOShakePosition(duration, endValueV3, optionalInt0, optionalFloat0, optionalBool0);
+                    break;
+                }
                 break;
             case DOTweenAnimationType.ShakeScale:
                 tween = transform.DOShakeScale(duration, endValueV3, optionalInt0, optionalFloat0);
@@ -302,7 +316,6 @@ namespace DG.Tweening
                 break;
             }
 
-//        SetupTween:
             if (tween == null) return;
 
             if (isFrom) {
@@ -312,6 +325,7 @@ namespace DG.Tweening
             }
             tween.SetTarget(this.gameObject).SetDelay(delay).SetLoops(loops, loopType).SetAutoKill(autoKill)
                 .OnKill(()=> tween = null);
+            if (isSpeedBased) tween.SetSpeedBased();
             if (easeType == Ease.INTERNAL_Custom) tween.SetEase(easeCurve);
             else tween.SetEase(easeType);
             if (!string.IsNullOrEmpty(id)) tween.SetId(id);
@@ -335,6 +349,8 @@ namespace DG.Tweening
 
             if (autoPlay) tween.Play();
             else tween.Pause();
+
+            if (hasOnTweenCreated && onTweenCreated != null) onTweenCreated.Invoke();
         }
 
         #endregion
@@ -455,6 +471,19 @@ namespace DG.Tweening
 
         #endregion
 
+        #region Internal Static Helpers (also used by Inspector)
+
+        public static TargetType TypeToDOTargetType(Type t)
+        {
+            string str = t.ToString();
+            int dotIndex = str.LastIndexOf(".");
+            if (dotIndex != -1) str = str.Substring(dotIndex + 1);
+            if (str.IndexOf("Renderer") != -1 && (str != "SpriteRenderer")) str = "Renderer";
+            return (TargetType)Enum.Parse(typeof(TargetType), str);
+        }
+
+        #endregion
+
         #endregion
 
         #region Private
@@ -474,9 +503,15 @@ namespace DG.Tweening
 
     public static class DOTweenAnimationExtensions
     {
-        public static bool IsSameOrSubclassOf(this Type t, Type tBase)
+//        // Doesn't work on Win 8.1
+//        public static bool IsSameOrSubclassOf(this Type t, Type tBase)
+//        {
+//            return t.IsSubclassOf(tBase) || t == tBase;
+//        }
+
+        public static bool IsSameOrSubclassOf<T>(this Component t)
         {
-            return t.IsSubclassOf(tBase) || t == tBase;
+            return t is T;
         }
     }
 }

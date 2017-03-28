@@ -21,14 +21,26 @@ namespace DG.DOTweenEditor
     [CustomEditor(typeof(DOTweenAnimation))]
     public class DOTweenAnimationInspector : ABSAnimationInspector
     {
+        enum FadeTargetType
+        {
+            CanvasGroup,
+            Image
+        }
+
+        enum ChooseTargetMode
+        {
+            None,
+            BetweenCanvasGroupAndImage
+        }
+
         static readonly Dictionary<DOTweenAnimationType, Type[]> _AnimationTypeToComponent = new Dictionary<DOTweenAnimationType, Type[]>() {
             { DOTweenAnimationType.Move, new[] { typeof(Rigidbody), typeof(Rigidbody2D), typeof(RectTransform), typeof(Transform) } },
             { DOTweenAnimationType.LocalMove, new[] { typeof(Transform) } },
             { DOTweenAnimationType.Rotate, new[] { typeof(Rigidbody), typeof(Rigidbody2D), typeof(Transform) } },
             { DOTweenAnimationType.LocalRotate, new[] { typeof(Transform) } },
             { DOTweenAnimationType.Scale, new[] { typeof(Transform) } },
-            { DOTweenAnimationType.Color, new[] { typeof(SpriteRenderer), typeof(Renderer), typeof(Image), typeof(Text) } },
-            { DOTweenAnimationType.Fade, new[] { typeof(SpriteRenderer), typeof(Renderer), typeof(Image), typeof(Text) } },
+            { DOTweenAnimationType.Color, new[] { typeof(SpriteRenderer), typeof(Renderer), typeof(Image), typeof(Text), typeof(Light) } },
+            { DOTweenAnimationType.Fade, new[] { typeof(SpriteRenderer), typeof(Renderer), typeof(Image), typeof(Text), typeof(CanvasGroup), typeof(Light) } },
             { DOTweenAnimationType.Text, new[] { typeof(Text) } },
             { DOTweenAnimationType.PunchPosition, new[] { typeof(RectTransform), typeof(Transform) } },
             { DOTweenAnimationType.PunchRotation, new[] { typeof(Transform) } },
@@ -42,6 +54,7 @@ namespace DG.DOTweenEditor
             { DOTweenAnimationType.CameraOrthoSize, new[] { typeof(Camera) } },
             { DOTweenAnimationType.CameraPixelRect, new[] { typeof(Camera) } },
             { DOTweenAnimationType.CameraRect, new[] { typeof(Camera) } },
+            { DOTweenAnimationType.UIWidthHeight, new[] { typeof(RectTransform) } },
         };
 
 #if DOTWEEN_TK2D
@@ -66,6 +79,7 @@ namespace DG.DOTweenEditor
             "Scale",
             "Color", "Fade",
             "Text",
+            "UIWidthHeight",
             "Punch/Position", "Punch/Rotation", "Punch/Scale",
             "Shake/Position", "Shake/Rotation", "Shake/Scale",
             "Camera/Aspect", "Camera/BackgroundColor", "Camera/FieldOfView", "Camera/OrthoSize", "Camera/PixelRect", "Camera/Rect"
@@ -76,9 +90,11 @@ namespace DG.DOTweenEditor
         DOTweenAnimation _src;
         bool _runtimeEditMode; // If TRUE allows to change and save stuff at runtime
         int _totComponentsOnSrc; // Used to determine if a Component is added or removed from the source
+        bool _isLightSrc; // Used to determine if we're tweening a Light, to set the max Fade value to more than 1
+        ChooseTargetMode _chooseTargetMode = ChooseTargetMode.None;
 
-        // ===================================================================================
-        // MONOBEHAVIOUR METHODS -------------------------------------------------------------
+
+        #region MonoBehaviour Methods
 
         void OnEnable()
         {
@@ -89,6 +105,7 @@ namespace DG.DOTweenEditor
             onUpdateProperty = base.serializedObject.FindProperty("onUpdate");
             onStepCompleteProperty = base.serializedObject.FindProperty("onStepComplete");
             onCompleteProperty = base.serializedObject.FindProperty("onComplete");
+            onTweenCreatedProperty = base.serializedObject.FindProperty("onTweenCreated");
 
             // Convert _AnimationType to _animationTypeNoSlashes
             int len = _AnimationType.Length;
@@ -142,7 +159,7 @@ namespace DG.DOTweenEditor
 
 //            _src.isValid = Validate(); // Moved down
 
-            EditorGUIUtility.labelWidth = 120;
+            EditorGUIUtility.labelWidth = 110;
 
             if (playMode) {
                 GUILayout.Space(4);
@@ -183,6 +200,8 @@ namespace DG.DOTweenEditor
             GUILayout.EndHorizontal();
             if (prevAnimType != _src.animationType) {
                 // Set default optional values based on animation type
+                _src.endValueTransform = null;
+                _src.useTargetAsV3 = false;
                 switch (_src.animationType) {
                 case DOTweenAnimationType.Move:
                 case DOTweenAnimationType.LocalMove:
@@ -193,8 +212,14 @@ namespace DG.DOTweenEditor
                     _src.endValueFloat = 0;
                     _src.optionalBool0 = _src.animationType == DOTweenAnimationType.Scale;
                     break;
+                case DOTweenAnimationType.UIWidthHeight:
+                    _src.endValueV3 = Vector3.zero;
+                    _src.endValueFloat = 0;
+                    _src.optionalBool0 = _src.animationType == DOTweenAnimationType.UIWidthHeight;
+                    break;
                 case DOTweenAnimationType.Color:
                 case DOTweenAnimationType.Fade:
+                    _isLightSrc = _src.GetComponent<Light>() != null;
                     _src.endValueFloat = 0;
                     break;
                 case DOTweenAnimationType.Text:
@@ -235,6 +260,23 @@ namespace DG.DOTweenEditor
 
             if (prevAnimType != _src.animationType || ComponentsChanged()) {
                 _src.isValid = Validate();
+                // See if we need to choose between multiple targets
+                if (_src.animationType == DOTweenAnimationType.Fade && _src.GetComponent<CanvasGroup>() != null && _src.GetComponent<Image>() != null) {
+                    _chooseTargetMode = ChooseTargetMode.BetweenCanvasGroupAndImage;
+                    // Reassign target and forcedTargetType if lost
+                    if (_src.forcedTargetType == TargetType.Unset) _src.forcedTargetType = _src.targetType;
+                    switch (_src.forcedTargetType) {
+                    case TargetType.CanvasGroup:
+                        _src.target = _src.GetComponent<CanvasGroup>();
+                        break;
+                    case TargetType.Image:
+                        _src.target = _src.GetComponent<Image>();
+                        break;
+                    }
+                } else {
+                    _chooseTargetMode = ChooseTargetMode.None;
+                    _src.forcedTargetType = TargetType.Unset;
+                }
             }
 
             if (!_src.isValid) {
@@ -247,8 +289,29 @@ namespace DG.DOTweenEditor
                 return;
             }
 
+            // Special cases in which multiple target types could be used (set after validation)
+            if (_chooseTargetMode == ChooseTargetMode.BetweenCanvasGroupAndImage && _src.forcedTargetType != TargetType.Unset) {
+                FadeTargetType fadeTargetType = (FadeTargetType)Enum.Parse(typeof(FadeTargetType), _src.forcedTargetType.ToString());
+                TargetType prevTargetType = _src.forcedTargetType;
+                _src.forcedTargetType = (TargetType)Enum.Parse(typeof(TargetType), EditorGUILayout.EnumPopup(_src.animationType + " Target", fadeTargetType).ToString());
+                if (_src.forcedTargetType != prevTargetType) {
+                    // Target type change > assign correct target
+                    switch (_src.forcedTargetType) {
+                    case TargetType.CanvasGroup:
+                        _src.target = _src.GetComponent<CanvasGroup>();
+                        break;
+                    case TargetType.Image:
+                        _src.target = _src.GetComponent<Image>();
+                        break;
+                    }
+                }
+            }
+
+            GUILayout.BeginHorizontal();
             _src.duration = EditorGUILayout.FloatField("Duration", _src.duration);
             if (_src.duration < 0) _src.duration = 0;
+            _src.isSpeedBased = DeGUILayout.ToggleButton(_src.isSpeedBased, new GUIContent("SpeedBased", "If selected, the duration will count as units/degree x second"), DeGUI.styles.button.tool, GUILayout.Width(75));
+            GUILayout.EndHorizontal();
             _src.delay = EditorGUILayout.FloatField("Delay", _src.delay);
             if (_src.delay < 0) _src.delay = 0;
             _src.isIndependentUpdate = EditorGUILayout.Toggle("Ignore TimeScale", _src.isIndependentUpdate);
@@ -267,8 +330,9 @@ namespace DG.DOTweenEditor
             switch (_src.animationType) {
             case DOTweenAnimationType.Move:
             case DOTweenAnimationType.LocalMove:
-                GUIEndValueV3();
+                GUIEndValueV3(_src.animationType == DOTweenAnimationType.Move);
                 _src.optionalBool0 = EditorGUILayout.Toggle("    Snapping", _src.optionalBool0);
+                canBeRelative = !_src.useTargetAsV3;
                 break;
             case DOTweenAnimationType.Rotate:
             case DOTweenAnimationType.LocalRotate:
@@ -283,6 +347,11 @@ namespace DG.DOTweenEditor
                 else GUIEndValueV3();
                 _src.optionalBool0 = EditorGUILayout.Toggle("Uniform Scale", _src.optionalBool0);
                 break;
+            case DOTweenAnimationType.UIWidthHeight:
+                if (_src.optionalBool0) GUIEndValueFloat();
+                else GUIEndValueV2();
+                _src.optionalBool0 = EditorGUILayout.Toggle("Uniform Scale", _src.optionalBool0);
+                break;
             case DOTweenAnimationType.Color:
                 GUIEndValueColor();
                 canBeRelative = false;
@@ -290,7 +359,7 @@ namespace DG.DOTweenEditor
             case DOTweenAnimationType.Fade:
                 GUIEndValueFloat();
                 if (_src.endValueFloat < 0) _src.endValueFloat = 0;
-                if (_src.endValueFloat > 1) _src.endValueFloat = 1;
+                if (!_isLightSrc && _src.endValueFloat > 1) _src.endValueFloat = 1;
                 canBeRelative = false;
                 break;
             case DOTweenAnimationType.Text:
@@ -343,6 +412,10 @@ namespace DG.DOTweenEditor
             if (GUI.changed) EditorUtility.SetDirty(_src);
         }
 
+        #endregion
+
+        #region Methods
+
         // Returns TRUE if the Component layout on the src gameObject changed (a Component was added or removed)
         bool ComponentsChanged()
         {
@@ -364,6 +437,7 @@ namespace DG.DOTweenEditor
                     srcTarget = _src.GetComponent(t);
                     if (srcTarget != null) {
                         _src.target = srcTarget;
+                        _src.targetType = DOTweenAnimation.TypeToDOTargetType(t);
                         return true;
                     }
                 }
@@ -375,6 +449,7 @@ namespace DG.DOTweenEditor
                     srcTarget = _src.GetComponent(t);
                     if (srcTarget != null) {
                         _src.target = srcTarget;
+                        _src.targetType = DOTweenAnimation.TypeToDOTargetType(t);
                         return true;
                     }
                 }
@@ -386,6 +461,7 @@ namespace DG.DOTweenEditor
                     srcTarget = _src.GetComponent(t);
                     if (srcTarget != null) {
                         _src.target = srcTarget;
+                        _src.targetType = DOTweenAnimation.TypeToDOTargetType(t);
                         return true;
                     }
                 }
@@ -404,6 +480,10 @@ namespace DG.DOTweenEditor
             return Array.IndexOf(_animationTypeNoSlashes, animation.ToString());
         }
 
+        #endregion
+
+        #region GUI Draw Methods
+
         void GUIEndValueFloat()
         {
             GUILayout.BeginHorizontal();
@@ -420,11 +500,42 @@ namespace DG.DOTweenEditor
             GUILayout.EndHorizontal();
         }
 
-        void GUIEndValueV3()
+        void GUIEndValueV3(bool optionalTransform = false)
         {
             GUILayout.BeginHorizontal();
             GUIToFromButton();
-            _src.endValueV3 = EditorGUILayout.Vector3Field("", _src.endValueV3, GUILayout.Height(16));
+            if (_src.useTargetAsV3) {
+                Transform prevT = _src.endValueTransform;
+                _src.endValueTransform = EditorGUILayout.ObjectField(_src.endValueTransform, typeof(Transform), true) as Transform;
+                if (_src.endValueTransform != prevT && _src.endValueTransform != null) {
+                    // Check that it's a Transform for a Transform or a RectTransform for a RectTransform
+                    if (_src.GetComponent<RectTransform>() != null) {
+                        if (_src.endValueTransform.GetComponent<RectTransform>() == null) {
+                            EditorUtility.DisplayDialog("DOTween Pro", "For Unity UI elements, the target must also be a UI element", "Ok");
+                            _src.endValueTransform = null;
+                        }
+                    } else if (_src.endValueTransform.GetComponent<RectTransform>() != null) {
+                        EditorUtility.DisplayDialog("DOTween Pro", "You can't use a UI target for a non UI object", "Ok");
+                        _src.endValueTransform = null;
+                    }
+                }
+            } else {
+                _src.endValueV3 = EditorGUILayout.Vector3Field("", _src.endValueV3, GUILayout.Height(16));
+            }
+            if (optionalTransform) {
+                if (GUILayout.Button(_src.useTargetAsV3 ? "target" : "value", EditorGUIUtils.sideBtStyle, GUILayout.Width(44))) _src.useTargetAsV3 = !_src.useTargetAsV3;
+            }
+            GUILayout.EndHorizontal();
+            if (_src.useTargetAsV3 && _src.endValueTransform != null && _src.target is RectTransform) {
+                EditorGUILayout.HelpBox("NOTE: when using a UI target, the tween will be created during Start instead of Awake", MessageType.Info);
+            }
+        }
+
+        void GUIEndValueV2()
+        {
+            GUILayout.BeginHorizontal();
+            GUIToFromButton();
+            _src.endValueV2 = EditorGUILayout.Vector2Field("", _src.endValueV2, GUILayout.Height(16));
             GUILayout.EndHorizontal();
         }
 
@@ -446,8 +557,10 @@ namespace DG.DOTweenEditor
 
         void GUIToFromButton()
         {
-            if (GUILayout.Button(_src.isFrom ? "FROM" : "TO", EditorGUIUtils.sideBtStyle, GUILayout.Width(100))) _src.isFrom = !_src.isFrom;
+            if (GUILayout.Button(_src.isFrom ? "FROM" : "TO", EditorGUIUtils.sideBtStyle, GUILayout.Width(90))) _src.isFrom = !_src.isFrom;
             GUILayout.Space(16);
         }
+
+        #endregion
     }
 }

@@ -1,5 +1,5 @@
 
-Shader "Custom/Curved" {
+Shader "Unlit/Curved" {
 	Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_QOffset ("Offset", Vector) = (0,0,0,0)

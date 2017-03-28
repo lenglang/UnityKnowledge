@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 24123b2fcdc15c943bed44e0c6beeec7
+guid: e327f3f49cfac9a4ea8423ad806f2c90
 labels:
 - Tween
 - Tweening
@@ -17,3 +17,5 @@ labels:
 - Punch
 TextScriptImporter:
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

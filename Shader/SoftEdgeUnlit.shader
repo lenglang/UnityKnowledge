@@ -9,7 +9,7 @@ This makes it possible to render transparent objects
 like grass without them being sorted by depth.
 */
 
-Shader "Unlit/Soft Edge Unlit" {
+Shader "Unlit/SoftEdgeUnlit" {
 Properties {
 	_Color ("Main Color", Color) = (1, 1, 1, 1)
 	_MainTex ("Base (RGB) Alpha (A)", 2D) = "white" {}

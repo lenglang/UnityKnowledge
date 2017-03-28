@@ -4,6 +4,36 @@
         <name>DOTweenPro</name>
     </assembly>
     <members>
+        <member name="M:DG.Tweening.Core.ABSAnimationComponent.DORestart(System.Boolean)">
+            <summary>
+            Restarts the tween
+            </summary>
+            <param name="fromHere">If TRUE, re-evaluates the tween's start and end values from its current position.
+            Set it to TRUE when spawning the same DOTweenPath in different positions (like when using a pooling system)</param>
+        </member>
+        <member name="T:DG.Tweening.DOTweenPath">
+            <summary>
+            Attach this to a GameObject to create and assign a path to it
+            </summary>
+        </member>
+        <member name="M:DG.Tweening.DOTweenPath.DORestart(System.Boolean)">
+            <summary>
+            Restarts the tween
+            </summary>
+            <param name="fromHere">If TRUE, re-evaluates the tween's start and end values from its current position.
+            Set it to TRUE when spawning the same DOTweenPath in different positions (like when using a pooling system)</param>
+        </member>
+        <member name="M:DG.Tweening.DOTweenPath.GetDrawPoints">
+            <summary>
+            Returns a list of points that are used to draw the path inside the editor.
+            </summary>
+        </member>
+        <member name="T:DG.Tweening.Plugins.SpiralPlugin">
+            <summary>
+            Tweens a Vector3 along a spiral.
+            EndValue represents the direction of the spiral
+            </summary>
+        </member>
         <member name="T:DG.Tweening.ShortcutExtensionsPro">
             <summary>
             Methods that extend known Unity objects and allow to directly create and control tweens from their instances
@@ -30,31 +60,6 @@
             <param name="frequency">Frequency of the rotation. Lower values lead to wider spirals</param>
             <param name="depth">Indicates how much the tween should move along the spiral's axis</param>
             <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        </member>
-        <member name="T:DG.Tweening.Plugins.SpiralPlugin">
-            <summary>
-            Tweens a Vector3 along a spiral.
-            EndValue represents the direction of the spiral
-            </summary>
-        </member>
-        <member name="M:DG.Tweening.Core.ABSAnimationComponent.DORestart(System.Boolean)">
-            <summary>
-            Restarts the tween
-            </summary>
-            <param name="fromHere">If TRUE, re-evaluates the tween's start and end values from its current position.
-            Set it to TRUE when spawning the same DOTweenPath in different positions (like when using a pooling system)</param>
-        </member>
-        <member name="T:DG.Tweening.DOTweenPath">
-            <summary>
-            Attach this to a GameObject to create and assign a path to it
-            </summary>
-        </member>
-        <member name="M:DG.Tweening.DOTweenPath.DORestart(System.Boolean)">
-            <summary>
-            Restarts the tween
-            </summary>
-            <param name="fromHere">If TRUE, re-evaluates the tween's start and end values from its current position.
-            Set it to TRUE when spawning the same DOTweenPath in different positions (like when using a pooling system)</param>
         </member>
         <member name="T:DG.Tweening.SpiralMode">
             <summary>

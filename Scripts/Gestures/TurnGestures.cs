@@ -23,6 +23,8 @@ public class TurnGestures : MonoBehaviour {
     public Action onBeginDrag;
     public Action onEndDrag;
     public Action onDown;
+    [Header("旋转方向改变(1,-1)")]
+    public int _turn = 1;
     /// <summary>
     /// 定义角度委托变量
     /// </summary>
@@ -68,6 +70,7 @@ public class TurnGestures : MonoBehaviour {
         disAngle=MathTool.GetAngle2(currentDragPos, targetPos)-MathTool.GetAngle2(previousDragPos, targetPos);
         if ((( disAngle < 0 && direction == 1) || (disAngle > 0 && direction == -1) || direction == 0)&&Math.Abs(disAngle)<100)
         {
+            disAngle *= _turn;
             angle += disAngle;
             switch (shaft)
             {

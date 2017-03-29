@@ -137,7 +137,7 @@ Material:
       data:
         first:
           name: _MinAlpha
-        second: 0.616
+        second: 0
     m_Colors:
       data:
         first:

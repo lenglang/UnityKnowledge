@@ -1,0 +1,47 @@
+﻿当Unity开发的游戏以Android Apk的形式发布之后，
+经常会遇到的一种情况就是别人对我们的游戏进行二次打包，
+也就是用他们的签名替换掉我们的签名，
+从而堂而皇之的将胜利果实占为己有。面对这样的情况，
+我们可以采取的一种方式就是对Apk包的签名进行验证，
+如果与我们的签名不一致，则可以采取黑屏或者直接退出等方式来阻止该盗版程序的运行。
+示例代码如下：
+[code]csharpcode：
+using UnityEngine;
+using System.Collections;
+ 
+/// <summary>
+/// Signature verify tool class
+/// </summary>
+public class SignatureVerify
+{
+    /**
+     * Verify the signature is correct
+     **/
+    public static bool IsCorrect ()
+    {   
+        #if UNITY_EDITOR
+        return true;
+        #endif
+ 
+        // 获取Android的PackageManager    
+        AndroidJavaClass Player = new AndroidJavaClass ("com.<a class="relatedlink" href="http://www.unitymanual.com/" target="_blank">unity3d</a>.player.UnityPlayer");          
+        AndroidJavaObject Activity = Player.GetStatic<AndroidJavaObject> ("currentActivity");        
+        AndroidJavaObject PackageManager = Activity.Call<AndroidJavaObject> ("getPackageManager");  
+ 
+        // 获取当前Android应用的包名
+        string packageName = Activity.Call<string> ("getPackageName");
+ 
+        // 调用PackageManager的getPackageInfo方法来获取签名信息数组    
+        int GET_SIGNATURES = PackageManager.GetStatic<int> ("GET_SIGNATURES");         
+        AndroidJavaObject PackageInfo = PackageManager.Call<AndroidJavaObject> ("getPackageInfo", packageName, GET_SIGNATURES);           
+        AndroidJavaObject[] Signatures = PackageInfo.Get<AndroidJavaObject[]> ("signatures");           
+ 
+        // 获取当前的签名的哈希值，判断其与我们签名的哈希值是否一致
+        if (Signatures != null && Signatures.Length > 0)
+        {
+            int hashCode = Signatures [0].Call<int> ("hashCode");
+            return hashCode == 8888888888;//我们签名的哈希值<br>
+        }
+        return false;
+    }    
+}

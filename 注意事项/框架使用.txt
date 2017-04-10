@@ -8,6 +8,8 @@
 
 更改打包的Resource资源 BuildAndroidPlayer
 
+BabySystem 通过包名获取产品名
+
 AnalyticsUtility.Event(_key[12]);友盟统计
 
 

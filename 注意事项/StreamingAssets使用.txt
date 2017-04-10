@@ -1,0 +1,31 @@
+﻿目录文件、文件夹不允许有中文命名
+只能用WWW读取资源
+读取目录
+private string StreamingAssetsPath(string filename)
+    {
+#if UNITY_ANDROID&&!UNITY_EDITOR
+        return System.IO.Path.Combine(Application.streamingAssetsPath+ "/AssetBundle/Android",filename);
+#elif UNITY_EDITOR
+        return System.IO.Path.Combine("file://" + Application.streamingAssetsPath + "/AssetBundle/Android", filename);
+		#elif UNITY_IPHONE //待测
+		return System.IO.Path.Combine("file://" + Application.streamingAssetsPath + "/AssetBundle/Android", filename);
+#else
+        return "";    
+#endif
+    }
+
+	下载并存储资源到持久化路径中
+	string path = StreamingAssetsPath(name + category);
+        float time = Time.time;
+        WWW www = new WWW(path);
+        yield return www;
+        if (Directory.Exists(Application.persistentDataPath + "/" + "游戏")==false)
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/" + "游戏");
+        }
+        File.WriteAllBytes(path,www.bytes);
+
+		//扩展
+		string.IsNullOrEmpty(www.error)
+		www.Dispose();
+        www = null;

@@ -3,24 +3,29 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 using UnityEngine.EventSystems;
+/// <summary>
+/// 默认注册按下事件，按下后需手动添加取消按下事件，添加移动相关事件和放开事件，放开后若有需要继续添加按下事件
+/// </summary>
 public class DragGestures : MonoBehaviour {
+    [HideInInspector]
     public Camera _camera;
     private Vector3 _screenSpace;
+    [HideInInspector]
     public Vector3 _offset;
     public Action onDown;
     public Action onBeginDrag;
     public Action onDrag;
     public Action onEndDrag;
     public Action onUp;
+    [HideInInspector]
     public  Vector3 _localPosition;
-    public bool _isDown = false;//是否按下
-    public bool _isDrag = false;//是否拖拽
+    private bool _isDown = false;//是否按下
+    private bool _isDrag = false;//是否拖拽
     public PointerEventData _evenData;
 	// Use this for initialization
     void Awake()
     {
         EventTriggerListener.Get(gameObject).onDown = OnDown;
-        EventTriggerListener.Get(gameObject).onUp = OnUp;
 	}
     public void OnDown(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
     {
@@ -133,6 +138,10 @@ public class DragGestures : MonoBehaviour {
     void OnDisable()
     {
         EventTriggerListener etl = this.GetComponent<EventTriggerListener>();
-        if (etl) etl.enabled = false;
+        if (etl)
+        {
+            etl.enabled = false;
+            CancelOnDrag();
+        } 
     }
 }

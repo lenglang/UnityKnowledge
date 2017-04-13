@@ -1,0 +1,6 @@
+﻿public static void SetLocalX(this Transform transform, float x)
+        {
+            Vector3 newPosition = new Vector3(x, transform.localPosition.y, transform.localPosition.z);
+
+            transform.localPosition = newPosition;
+        }

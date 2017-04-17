@@ -1,0 +1,26 @@
+﻿var bytes = ReadAllBytes(path);
+//异步加载场景
+var assetBundleCreateRequest = AssetBundle.LoadFromMemoryAsync(bytes);
+                GlobalGameObject.Instance.InvokeWaitForYieldInstruction(delegate ()
+                {
+                    if (assetBundleCreateRequest == null)
+                        action(null);
+                    else
+                        action(assetBundleCreateRequest.assetBundle);
+                }, assetBundleCreateRequest);
+
+//同步加载资源
+AssetBundle.LoadFromMemory(File.ReadAllBytes(path));
+
+
+
+public static void Unload()
+    {
+        if (assetBundle != null)
+        {
+           assetBundle.Unload(true);
+           assetBundle = null;
+        }
+    }
+//本地测试加载资源
+assetBundle = AssetBundle.LoadFromMemory(Resources.Load<TextAsset>(path + name).bytes);

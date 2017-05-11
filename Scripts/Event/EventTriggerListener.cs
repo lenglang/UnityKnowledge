@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 /// <summary>
 /// 注意事项：1.场景需添加EventSystem；2.摄像机需挂载PhysicsRaycaster脚本；3.监听对象需要挂载BoxCollider组件
 /// </summary>
@@ -31,6 +32,28 @@ public class EventTriggerListener : UnityEngine.EventSystems.EventTrigger
         EventTriggerListener listener = go.GetComponent<EventTriggerListener>();
         if (listener == null) listener = go.AddComponent<EventTriggerListener>();
         return listener;
+    }
+    /// <summary>
+    /// 事件渗透
+    /// 使用：PassEvent(evenData, ExecuteEvents.beginDragHandler);PassEvent(evenData, ExecuteEvents.dragHandler);
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="data"></param>
+    /// <param name="function"></param>
+    public void PassEvent<T>(PointerEventData data, ExecuteEvents.EventFunction<T> function)
+        where T : IEventSystemHandler
+    {
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(data, results);
+        GameObject current = data.pointerCurrentRaycast.gameObject;
+        for (int i = 0; i < results.Count; i++)
+        {
+            if (current != results[i].gameObject)
+            {
+                ExecuteEvents.Execute(results[i].gameObject, data, function);
+                //RaycastAll后ugui会自己排序，如果你只想响应透下去的最近的一个响应，这里ExecuteEvents.Execute后直接break就行。
+            }
+        }
     }
     public override void OnSubmit(BaseEventData eventData)
     {

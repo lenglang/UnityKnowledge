@@ -3,8 +3,12 @@ using System.Collections;
 using UnityEngine.UI;
 public class UIDepth : MonoBehaviour
 {
+    [Header("层级")]
     public int order;
-    public bool isUI = true;
+    [Header("是否UI")]
+    public bool isUI = false;
+    [Header("UI是否可点击")]
+    public bool isClick = false;
     void Start()
     {
         if (isUI)
@@ -13,7 +17,7 @@ public class UIDepth : MonoBehaviour
             if (canvas == null)
             {
                 canvas = gameObject.AddComponent<Canvas>();
-                gameObject.AddComponent<GraphicRaycaster>();
+                if(isClick)gameObject.AddComponent<GraphicRaycaster>();
             }
             canvas.overrideSorting = true;
             canvas.sortingOrder = order;

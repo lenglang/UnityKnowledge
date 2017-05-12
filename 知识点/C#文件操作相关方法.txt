@@ -1,0 +1,4 @@
+﻿string fullFileName = @"C:\mydir\myfile.ext";
+string directoryName = Path.GetDirectoryName(fullFileName );
+string fileName = Path.GetFileName(fullFileName);
+string fileNameWithoutExt= Path.GetFileNameWithoutExtension (fullFileName);

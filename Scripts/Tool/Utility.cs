@@ -3,7 +3,6 @@ using System.Collections;
 
 public static class Utility
 {
-
     /// <summary>
     /// 设定层
     /// </summary>
@@ -70,5 +69,17 @@ public static class Utility
             }
         }
         return 0;
+    }
+    /// <summary>
+    /// 是否在播某个动画
+    /// </summary>
+    /// <param name="animator"></param>
+    /// <param name="clipName"></param>
+    /// <param name="layerIndex"></param>
+    /// <returns></returns>
+    public static bool IsPlayAnimation(this Animator animator, string animationName, int layerIndex=0)
+    {
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(layerIndex);
+        return stateInfo.IsName(animationName);
     }
 }

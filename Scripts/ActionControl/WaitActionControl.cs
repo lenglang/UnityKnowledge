@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 public enum WaitActionType
 {
+    Null,
     你好
 }
 public class WaitActionControl : MonoBehaviour {
@@ -30,7 +31,7 @@ public class WaitActionControl : MonoBehaviour {
     /// <param name="type">动作类型</param>
     /// <param name="action">动作</param>
     /// <param name="waitTime">等待时间</param>
-    public void AddWaitAction(WaitActionType type,Action action, float waitTime)
+    public void AddWaitAction(Action action, float waitTime, WaitActionType type=WaitActionType.Null)
     {
         for (int i = 0; i < _waitActionParameterList.Count; i++)
         {

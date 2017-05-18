@@ -1,0 +1,3939 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDataFormat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DataFormat theme="颜色" level="1" limited="false" number="66" exist="false">
+    <Question>$颜色+在哪里，来找找看吧</Question>
+    <Item keyword="红色">
+      <FileName>糖葫芦</FileName>
+      <FileName>红色气球</FileName>
+      <FileName>草莓</FileName>
+      <FileName>苹果</FileName>
+      <FileName>袜子</FileName>
+      <FileName>围巾</FileName>
+    </Item>
+    <Item keyword="黄色">
+      <FileName>芒果</FileName>
+      <FileName>菠萝</FileName>
+      <FileName>梨子</FileName>
+      <FileName>小鸡</FileName>
+      <FileName>黄色气球</FileName>
+      <FileName>香蕉</FileName>
+      <FileName>太阳</FileName>
+    </Item>
+    <Item keyword="白色">
+      <FileName>兔子</FileName>
+      <FileName>小猫</FileName>
+      <FileName>圆形</FileName>
+      <FileName>冰箱</FileName>
+      <FileName>飞机</FileName>
+    </Item>
+    <Item keyword="绿色">
+      <FileName>青蛙</FileName>
+      <FileName>网球</FileName>
+      <FileName>绿色气球</FileName>
+      <FileName>西瓜</FileName>
+      <FileName>椭圆形</FileName>
+      <FileName>火车</FileName>
+    </Item>
+    <Item keyword="黑白">
+      <FileName>斑马</FileName>
+      <FileName>熊猫</FileName>
+      <FileName>足球</FileName>
+    </Item>
+    <Item keyword="灰色">
+      <FileName>鱼</FileName>
+      <FileName>老鼠</FileName>
+      <FileName>大象</FileName>
+      <FileName>虫子</FileName>
+      <FileName>长方形</FileName>
+    </Item>
+    <Item keyword="粉色">
+      <FileName>纸飞机</FileName>
+      <FileName>小猪</FileName>
+      <FileName>桃子</FileName>
+    </Item>
+    <Item keyword="蓝色">
+      <FileName>蓝色气球</FileName>
+      <FileName>机器人</FileName>
+      <FileName>半圆形</FileName>
+      <FileName>书包</FileName>
+      <FileName>衣服</FileName>
+      <FileName>书本</FileName>
+      <FileName>自行车</FileName>
+      <FileName>彩旗</FileName>
+    </Item>
+    <Item keyword="紫色">
+      <FileName>紫色气球</FileName>
+      <FileName>葡萄</FileName>
+      <FileName>正方形</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="形状" level="1" limited="false" number="37" exist="false">
+    <Question>$形状+是哪一个呢</Question>
+    <Item keyword="圆形">
+      <FileName>足球</FileName>
+      <FileName>网球</FileName>
+      <FileName>篮球</FileName>
+      <FileName>西瓜</FileName>
+      <FileName>圆形</FileName>
+      <FileName>排球</FileName>
+    </Item>
+    <Item keyword="长方形">
+      <FileName>中国</FileName>
+      <FileName>书本</FileName>
+      <FileName>铅笔盒</FileName>
+      <FileName>长方形</FileName>
+    </Item>
+    <Item keyword="半圆形">
+      <FileName>扇子</FileName>
+      <FileName>半圆形</FileName>
+    </Item>
+    <Item keyword="三角形">
+      <FileName>彩旗</FileName>
+      <FileName>三角形</FileName>
+    </Item>
+    <Item keyword="椭圆形">
+      <FileName>菠萝</FileName>
+      <FileName>鸡蛋</FileName>
+      <FileName>椭圆形</FileName>
+    </Item>
+    <Item keyword="心形">
+      <FileName>红色气球</FileName>
+      <FileName>绿色气球</FileName>
+      <FileName>蓝色气球</FileName>
+      <FileName>紫色气球</FileName>
+      <FileName>黄色气球</FileName>
+    </Item>
+    <Item keyword="正方形">
+      <FileName>饼干</FileName>
+      <FileName>正方形</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="false" number="12" exist="false">
+    <Question>好多水果呀，找找看，哪一个+$水果</Question>
+    <Item keyword="苹果">
+      <FileName>苹果</FileName>
+    </Item>
+    <Item keyword="梨子">
+      <FileName>梨子</FileName>
+    </Item>
+    <Item keyword="荔枝">
+      <FileName>荔枝</FileName>
+    </Item>
+    <Item keyword="香蕉">
+      <FileName>香蕉</FileName>
+    </Item>
+    <Item keyword="橘子">
+      <FileName>橘子</FileName>
+    </Item>
+    <Item keyword="西瓜">
+      <FileName>西瓜</FileName>
+    </Item>
+    <Item keyword="火龙果">
+      <FileName>火龙果</FileName>
+    </Item>
+    <Item keyword="芒果">
+      <FileName>芒果</FileName>
+    </Item>
+    <Item keyword="菠萝">
+      <FileName>菠萝</FileName>
+    </Item>
+    <Item keyword="桃子">
+      <FileName>桃子</FileName>
+    </Item>
+    <Item keyword="葡萄">
+      <FileName>葡萄</FileName>
+    </Item>
+    <Item keyword="草莓">
+      <FileName>草莓</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="false" number="22" exist="false">
+    <Question>$动物+在哪里，来找找看吧</Question>
+    <Item keyword="青蛙">
+      <FileName>青蛙</FileName>
+    </Item>
+    <Item keyword="长颈鹿">
+      <FileName>长颈鹿</FileName>
+    </Item>
+    <Item keyword="老虎">
+      <FileName>老虎</FileName>
+    </Item>
+    <Item keyword="山羊">
+      <FileName>山羊</FileName>
+    </Item>
+    <Item keyword="兔子">
+      <FileName>兔子</FileName>
+    </Item>
+    <Item keyword="老牛">
+      <FileName>老牛</FileName>
+    </Item>
+    <Item keyword="老鼠">
+      <FileName>老鼠</FileName>
+    </Item>
+    <Item keyword="猴子">
+      <FileName>猴子</FileName>
+    </Item>
+    <Item keyword="小鸡">
+      <FileName>小鸡</FileName>
+    </Item>
+    <Item keyword="小狗">
+      <FileName>小狗</FileName>
+    </Item>
+    <Item keyword="熊猫">
+      <FileName>熊猫</FileName>
+    </Item>
+    <Item keyword="鱼">
+      <FileName>鱼</FileName>
+    </Item>
+    <Item keyword="狮子">
+      <FileName>狮子</FileName>
+    </Item>
+    <Item keyword="小猫">
+      <FileName>小猫</FileName>
+    </Item>
+    <Item keyword="斑马">
+      <FileName>斑马</FileName>
+    </Item>
+    <Item keyword="蛇">
+      <FileName>蛇</FileName>
+    </Item>
+    <Item keyword="大象">
+      <FileName>大象</FileName>
+    </Item>
+    <Item keyword="恐龙">
+      <FileName>恐龙</FileName>
+    </Item>
+    <Item keyword="小鸟">
+      <FileName>小鸟</FileName>
+    </Item>
+    <Item keyword="虫子">
+      <FileName>虫子</FileName>
+    </Item>
+    <Item keyword="奶牛">
+      <FileName>奶牛</FileName>
+    </Item>
+    <Item keyword="小猪">
+      <FileName>小猪</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="家具电器" level="2" limited="false" number="5" exist="false">
+    <Question>$家具电器+在哪里，来找找看吧</Question>
+    <Item keyword="冰箱">
+      <FileName>冰箱</FileName>
+    </Item>
+    <Item keyword="电视">
+      <FileName>电视</FileName>
+    </Item>
+    <Item keyword="电风扇">
+      <FileName>电风扇</FileName>
+    </Item>
+    <Item keyword="空调">
+      <FileName>空调</FileName>
+    </Item>
+    <Item keyword="电脑">
+      <FileName>电脑</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="家具电器" level="2" limited="false" number="5" exist="false">
+    <Question>你能不能认出哪个是+$家具电器</Question>
+    <Item keyword="床">
+      <FileName>床</FileName>
+    </Item>
+    <Item keyword="椅子">
+      <FileName>椅子</FileName>
+    </Item>
+    <Item keyword="桌子">
+      <FileName>桌子</FileName>
+    </Item>
+    <Item keyword="书架">
+      <FileName>书架</FileName>
+    </Item>
+    <Item keyword="沙发">
+      <FileName>沙发</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="交通知识" level="2" limited="false" number="5" exist="false">
+    <Question>你有没有见过+$交通知识</Question>
+    <Item keyword="小汽车">
+      <FileName>小汽车</FileName>
+    </Item>
+    <Item keyword="火车">
+      <FileName>火车</FileName>
+    </Item>
+    <Item keyword="飞机">
+      <FileName>飞机</FileName>
+    </Item>
+    <Item keyword="轮船">
+      <FileName>轮船</FileName>
+    </Item>
+    <Item keyword="自行车">
+      <FileName>自行车</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="认识数字" level="2" limited="false" number="21" exist="false">
+    <Question>你知不知道数字+$认识数字+是哪个吖</Question>
+    <Question>$认识数字+是哪个，指一指</Question>
+    <Question>数字+$认识数字+躲在哪了，你能找到吗</Question>
+    <Item keyword="0">
+      <FileName>0</FileName>
+    </Item>
+    <Item keyword="1">
+      <FileName>1</FileName>
+    </Item>
+    <Item keyword="2">
+      <FileName>2</FileName>
+    </Item>
+    <Item keyword="3">
+      <FileName>3</FileName>
+    </Item>
+    <Item keyword="4">
+      <FileName>4</FileName>
+    </Item>
+    <Item keyword="5">
+      <FileName>5</FileName>
+    </Item>
+    <Item keyword="6">
+      <FileName>6</FileName>
+    </Item>
+    <Item keyword="7">
+      <FileName>7</FileName>
+    </Item>
+    <Item keyword="8">
+      <FileName>8</FileName>
+    </Item>
+    <Item keyword="9">
+      <FileName>9</FileName>
+    </Item>
+    <Item keyword="10">
+      <FileName>10</FileName>
+    </Item>
+    <Item keyword="11">
+      <FileName>11</FileName>
+    </Item>
+    <Item keyword="12">
+      <FileName>12</FileName>
+    </Item>
+    <Item keyword="13">
+      <FileName>13</FileName>
+    </Item>
+    <Item keyword="14">
+      <FileName>14</FileName>
+    </Item>
+    <Item keyword="15">
+      <FileName>15</FileName>
+    </Item>
+    <Item keyword="16">
+      <FileName>16</FileName>
+    </Item>
+    <Item keyword="17">
+      <FileName>17</FileName>
+    </Item>
+    <Item keyword="18">
+      <FileName>18</FileName>
+    </Item>
+    <Item keyword="19">
+      <FileName>19</FileName>
+    </Item>
+    <Item keyword="20">
+      <FileName>20</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="运动用品" level="2" limited="false" number="6" exist="false">
+    <Question>$运动用品+在哪里，来找找看吧</Question>
+    <Question>$运动用品+你知道是哪一个么</Question>
+    <Item keyword="篮球">
+      <FileName>篮球</FileName>
+    </Item>
+    <Item keyword="足球">
+      <FileName>足球</FileName>
+    </Item>
+    <Item keyword="羽毛球">
+      <FileName>羽毛球</FileName>
+    </Item>
+    <Item keyword="乒乓球">
+      <FileName>乒乓球</FileName>
+    </Item>
+    <Item keyword="排球">
+      <FileName>排球</FileName>
+    </Item>
+    <Item keyword="网球">
+      <FileName>网球</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="10以内加法" level="3" limited="false" number="50" exist="false">
+    <Question>我来考考你算数吧</Question>
+  </DataFormat>
+  <DataFormat theme="交通知识" level="2" limited="true" number="4" exist="false">
+    <Question>它们哪一个能载你到很远的地方呢</Question>
+    <Right>
+      <string>小汽车</string>
+      <string>火车</string>
+      <string>飞机</string>
+      <string>轮船</string>
+    </Right>
+    <Wrong>
+      <string>小鸟</string>
+      <string>椅子</string>
+      <string>鸡蛋</string>
+      <string>冰箱</string>
+      <string>电风扇</string>
+      <string>蛋糕</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="7" exist="false">
+    <Question>你知道哪一个是生长在树上的吗</Question>
+    <Right>
+      <string>梨子</string>
+      <string>芒果</string>
+      <string>荔枝</string>
+      <string>苹果</string>
+      <string>香蕉</string>
+      <string>橘子</string>
+      <string>桃子</string>
+    </Right>
+    <Wrong>
+      <string>饼干</string>
+      <string>冰淇淋</string>
+      <string>汉堡</string>
+      <string>面包</string>
+      <string>糖果</string>
+      <string>糖葫芦</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="14" exist="false">
+    <Question>谁是在地上走的，你知道吗</Question>
+    <Right>
+      <string>斑马</string>
+      <string>大象</string>
+      <string>老虎</string>
+      <string>老牛</string>
+    </Right>
+    <Wrong>
+      <string>小鸟</string>
+      <string>鱼</string>
+      <string>鲸鱼</string>
+      <string>乌贼</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="8" exist="false">
+    <Question>谁能在天上飞，你知道吗</Question>
+    <Right>
+      <string>小鸟</string>
+    </Right>
+    <Wrong>
+      <string>长颈鹿</string>
+      <string>虫子</string>
+      <string>斑马</string>
+      <string>大象</string>
+      <string>老虎</string>
+      <string>老牛</string>
+      <string>老鼠</string>
+      <string>奶牛</string>
+      <string>山羊</string>
+      <string>恐龙</string>
+      <string>小狗</string>
+      <string>小鸡</string>
+      <string>小猪</string>
+      <string>熊猫</string>
+      <string>小猫</string>
+      <string>长颈鹿</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="交通知识" level="2" limited="true" number="8" exist="false">
+    <Question>谁能在天上飞，你知道么</Question>
+    <Right>
+      <string>飞机</string>
+    </Right>
+    <Wrong>
+      <string>火车</string>
+      <string>轮船</string>
+      <string>小汽车</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="家具电器" level="2" limited="true" number="4" exist="false">
+    <Question>夏天可以用什么来降温呢</Question>
+    <Right>
+      <string>空调</string>
+      <string>电风扇</string>
+      <string>扇子</string>
+    </Right>
+    <Wrong>
+      <string>电视</string>
+      <string>电脑</string>
+      <string>手机</string>
+      <string>书架</string>
+      <string>书包</string>
+      <string>拼图</string>
+      <string>镜子</string>
+      <string>积木</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="家具电器" level="2" limited="true" number="2" exist="false">
+    <Question>哪一个能用来看动画片呢</Question>
+    <Right>
+      <string>电视</string>
+      <string>电脑</string>
+    </Right>
+    <Wrong>
+      <string>书本</string>
+      <string>铅笔盒</string>
+      <string>扇子</string>
+      <string>冰箱</string>
+      <string>桌子</string>
+      <string>衣服</string>
+      <string>彩旗</string>
+      <string>镜子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+    <Question>谁的鼻子长又长</Question>
+    <Right>
+      <string>大象</string>
+    </Right>
+    <Wrong>
+      <string>山羊</string>
+      <string>小鸟</string>
+      <string>老鼠</string>
+      <string>熊猫</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+    <Question>谁的耳朵长又长</Question>
+    <Right>
+      <string>兔子</string>
+    </Right>
+    <Wrong>
+      <string>熊猫</string>
+      <string>鱼</string>
+      <string>小猫</string>
+      <string>小鸟</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+    <Question>谁的脖子长又长</Question>
+    <Right>
+      <string>长颈鹿</string>
+    </Right>
+    <Wrong>
+      <string>奶牛</string>
+      <string>青蛙</string>
+      <string>兔子</string>
+      <string>老虎</string>
+      <string>猴子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="6" exist="false">
+    <Question>谁爱吃青草</Question>
+    <Right>
+      <string>山羊</string>
+      <string>兔子</string>
+    </Right>
+    <Wrong>
+      <string>老虎</string>
+      <string>恐龙</string>
+      <string>小猫</string>
+      <string>蛇</string>
+      <string>老鼠</string>
+      <string>狮子</string>
+      <string>小狗</string>
+      <string>小猪</string>
+      <string>鱼</string>
+      <string>小鸟</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="2" exist="false">
+    <Question>谁爱吃香蕉</Question>
+    <Right>
+      <string>猴子</string>
+    </Right>
+    <Wrong>
+      <string>老虎</string>
+      <string>恐龙</string>
+      <string>小猫</string>
+      <string>蛇</string>
+      <string>老鼠</string>
+      <string>狮子</string>
+      <string>鱼</string>
+      <string>小鸟</string>
+      <string>小鸡</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+    <Question>谁能在水中游</Question>
+    <Right>
+      <string>鱼</string>
+    </Right>
+    <Wrong>
+      <string>老虎</string>
+      <string>恐龙</string>
+      <string>小猫</string>
+      <string>老鼠</string>
+      <string>狮子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="家具电器" level="2" limited="true" number="1" exist="false">
+    <Question>睡觉的时候需要什么吖</Question>
+    <Right>
+      <string>床</string>
+    </Right>
+    <Wrong>
+      <string>书架</string>
+      <string>镜子</string>
+      <string>书包</string>
+      <string>冰箱</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="2" exist="false">
+    <Question>猴子喜欢吃什么食物呢</Question>
+    <Right>
+      <string>香蕉</string>
+      <string>桃子</string>
+    </Right>
+    <Wrong>
+      <string>草莓</string>
+      <string>虫子</string>
+      <string>汉堡</string>
+      <string>蛋糕</string>
+      <string>面条</string>
+      <string>薯条</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="2" exist="false">
+    <Question>小猫喜欢吃什么食物呢</Question>
+    <Right>
+      <string>鱼</string>
+      <string>老鼠</string>
+    </Right>
+    <Wrong>
+      <string>糖葫芦</string>
+      <string>糖果</string>
+      <string>瓢虫</string>
+      <string>可乐</string>
+      <string>冰淇淋</string>
+      <string>蛋糕</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+    <Question>雨后的天空会出现什么</Question>
+    <Right>
+      <string>彩虹</string>
+    </Right>
+    <Wrong>
+      <string>彩旗</string>
+      <string>红色气球</string>
+      <string>扇子</string>
+      <string>纸飞机</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="认识数字" level="2" limited="true" number="11" exist="false">
+    <Question>谁有四条腿呢</Question>
+    <Right>
+      <string>青蛙</string>
+      <string>长颈鹿</string>
+      <string>老虎</string>
+      <string>山羊</string>
+      <string>熊猫</string>
+      <string>老牛</string>
+      <string>猴子</string>
+      <string>斑马</string>
+      <string>大象</string>
+      <string>狮子</string>
+      <string>老鼠</string>
+    </Right>
+    <Wrong>
+      <string>小鸡</string>
+      <string>小鸟</string>
+      <string>蛇</string>
+      <string>瓢虫</string>
+      <string>鱼</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="9" exist="false">
+    <Question>在动物园你会见到谁</Question>
+    <Right>
+      <string>斑马</string>
+      <string>大象</string>
+      <string>老虎</string>
+      <string>老牛</string>
+      <string>奶牛</string>
+      <string>青蛙</string>
+      <string>山羊</string>
+      <string>狮子</string>
+      <string>兔子</string>
+    </Right>
+    <Wrong>
+      <string>火车</string>
+      <string>轮船</string>
+      <string>飞机</string>
+      <string>羽毛球</string>
+      <string>排球</string>
+      <string>网球</string>
+      <string>篮球</string>
+      <string>足球</string>
+      <string>乒乓球</string>
+      <string>书架</string>
+      <string>五子棋</string>
+      <string>机器人</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="字母" level="3" limited="false" number="26" exist="false">
+    <Question>字母+$字母+在哪里，找找看吧</Question>
+    <Question>找出字母+$字母+吧</Question>
+    <Question>字母+$字母+是哪个呢</Question>
+    <Question>字母+$字母+在哪里呢</Question>
+    <Item keyword="A">
+      <FileName>A</FileName>
+    </Item>
+    <Item keyword="B">
+      <FileName>B</FileName>
+    </Item>
+    <Item keyword="C">
+      <FileName>C</FileName>
+    </Item>
+    <Item keyword="D">
+      <FileName>D</FileName>
+    </Item>
+    <Item keyword="E">
+      <FileName>E</FileName>
+    </Item>
+    <Item keyword="F">
+      <FileName>F</FileName>
+    </Item>
+    <Item keyword="G">
+      <FileName>G</FileName>
+    </Item>
+    <Item keyword="H">
+      <FileName>H</FileName>
+    </Item>
+    <Item keyword="I">
+      <FileName>I</FileName>
+    </Item>
+    <Item keyword="J">
+      <FileName>J</FileName>
+    </Item>
+    <Item keyword="K">
+      <FileName>K</FileName>
+    </Item>
+    <Item keyword="L">
+      <FileName>L</FileName>
+    </Item>
+    <Item keyword="M">
+      <FileName>M</FileName>
+    </Item>
+    <Item keyword="N">
+      <FileName>N</FileName>
+    </Item>
+    <Item keyword="O">
+      <FileName>O</FileName>
+    </Item>
+    <Item keyword="P">
+      <FileName>P</FileName>
+    </Item>
+    <Item keyword="Q">
+      <FileName>Q</FileName>
+    </Item>
+    <Item keyword="R">
+      <FileName>R</FileName>
+    </Item>
+    <Item keyword="S">
+      <FileName>S</FileName>
+    </Item>
+    <Item keyword="T">
+      <FileName>T</FileName>
+    </Item>
+    <Item keyword="U">
+      <FileName>U</FileName>
+    </Item>
+    <Item keyword="V">
+      <FileName>V</FileName>
+    </Item>
+    <Item keyword="W">
+      <FileName>W</FileName>
+    </Item>
+    <Item keyword="X">
+      <FileName>X</FileName>
+    </Item>
+    <Item keyword="Y">
+      <FileName>Y</FileName>
+    </Item>
+    <Item keyword="Z">
+      <FileName>Z</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="10以内减法" level="3" limited="false" number="30" exist="false">
+    <Question>你会算数吗，我来问问你</Question>
+  </DataFormat>
+  <DataFormat theme="运动用品" level="2" limited="false" number="10" exist="false">
+    <Question>你能够指出哪个是+$运动用品+的标志吗</Question>
+    <Question>$运动用品+的标志是哪个吖</Question>
+    <Item keyword="跑步">
+      <FileName>跑步标志</FileName>
+    </Item>
+    <Item keyword="射箭">
+      <FileName>射箭标志</FileName>
+    </Item>
+    <Item keyword="游泳">
+      <FileName>游泳标志</FileName>
+    </Item>
+    <Item keyword="举重">
+      <FileName>举重标志</FileName>
+    </Item>
+    <Item keyword="棒球">
+      <FileName>棒球标志</FileName>
+    </Item>
+    <Item keyword="羽毛球">
+      <FileName>羽毛球</FileName>
+    </Item>
+    <Item keyword="击剑">
+      <FileName>击剑标志</FileName>
+    </Item>
+    <Item keyword="足球">
+      <FileName>足球标志</FileName>
+    </Item>
+    <Item keyword="柔道">
+      <FileName>柔道标志</FileName>
+    </Item>
+    <Item keyword="骑马">
+      <FileName>骑马标志</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="汉字" level="3" limited="false" number="19" exist="false">
+    <Question>$汉字+是哪个汉字，能指出来吗</Question>
+    <Question>你知不知道哪个是汉字+$汉字</Question>
+    <Question>汉字+$汉字+是哪一个，你知道吗</Question>
+    <Item keyword="口" desc="一口饭的口">
+      <FileName>口</FileName>
+    </Item>
+    <Item keyword="小" desc="小树的小">
+      <FileName>小</FileName>
+    </Item>
+    <Item keyword="花" desc="花朵的花">
+      <FileName>花</FileName>
+    </Item>
+    <Item keyword="上" desc="上去的上">
+      <FileName>上</FileName>
+    </Item>
+    <Item keyword="下" desc="下来的下">
+      <FileName>下</FileName>
+    </Item>
+    <Item keyword="左" desc="左边的左">
+      <FileName>左</FileName>
+    </Item>
+    <Item keyword="右" desc="右边的右">
+      <FileName>右</FileName>
+    </Item>
+    <Item keyword="儿" desc="儿童节的儿">
+      <FileName>儿</FileName>
+    </Item>
+    <Item keyword="门" desc="门窗的门">
+      <FileName>门</FileName>
+    </Item>
+    <Item keyword="飞" desc="飞机的飞">
+      <FileName>飞</FileName>
+    </Item>
+    <Item keyword="米" desc="米饭的米">
+      <FileName>米</FileName>
+    </Item>
+    <Item keyword="水" desc="水杯的水">
+      <FileName>水</FileName>
+    </Item>
+    <Item keyword="土" desc="泥土的土">
+      <FileName>土</FileName>
+    </Item>
+    <Item keyword="木" desc="木头的木">
+      <FileName>木</FileName>
+    </Item>
+    <Item keyword="牙" desc="牙齿的牙">
+      <FileName>牙</FileName>
+    </Item>
+    <Item keyword="山" desc="高山的山">
+      <FileName>山</FileName>
+    </Item>
+    <Item keyword="云" desc="白云的云">
+      <FileName>云</FileName>
+    </Item>
+    <Item keyword="河" desc="河水的河">
+      <FileName>河</FileName>
+    </Item>
+    <Item keyword="手" desc="小手的手">
+      <FileName>手</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="20以内加法" level="3" limited="false" number="100" exist="false">
+    <Question>我来考考你算数吧</Question>
+  </DataFormat>
+  <DataFormat theme="20以内减法" level="3" limited="false" number="60" exist="false">
+    <Question>你会算数吗，我来问问你</Question>
+  </DataFormat>
+    <DataFormat theme="中国常识" level="3" limited="true" number="11" exist="false">
+    <Question>你能认出中国的国旗是哪一面吗</Question>
+    <Right>
+      <string>中国</string>
+    </Right>
+    <Wrong>
+      <string>英国</string>
+      <string>美国</string>
+      <string>意大利</string>
+      <string>日本</string>
+      <string>韩国</string>
+      <string>法国</string>
+      <string>加拿大</string>
+      <string>澳大利亚</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="形状" level="1" limited="true" number="1" exist="false">
+    <Question>公交车车轮是什么形状的</Question>
+    <Right>
+      <string>圆形</string>
+    </Right>
+    <Wrong>  
+      <string>正方形</string>
+	  <string>三角形</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="形状" level="1" limited="true" number="1" exist="false">
+    <Question>梯形，是哪一个呢</Question>
+    <Right>
+      <string>梯形式台灯</string>
+    </Right>
+    <Wrong>  
+      <string>台球摆的三角形</string>
+	  <string>篮球</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="形状" level="1" limited="true" number="1" exist="false">
+    <Question>西瓜和篮球，都是什么形状的呢</Question>
+    <Right>
+      <string>圆形</string>
+    </Right>
+    <Wrong>  
+      <string>正方形</string>
+	  <string>长方形</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="颜色" level="1" limited="true" number="1" exist="false">
+    <Question>天上的太阳是什么颜色</Question>
+    <Question>夜晚的月亮是什么颜色</Question>
+  <Right>
+      <string>黄色</string>
+   </Right>
+    <Wrong>  
+      <string>绿色</string>
+	    <string>红色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="颜色" level="1" limited="true" number="1" exist="false">
+    <Question>春天柳树的树叶是什么颜色的</Question>
+    <Right>
+      <string>绿色叶子</string>
+    </Right>
+    <Wrong>  
+      <string>红色叶子</string>
+	    <string>蓝色叶子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="颜色" level="1" limited="true" number="1" exist="false">
+    <Question>哪个水果是橙色的</Question>
+    <Right>
+      <string>橘子</string>
+    </Right>
+    <Wrong>  
+      <string>西瓜</string>
+	   <string>草莓</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="颜色" level="1" limited="true" number="1" exist="false">
+    <Question>奇奇是什么颜色的</Question>
+    <Right>
+      <string>黑白</string>
+    </Right>
+    <Wrong>  
+      <string>红绿</string>
+	    <string>蓝紫</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="颜色" level="1" limited="true" number="1" exist="false">
+    <Question>西红柿是什么颜色</Question>
+    <Right>
+      <string>红色</string>
+    </Right>
+    <Wrong>  
+      <string>紫色</string>
+	  <string>蓝色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="颜色" level="1" limited="true" number="1" exist="false">
+    <Question>哪个蔬菜是红色的</Question>
+    <Right>
+      <string>辣椒</string>
+    </Right>
+    <Wrong>  
+      <string>茄子</string>
+	   <string>黄瓜</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+    <Question>哪个动物生活在海洋</Question>
+    <Right>
+      <string>鲸鱼</string>
+    </Right>
+    <Wrong>  
+      <string>老虎</string>
+	    <string>狮子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+    <Question>什么动物最长寿</Question>
+    <Right>
+      <string>乌龟</string>
+    </Right>
+    <Wrong>  
+      <string>大象</string>
+	    <string>鸵鸟</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+    <Question>老虎爱吃什么</Question>
+    <Right>
+      <string>肉</string>
+    </Right>
+    <Wrong>  
+      <string>草</string>
+	    <string>树叶</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+    <Question>什么鸟类会学说话</Question>
+    <Right>
+      <string>鹦鹉</string>
+    </Right>
+    <Wrong>  
+      <string>喜鹊</string>
+	    <string>老鹰</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>谁会喷出黑黑的墨汁</Question>
+  <Right>
+      <string>乌贼</string>
+   </Right>
+    <Wrong>  
+      <string>黄鱼</string>
+	  <string>海马</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>它们长得好像呀，帮我找找哪一个是鹅</Question>
+  <Right>
+      <string>鹅</string>
+   </Right>
+    <Wrong>  
+      <string>小鸡</string>
+	  <string>鸭</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>谁可以帮农民伯伯在田地里耕作</Question>
+  <Right>
+      <string>老牛</string>
+   </Right>
+    <Wrong>  
+      <string>小狗</string>
+	  <string>小猫</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>哪个是公鸡</Question>
+  <Right>
+      <string>公鸡</string>
+   </Right>
+    <Wrong>  
+      <string>母鸡</string>
+	  <string>鸭</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>哪个会生蛋</Question>
+  <Right>
+      <string>母鸡</string>
+   </Right>
+    <Wrong>  
+      <string>青蛙</string>
+	  <string>小猫</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>小狗最喜欢啃什么</Question>
+  <Right>
+      <string>骨头</string>
+   </Right>
+    <Wrong>  
+      <string>石头</string>
+	  <string>树皮</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>谁的身上长满了刺</Question>
+  <Right>
+      <string>刺猬</string>
+   </Right>
+    <Wrong>  
+      <string>松鼠</string>
+	  <string>老鼠</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>哪种动物自己会变色</Question>
+  <Right>
+      <string>变色龙</string>
+   </Right>
+    <Wrong>  
+      <string>鳄鱼</string>
+	  <string>龙虾</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>谁的身上有黑白条纹</Question>
+  <Right>
+      <string>斑马</string>
+   </Right>
+    <Wrong>  
+      <string>豹子</string>
+	  <string>骆驼</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>什么动物可以长时间在沙漠里行走</Question>
+  <Right>
+      <string>骆驼</string>
+   </Right>
+    <Wrong>  
+      <string>马</string>
+	  <string>老牛</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>谁的肚子有大大的口袋</Question>
+  <Right>
+      <string>袋鼠</string>
+   </Right>
+    <Wrong>  
+      <string>松鼠</string>
+	  <string>蚂蚁</string>
+    </Wrong>
+  </DataFormat> <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>什么动物总爱用一只腿站着</Question>
+  <Right>
+      <string>丹顶鹤</string>
+   </Right>
+    <Wrong>  
+      <string>母鸡</string>
+	  <string>喜鹊</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>猜一猜哪个是西瓜</Question>
+  <Right>
+      <string>西瓜</string>
+   </Right>
+    <Wrong>  
+      <string>苹果</string>
+	  <string>香蕉</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>你知道香蕉是什么颜色的么</Question>
+  <Right>
+      <string>黄色</string>
+   </Right>
+    <Wrong>  
+      <string>绿色</string>
+	  <string>红色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>你能帮我找出桃子么</Question>
+  <Right>
+      <string>桃子</string>
+   </Right>
+    <Wrong>  
+      <string>草莓</string>
+	  <string>橘子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>猕猴桃真好吃，你能把它找出来么</Question>
+  <Right>
+      <string>猕猴桃</string>
+   </Right>
+    <Wrong>  
+      <string>苹果</string>
+	  <string>西瓜</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>哪种水果比较大</Question>
+  <Right>
+      <string>西瓜</string>
+   </Right>
+    <Wrong>  
+      <string>樱桃</string>
+	  <string>梨子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>哪个水果比较小</Question>
+  <Right>
+      <string>樱桃</string>
+   </Right>
+    <Wrong>  
+      <string>榴莲</string>
+	  <string>西瓜</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>找一找，哪个是蓝莓吧</Question>
+  <Right>
+      <string>蓝莓</string>
+   </Right>
+    <Wrong>  
+      <string>樱桃</string>
+	  <string>榴莲</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>香蕉长得像什么</Question>
+  <Right>
+      <string>月亮</string>
+   </Right>
+    <Wrong>  
+      <string>太阳</string>
+	  <string>星星</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>酸酸的柠檬是什么颜色的</Question>
+  <Right>
+      <string>黄色</string>
+   </Right>
+    <Wrong>  
+      <string>紫色</string>
+	  <string>蓝色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>你知道杨梅是什么形状么</Question>
+  <Right>
+      <string>圆形</string>
+   </Right>
+    <Wrong>  
+      <string>正方形</string>
+	  <string>长方形</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>哪个是火龙果，帮我找找吧</Question>
+  <Right>
+      <string>火龙果</string>
+   </Right>
+    <Wrong>  
+      <string>梨子</string>
+	  <string>荔枝</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>甜甜的草莓是什么颜色的</Question>
+  <Right>
+      <string>红色</string>
+   </Right>
+    <Wrong>  
+      <string>蓝色</string>
+	  <string>黄色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>你能认出哪个是菠萝么</Question>
+  <Right>
+      <string>菠萝</string>
+   </Right>
+    <Wrong>  
+      <string>橘子</string>
+	  <string>香蕉</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>哪一个是苹果的颜色</Question>
+  <Right>
+      <string>红色</string>
+   </Right>
+    <Wrong>  
+      <string>蓝色</string>
+	  <string>紫色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>哪个水果闻起来有一种奇怪的味道的</Question>
+  <Right>
+      <string>榴莲</string>
+   </Right>
+    <Wrong>  
+      <string>樱桃</string>
+	  <string>蓝莓</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>什么水果，外面是绿色，里面是红色</Question>
+  <Right>
+      <string>西瓜</string>
+   </Right>
+    <Wrong>  
+      <string>草莓</string>
+	  <string>葡萄</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+  <Question>哪个水果切出来像天上的星星</Question>
+  <Right>
+      <string>杨桃</string>
+   </Right>
+    <Wrong>  
+      <string>苹果</string>
+	  <string>菠萝</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="水果" level="1" limited="true" number="1" exist="false">
+    <Question>草莓的颜色和哪个水果很像呢</Question>
+    <Right>
+      <string>樱桃</string>
+    </Right>
+    <Wrong>
+      <string>西瓜</string>
+      <string>葡萄</string>
+    </Wrong>
+  </DataFormat>
+  
+   <DataFormat theme="交通知识" level="2" limited="false" number="7" exist="false">
+    <Question>$交通知识+在哪里，来找找看吧</Question>
+    <Item keyword="救护车">
+      <FileName>救护车</FileName>
+    </Item>
+    <Item keyword="洒水车">
+      <FileName>洒水车</FileName>
+    </Item>
+    <Item keyword="公交车">
+      <FileName>公交车</FileName>
+    </Item>
+    <Item keyword="消防车">
+      <FileName>消防车</FileName>
+    </Item>
+    <Item keyword="警车">
+      <FileName>警车</FileName>
+    </Item>
+	<Item keyword="出租车">
+      <FileName>出租车</FileName>
+    </Item>
+	<Item keyword="跑车">
+      <FileName>跑车</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>着火了，需要拨打什么电话号码</Question>
+  <Right>
+      <string>119</string>
+   </Right>
+    <Wrong>  
+      <string>110</string>
+	  <string>120</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>你知道，哪个灯亮了可以过马路吗</Question>
+  <Right>
+      <string>绿灯</string>
+   </Right>
+    <Wrong>  
+      <string>红灯</string>
+	  <string>黄灯</string>
+    </Wrong>
+  </DataFormat>
+    <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>哪个是行人过马路走的斑马线</Question>
+  <Right>
+      <string>斑马线</string>
+   </Right>
+    <Wrong>  
+      <string>双黄实线</string>
+	  <string>禁停线</string>
+    </Wrong>
+  </DataFormat>
+    <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>你知道哪个是水上开的么</Question>
+  <Right>
+      <string>轮船</string>
+   </Right>
+    <Wrong>  
+      <string>救护车</string>
+	  <string>公交车</string>
+    </Wrong>
+  </DataFormat>
+     <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>哪个是自行车呢</Question>
+  <Right>
+      <string>自行车</string>
+   </Right>
+    <Wrong>  
+      <string>飞机</string>
+	  <string>轮船</string>
+    </Wrong>
+  </DataFormat>
+     <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>看到老人生病晕倒了，需要拨打什么电话号码</Question>
+  <Right>
+      <string>120</string>
+   </Right>
+    <Wrong>  
+      <string>110</string>
+	  <string>119</string>
+    </Wrong>
+  </DataFormat>
+     <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>着火了，需要什么车来灭火</Question>
+  <Right>
+      <string>消防车</string>
+   </Right>
+    <Wrong>  
+      <string>救护车</string>
+	  <string>公交车</string>
+    </Wrong>
+  </DataFormat>
+    <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>有人受伤了，需要什么车来帮忙</Question>
+  <Right>
+      <string>救护车</string>
+   </Right>
+    <Wrong>  
+      <string>消防车</string>
+	  <string>公交车</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>搭飞机要在什么地方呢</Question>
+  <Right>
+      <string>机场</string>
+   </Right>
+    <Wrong>  
+      <string>警局</string>
+	  <string>银行</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>坐公交车，要在什么地方等呢</Question>
+  <Right>
+      <string>公交车站</string>
+   </Right>
+    <Wrong>  
+      <string>医院</string>
+	  <string>学校</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>猜一猜，哪种车开的最快</Question>
+  <Right>
+      <string>跑车</string>
+   </Right>
+    <Wrong>  
+      <string>自行车</string>
+	  <string>公交车</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>哪个交通工具，可以乘坐很多人呢</Question>
+  <Right>
+      <string>公交车</string>
+   </Right>
+    <Wrong>  
+      <string>自行车</string>
+	  <string>跑车</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="交通知识" level="2" limited="true" number="1" exist="false">
+  <Question>哪种交通工具需要开在长长的铁轨上</Question>
+  <Right>
+      <string>火车</string>
+   </Right>
+    <Wrong>  
+      <string>公交车</string>
+	  <string>救护车</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="认识数字" level="2" limited="true" number="1" exist="false">
+  <Question>人一共有几根手指</Question>
+  <Right>
+      <string>10</string>
+   </Right>
+    <Wrong>  
+      <string>9</string>
+	  <string>11</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="认识数字" level="2" limited="true" number="1" exist="false">
+  <Question>数一数你有几只眼睛</Question>
+  <Right>
+      <string>2</string>
+   </Right>
+    <Wrong>  
+      <string>1</string>
+	  <string>3</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="认识数字" level="2" limited="true" number="1" exist="false">
+  <Question>数一数你有几只耳朵</Question>
+  <Right>
+      <string>2</string>
+   </Right>
+    <Wrong>  
+      <string>1</string>
+	  <string>3</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="认识数字" level="2" limited="true" number="1" exist="false">
+  <Question>猜猜谁有两条腿</Question>
+  <Right>
+      <string>小鸡</string>
+   </Right>
+    <Wrong>  
+      <string>小狗</string>
+	  <string>小猫</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="认识数字" level="2" limited="true" number="1" exist="false">
+  <Question>你知道，一年有几个季节</Question>
+  <Right>
+      <string>4</string>
+   </Right>
+    <Wrong>  
+      <string>3</string>
+	  <string>5</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="认识数字" level="2" limited="true" number="1" exist="false">
+  <Question>你知道，一个星期有几天么</Question>
+  <Right>
+      <string>7</string>
+   </Right>
+    <Wrong>  
+      <string>6</string>
+	  <string>5</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="认识数字" level="2" limited="true" number="1" exist="false">
+  <Question>横着走的螃蟹，有几条腿</Question>
+  <Right>
+      <string>8</string>
+   </Right>
+    <Wrong>  
+      <string>9</string>
+	  <string>6</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="认识数字" level="2" limited="true" number="1" exist="false">
+  <Question>青蛙有几条腿</Question>
+  <Right>
+      <string>4</string>
+   </Right>
+    <Wrong>  
+      <string>5</string>
+	  <string>3</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="家具电器" level="2" limited="true" number="1" exist="false">
+  <Question>喝汤的时候用什么呢</Question>
+  <Right>
+      <string>勺子</string>
+   </Right>
+    <Wrong>  
+      <string>刀子</string>
+	  <string>叉子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="家具电器" level="2" limited="true" number="1" exist="false">
+  <Question>哪个是手表</Question>
+  <Right>
+      <string>手表</string>
+   </Right>
+    <Wrong>  
+      <string>手机</string>
+	  <string>手电筒</string>
+    </Wrong>
+  </DataFormat>
+    <DataFormat theme="家具电器" level="2" limited="true" number="1" exist="false">
+  <Question>哪个是喝水用的</Question>
+  <Right>
+      <string>杯子</string>
+   </Right>
+    <Wrong>  
+      <string>脸盆</string>
+	  <string>盘子</string>
+    </Wrong>
+  </DataFormat>
+    <DataFormat theme="家具电器" level="2" limited="true" number="1" exist="false">
+  <Question>哪个是妈妈在厨房中使用的</Question>
+  <Right>
+      <string>电饭煲</string>
+   </Right>
+    <Wrong>  
+      <string>自行车</string>
+	  <string>电视</string>
+    </Wrong>
+  </DataFormat>
+    <DataFormat theme="家具电器" level="2" limited="true" number="1" exist="false">
+  <Question>哪个可以用来上网</Question>
+  <Right>
+      <string>电脑</string>
+   </Right>
+    <Wrong>  
+      <string>电饭煲</string>
+	  <string>冰箱</string>
+    </Wrong>
+  </DataFormat>
+    <DataFormat theme="家具电器" level="2" limited="true" number="1" exist="false">
+  <Question>哪一个是台灯呢</Question>
+  <Right>
+      <string>台灯</string>
+   </Right>
+    <Wrong>  
+      <string>日光灯</string>
+	  <string>路灯</string>
+    </Wrong>
+  </DataFormat>
+    <DataFormat theme="家具电器" level="2" limited="true" number="1" exist="false">
+  <Question>哪个是手机</Question>
+  <Right>
+      <string>手机</string>
+   </Right>
+    <Wrong>  
+      <string>座机</string>
+	  <string>扩音器</string>
+    </Wrong>
+  </DataFormat>
+    <DataFormat theme="家具电器" level="2" limited="true" number="1" exist="false">
+  <Question>头发乱了，用什么东西梳头</Question>
+  <Right>
+      <string>头梳</string>
+   </Right>
+    <Wrong>  
+      <string>毛巾</string>
+	  <string>牙刷</string>
+    </Wrong>
+  </DataFormat>
+     <DataFormat theme="家具电器" level="2" limited="true" number="1" exist="false">
+  <Question>刷牙的时候，要用什么</Question>
+  <Right>
+      <string>牙刷</string>
+   </Right>
+    <Wrong>  
+      <string>毛巾</string>
+	  <string>头梳</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>什么花喜欢向着太阳生长</Question>
+  <Right>
+      <string>向日葵</string>
+   </Right>
+    <Wrong>  
+      <string>水仙</string>
+	  <string>杜鹃</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>哪一个是麦子</Question>
+  <Right>
+      <string>麦子</string>
+   </Right>
+    <Wrong>  
+      <string>玉米</string>
+	  <string>棉花</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>哪个是树</Question>
+  <Right>
+      <string>树</string>
+   </Right>
+    <Wrong>  
+      <string>花朵</string>
+	  <string>草</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>什么植物碰它会害羞</Question>
+  <Right>
+      <string>含羞草</string>
+   </Right>
+    <Wrong>  
+      <string>太阳花</string>
+	  <string>荷花</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>谁能生活在沙漠里</Question>
+  <Right>
+      <string>仙人掌</string>
+   </Right>
+    <Wrong>  
+      <string>杨树</string>
+	  <string>柳树</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>以下哪个是夏天才会开的荷花</Question>
+  <Right>
+      <string>荷花</string>
+   </Right>
+    <Wrong>  
+      <string>菊花</string>
+	  <string>仙人掌</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>什么植物可以榨出炒菜用的油</Question>
+  <Right>
+      <string>花生</string>
+   </Right>
+    <Wrong>  
+      <string>青菜</string>
+	  <string>土豆</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>哪个是水稻</Question>
+  <Right>
+      <string>水稻</string>
+   </Right>
+    <Wrong>  
+      <string>麦子</string>
+	  <string>高粱</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>冬天时，什么树的叶子还是绿的</Question>
+  <Right>
+      <string>松树</string>
+   </Right>
+    <Wrong>  
+      <string>柳树</string>
+	  <string>枫树</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="植物" level="2" limited="false" number="9" exist="false">
+    <Question>你认不认识+$植物</Question>
+    <Item keyword="康乃馨">
+      <FileName>康乃馨</FileName>
+    </Item>
+    <Item keyword="菊花">
+      <FileName>菊花</FileName>
+    </Item>
+    <Item keyword="郁金香">
+      <FileName>郁金香</FileName>
+    </Item>
+    <Item keyword="兰花">
+      <FileName>兰花</FileName>
+    </Item>
+    <Item keyword="水仙">
+      <FileName>水仙</FileName>
+    </Item>
+	<Item keyword="油菜花">
+      <FileName>油菜花</FileName>
+    </Item>
+	<Item keyword="铃兰">
+      <FileName>铃兰</FileName>
+    </Item>
+	<Item keyword="牵牛花">
+      <FileName>牵牛花</FileName>
+    </Item>
+	<Item keyword="百合">
+      <FileName>百合</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>什么植物身上有刺</Question>
+  <Right>
+      <string>仙人掌</string>
+   </Right>
+    <Wrong>  
+      <string>竹子</string>
+	  <string>向日葵</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>你知道，哪个是牵牛花么</Question>
+  <Right>
+      <string>牵牛花</string>
+   </Right>
+    <Wrong>  
+      <string>竹子</string>
+	  <string>仙人掌</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>猜猜看是谁，风一吹，就飞起很多白色羽毛在空中飞舞</Question>
+  <Right>
+      <string>蒲公英</string>
+   </Right>
+    <Wrong>  
+      <string>菊花</string>
+	  <string>玫瑰花</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>谁可以让植物生长的更好</Question>
+  <Right>
+      <string>太阳</string>
+   </Right>
+    <Wrong>  
+      <string>毛毛虫</string>
+	  <string>草</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="植物" level="2" limited="true" number="1" exist="false">
+  <Question>指一指，哪个是玫瑰花</Question>
+  <Right>
+      <string>玫瑰花</string>
+   </Right>
+    <Wrong>  
+      <string>菊花</string>
+	  <string>向日葵</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="运动用品" level="2" limited="true" number="1" exist="false">
+  <Question>游泳圈是哪一个</Question>
+  <Right>
+      <string>游泳圈</string>
+   </Right>
+    <Wrong>  
+      <string>花环</string>
+	  <string>皮球</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="运动用品" level="2" limited="false" number="6" exist="false">
+    <Question>$运动用品+你知道是哪一个么</Question>
+    <Item keyword="篮球">
+      <FileName>篮球</FileName>
+    </Item>
+    <Item keyword="足球">
+      <FileName>足球</FileName>
+    </Item>
+    <Item keyword="羽毛球">
+      <FileName>羽毛球</FileName>
+    </Item>
+    <Item keyword="乒乓球">
+      <FileName>乒乓球</FileName>
+    </Item>
+    <Item keyword="排球">
+      <FileName>排球</FileName>
+    </Item>
+	<Item keyword="网球">
+      <FileName>网球</FileName>
+    </Item>	
+  </DataFormat>
+  <DataFormat theme="运动用品" level="2" limited="true" number="1" exist="false">
+  <Question>哪个是跳水运动</Question>
+  <Right>
+      <string>跳水标志</string>
+   </Right>
+    <Wrong>  
+      <string>举重标志</string>
+	  <string>跑步标志</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="运动用品" level="2" limited="true" number="1" exist="false">
+  <Question>哪个是羽毛球的球拍</Question>
+  <Right>
+      <string>羽毛球拍</string>
+   </Right>
+    <Wrong>  
+      <string>手套</string>
+	  <string>棒子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="运动用品" level="2" limited="true" number="1" exist="false">
+  <Question>哪个是乒乓球拍</Question>
+  <Right>
+      <string>乒乓球拍</string>
+   </Right>
+    <Wrong>  
+      <string>手套</string>
+	  <string>棒子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="运动用品" level="2" limited="false" number="3" exist="false">
+    <Question>猜一猜哪个是+$运动用品</Question>    
+    <Item keyword="足球">
+      <FileName>足球</FileName>
+    </Item>
+    <Item keyword="台球">
+      <FileName>台球</FileName>
+    </Item>
+    <Item keyword="橄榄球">
+      <FileName>橄榄球</FileName>
+    </Item>   
+  </DataFormat>
+  <DataFormat theme="汉字" level="3" limited="true" number="1" exist="false">
+  <Question>哪个汉字笔画最多呢</Question>
+  <Right>
+      <string>王</string>
+   </Right>
+    <Wrong>  
+      <string>一</string>
+	  <string>土</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="汉字" level="3" limited="false" number="10" exist="false">
+    <Question>汉字+$汉字+是哪一个，你知道吗</Question>    
+    <Item keyword="日" desc="日子的日">
+      <FileName>日</FileName>
+    </Item>
+    <Item keyword="大" desc="大小的大">
+      <FileName>大</FileName>
+    </Item>
+    <Item keyword="长" desc="长短的长">
+      <FileName>长</FileName>
+    </Item>  
+    <Item keyword="田" desc="田地的田">
+      <FileName>田</FileName>
+    </Item> 
+    <Item keyword="天" desc="天空的天">
+      <FileName>天</FileName>
+    </Item> 
+    <Item keyword="好" desc="你好的好">
+      <FileName>好</FileName>
+    </Item> 
+     <Item keyword="我" desc="我们的我">
+      <FileName>我</FileName>
+    </Item>  
+    <Item keyword="你" desc="你好的你">
+      <FileName>你</FileName>
+    </Item> 
+    <Item keyword="今" desc="今天的今">
+      <FileName>今</FileName>
+    </Item> 
+    <Item keyword="月" desc="月亮的月">
+      <FileName>月</FileName>
+    </Item> 	
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>毛毛虫长大后会变成什么</Question>
+  <Right>
+      <string>蝴蝶</string>
+   </Right>
+    <Wrong>  
+      <string>瓢虫</string>
+	  <string>蜻蜓</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>什么动物会冬眠</Question>
+  <Right>
+      <string>蛇</string>
+   </Right>
+    <Wrong>  
+      <string>兔子</string>
+	  <string>老牛</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>哪个是雪花</Question>
+  <Right>
+      <string>雪花</string>
+   </Right>
+    <Wrong>  
+      <string>荷花</string>
+	  <string>玫瑰花</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="false" number="6" exist="false">
+    <Question>哪个是+$自然</Question>    
+    <Item keyword="晴天">
+      <FileName>晴天</FileName>
+    </Item>
+    <Item keyword="下雪">
+      <FileName>下雪</FileName>
+    </Item>
+    <Item keyword="下雨">
+      <FileName>下雨</FileName>
+    </Item>  
+    <Item keyword="阴天">
+      <FileName>阴天</FileName>
+    </Item>
+   <Item keyword="多云">
+      <FileName>多云</FileName>
+    </Item> 	
+   <Item keyword="闪电">
+      <FileName>闪电</FileName>
+    </Item>   	
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>哪一个是天上的月亮</Question>
+  <Right>
+      <string>月亮</string>
+   </Right>
+    <Wrong>  
+      <string>太阳</string>
+	  <string>星星</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>什么动物喜欢在白天睡觉</Question>
+  <Right>
+      <string>猫头鹰</string>
+   </Right>
+    <Wrong>  
+      <string>青蛙</string>
+	  <string>老牛</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>蝌蚪长大会变成什么</Question>
+  <Right>
+      <string>青蛙</string>
+   </Right>
+    <Wrong>  
+      <string>蜗牛</string>
+	  <string>蛇</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>丑小鸭长大后会变成什么</Question>
+  <Right>
+      <string>天鹅</string>
+   </Right>
+    <Wrong>  
+      <string>企鹅</string>
+	  <string>鸭</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>冬天到了，下面哪种鸟类要飞到南方过冬</Question>
+  <Right>
+      <string>燕子</string>
+   </Right>
+    <Wrong>  
+      <string>麻雀</string>
+	  <string>喜鹊</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>哪种动物有两个像扇子一样的大耳朵呢</Question>
+  <Right>
+      <string>大象</string>
+   </Right>
+    <Wrong>  
+      <string>兔子</string>
+	  <string>小狗</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>彩虹里出现的颜色是哪个</Question>
+  <Right>
+      <string>红色</string>
+   </Right>
+    <Wrong>  
+      <string>褐色</string>
+	  <string>黑色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>闪电过后，常常会出现什么天气呢</Question>
+  <Right>
+      <string>下雨</string>
+   </Right>
+    <Wrong>  
+      <string>多云</string>
+	  <string>下雪</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>夏天到了，谁会在池塘呱呱叫</Question>
+  <Right>
+      <string>青蛙</string>
+   </Right>
+    <Wrong>  
+      <string>泥鳅</string>
+	  <string>鱼</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>夏天到了，是谁在树上一直叫</Question>
+  <Right>
+      <string>蝉</string>
+   </Right>
+    <Wrong>  
+      <string>蝴蝶</string>
+	  <string>毛毛虫</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>啄木鸟爱啄树皮是在吃什么</Question>
+  <Right>
+      <string>毛毛虫</string>
+   </Right>
+    <Wrong>  
+      <string>蝉</string>
+	  <string>树叶</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>哪个植物即使很久不用浇水，也能生长的很好</Question>
+  <Right>
+      <string>仙人掌</string>
+   </Right>
+    <Wrong>  
+      <string>麦子</string>
+	  <string>玫瑰花</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>蝴蝶小时候是长什么样的</Question>
+  <Right>
+      <string>毛毛虫</string>
+   </Right>
+    <Wrong>  
+      <string>小鸟</string>
+	  <string>蝴蝶</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>香蕉成熟了，会变成什么颜色么</Question>
+  <Right>
+      <string>黄色</string>
+   </Right>
+    <Wrong>  
+      <string>绿色</string>
+	  <string>红色</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>遇到危险的时候，哪种动物会躲到壳里</Question>
+  <Right>
+      <string>乌龟</string>
+   </Right>
+    <Wrong>  
+      <string>海马</string>
+	  <string>珊瑚</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>猜猜看，哪个是火山</Question>
+  <Right>
+      <string>火山</string>
+   </Right>
+    <Wrong>  
+      <string>太阳</string>
+	  <string>月亮</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>快下雨的时候，哪种小动物要搬家</Question>
+  <Right>
+      <string>蚂蚁</string>
+   </Right>
+    <Wrong>  
+      <string>蜗牛</string>
+	  <string>蜻蜓</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>哪种动物晚上不睡觉</Question>
+  <Right>
+      <string>猫头鹰</string>
+   </Right>
+    <Wrong>  
+      <string>兔子</string>
+	  <string>小鸟</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>哪种动物喜欢住在池塘里</Question>
+  <Right>
+      <string>青蛙</string>
+   </Right>
+    <Wrong>  
+      <string>海马</string>
+	  <string>珊瑚</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="自然" level="3" limited="true" number="1" exist="false">
+  <Question>什么动物喜欢倒挂在树上</Question>
+  <Right>
+      <string>蝙蝠</string>
+   </Right>
+    <Wrong>  
+      <string>兔子</string>
+	  <string>小鸟</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="false" number="6" exist="false">
+    <Question>$中国常识+是哪一天</Question>    
+    <Item keyword="元旦">
+      <FileName>元旦</FileName>
+    </Item>
+    <Item keyword="国庆">
+      <FileName>国庆</FileName>
+    </Item>
+    <Item keyword="劳动节">
+      <FileName>劳动节</FileName>
+    </Item>  
+    <Item keyword="儿童节">
+      <FileName>儿童节</FileName>
+    </Item>
+   <Item keyword="教师节">
+      <FileName>教师节</FileName>
+    </Item> 	
+   <Item keyword="妇女节">
+      <FileName>妇女节</FileName>
+    </Item>   	
+  </DataFormat> 
+     <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>哪个是天安门</Question>
+  <Right>
+      <string>天安门</string>
+   </Right>
+    <Wrong>  
+      <string>长城</string>
+	  <string>鸟巢</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>谁出现在十二生肖里</Question>
+  <Right>
+      <string>兔子</string>
+   </Right>
+    <Wrong>  
+      <string>孔雀</string>
+	  <string>小猫</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>哪个是我们生活的地球</Question>
+  <Right>
+      <string>地球</string>
+   </Right>
+    <Wrong>  
+      <string>金星</string>
+	  <string>火星</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>端午节那天要吃什么</Question>
+  <Right>
+      <string>粽子</string>
+   </Right>
+    <Wrong>  
+      <string>汤圆</string>
+	  <string>炒饭</string>
+    </Wrong>
+  </DataFormat> 
+   <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>谁被称作中国的国宝</Question>
+  <Right>
+      <string>熊猫</string>
+   </Right>
+    <Wrong>  
+      <string>孔雀</string>
+	  <string>小猫</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>哪个是中国的国花牡丹</Question>
+  <Right>
+      <string>牡丹花</string>
+   </Right>
+    <Wrong>  
+      <string>玫瑰花</string>
+	  <string>荷花</string>
+    </Wrong>
+  </DataFormat>  
+  <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>你知道中国的国球是哪种球么</Question>
+  <Right>
+      <string>乒乓球</string>
+   </Right>
+    <Wrong>  
+      <string>足球</string>
+	  <string>橄榄球</string>
+    </Wrong>
+  </DataFormat> 
+    <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>中秋节的时候要吃什么</Question>
+  <Right>
+      <string>月饼</string>
+   </Right>
+    <Wrong>  
+      <string>粽子</string>
+	  <string>蛋糕</string>
+    </Wrong>
+  </DataFormat> 
+     <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>春节到了，门上要贴什么</Question>
+  <Right>
+      <string>春联</string>
+   </Right>
+    <Wrong>  
+      <string>鞭炮</string>
+	  <string>压岁钱</string>
+    </Wrong>
+  </DataFormat>
+     <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>春节到了，孩子们会收到长辈给的什么礼物呢</Question>
+  <Right>
+      <string>压岁钱</string>
+   </Right>
+    <Wrong>  
+      <string>彩旗</string>
+	  <string>玫瑰花</string>
+    </Wrong>
+  </DataFormat>
+     <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>过春节啦，大家会在街上放什么庆祝</Question>
+  <Right>
+      <string>鞭炮</string>
+   </Right>
+    <Wrong>  
+      <string>彩带</string>
+	  <string>气球</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>元宵节的晚上，街上会挂上什么东西</Question>
+  <Right>
+      <string>花灯</string>
+   </Right>
+    <Wrong>  
+      <string>春联</string>
+	  <string>气球</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>端午节常常举行什么比赛</Question>
+  <Right>
+      <string>龙舟</string>
+   </Right>
+    <Wrong>  
+      <string>汽车</string>
+	  <string>公交车</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>指一指，哪个是龙</Question>
+  <Right>
+      <string>龙</string>
+   </Right>
+    <Wrong>  
+      <string>山羊</string>
+	  <string>老虎</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>猜一猜，哪个是剪纸</Question>
+  <Right>
+      <string>剪纸</string>
+   </Right>
+    <Wrong>  
+      <string>蝴蝶结</string>
+	  <string>花瓶</string>
+    </Wrong>
+  </DataFormat>
+   <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>哪个是可以用来指认方向的指南针</Question>
+  <Right>
+      <string>指南针</string>
+   </Right>
+    <Wrong>  
+      <string>手表</string>
+	  <string>彩旗</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="1" exist="false">
+  <Question>指一指，哪个是长城</Question>
+  <Right>
+      <string>长城</string>
+   </Right>
+    <Wrong>  
+      <string>天安门</string>
+	  <string>鸟巢</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="0" exist="false">
+  <Question>你知道，中国奥运会的吉祥物是什么吗</Question>
+  <Right>
+      <string>福娃</string>
+   </Right>
+    <Wrong>  
+      <string>兔子</string>
+	  <string>海宝</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="false" number="0" exist="false" New="true">
+    <Question>$服饰+不见了，它在哪里呢</Question>
+    <Item keyword="衣服">
+      <FileName>衣服</FileName>
+    </Item>
+    <Item keyword="袜子">
+      <FileName>袜子</FileName>
+    </Item>
+    <Item keyword="短裤">
+      <FileName>短裤</FileName>
+    </Item>
+    <Item keyword="长裤">
+      <FileName>长裤</FileName>
+    </Item>
+    <Item keyword="围巾">
+      <FileName>围巾</FileName>
+    </Item>
+    <Item keyword="帽子">
+      <FileName>帽子</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="false" number="0" exist="false">
+    <Question>$服饰+在哪里，来找找看吧</Question>
+    <Item keyword="羽绒服">
+      <FileName>羽绒服</FileName>
+    </Item>
+    <Item keyword="毛衣">
+      <FileName>毛衣</FileName>
+    </Item>
+    <Item keyword="裙子">
+      <FileName>裙子</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="true" number="0" exist="false">
+    <Question>找找哪个是手套吧</Question>
+    <Right>
+      <string>手套</string>
+    </Right>
+    <Wrong>
+      <string>围巾</string>
+      <string>帽子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="true" number="0" exist="false">
+    <Question>找找哪个是裙子吧</Question>
+    <Right>
+      <string>裙子</string>
+    </Right>
+    <Wrong>
+      <string>长裤</string>
+      <string>短裤</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="true" number="0" exist="false">
+    <Question>哪个是毛衣</Question>
+    <Right>
+      <string>毛衣</string>
+    </Right>
+    <Wrong>
+      <string>帽子</string>
+      <string>手套</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="true" number="0" exist="false">
+    <Question>天气冷脖子围什么</Question>
+    <Right>
+      <string>围巾</string>
+    </Right>
+    <Wrong>
+      <string>手套</string>
+      <string>裙子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="true" number="0" exist="false">
+    <Question>冬天太冷应该穿什么衣服</Question>
+    <Right>
+      <string>羽绒服</string>
+    </Right>
+    <Wrong>
+      <string>裙子</string>
+      <string>短裤</string>
+    </Wrong>
+  </DataFormat>
+    <DataFormat theme="服饰" level="1" limited="true" number="0" exist="false">
+    <Question>帽子在哪里，一起找找看</Question>
+    <Right>
+      <string>帽子</string>
+    </Right>
+    <Wrong>
+      <string>手套</string>
+      <string>围巾</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="true" number="0" exist="false">
+    <Question>夏天太热要穿什么衣服</Question>
+    <Right>
+      <string>短袖上衣</string>
+    </Right>
+    <Wrong>
+      <string>羽绒服</string>
+      <string>毛衣</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="false" number="0" exist="false">
+    <Question>$服饰+在哪里，来找找看吧</Question>
+    <Item keyword="溜冰鞋">
+      <FileName>溜冰鞋</FileName>
+    </Item>
+    <Item keyword="拖鞋">
+      <FileName>拖鞋</FileName>
+    </Item>
+    <Item keyword="靴子">
+      <FileName>靴子</FileName>
+    </Item>
+    <Item keyword="凉鞋">
+      <FileName>凉鞋</FileName>
+    </Item>
+    <Item keyword="运动鞋">
+      <FileName>运动鞋</FileName>
+    </Item>
+    <Item keyword="舞鞋">
+      <FileName>舞鞋</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="true" number="0" exist="false">
+    <Question>夏天天气热时，穿羽绒衣对么</Question>
+    <Right>
+      <string>错</string>
+    </Right>
+    <Wrong>
+      <string>对</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="true" number="0" exist="false">
+    <Question>想穿爸爸的鞋子去上学，这样做对么</Question>
+    <Right>
+      <string>错</string>
+    </Right>
+    <Wrong>
+      <string>对</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="服饰" level="1" limited="true" number="0" exist="false">
+    <Question>溜冰要穿什么鞋子</Question>
+    <Right>
+      <string>溜冰鞋</string>
+    </Right>
+    <Wrong>
+      <string>拖鞋</string>
+      <string>舞鞋</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="false" number="0" exist="false">
+    <Question>$蔬菜+在哪里，来找找看吧</Question>
+    <Item keyword="竹笋">
+      <FileName>竹笋</FileName>
+    </Item>
+    <Item keyword="土豆">
+      <FileName>土豆</FileName>
+    </Item>
+    <Item keyword="黄瓜">
+      <FileName>黄瓜</FileName>
+    </Item>
+    <Item keyword="辣椒">
+      <FileName>辣椒</FileName>
+    </Item>
+    <Item keyword="茄子">
+      <FileName>茄子</FileName>
+    </Item>
+    <Item keyword="香菇">
+      <FileName>香菇</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>胡萝卜是什么颜色的</Question>
+    <Right>
+      <string>红色</string>
+    </Right>
+    <Wrong>
+      <string>绿色</string>
+      <string>蓝色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>哪个的颜色跟辣椒一样</Question>
+    <Right>
+      <string>西红柿</string>
+    </Right>
+    <Wrong>
+      <string>黄瓜</string>
+      <string>茄子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>想一想西瓜是什么形状的</Question>
+    <Right>
+      <string>椭圆形</string>
+    </Right>
+    <Wrong>
+      <string>正方形</string>
+      <string>三角形</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>哪个的颜色跟蓝莓一样</Question>
+    <Right>
+      <string>茄子</string>
+    </Right>
+    <Wrong>
+      <string>西红柿</string>
+      <string>生姜</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>黄瓜是什么颜色的呢</Question>
+    <Right>
+      <string>绿色</string>
+    </Right>
+    <Wrong>
+      <string>蓝色</string>
+      <string>红色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>茄子是什么颜色的呢</Question>
+    <Right>
+      <string>紫色</string>
+    </Right>
+    <Wrong>
+      <string>绿色</string>
+      <string>红色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>哪个看起来像雨伞</Question>
+    <Right>
+      <string>香菇</string>
+    </Right>
+    <Wrong>
+      <string>西红柿</string>
+      <string>土豆</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false" New="true">
+    <Question>哪个东西吃起来苦苦的</Question>
+    <Right>
+      <string>苦瓜</string>
+    </Right>
+    <Wrong>
+      <string>辣椒</string>
+      <string>土豆</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>哪个东西吃起来辣辣的</Question>
+    <Right>
+      <string>辣椒</string>
+    </Right>
+    <Wrong>
+      <string>苦瓜</string>
+      <string>土豆</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>哪个东西是紫色的</Question>
+    <Right>
+      <string>苦瓜</string>
+    </Right>
+    <Wrong>
+      <string>辣椒</string>
+      <string>土豆</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>哪个东西是绿色的</Question>
+    <Right>
+      <string>黄瓜</string>
+    </Right>
+    <Wrong>
+      <string>辣椒</string>
+      <string>生姜</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>找找看哪个是香菇</Question>
+    <Right>
+      <string>香菇</string>
+    </Right>
+    <Wrong>
+      <string>洋葱</string>
+      <string>生姜</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>哪个东西是黄色的</Question>
+    <Right>
+      <string>生姜</string>
+    </Right>
+    <Wrong>
+      <string>洋葱</string>
+      <string>香菇</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>找一找哪个是玉米</Question>
+    <Right>
+      <string>玉米</string>
+    </Right>
+    <Wrong>
+      <string>香菇</string>
+      <string>黄瓜</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>你能认出哪个是土豆么</Question>
+    <Right>
+      <string>土豆</string>
+    </Right>
+    <Wrong>
+      <string>辣椒</string>
+      <string>苦瓜</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>哪个东西是长长的</Question>
+    <Right>
+      <string>苦瓜</string>
+    </Right>
+    <Wrong>
+      <string>西红柿</string>
+      <string>土豆</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>你知道苦瓜是什么颜色的么</Question>
+    <Right>
+      <string>绿色</string>
+    </Right>
+    <Wrong>
+      <string>红色</string>
+      <string>蓝色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>你知道洋葱是什么颜色的么</Question>
+    <Right>
+      <string>紫色</string>
+    </Right>
+    <Wrong>
+      <string>黄色</string>
+      <string>蓝色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="蔬菜" level="1" limited="true" number="0" exist="false">
+    <Question>你知道玉米粒是什么颜色的么</Question>
+    <Right>
+      <string>黄色</string>
+    </Right>
+    <Wrong>
+      <string>红色</string>
+      <string>绿色</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="日用品" level="1" limited="false" number="0" exist="false" New="true">
+    <Question>$日用品+在哪里，来找找看吧</Question>
+    <Item keyword="平底锅">
+      <FileName>平底锅</FileName>
+    </Item>
+    <Item keyword="垃圾桶">
+      <FileName>垃圾桶</FileName>
+    </Item>
+    <Item keyword="碗">
+      <FileName>碗</FileName>
+    </Item>
+    <Item keyword="筷子">
+      <FileName>筷子</FileName>
+    </Item>
+    <Item keyword="菜刀">
+      <FileName>菜刀</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="日用品" level="1" limited="false" number="0" exist="false">
+    <Question>房间里的+$日用品+在哪里</Question>
+    <Item keyword="镜子">
+      <FileName>镜子</FileName>
+    </Item>
+    <Item keyword="桌子">
+      <FileName>桌子</FileName>
+    </Item>
+    <Item keyword="枕头">
+      <FileName>枕头</FileName>
+    </Item>
+    <Item keyword="窗帘">
+      <FileName>窗帘</FileName>
+    </Item>
+    <Item keyword="被子">
+      <FileName>被子</FileName>
+    </Item>
+    <Item keyword="闹钟">
+      <FileName>闹钟</FileName>
+    </Item>
+    <Item keyword="衣柜">
+      <FileName>柜子</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="日用品" level="1" limited="false" number="0" exist="false">
+    <Question>$日用品+在哪里，来找找看吧</Question>
+    <Item keyword="扫把">
+      <FileName>扫把</FileName>
+    </Item>
+    <Item keyword="纸巾">
+      <FileName>纸巾</FileName>
+    </Item>
+    <Item keyword="电池">
+      <FileName>电池</FileName>
+    </Item>
+    <Item keyword="遥控器">
+      <FileName>遥控器</FileName>
+    </Item>
+    <Item keyword="指甲刀">
+      <FileName>指甲剪</FileName>
+    </Item>
+  </DataFormat>
+    <DataFormat theme="日用品" level="1" limited="false" number="0" exist="false">
+    <Question>卫生间里的+$日用品+是哪一个呢</Question>
+    <Item keyword="刮胡刀">
+      <FileName>刮胡刀</FileName>
+    </Item>
+    <Item keyword="电吹风">
+      <FileName>电吹风</FileName>
+    </Item>
+    <Item keyword="拖鞋">
+      <FileName>拖鞋</FileName>
+    </Item>
+    <Item keyword="肥皂">
+      <FileName>肥皂</FileName>
+    </Item>
+    <Item keyword="牙杯">
+      <FileName>牙杯</FileName>
+    </Item>
+    <Item keyword="毛巾">
+      <FileName>毛巾</FileName>
+    </Item>
+    <Item keyword="牙刷">
+      <FileName>牙刷</FileName>
+    </Item>
+    <Item keyword="头梳">
+      <FileName>头梳</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="日用品" level="1" limited="true" number="0" exist="false">
+    <Question>哪个用来晒衣服的呢</Question>
+    <Right>
+      <string>衣架</string>
+    </Right>
+    <Wrong>
+      <string>平底锅</string>
+      <string>电吹风</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="日用品" level="1" limited="true" number="0" exist="false">
+    <Question>你知道要用什么清理垃圾么</Question>
+    <Right>
+      <string>扫把</string>
+    </Right>
+    <Wrong>
+      <string>电吹风</string>
+      <string>电池</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="日用品" level="1" limited="true" number="0" exist="false">
+    <Question>爸爸用什么刮胡子呢</Question>
+    <Right>
+      <string>刮胡刀</string>
+    </Right>
+    <Wrong>
+      <string>电吹风</string>
+      <string>毛巾</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="日用品" level="1" limited="true" number="0" exist="false">
+    <Question>垃圾要扔在哪里呢</Question>
+    <Right>
+      <string>垃圾桶</string>
+    </Right>
+    <Wrong>
+      <string>平底锅</string>
+      <string>碗</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="日用品" level="1" limited="true" number="0" exist="false">
+    <Question>要用什么开电视呢</Question>
+    <Right>
+      <string>遥控器</string>
+    </Right>
+    <Wrong>
+      <string>纸巾</string>
+      <string>闹钟</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="日用品" level="1" limited="true" number="0" exist="false">
+    <Question>下面哪个是电吹风</Question>
+    <Right>
+      <string>电吹风</string>
+    </Right>
+    <Wrong>
+      <string>毛巾</string>
+      <string>刮胡刀</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="日用品" level="1" limited="true" number="0" exist="false">
+    <Question>哪个可以用来洗手呢</Question>
+    <Right>
+      <string>肥皂</string>
+    </Right>
+    <Wrong>
+      <string>衣架</string>
+      <string>电吹风</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="false" number="0" exist="false" New="true">
+    <Question>$职业+在哪里，来找找看吧</Question>
+    <Item keyword="警察">
+      <FileName>警察</FileName>
+    </Item>
+    <Item keyword="护士">
+      <FileName>护士</FileName>
+    </Item>
+    <Item keyword="医生">
+      <FileName>医生</FileName>
+    </Item>
+    <Item keyword="消防员">
+      <FileName>消防员</FileName>
+    </Item>
+    <Item keyword="厨师">
+      <FileName>厨师</FileName>
+    </Item>
+    <Item keyword="歌手">
+      <FileName>歌手</FileName>
+    </Item>
+    <Item keyword="宇航员">
+      <FileName>宇航员</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>遇到小偷的时候，要找谁帮忙</Question>
+    <Right>
+      <string>警察</string>
+    </Right>
+    <Wrong>
+      <string>厨师</string>
+      <string>护士</string>
+    </Wrong>
+  </DataFormat> 
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>房子着火了，要找谁帮忙呢</Question>
+    <Right>
+      <string>消防员</string>
+    </Right>
+    <Wrong>
+      <string>厨师</string>
+      <string>歌手</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>生病的时候，找谁帮忙呢</Question>
+    <Right>
+      <string>医生</string>
+    </Right>
+    <Wrong>
+      <string>厨师</string>
+      <string>宇航员</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>找找看厨师在哪里</Question>
+    <Right>
+      <string>厨师</string>
+    </Right>
+    <Wrong>
+      <string>护士</string>
+      <string>警察</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>剪头发的时候找理发师，对么</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">  
+    <Question>摄影师经常拍照，对么</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>要寄东西给别人，找快递员叔叔对么</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>迷路了找警察叔叔帮助对么</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>找找看哪个是护士</Question>
+    <Right>
+      <string>护士</string>
+    </Right>
+    <Wrong>
+      <string>消防员</string>
+      <string>警察</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>找找看宇航员在哪里</Question>
+    <Right>
+      <string>宇航员</string>
+    </Right>
+    <Wrong>
+      <string>运动员</string>
+      <string>歌手</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>谁唱歌最好听</Question>
+    <Right>
+      <string>歌手</string>
+    </Right>
+    <Wrong>
+      <string>护士</string>
+      <string>厨师</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>医院里常常会见到谁呢</Question>
+    <Right>
+      <string>护士</string>
+    </Right>
+    <Wrong>
+      <string>运动员</string>
+      <string>宇航员</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>宇航员有时在太空工作，对么</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>  
+  <DataFormat theme="职业" level="1" limited="true" number="0" exist="false">
+    <Question>指一指哪个是运动员</Question>
+    <Right>
+      <string>运动员</string>
+    </Right>
+    <Wrong>
+      <string>警察</string>
+      <string>医生</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false" New="true">
+    <Question>哪个是喇叭</Question>
+    <Right>
+      <string>喇叭</string>
+    </Right>
+    <Wrong>
+      <string>笛子</string>
+      <string>小提琴</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="false" number="0" exist="false">
+    <Question>$艺术+在哪里，来找找看吧</Question>
+    <Item keyword="吉他">
+      <FileName>吉它</FileName>
+    </Item>
+    <Item keyword="钢琴">
+      <FileName>钢琴</FileName>
+    </Item>
+    <Item keyword="古筝">
+      <FileName>古筝</FileName>
+    </Item>
+    <Item keyword="手风琴">
+      <FileName>手风琴</FileName>
+    </Item>
+    <Item keyword="小提琴">
+      <FileName>小提琴</FileName>
+    </Item>
+    <Item keyword="二胡">
+      <FileName>二胡</FileName>
+    </Item>
+    <Item keyword="琵琶">
+      <FileName>琵琶</FileName>
+    </Item>
+    <Item keyword="竖琴">
+      <FileName>竖琴</FileName>
+    </Item>
+    <Item keyword="小号">
+      <FileName>号子</FileName>
+    </Item>
+    <Item keyword="长笛">
+      <FileName>长笛</FileName>
+    </Item>
+    <Item keyword="口琴">
+      <FileName>口琴</FileName>
+    </Item>
+    <Item keyword="铃鼓">
+      <FileName>铃鼓</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>口琴是用手弹奏的么</Question>
+    <Right>
+      <string>错</string>
+    </Right>
+    <Wrong>
+      <string>对</string>
+    </Wrong>
+  </DataFormat> 
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>哪个乐器有黑白的琴键呢</Question>
+    <Right>
+      <string>钢琴</string>
+    </Right>
+    <Wrong>
+      <string>长笛</string>
+      <string>小提琴</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>哪哪个乐器是细细长长的</Question>
+    <Right>
+      <string>笛子</string>
+    </Right>
+    <Wrong>
+      <string>吉它</string>
+      <string>铃鼓</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>哪个乐器长得很像葫芦</Question>
+    <Right>
+      <string>小提琴</string>
+    </Right>
+    <Wrong>
+      <string>铃鼓</string>
+      <string>口琴</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>哪个乐器是用嘴巴吹的</Question>
+    <Right>
+      <string>长笛</string>
+    </Right>
+    <Wrong>
+      <string>吉它</string>
+      <string>小提琴</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>认一认，看看哪个是二胡呢</Question>
+    <Right>
+      <string>二胡</string>
+    </Right>
+    <Wrong>
+      <string>口琴</string>
+      <string>铃鼓</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>指一指哪个是吉他吧</Question>
+    <Right>
+      <string>吉它</string>
+    </Right>
+    <Wrong>
+      <string>竖琴</string>
+      <string>小提琴</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>哪个乐器长得像喇叭呢</Question>
+    <Right>
+      <string>号子</string>
+    </Right>
+    <Wrong>
+      <string>吉它</string>
+      <string>古筝</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>哪个乐器是用嘴巴吹的呢</Question>
+    <Right>
+      <string>号子</string>
+    </Right>
+    <Wrong>
+      <string>铃鼓</string>
+      <string>钢琴</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>猜猜哪个是古筝吧</Question>
+    <Right>
+      <string>古筝</string>
+    </Right>
+    <Wrong>
+      <string>二胡</string>
+      <string>琵琶</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>你能指出哪个是口琴么</Question>
+    <Right>
+      <string>口琴</string>
+    </Right>
+    <Wrong>
+      <string>二胡</string>
+      <string>琵琶</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>指给我看看哪个是竖琴吧</Question>
+    <Right>
+      <string>竖琴</string>
+    </Right>
+    <Wrong>
+      <string>铃鼓</string>
+      <string>吉它</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>哪个乐器的身上有一排的小孔呢</Question>
+    <Right>
+      <string>长笛</string>
+    </Right>
+    <Wrong>
+      <string>钢琴</string>
+      <string>吉它</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>吉他是用手来弹奏的，对么</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat> 
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>找一找，哪个是音乐符号呢</Question>
+    <Right>
+      <string>音乐符号</string>
+    </Right>
+    <Wrong>
+      <string>开心表情</string>
+      <string>闪电</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="艺术" level="2" limited="true" number="0" exist="false">
+    <Question>猜一猜，哪个是手风琴</Question>
+    <Right>
+      <string>手风琴</string>
+    </Right>
+    <Wrong>
+      <string>钢琴</string>
+      <string>吉它</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false" New="true">
+    <Question>上课要坐端正，对么</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>吃饭前要做什么</Question>
+    <Right>
+      <string>水龙头</string>
+    </Right>
+    <Wrong>
+      <string>牙刷</string>
+      <string>冰淇淋</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>上完厕所要干什么</Question>
+    <Right>
+      <string>水龙头</string>
+    </Right>
+    <Wrong>
+      <string>牙刷</string>
+      <string>冰淇淋</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>早上起床后，你知道要做什么吗</Question>
+    <Right>
+      <string>牙刷</string>
+    </Right>
+    <Wrong>
+      <string>足球</string>
+      <string>冰淇淋</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>洗完手要用什么擦干呢</Question>
+    <Right>
+      <string>毛巾</string>
+    </Right>
+    <Wrong>
+      <string>蝴蝶结</string>
+      <string>本子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>中午要在哪里睡觉呢</Question>
+    <Right>
+      <string>床</string>
+    </Right>
+    <Wrong>
+      <string>椅子</string>
+      <string>桌子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>小朋友没经过允许乱动别人东西对不对呢</Question>
+    <Right>
+      <string>错</string>
+    </Right>
+    <Wrong>
+      <string>对</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>小朋友在墙上乱涂乱画的行为对不对呢</Question>
+    <Right>
+      <string>错</string>
+    </Right>
+    <Wrong>
+      <string>对</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>小朋友吃手指头，对不对呢</Question>
+    <Right>
+      <string>错</string>
+    </Right>
+    <Wrong>
+      <string>对</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>小朋友吃饭不挑食，对不对呢</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>小朋友不能贪吃糖果，对吗</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>小朋友不要把头埋在被子里睡觉，对吗</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>小朋友乱扔垃圾的行为对不对呀</Question>
+    <Right>
+      <string>错</string>
+    </Right>
+    <Wrong>
+      <string>对</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>小朋友进门时要学会敲门，这样对不对呢</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>饭前把手洗干净对不对呀</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>上车要排队，这样做对不对呀</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>爱护花草，对不对呀</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>睡觉踢被子，这样做对不对呀</Question>
+    <Right>
+      <string>错</string>
+    </Right>
+    <Wrong>
+      <string>对</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>自己的玩具要自己收拾，这样做对不对呢</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>吃完的果皮应该扔到什么地方呢</Question>
+    <Right>
+      <string>垃圾桶</string>
+    </Right>
+    <Wrong>
+      <string>碗</string>
+      <string>桌子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>睡觉前，刷完牙吃零食对么</Question>
+    <Right>
+      <string>错</string>
+    </Right>
+    <Wrong>
+      <string>对</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>吃完的果皮随地乱扔，这样做对不对呀</Question>
+    <Right>
+      <string>错</string>
+    </Right>
+    <Wrong>
+      <string>对</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="false" number="0" exist="false">
+    <Question>你知道哪个是+$行为习惯+的表情</Question>
+    <Item keyword="开心">
+      <FileName>开心表情</FileName>
+    </Item>
+    <Item keyword="伤心">
+      <FileName>哭泣表情</FileName>
+    </Item>
+    <Item keyword="生气">
+      <FileName>生气表情</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>小朋友要懂得节约用水，哪个是水龙头呢</Question>
+    <Right>
+      <string>水龙头</string>
+    </Right>
+    <Wrong>
+      <string>筷子</string>
+    <string>枕头</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>下面哪个是垃圾呢</Question>
+    <Right>
+      <string>香蕉皮</string>
+    </Right>
+    <Wrong>
+      <string>葡萄</string>
+    <string>桌子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>睡觉的时候要盖什么呢</Question>
+    <Right>
+      <string>被子</string>
+    </Right>
+    <Wrong>
+      <string>椅子</string>
+    <string>蝴蝶结</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>你吃饭的时候用什么装米饭呢</Question>
+    <Right>
+      <string>碗</string>
+    </Right>
+    <Wrong>
+      <string>筷子</string>
+    <string>垃圾桶</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="行为习惯" level="2" limited="true" number="0" exist="false">
+    <Question>小朋友要懂得节约用电，哪个是开关呢</Question>
+    <Right>
+      <string>开关</string>
+    </Right>
+    <Wrong>
+      <string>椅子</string>
+    <string>垃圾桶</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="false" number="0" exist="false" New="true">
+    <Question>$学习用品+不见了，在哪儿呢</Question>
+    <Item keyword="铅笔盒">
+      <FileName>铅笔盒</FileName>
+    </Item>
+    <Item keyword="书本">
+      <FileName>书本</FileName>
+    </Item>
+    <Item keyword="书包">
+      <FileName>书包</FileName>
+    </Item>
+      <Item keyword="铅笔">
+      <FileName>铅笔</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="true" number="0" exist="false">
+    <Question>你知道上学要带什么吗</Question>
+    <Right>
+      <string>铅笔</string>
+      <string>书包</string>
+      <string>书本</string>
+      <string>铅笔盒</string>
+    </Right>
+    <Wrong>
+      <string>椅子</string>
+      <string>电饭煲</string>
+      <string>开关</string>
+      <string>日光灯</string>
+    </Wrong>
+   </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="true" number="0" exist="false">
+    <Question>哪个是书包</Question>
+    <Right>
+      <string>书包</string>
+    </Right>
+    <Wrong>
+      <string>钱包</string>
+    <string>行李箱</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="true" number="0" exist="false">
+    <Question>什么笔要用到墨水</Question>
+    <Right>
+      <string>毛笔</string>
+    </Right>
+    <Wrong>
+      <string>铅笔</string>
+    <string>蜡笔</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="true" number="0" exist="false">
+    <Question>蜡笔可以用来画画，对么</Question>
+    <Right>
+      <string>对</string>
+    </Right>
+    <Wrong>
+      <string>错</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="false" number="0" exist="false">
+    <Question>找找看哪个是+$学习用品</Question>
+    <Item keyword="蜡笔">
+      <FileName>蜡笔</FileName>
+    </Item>
+    <Item keyword="毛笔">
+      <FileName>毛笔</FileName>
+    </Item>
+    <Item keyword="铅笔">
+      <FileName>铅笔</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="true" number="0" exist="false">
+    <Question>上学的时候书本都装在哪里</Question>
+    <Right>
+      <string>书包</string>
+    </Right>
+    <Wrong>
+      <string>钱包</string>
+      <string>铅笔盒</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="true" number="0" exist="false">
+    <Question>什么东西用来装铅笔</Question>
+    <Right>
+      <string>铅笔盒</string>
+    </Right>
+    <Wrong>
+      <string>行李箱</string>
+      <string>书本</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="false" number="0" exist="false">
+    <Question>找找哪个是+$学习用品</Question>
+    <Item keyword="调色盘">
+      <FileName>调色盘</FileName>
+    </Item>
+    <Item keyword="画架">
+      <FileName>画架</FileName>
+    </Item>
+    <Item keyword="尺子">
+      <FileName>尺子</FileName>
+    </Item>
+    <Item keyword="橡皮擦">
+      <FileName>橡皮擦</FileName>
+    </Item>
+    <Item keyword="削笔刀">
+      <FileName>削笔刀</FileName>
+    </Item>
+    <Item keyword="本子">
+      <FileName>本子</FileName>
+    </Item>
+    <Item keyword="剪刀">
+      <FileName>剪刀</FileName>
+    </Item>
+    <Item keyword="书桌">
+      <FileName>书桌</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="true" number="0" exist="false">
+    <Question>要剪东西的时候，需要用什么工具呢</Question>
+    <Right>
+      <string>剪刀</string>
+    </Right>
+    <Wrong>
+      <string>尺子</string>
+      <string>本子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="true" number="0" exist="false">
+    <Question>哪个是橡皮擦</Question>
+    <Right>
+      <string>橡皮擦</string>
+    </Right>
+    <Wrong>
+      <string>本子</string>
+      <string>铅笔</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="true" number="0" exist="false">
+    <Question>我们背着什么去上学</Question>
+    <Right>
+      <string>书包</string>
+    </Right>
+    <Wrong>
+      <string>行李箱</string>
+      <string>钱包</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="true" number="0" exist="false">
+    <Question>什么能把纸花贴在本子上呢</Question>
+    <Right>
+      <string>胶带</string>
+    </Right>
+    <Wrong>
+      <string>尺子</string>
+      <string>剪刀</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="学习用品" level="2" limited="true" number="0" exist="false">
+    <Question>我们用什么来削铅笔呢</Question>
+    <Right>
+      <string>削笔刀</string>
+    </Right>
+    <Wrong>
+      <string>尺子</string>
+      <string>画架</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="汉字" level="3" limited="false" number="0" exist="false">
+    <Question>你知不知道哪个字念+$汉字</Question>
+    <Item keyword="东">
+      <FileName>东</FileName>
+    </Item>
+    <Item keyword="西">
+      <FileName>西</FileName>
+    </Item>
+    <Item keyword="南">
+      <FileName>南</FileName>
+    </Item>
+    <Item keyword="北">
+      <FileName>北</FileName>
+    </Item>
+    <Item keyword="书">
+      <FileName>书</FileName>
+    </Item>
+    <Item keyword="去">
+      <FileName>去</FileName>
+    </Item>
+    <Item keyword="习">
+      <FileName>习</FileName>
+    </Item>
+    <Item keyword="和">
+      <FileName>和</FileName>
+    </Item>
+    <Item keyword="可">
+      <FileName>可</FileName>
+    </Item>
+    <Item keyword="心">
+      <FileName>心</FileName>
+    </Item>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="0" exist="false">
+    <Question>母鸡会生什么呢</Question>
+    <Right>
+      <string>鸡蛋</string>
+    </Right>
+    <Wrong>
+      <string>兔子</string>
+      <string>鸭</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="0" exist="false">
+    <Question>小鸡是从哪里出来的</Question>
+    <Right>
+      <string>鸡蛋</string>
+    </Right>
+    <Wrong>
+      <string>小鸡</string>
+      <string>鸭</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="0" exist="false">
+    <Question>兔子的尾巴长又卷，对么</Question>
+    <Right>
+      <string>错</string>
+    </Right>
+    <Wrong>
+      <string>对</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="0" exist="false">
+    <Question>哪只动物最爱吃草</Question>
+    <Right>
+      <string>马</string>
+    </Right>
+    <Wrong>
+      <string>小狗</string>
+      <string>鱼</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="0" exist="false">
+    <Question>哪个会融化成水</Question>
+    <Right>
+      <string>雪人</string>
+    </Right>
+    <Wrong>
+      <string>稻草人</string>
+      <string>娃娃</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="0" exist="false">
+    <Question>什么花长得像喇叭</Question>
+    <Right>
+      <string>牵牛花</string>
+    </Right>
+    <Wrong>
+      <string>荷花</string>
+      <string>菊花</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="0" exist="false">
+    <Question>什么动物身上背着小房子</Question>
+    <Right>
+      <string>蜗牛</string>
+    </Right>
+    <Wrong>
+      <string>青蛙</string>
+      <string>珊瑚</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="0" exist="false">
+    <Question>向日葵的种子是哪个</Question>
+    <Right>
+      <string>瓜子</string>
+    </Right>
+    <Wrong>
+      <string>开心果</string>
+      <string>红枣</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="0" exist="false">
+    <Question>什么动物搬东西的时候会找同伴帮忙</Question>
+    <Right>
+      <string>蚂蚁</string>
+    </Right>
+    <Wrong>
+      <string>蜗牛</string>
+      <string>蜻蜓</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="自然" level="3" limited="true" number="0" exist="false">
+    <Question>哪种东西会和月亮一起出现呢</Question>
+    <Right>
+      <string>星星</string>
+    </Right>
+    <Wrong>
+      <string>太阳</string>
+      <string>月亮</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="0" exist="false">
+    <Question>你知道哪个是用面粉做成的么</Question>
+    <Right>
+      <string>包子</string>
+    </Right>
+    <Wrong>
+      <string>糖葫芦</string>
+      <string>粽子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="0" exist="false">
+    <Question>你知道草原上的人都住在哪里么</Question>
+    <Right>
+      <string>蒙古包</string>
+    </Right>
+    <Wrong>
+      <string>山洞</string>
+      <string>冰窖</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="0" exist="false">
+    <Question>哪个东西可以在天上飞</Question>
+    <Right>
+      <string>风筝</string>
+    </Right>
+    <Wrong>
+      <string>剪纸</string>
+      <string>蝴蝶结</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="0" exist="false">
+    <Question>你知道哪个是糖葫芦吗</Question>
+    <Right>
+      <string>糖葫芦</string>
+    </Right>
+    <Wrong>
+      <string>包子</string>
+      <string>面包</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="0" exist="false">
+    <Question>找找哪个是唱戏的脸谱</Question>
+    <Right>
+      <string>脸谱</string>
+    </Right>
+    <Wrong>
+      <string>面具</string>
+      <string>蝴蝶结</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="0" exist="false">
+    <Question>你知道中国的吉祥物是哪个么</Question>
+    <Right>
+      <string>龙</string>
+    </Right>
+    <Wrong>
+      <string>小猫</string>
+      <string>兔子</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="0" exist="false">
+    <Question>猜猜哪个是糖人</Question>
+    <Right>
+      <string>糖蝴蝶</string>
+    </Right>
+    <Wrong>
+      <string>包子</string>
+      <string>糖葫芦</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="0" exist="false">
+    <Question>猜猜看哪个是竹筏呢</Question>
+    <Right>
+      <string>竹筏</string>
+    </Right>
+    <Wrong>
+      <string>龙舟</string>
+      <string>公交车</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="0" exist="false">
+    <Question>下面哪个可以在天上飞呢</Question>
+    <Right>
+      <string>风筝</string>
+    </Right>
+    <Wrong>
+      <string>荡秋千</string>
+      <string>脸谱</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="中国常识" level="3" limited="true" number="0" exist="false">
+    <Question>在热闹的节日里，街上会有人舞狮，你知道是哪个么</Question>
+    <Right>
+      <string>舞狮</string>
+    </Right>
+    <Wrong>
+      <string>气球</string>
+      <string>脸谱</string>
+    </Wrong>
+  </DataFormat>
+  <DataFormat theme="动物" level="1" limited="true" number="1" exist="false">
+  <Question>哪种动物天热时会张大嘴巴喘气</Question>
+  <Right>
+      <string>小狗</string>
+   </Right>
+    <Wrong>  
+      <string>马</string>
+	  <string>小猫</string>
+    </Wrong>
+  </DataFormat>
+</ArrayOfDataFormat>

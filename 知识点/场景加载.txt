@@ -1,0 +1,24 @@
+﻿
+//出处：http://blog.csdn.net/huang9012/article/details/38659011
+private IEnumerator StartLoading_4(int scene) {
+    int displayProgress = 0;
+    int toProgress = 0;
+    AsyncOperation op = Application.LoadLevelAsync(scene);
+    op.allowSceneActivation = false;
+    while(op.progress < 0.9f) {
+        toProgress = (int)op.progress * 100;
+        while(displayProgress < toProgress) {
+            ++displayProgress;
+            SetLoadingPercentage(displayProgress);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    toProgress = 100;
+    while(displayProgress < toProgress){
+        ++displayProgress;
+        SetLoadingPercentage(displayProgress);
+        yield return new WaitForEndOfFrame();
+    }
+    op.allowSceneActivation = true;
+}

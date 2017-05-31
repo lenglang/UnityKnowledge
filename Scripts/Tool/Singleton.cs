@@ -57,22 +57,19 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             }
             _instance = value;
         }
-
         get
         {
             if (_instance == null)
                 _instance = GameObject.FindObjectOfType<T>();
-//            if(_instance == null)
-//                DebugBuild.Log(typeof(T) + " Instance is null");
+            if (_instance == null)
+                Debug.LogError(typeof(T) + " instance is null");
             return _instance;
         }
     }
-
     protected virtual void Awake()
     {
         Instance = this as T;
     }
-
     protected virtual void OnDestroy()
     {
         Instance = null;

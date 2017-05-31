@@ -79,5 +79,8 @@ public class WaitActionControl : MonoBehaviour {
             }
         }
     }
-
+    private void OnDestroy()
+    {
+        instance = null;
+    }
 }

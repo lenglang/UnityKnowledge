@@ -34,7 +34,7 @@ public class LoopActionControl : MonoBehaviour
     /// <param name="isDoNow">是否马上执行放还是隔几秒后执行，默认马上执行</param>
     /// <param name="times">循环次数，默认0即无限循环</param>
     /// <param name="interval2">第一次间隔结束后，是否改变之后的间隔时间，默认0即不改变，其他值为下次间隔时间</param>
-    public void AddLoopAction(LoopActionType type, Action action, float interval, bool isDoNow = true,int times=0,float interval2=0)
+    public void AddLoopAction(LoopActionType type, Action action, float interval, bool isDoNow = true, float interval2 = 0, int times=0)
     {
         for (int i = 0; i < _loopActionParameterList.Count; i++)
         {
@@ -89,5 +89,9 @@ public class LoopActionControl : MonoBehaviour
             }
         }
     }
-    
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+
 }

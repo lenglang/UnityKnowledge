@@ -7,9 +7,9 @@ private IEnumerator AudioClipReady(AudioClip audioClip, AssetBundle assetBundle)
             //{
             //    yield return null;
             //}
-            if(audioClip.loadState != AudioDataLoadState.Loaded)
+            while (audioClip.loadState != AudioDataLoadState.Loaded)
             {
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForEndOfFrame();
             }
             if (assetBundle != null)
             {

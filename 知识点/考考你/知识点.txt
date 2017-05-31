@@ -1,0 +1,9 @@
+﻿private Text _chongwuText;//宠物文本
+_chongwuText.DOText(_currentDialogueContent._textContent, _currentDialogueContent._playTime).SetEase(Ease.Linear).OnComplete(delegate { PlayDialogueContent(); });
+
+ _renderCharacterGO = Instantiate(LoadAsset<GameObject>("渲染动作"));
+
+T LoadAsset<T>(string assetName) where T : Object
+{
+    return Resources.Load<T>("对话资源/" + assetName);
+}

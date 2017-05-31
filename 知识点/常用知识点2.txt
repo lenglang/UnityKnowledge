@@ -36,3 +36,5 @@ public void IsShake(bool isSet)
        transform.DOShakeRotation(1, new Vector3(0,0,30)).SetLoops(-1);
     }
 }
+
+NotificationCenter.Instance.AddEventListener("Test",(number)=>{ Debug.Log(number); });

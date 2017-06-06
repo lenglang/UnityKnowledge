@@ -7,9 +7,10 @@ using UnityEngine.Sprites;
 public class CircleImage : BaseImage {
 
 	// Use this for initialization
-	void Awake () {
+	protected override void Awake () {
         innerVertices = new List<Vector3>();
         outterVertices = new List<Vector3>();
+        base.Awake();
 	}
 	
 	// Update is called once per frame

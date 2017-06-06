@@ -28,7 +28,7 @@ public class MeshMask : BaseMeshEffect{
     public List<Vector2> vertices;
     //-----------------------------------------------
 
-    private List<UIVertex> _uiVertices = new List<UIVertex>();
+    //private List<UIVertex> _uiVertices = new List<UIVertex>();
 
     private Image _image;
     public Image image

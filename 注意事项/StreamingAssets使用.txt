@@ -23,9 +23,10 @@ private string StreamingAssetsPath(string filename)
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/" + "游戏");
         }
+		path = Application.persistentDataPath + "/" + "游戏/1.txt";//存储目录
         File.WriteAllBytes(path,www.bytes);
 
 		//扩展
-		string.IsNullOrEmpty(www.error)
+		string.IsNullOrEmpty(www.error);
 		www.Dispose();
         www = null;

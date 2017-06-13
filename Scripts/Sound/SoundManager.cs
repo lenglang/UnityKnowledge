@@ -42,6 +42,10 @@ public class SoundManager : MonoBehaviour
             }
         });
     }
+    private void OnDestroy()
+    {
+        instance = null;
+    }
     public Sound PlayFromAssetbundle(string name, bool isScaleTime = false)
     {
         AudioClip clip = AssetBundleLoader.Load<AudioClip>(name);

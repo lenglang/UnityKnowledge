@@ -5,20 +5,23 @@ public class AssetBundleLoader : MonoBehaviour
 {
     [HideInInspector]
     public static AssetBundle assetBundle;
-    private static AssetBundleLoader main;
-    //loadPath=DataPrefs.persistentDataPath + "/" + "游戏" + "/" + filename;
+    private static AssetBundleLoader instance;
     public static string loadPath;
-    public static AssetBundleLoader Main
+    public static AssetBundleLoader Instance
     {
         get
         {
-            if (main == null)
+            if (instance == null)
             {
-                GameObject a = new GameObject("AssetBundleLoader");
-                main = a.AddComponent<AssetBundleLoader>();
+                GameObject obj = new GameObject("AssetBundleLoader");
+                instance = obj.AddComponent<AssetBundleLoader>();
             }
-            return main;
+            return instance;
         }
+    }
+    private void OnDestroy()
+    {
+        instance = null;
     }
     public void LoadAssetBundle(string name, System.Action completeAction)
     {

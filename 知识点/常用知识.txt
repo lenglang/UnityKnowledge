@@ -221,5 +221,16 @@ void Start () {
             }
 transform.DOShakeRotation(1, new Vector3(0,0,30)).SetLoops(-1);
 
+public virtual void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.rawPointerPress == null)
+            return;
+        if (eventData.rawPointerPress.name == "遮罩")
+        {
+            OnMaskClick();
+            return;
+        }
+    }
+
 
 

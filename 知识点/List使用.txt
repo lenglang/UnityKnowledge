@@ -1,0 +1,6 @@
+AssetInfo assetInfo = AssetInfos.Find(x => x.name == name);
+
+var push = pushInfos.Find(delegate (PushInfo pushInfo)
+{
+   return pushInfo.name == assetInfos[i].name && pushInfo.category == "APP";
+});

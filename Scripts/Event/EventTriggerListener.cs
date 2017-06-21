@@ -40,7 +40,7 @@ public class EventTriggerListener : UnityEngine.EventSystems.EventTrigger
     /// <typeparam name="T"></typeparam>
     /// <param name="data"></param>
     /// <param name="function"></param>
-    public void PassEvent<T>(PointerEventData data, ExecuteEvents.EventFunction<T> function)
+    public static void PassEvent<T>(PointerEventData data, ExecuteEvents.EventFunction<T> function)
         where T : IEventSystemHandler
     {
         List<RaycastResult> results = new List<RaycastResult>();

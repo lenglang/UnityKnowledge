@@ -34,6 +34,8 @@ public class CookiesControl : MonoBehaviour
     public int _intervalX = 128;
     [Header("饼干之间Y方向间隔")]
     public int _intervalY = 128;
+    [Header("生成种类个数")]
+    public int _typeNum = 5;
     private float _cookiesWidth = 0;//饼干宽
     private float _cookiesHeight = 0;//饼干高
     private float _startX = 0;//开始x位置
@@ -56,7 +58,7 @@ public class CookiesControl : MonoBehaviour
         _cookiesWidth = rtf.sizeDelta.x;
         _cookiesHeight = rtf.sizeDelta.y;
         //容错处理
-        if (_column <= 1 || _row <= 1||_cookiesWidth> _intervalX || _cookiesHeight> _intervalY)
+        if (_column <= 1 || _row <= 1||_cookiesWidth> _intervalX || _cookiesHeight> _intervalY|| _typeNum==0||_typeNum>_spritesList.Count)
         {
             Debug.LogError("参数不合规！");
             return;
@@ -98,7 +100,7 @@ public class CookiesControl : MonoBehaviour
         rtf.SetParent(_content);
         rtf.localPosition = new Vector2(_startX + c * _intervalX, _startY - r * _intervalY);
         //随机图标
-        Sprite sprite = _spritesList[UnityEngine.Random.Range(0, _spritesList.Count)];
+        Sprite sprite = _spritesList[UnityEngine.Random.Range(0, _typeNum)];
         rtf.GetComponent<Image>().sprite = sprite;
         rtf.name = sprite.name + "&" + c + "," + r;
         _cookiesList.Add(cookies);

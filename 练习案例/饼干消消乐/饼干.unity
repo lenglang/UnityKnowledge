@@ -450,3 +450,4 @@ MonoBehaviour:
   _deviationY: 0
   _intervalX: 128
   _intervalY: 128
+  _typeNum: 5

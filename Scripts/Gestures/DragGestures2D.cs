@@ -4,44 +4,30 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// 默认注册按下事件，按下后注册拖拽和弹起事件
 /// </summary>
-public class DragGestures : MonoBehaviour {
-    [HideInInspector]
-    public Camera _camera;
-    private Vector3 _screenSpace;
-    [HideInInspector]
-    public Vector3 _offset;
+public class DragGestures2D : MonoBehaviour {
+    private Vector2 _startPosition;
+    private Vector2 _currentPosition;
     public Action onDown;
     public Action onBeginDrag;
     public Action onDrag;
     public Action onEndDrag;
     public Action onUp;
+    private  Vector3 _localPosition;
     private bool _isDown = false;//是否按下
     private bool _isDrag = false;//是否拖拽
-    [HideInInspector]
-    public PointerEventData _evenData;
     private EventTriggerListener _eventTriggerListener;
-    // Use this for initialization
+	// Use this for initialization
     void Awake()
     {
         _eventTriggerListener = EventTriggerListener.Get(gameObject);
         _eventTriggerListener.onDown = OnDown;
-	}
+    }
     public void OnDown(PointerEventData evenData, GameObject obj)
     {
+        _localPosition = this.transform.localPosition;
         _isDown = true;
         _isDrag = false;
-        if (_camera == null)
-        {
-            _screenSpace = Camera.main.WorldToScreenPoint(this.transform.position);
-            _offset = this.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z));
-        }
-        else
-        {
-            _screenSpace = _camera.WorldToScreenPoint(this.transform.position);
-            _offset = this.transform.position - _camera.ScreenToWorldPoint(new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z));
-        }
-
-        _evenData = evenData;
+        _startPosition = evenData.position;
         CancelOnDown();
         AddOnDrag();
         AddOnUp();
@@ -106,17 +92,8 @@ public class DragGestures : MonoBehaviour {
     }
     public void UpdatePosition(PointerEventData evenData)
     {
-        Vector3 curScreenSpace = new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z);
-        if (_camera == null)
-        {
-            Vector3 CurPosition = Camera.main.ScreenToWorldPoint(curScreenSpace) + _offset;
-            this.transform.position = CurPosition;
-        }
-        else
-        {
-            Vector3 CurPosition = _camera.ScreenToWorldPoint(curScreenSpace) + _offset;
-            this.transform.position = CurPosition;
-        }
+        _currentPosition = evenData.position;
+        this.transform.localPosition = new Vector2(_localPosition.x+_currentPosition.x - _startPosition.x, _localPosition.y + _currentPosition.y - _startPosition.y);
     }
     public void OnEndDrag(PointerEventData evenData, GameObject obj)
     {

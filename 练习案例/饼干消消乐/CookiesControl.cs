@@ -51,6 +51,7 @@ public class CookiesControl : MonoBehaviour
     private List<GameObject> _moveCookies = new List<GameObject>();//移动饼干
     private int _maxMove = 0;//最大移动距离
     private List<int> _columnDeleteNumList=new List<int>();//列删除的个数数组
+    private Dictionary<GameObject, CookiesAttribute> _cookiesDictionary = new Dictionary<GameObject, CookiesAttribute>();//饼干属性字典
     void Start ()
     {
         //获取饼干宽高
@@ -107,6 +108,7 @@ public class CookiesControl : MonoBehaviour
         EventTriggerListener.Get(cookies).onDown = OnCookiesDown;
         EventTriggerListener.Get(cookies).onEnter = OnCookiesEnter;
         EventTriggerListener.Get(cookies).onUp = OnCookiesUp;
+        _cookiesDictionary.Add(cookies, cookies.AddComponent<CookiesAttribute>());
         return cookies;
     }
     /// <summary>
@@ -117,6 +119,10 @@ public class CookiesControl : MonoBehaviour
     private void OnCookiesDown(PointerEventData evenData, GameObject obj)
     {
         if (_mouseState != MouseState.弹起) return;
+
+
+        CookiesAttribute ca = _cookiesDictionary[obj];
+
         _choseCookiesType = obj.name.Split('&')[0];
         _otherCookies = _cookiesList.FindAll(n => n.name.Split('&')[0] != obj.name.Split('&')[0]);
         for (int i = 0; i < _otherCookies.Count; i++)
@@ -162,6 +168,16 @@ public class CookiesControl : MonoBehaviour
                 ChoseAnimation(obj);
             }
         }
+    }
+    /// <summary>
+    /// 刷新当前行列值
+    /// </summary>
+    /// <param name="cookiesName"></param>
+    private void RefreshColumnRow(string cookiesName)
+    {
+        string[] cr = cookiesName.Split('&')[1].Split(',');
+        _prevCookiesColumn = int.Parse(cr[0]);
+        _prevCookiesRow = int.Parse(cr[1]);
     }
     /// <summary>
     /// 鼠标弹起
@@ -286,16 +302,6 @@ public class CookiesControl : MonoBehaviour
         }
         _moveCookies.Clear();
         _mouseState = MouseState.弹起;
-    }
-    /// <summary>
-    /// 刷新当前行列值
-    /// </summary>
-    /// <param name="cookiesName"></param>
-    private void RefreshColumnRow(string cookiesName)
-    {
-        string[] cr = cookiesName.Split('&')[1].Split(',');
-        _prevCookiesColumn =int.Parse(cr[0]);
-        _prevCookiesRow = int.Parse(cr[1]);
     }
     /// <summary>
     /// 创建线

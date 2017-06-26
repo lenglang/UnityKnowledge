@@ -14,7 +14,6 @@ public class DragGestures : MonoBehaviour {
     public Action onBeginDrag;
     public Action onDrag;
     public Action onEndDrag;
-    public Action onUp;
     private bool _isDown = false;//是否按下
     private bool _isDrag = false;//是否拖拽
     [HideInInspector]
@@ -120,30 +119,31 @@ public class DragGestures : MonoBehaviour {
     }
     public void OnEndDrag(PointerEventData evenData, GameObject obj)
     {
-        CancelOnDrag();
         //有拖动才有结束
+        CancelOnDrag();
         if (onEndDrag != null) onEndDrag();
+        
     }
     public void OnUp(PointerEventData evenData, GameObject obj)
     {
         _isDown = false;
+        CancelOnUp();
         if (_isDrag == false)
         {
             CancelOnDrag();
+            if (onEndDrag != null) onEndDrag();
         }
-        CancelOnUp();
-        if (onUp != null) onUp();
     }
     void OnApplicationPause(bool isPause)
     {
         if (isPause)
         {
             //游戏暂停-缩到桌面的时候触发
-            if (onUp != null&&_isDown) onUp();
         }
         else
         {
             //游戏开始-回到游戏的时候触发
+            if (onEndDrag != null && _isDown) onEndDrag();
         }
     }
     void OnDestroy()

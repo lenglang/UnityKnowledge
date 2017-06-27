@@ -1,9 +1,0 @@
-﻿folat number=1f;
-Tween t = DOTween.To(() => number, x => number = x, 0.1f, 0.5f).SetEase(Ease.Linear).OnUpdate(() =>
-{
-    Time.timeScale = number;
-}).SetUpdate(true);
-
-//改时间的时候注意.SetUpdate(true)使用
-
-_qiqiText.DOText(_currentDialogueContent._textContent, _currentDialogueContent._playTime).SetEase(Ease.Linear);

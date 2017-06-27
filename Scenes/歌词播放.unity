@@ -94,9 +94,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 682139750}
   - 20: {fileID: 682139749}
-  - 124: {fileID: 682139748}
-  - 92: {fileID: 682139747}
-  - 81: {fileID: 682139746}
   m_Layer: 5
   m_Name: Camera
   m_TagString: Untagged
@@ -104,27 +101,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &682139746
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 682139745}
-  m_Enabled: 1
---- !u!92 &682139747
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 682139745}
-  m_Enabled: 1
---- !u!124 &682139748
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 682139745}
-  m_Enabled: 1
 --- !u!20 &682139749
 Camera:
   m_ObjectHideFlags: 0
@@ -258,6 +234,7 @@ GameObject:
   - 114: {fileID: 1075320578}
   - 114: {fileID: 1075320577}
   - 114: {fileID: 1075320581}
+  - 114: {fileID: 1075320582}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -354,6 +331,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   f_UpdateInterval: 1
+--- !u!114 &1075320582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1075320576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413d092cf7b7b8445a16b6f34001f5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvastf: {fileID: 1075320580}
+  _text: {fileID: 801065609}
+  _imageRtf: {fileID: 1679713271}
+  _frame: 24
 --- !u!1 &1315669032
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +430,6 @@ GameObject:
   - 224: {fileID: 1679713271}
   - 222: {fileID: 1679713274}
   - 114: {fileID: 1679713272}
-  - 114: {fileID: 1679713273}
   - 114: {fileID: 1679713275}
   m_Layer: 5
   m_Name: Image
@@ -478,21 +469,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
---- !u!114 &1679713273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1679713270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 413d092cf7b7b8445a16b6f34001f5b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canvastf: {fileID: 1075320580}
-  _text: {fileID: 1315669033}
-  _countTime: 0
-  _frame: 24
 --- !u!222 &1679713274
 CanvasRenderer:
   m_ObjectHideFlags: 0

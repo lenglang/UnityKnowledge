@@ -6,14 +6,22 @@ using System.ComponentModel;
 using System;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+public enum PropType
+{
+    None,
+    列消除,
+    横消除,
+    炸弹,
+    时间
+}
+public enum MouseState
+{
+    按下,
+    弹起,
+    禁止
+}
 public class CookiesControl : MonoBehaviour
 {
-    public enum MouseState
-    {
-        按下,
-        弹起,
-        禁止
-    }
     [Header("饼干预制体")]
     public GameObject _cookiesPrefab;
     [Header("饼干容器")]
@@ -40,18 +48,16 @@ public class CookiesControl : MonoBehaviour
     private float _cookiesHeight = 0;//饼干高
     private float _startX = 0;//开始x位置
     private float _startY = 0;//开始y位置
-    private List<GameObject> _cookiesList = new List<GameObject>();//饼干数组
     private MouseState _mouseState = MouseState.禁止;//鼠标状态
     private string _choseCookiesType = "";//选择饼干的类别名
-    private List<GameObject> _deleteCookies = new List<GameObject>();//需删除的饼干
+    private List<CookiesAttribute> _deleteCookies = new List<CookiesAttribute>();//需删除的饼干
     private int _prevCookiesColumn = 0;//上个饼干列值
     private int _prevCookiesRow = 0;//上个饼干行值
-    private List<GameObject> _otherCookies = new List<GameObject>();//其他颜色饼干
     private List<GameObject> _linesList = new List<GameObject>();//线数组
-    private List<GameObject> _moveCookies = new List<GameObject>();//移动饼干
+    private List<CookiesAttribute> _moveCookies = new List<CookiesAttribute>();//移动饼干
     private int _maxMove = 0;//最大移动距离
     private List<int> _columnDeleteNumList=new List<int>();//列删除的个数数组
-    private Dictionary<GameObject, CookiesAttribute> _cookiesDictionary = new Dictionary<GameObject, CookiesAttribute>();//饼干属性字典
+    private Dictionary<GameObject, CookiesAttribute> _cookiesAttributeDictionary = new Dictionary<GameObject, CookiesAttribute>();//饼干属性字典
     void Start ()
     {
         //获取饼干宽高
@@ -94,7 +100,7 @@ public class CookiesControl : MonoBehaviour
     /// </summary>
     /// <param name="c">列</param>
     /// <param name="r">行</param>
-    public GameObject CreateCookies(int c,int r)
+    public CookiesAttribute CreateCookies(int c,int r)
     {
         GameObject cookies = Instantiate(_cookiesPrefab);
         RectTransform rtf = cookies.GetComponent<RectTransform>();
@@ -102,14 +108,17 @@ public class CookiesControl : MonoBehaviour
         rtf.localPosition = new Vector2(_startX + c * _intervalX, _startY - r * _intervalY);
         //随机图标
         Sprite sprite = _spritesList[UnityEngine.Random.Range(0, _typeNum)];
-        rtf.GetComponent<Image>().sprite = sprite;
-        rtf.name = sprite.name + "&" + c + "," + r;
-        _cookiesList.Add(cookies);
+        CookiesAttribute ca = cookies.AddComponent<CookiesAttribute>();
+        ca._c = c;
+        ca._r = r;
+        ca._image = rtf.GetComponent<Image>();
+        ca._image.sprite = sprite;
+        ca._type = sprite.name;
+        _cookiesAttributeDictionary.Add(cookies, ca);
         EventTriggerListener.Get(cookies).onDown = OnCookiesDown;
         EventTriggerListener.Get(cookies).onEnter = OnCookiesEnter;
         EventTriggerListener.Get(cookies).onUp = OnCookiesUp;
-        _cookiesDictionary.Add(cookies, cookies.AddComponent<CookiesAttribute>());
-        return cookies;
+        return ca;
     }
     /// <summary>
     /// 鼠标按下饼干
@@ -119,18 +128,11 @@ public class CookiesControl : MonoBehaviour
     private void OnCookiesDown(PointerEventData evenData, GameObject obj)
     {
         if (_mouseState != MouseState.弹起) return;
-
-
-        CookiesAttribute ca = _cookiesDictionary[obj];
-
-        _choseCookiesType = obj.name.Split('&')[0];
-        _otherCookies = _cookiesList.FindAll(n => n.name.Split('&')[0] != obj.name.Split('&')[0]);
-        for (int i = 0; i < _otherCookies.Count; i++)
-        {
-            _otherCookies[i].GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
-        }
-        _deleteCookies.Add(obj);
-        RefreshColumnRow(obj.name);
+        CookiesAttribute ca = _cookiesAttributeDictionary[obj];
+        _choseCookiesType = ca._type;
+        ShowOther(false);
+        _deleteCookies.Add(ca);
+        RefreshColumnRow(ca);
         ChoseAnimation(obj);
         _mouseState = MouseState.按下;
     }
@@ -142,10 +144,10 @@ public class CookiesControl : MonoBehaviour
     private void OnCookiesEnter(PointerEventData evenData, GameObject obj)
     {
         if (_mouseState!=MouseState.按下) return;
-        if (_choseCookiesType == obj.name.Split('&')[0])
+        CookiesAttribute ca = _cookiesAttributeDictionary[obj];
+        if (_choseCookiesType == ca._type)
         {
-            int index = _deleteCookies.IndexOf(obj);
-            string[] point = obj.name.Split('&')[1].Split(',');
+            int index = _deleteCookies.IndexOf(ca);
             if (index != -1)
             {
                 //已存在数组列表
@@ -158,12 +160,12 @@ public class CookiesControl : MonoBehaviour
                     Destroy(_linesList[i-1]);
                     _linesList.RemoveAt(i-1);
                 }
-                RefreshColumnRow(_deleteCookies[_deleteCookies.Count - 1].name);
+                RefreshColumnRow(_deleteCookies[_deleteCookies.Count - 1]);
             }
-            else if(Math.Abs(int.Parse(point[0]) - _prevCookiesColumn) <= 1 && Math.Abs(int.Parse(point[1]) - _prevCookiesRow) <= 1)
+            else if(Math.Abs(ca._c - _prevCookiesColumn) <= 1 && Math.Abs(ca._r - _prevCookiesRow) <= 1)
             {
-                _deleteCookies.Add(obj);
-                RefreshColumnRow(obj.name);
+                _deleteCookies.Add(ca);
+                RefreshColumnRow(ca);
                 CreateLine();
                 ChoseAnimation(obj);
             }
@@ -173,11 +175,10 @@ public class CookiesControl : MonoBehaviour
     /// 刷新当前行列值
     /// </summary>
     /// <param name="cookiesName"></param>
-    private void RefreshColumnRow(string cookiesName)
+    private void RefreshColumnRow(CookiesAttribute ca)
     {
-        string[] cr = cookiesName.Split('&')[1].Split(',');
-        _prevCookiesColumn = int.Parse(cr[0]);
-        _prevCookiesRow = int.Parse(cr[1]);
+        _prevCookiesColumn = ca._c;
+        _prevCookiesRow = ca._r;
     }
     /// <summary>
     /// 鼠标弹起
@@ -187,11 +188,7 @@ public class CookiesControl : MonoBehaviour
     private void OnCookiesUp(PointerEventData evenData, GameObject obj)
     {
         //显示其他饼干
-        for (int i = 0; i < _otherCookies.Count; i++)
-        {
-            _otherCookies[i].GetComponent<Image>().color = new Color(1, 1, 1);
-        }
-        _otherCookies.Clear();
+        ShowOther(true);
         //移除线
         for (int i = 0; i < _linesList.Count; i++)
         {
@@ -205,10 +202,10 @@ public class CookiesControl : MonoBehaviour
             _maxMove = 1;
             for (int i = 0; i < _deleteCookies.Count; i++)
             {
+                _cookiesAttributeDictionary.Remove(_deleteCookies[i].gameObject);
                 DOTween.Kill(_deleteCookies[i].transform);
                 JudgeMove(_deleteCookies[i]);
-                _cookiesList.RemoveAt(_cookiesList.IndexOf(_deleteCookies[i]));
-                Destroy(_deleteCookies[i]);
+                Destroy(_deleteCookies[i].gameObject);
             }
             CreateNewCookies();
             StartMove();
@@ -231,25 +228,18 @@ public class CookiesControl : MonoBehaviour
     /// <summary>
     /// 判断移动
     /// </summary>
-    private void JudgeMove(GameObject obj)
+    private void JudgeMove(CookiesAttribute ca)
     {
-        _columnDeleteNumList[int.Parse(obj.name.Split('&')[1].Split(',')[0])]++;
-        List<GameObject> moveCookies = _cookiesList.FindAll(cookies => cookies.name.Split('&')[1].Split(',')[0] == obj.name.Split('&')[1].Split(',')[0]&& int.Parse(cookies.name.Split('&')[1].Split(',')[1])< int.Parse(obj.name.Split('&')[1].Split(',')[1]));
-        for (int i = 0; i < moveCookies.Count; i++)
+        _columnDeleteNumList[ca._c]++;
+        foreach (KeyValuePair<GameObject,CookiesAttribute> item in _cookiesAttributeDictionary)
         {
-            string[] s = moveCookies[i].name.Split('&');
-            if (s.Length <3)
+            if (item.Value._c == ca._c && item.Value._r < ca._r)
             {
-                moveCookies[i].name += "&1";
-            }
-            else
-            {
-                if(int.Parse(s[2]) + 1>_maxMove)_maxMove= int.Parse(s[2]) + 1;
-                moveCookies[i].name = s[0] + "&" + s[1] + "&" + (int.Parse(s[2]) + 1).ToString();
-            }
-            if (_moveCookies.IndexOf(moveCookies[i]) == -1&&_deleteCookies.IndexOf(moveCookies[i])==-1)
-            {
-                _moveCookies.Add(moveCookies[i]);
+                item.Value._move++;
+                if (_moveCookies.IndexOf(item.Value) == -1 && _deleteCookies.IndexOf(item.Value) == -1)
+                {
+                    _moveCookies.Add(item.Value);
+                }
             }
         }
     }
@@ -258,16 +248,19 @@ public class CookiesControl : MonoBehaviour
     /// </summary>
     private void CreateNewCookies()
     {
-        GameObject cookies;
+        CookiesAttribute ca;
+        _maxMove = 1;
         for (int i = 0; i < _columnDeleteNumList.Count; i++)
         {
+            //最大移动间隔
+            if (_columnDeleteNumList[i] > _maxMove) _maxMove = _columnDeleteNumList[i];
             if (_columnDeleteNumList[i] != 0)
             {
                 for (int j = 0; j < _columnDeleteNumList[i]; j++)
                 {
-                    cookies=CreateCookies(i, j-_columnDeleteNumList[i]);
-                    cookies.name += "&" + _columnDeleteNumList[i].ToString();
-                    _moveCookies.Add(cookies);
+                    ca=CreateCookies(i, j-_columnDeleteNumList[i]);
+                    ca._move = _columnDeleteNumList[i];
+                    _moveCookies.Add(ca);
                 }
                 _columnDeleteNumList[i] = 0;
             }
@@ -282,8 +275,8 @@ public class CookiesControl : MonoBehaviour
         float targetY = 0;
         for (int i = 0; i < _moveCookies.Count; i++)
         {
-            move = int.Parse(_moveCookies[i].name.Split('&')[2]);
-            targetY = _startY - (move + int.Parse(_moveCookies[i].name.Split('&')[1].Split(',')[1])) * _intervalY;
+            move = _moveCookies[i]._move;
+            targetY = _startY - (move + _moveCookies[i]._r) * _intervalY;
             _moveCookies[i].transform.DOLocalMoveY(targetY, move * 0.3f).SetEase(Ease.OutBounce);
         }
     }
@@ -292,13 +285,10 @@ public class CookiesControl : MonoBehaviour
     /// </summary>
     private void MoveEnd()
     {
-        int move = 0;
         for (int i = 0; i < _moveCookies.Count; i++)
         {
-            string[] names = _moveCookies[i].name.Split('&');
-            move = int.Parse(names[2]);
-            string[] point = names[1].Split(',');
-            _moveCookies[i].name = names[0] + "&" + point[0] + "," + (move+int.Parse(point[1])).ToString();
+            _moveCookies[i]._r += _moveCookies[i]._move;
+            _moveCookies[i]._move = 0;
         }
         _moveCookies.Clear();
         _mouseState = MouseState.弹起;
@@ -319,5 +309,26 @@ public class CookiesControl : MonoBehaviour
     private void ChoseAnimation(GameObject obj)
     {
         obj.transform.DOScale(1.2f, 0.5f).SetEase(Ease.OutBounce);
+    }
+    /// <summary>
+    /// 显示|透明饼干
+    /// </summary>
+    /// <param name="b"></param>
+    private void ShowOther(bool b=false)
+    {
+        foreach (KeyValuePair<GameObject, CookiesAttribute> item in _cookiesAttributeDictionary)
+        {
+            if (_choseCookiesType != item.Value._type)
+            {
+                if (b)
+                {
+                    item.Value._image.color = new Color(1f, 1f, 1f);
+                }
+                else
+                {
+                    item.Value._image.color = new Color(0.5f, 0.5f, 0.5f);
+                }
+            }
+        }
     }
 }

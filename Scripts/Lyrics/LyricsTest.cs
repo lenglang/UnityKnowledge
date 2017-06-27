@@ -8,7 +8,7 @@ using Lyric = LyricBundle.Lyric;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class Test : MonoBehaviour
+public class LyricsTest : MonoBehaviour
 {
     public Transform _canvastf;
     public Text _text;

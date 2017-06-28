@@ -281,7 +281,7 @@ namespace Babybus.Talk2kiki.HappyStreet
         //    if (Input.GetKeyDown(KeyCode.Alpha2))
         //        StartWhiteAnima(UVAnimaType.Out);
         //}
-        void OnDestroy()
+        protected override void OnDestroy()
         {
             instance = null;
         }

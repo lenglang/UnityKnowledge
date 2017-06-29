@@ -4,7 +4,7 @@ using UnityEngine.SocialPlatforms;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-[RequireComponent(typeof(TurnGestures))]
+[RequireComponent(typeof(TurnGestures3D))]
 [AddComponentMenu("Attribute/AttributeTest")]
 public class AttributeTest : MonoBehaviour
 {

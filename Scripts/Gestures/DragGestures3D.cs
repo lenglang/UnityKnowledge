@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 /// 作者-wzk
 /// 功能-3D物体拖拽
 /// 使用说明-直接以组件形式添加到物体上，通过设置_isDrag的bool值来开启和禁用3D物体拖拽功能，设置_camera来指定照射相机
+/// 注意事项-场景需添加EventSystem事件系统，照射相机需添加物理射线，3D物体需有Collider相关组件
 /// </summary>
 [AddComponentMenu("Gestures/DragGestures3D")]
 public class DragGestures3D : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -27,9 +28,13 @@ public class DragGestures3D : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public void OnPointerDown(PointerEventData evenData)
     {
         if (_isDown || _isDrag == false) return;
-        _isDown = true;
         if (_camera == null)
         {
+            if (Camera.main == null)
+            {
+                Debug.LogError("场景中缺少照射的主摄像机，将照射相机Tag设置为MainCamera或给该类_camera属性赋值照射摄像机");
+                return;
+            }
             _screenSpace = Camera.main.WorldToScreenPoint(this.transform.position);
             _offset = this.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z));
         }
@@ -38,6 +43,7 @@ public class DragGestures3D : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             _screenSpace = _camera.WorldToScreenPoint(this.transform.position);
             _offset = this.transform.position - _camera.ScreenToWorldPoint(new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z));
         }
+        _isDown = true;
         _evenData = evenData;
         if (_onDown != null) _onDown(gameObject);
     }

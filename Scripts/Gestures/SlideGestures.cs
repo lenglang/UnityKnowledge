@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.EventSystems;
 /// <summary>
-/// 使用说明：直接添加脚本到物体
+/// 作者-wzk
+/// 功能-滑动手势
+/// 使用说明-直接以组件形式添加到物体上，通过设置_isSlide的bool值来开启和禁用滑动功能,注意感应的区域！！！！！！！！！
 /// </summary>
-public class SlideGestures : MonoBehaviour
+[AddComponentMenu("Gestures/SlideGestures")]
+public class SlideGestures : MonoBehaviour, IBeginDragHandler, IDragHandler
 {
     public enum Direction
     {
@@ -13,96 +17,71 @@ public class SlideGestures : MonoBehaviour
         从右到左,
         从左到右
     }
-    Vector2 currentDragDir;
-    Vector2 previousDragDir;
-    Vector2 startDragDir;
-    [Header("滑动方向")]
-    public Direction direction = Direction.从右到左;
-    public Action onBeginDrag;
-    public Action onEndDrag;
-    public Action onComplete;
-    private float _dx = 0;
-    private float _dy = 0;
-    [Header("滑动X距离算成功")]
-    public float _disX = Screen.width / 6;
-    [Header("滑动Y距离算成功")]
-    public float _disY = Screen.height / 6;
-    private float _dis = 0;
-    void Awake()
-    {
-        EventTriggerListener.Get(gameObject).onBeginDrag = OnBeginDrag;
-        EventTriggerListener.Get(gameObject).onDrag = OnDrag;
-        EventTriggerListener.Get(gameObject).onEndDrag = OnEndDrag;
-    }
-    void OnEnable()
-    {
-        startDragDir = currentDragDir;
-        EventTriggerListener etl = this.GetComponent<EventTriggerListener>();
-        if (etl) etl.enabled = true;
-    }
-    void OnDisable()
-    {
-        EventTriggerListener etl = this.GetComponent<EventTriggerListener>();
-        if (etl) etl.enabled = false;
-    }
+    [HideInInspector]
+    public Direction direction = Direction.从右到左;//滑动方向
+    [HideInInspector]
+    public float _disX = Screen.height / 6;//X方向滑动多少距离算成功
+    [HideInInspector]
+    public float _disY = Screen.height / 8;//Y方向滑动多少距离算成功
+    [HideInInspector]
+    public bool _isSlide = true;//是否可以滑动
+    public Action<GameObject> _onBeginDrag;//开始拖拽委托方法
+    public Action<GameObject> _onComplete;//完成委托方法
+    private float _dx = 0;//x差值
+    private float _dy = 0;//y差值
+    private float _dis = 0;//距离
+    private Vector2 _startDragPosition;//开始拖拽点
+    private Vector2 _currentDragPosition;//当前拖拽点
+    private Vector2 _previousDragPosition;//上一个拖拽点
     /// <summary>
     /// 开始拖拽
     /// </summary>
     /// <param name="evenData"></param>
     /// <param name="obj"></param>
-    private void OnBeginDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
+    public void OnBeginDrag(PointerEventData evenData)
     {
-        currentDragDir = evenData.position;
-        previousDragDir = currentDragDir;
-        startDragDir = currentDragDir;
-        if (onBeginDrag != null) onBeginDrag();
+        if (_isSlide == false) return;
+        _startDragPosition=_previousDragPosition = _currentDragPosition = evenData.position;
+        if (_onBeginDrag != null) _onBeginDrag(gameObject);
     }
     /// <summary>
     /// 拖拽中
     /// </summary>
     /// <param name="evenData"></param>
     /// <param name="obj"></param>
-    public void OnDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
+    public void OnDrag(PointerEventData evenData)
     {
-        currentDragDir = evenData.position;
-        Direction dragDir = RotationDirection(currentDragDir, previousDragDir);
+        if (_isSlide == false) return;
+        _currentDragPosition = evenData.position;
+        Direction dragDir = JudgeDirection(_currentDragPosition, _previousDragPosition);
         if (dragDir == direction)
         {
             if (dragDir == Direction.从下到上 || dragDir == Direction.从上到下)
             {
-                _dis =currentDragDir.y - startDragDir.y;
+                _dis = _currentDragPosition.y - _startDragPosition.y;
                 if (Math.Abs(_dis) > _disY && ((dragDir == Direction.从下到上 && _dis > 0) || (dragDir == Direction.从上到下 && _dis < 0)))
                 {
-                    if (onComplete != null) onComplete();
+                    if (_onComplete != null) _onComplete(gameObject);
                 }
             }
             else
             {
-                _dis = currentDragDir.x - startDragDir.x;
+                _dis = _currentDragPosition.x - _startDragPosition.x;
                 if (Math.Abs(_dis) > _disX && ((dragDir == Direction.从左到右 && _dis > 0) || (dragDir == Direction.从右到左 && _dis < 0)))
                 {
-                    if (onComplete != null) onComplete();
+                    if (_onComplete != null) _onComplete(gameObject);
                 }
             }
         }
-        previousDragDir = currentDragDir;
+        _previousDragPosition = _currentDragPosition;
     }
     /// <summary>
-    /// 结束拖拽
-    /// </summary>
-    /// <param name="evenData"></param>
-    /// <param name="obj"></param>
-    private void OnEndDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject obj)
-    {
-        if (onEndDrag != null) onEndDrag();
-    }
-    /// <summary>
-    /// 判断旋转顺逆时针
+    /// 判断移动方向
     /// </summary>
     /// <param name="currentDir"></param>
     /// <param name="previousDir"></param>
     /// <returns></returns>
-    public Direction RotationDirection(Vector2 currentDir, Vector2 previousDir)
+    public Direction JudgeDirection(Vector2 currentDir, Vector2 previousDir)
     {
         _dx = currentDir.x - previousDir.x;
         _dy = currentDir.y - previousDir.y;
@@ -128,11 +107,5 @@ public class SlideGestures : MonoBehaviour
                 return Direction.从右到左;
             }
         }
-    }
-    void OnDestroy()
-    {
-        EventTriggerListener etl = gameObject.GetComponent<EventTriggerListener>();
-        if (etl == null) return;
-        Destroy(etl);
     }
 }

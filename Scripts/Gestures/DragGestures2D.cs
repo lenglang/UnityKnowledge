@@ -2,112 +2,65 @@
 using System;
 using UnityEngine.EventSystems;
 /// <summary>
-/// 默认注册按下事件，按下后注册拖拽和弹起事件
+/// 作者-wzk
+/// 功能-UI拖拽
+/// 使用说明-直接以组件形式添加到物体上，通过设置_isDrag的bool值来开启和禁用UI拖拽功能
 /// </summary>
-public class DragGestures2D : MonoBehaviour {
-    private Vector2 _startPosition;
-    private Vector2 _currentPosition;
-    public Action onDown;
-    public Action onBeginDrag;
-    public Action onDrag;
-    public Action onEndDrag;
-    private  Vector3 _localPosition;
+[AddComponentMenu("Gestures/DragGestures2D")]
+public class DragGestures2D : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IBeginDragHandler,IDragHandler,IEndDragHandler
+{
+    [HideInInspector]
+    public bool _isDrag = true;//设置是否可以被拖拽
+    public Action<GameObject> _onDown;//按下委托动作
+    public Action<GameObject> _onBeginDrag;//开始拖拽委托动作
+    public Action<GameObject> _onDrag;//拖拽中委托动作
+    public Action<GameObject> _onEndDrag;//结束拖拽委托动作
+    private  Vector3 _localPosition;//按下UI时UI的位置
     private bool _isDown = false;//是否按下
-    private bool _isDrag = false;//是否拖拽
-    private EventTriggerListener _eventTriggerListener;
-	// Use this for initialization
-    void Awake()
+    private bool _draging = false;//是否拖拽中
+    private Vector2 _startPosition;//鼠标（手指）按下点
+    private Vector2 _currentPosition;//鼠标（手指）当前点
+    // Use this for initialization
+    public void OnPointerDown(PointerEventData evenData)
     {
-        _eventTriggerListener = EventTriggerListener.Get(gameObject);
-        _eventTriggerListener.onDown = OnDown;
-    }
-    public void OnDown(PointerEventData evenData, GameObject obj)
-    {
-        _localPosition = this.transform.localPosition;
+        if (_isDown||_isDrag==false) return;
         _isDown = true;
-        _isDrag = false;
+        _localPosition = this.transform.localPosition;
         _startPosition = evenData.position;
-        CancelOnDown();
-        AddOnDrag();
-        AddOnUp();
-        if (onDown != null) onDown();
+        if (_onDown != null) _onDown(gameObject);
     }
-    /// <summary>
-    /// 取消按下监听
-    /// </summary>
-    public void CancelOnDown()
+    public void OnBeginDrag(PointerEventData evenData)
     {
-        _eventTriggerListener.onDown = null;
-    }
-    /// <summary>
-    /// 添加按下监听
-    /// </summary>
-    public void AddOnDown()
-    {
-        _eventTriggerListener.onDown = OnDown;
-    }
-    /// <summary>
-    /// 取消弹起监听
-    /// </summary>
-    public void CancelOnUp()
-    {
-        _eventTriggerListener.onUp = null;
-    }
-    /// <summary>
-    /// 添加弹起监听
-    /// </summary>
-    public void AddOnUp()
-    {
-        _eventTriggerListener.onUp = OnUp;
-    }
-    /// <summary>
-    /// 添加拖拽监听相关事件
-    /// </summary>
-    public void CancelOnDrag()
-    {
-        _eventTriggerListener.onBeginDrag = null;
-        _eventTriggerListener.onDrag = null;
-        _eventTriggerListener.onEndDrag = null;
-    }
-    /// <summary>
-    /// 取消拖拽监听相关事件
-    /// </summary>
-    public void AddOnDrag()
-    {
-        _eventTriggerListener.onBeginDrag = OnBeginDrag;
-        _eventTriggerListener.onDrag = OnDrag;
-        _eventTriggerListener.onEndDrag = OnEndDrag;
-    }
-    public void OnBeginDrag(PointerEventData evenData, GameObject obj)
-    {
-        _isDrag = true;
+        if (_isDown == false || _isDrag == false) return;
+        _draging = true;
         UpdatePosition(evenData);
-        if (onBeginDrag != null) onBeginDrag();
+        if (_onBeginDrag != null) _onBeginDrag(gameObject);
     }
-    public void OnDrag(PointerEventData evenData, GameObject obj)
+    public void OnDrag(PointerEventData evenData)
     {
+        if (_isDown == false || _isDrag == false) return;
         UpdatePosition(evenData);
-        if (onDrag != null) onDrag();
+        if (_onDrag != null) _onDrag(gameObject);
     }
     public void UpdatePosition(PointerEventData evenData)
     {
         _currentPosition = evenData.position;
         this.transform.localPosition = new Vector2(_localPosition.x+_currentPosition.x - _startPosition.x, _localPosition.y + _currentPosition.y - _startPosition.y);
     }
-    public void OnEndDrag(PointerEventData evenData, GameObject obj)
+    public void OnEndDrag(PointerEventData evenData)
     {
-        CancelOnDrag();
-        //有拖动才有结束
-        if (onEndDrag != null) onEndDrag();
+        //有拖动才会执行
+        if (_draging == false || _isDrag == false) return;
+        _draging = false;
+        if (_onEndDrag != null) _onEndDrag(gameObject);
     }
-    public void OnUp(PointerEventData evenData, GameObject obj)
+    public void OnPointerUp(PointerEventData evenData)
     {
+        if (_isDown == false || _isDrag == false) return;
         _isDown = false;
-        CancelOnUp();
-        if (_isDrag == false)
+        if (_draging == false)
         {
-            CancelOnDrag();
-            if (onEndDrag != null) onEndDrag();
+            if (_onEndDrag != null) _onEndDrag(gameObject);
         }
     }
     void OnApplicationPause(bool isPause)
@@ -119,19 +72,7 @@ public class DragGestures2D : MonoBehaviour {
         else
         {
             //游戏开始-回到游戏的时候触发
-            if (onEndDrag != null && _isDown) onEndDrag();
+            if (_onEndDrag != null && _isDown&&_isDrag) _onEndDrag(gameObject);
         }
-    }
-    void OnDestroy()
-    {
-        Destroy(_eventTriggerListener);
-    }
-    void OnEnable()
-    {
-        _eventTriggerListener.enabled = true;
-    }
-    void OnDisable()
-    {
-        _eventTriggerListener.enabled = false;
     }
 }

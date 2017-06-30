@@ -115,9 +115,9 @@ public class CookiesControl : MonoBehaviour
         ca._image.sprite = sprite;
         ca._type = sprite.name;
         _cookiesAttributeDictionary.Add(cookies, ca);
-        EventTriggerListener.Get(cookies).onDown = OnCookiesDown;
-        EventTriggerListener.Get(cookies).onEnter = OnCookiesEnter;
-        EventTriggerListener.Get(cookies).onUp = OnCookiesUp;
+        EventTriggerListener.Get(cookies)._onDown = OnCookiesDown;
+        EventTriggerListener.Get(cookies)._onEnter = OnCookiesEnter;
+        EventTriggerListener.Get(cookies)._onUp = OnCookiesUp;
         return ca;
     }
     /// <summary>

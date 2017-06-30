@@ -3,8 +3,6 @@ using System.Collections;
 using UnityEngine.UI;
 using DG.Tweening;
 using System;
-namespace Babybus.Talk2kiki.HappyStreet
-{
     public enum UVAnimaType
     {
         In,
@@ -43,7 +41,7 @@ namespace Babybus.Talk2kiki.HappyStreet
 
         public Transform whiteTransfrom;
         public float whiteAnimaTime = 1f;
-        void Awake()
+        protected override void Awake()
         {
 
             material = overlay.GetComponent<MeshRenderer>().material;
@@ -206,7 +204,7 @@ namespace Babybus.Talk2kiki.HappyStreet
 
                 Vector2 tiling = new Vector2(Size, Size);
 
-                float offsetScale = -(Size - 1) * 0.5f;
+                //float offsetScale = -(Size - 1) * 0.5f;
 
                 float offsetScaleX = -0.32f * Size + 0.32f;
                 float offsetScaleY = -0.6f * Size + 0.6f;
@@ -286,6 +284,4 @@ namespace Babybus.Talk2kiki.HappyStreet
             instance = null;
         }
     }
-
-}
 

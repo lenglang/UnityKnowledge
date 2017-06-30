@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using Reusable;
 using System;
-using Lyric = LyricBundle.Lyric;
 using UnityEngine.UI;
 using DG.Tweening;
 

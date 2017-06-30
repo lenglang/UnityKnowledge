@@ -23,10 +23,10 @@ public class JoystackCc : MonoBehaviour
     private float ActiveMoveDistance = 1;               //激活移动的最低距离
     void Awake()
     {
-        EventTriggerListener.Get(gameObject).onDrag = OnDrag;
-        EventTriggerListener.Get(gameObject).onEndDrag = OnDragOut;
+        EventTriggerListener.Get(gameObject)._onDrag = OnDrag;
+        EventTriggerListener.Get(gameObject)._onEndDrag = OnDragOut;
 
-        EventTriggerListener.Get(gameObject).onDown = OnMoveStart;
+        EventTriggerListener.Get(gameObject)._onDown = OnMoveStart;
     }
     // Use this for initialization
     void Start()

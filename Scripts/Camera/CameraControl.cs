@@ -41,6 +41,7 @@ public class CameraControl : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(isCD);
         if (mainCamera == null) mainCamera = Camera.main;
     }
 

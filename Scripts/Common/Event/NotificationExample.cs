@@ -11,10 +11,11 @@ namespace WZK.Common
         // Use this for initialization
         void Start()
         {
-            NotificationControl<int>.Instance.AddEventListener(1, OnComplete1);
-            NotificationControl<int>.Instance.AddEventListener(1, OnComplete1);
-            NotificationControl<string>.Instance.AddEventListener("2", OnComplete1);
-            NotificationControl<EventType>.Instance.AddEventListener(EventType.学生, OnComplete1);
+            NotificationControl<int>.Instance.AddEventListener(1, OnComplete5);
+            NotificationControl<int>.Instance.AddEventListener(1, OnComplete5);
+            NotificationControl<int>.Instance.AddEventListener(1, OnComplete5);
+            NotificationControl<string>.Instance.AddEventListener("2", OnComplete5);
+            NotificationControl<EventType>.Instance.AddEventListener(EventType.学生, OnComplete5);
 
             NotificationControl<int>.Instance.DispatchEvent(1);
             NotificationControl<string>.Instance.DispatchEvent("2");
@@ -31,7 +32,7 @@ namespace WZK.Common
             NotificationControl<EventType, NotificationContent>.Instance.DispatchEvent(EventType.学生, nc);
         }
 
-        private void OnComplete1()
+        private void OnComplete5()
         {
             Debug.Log("通知方法1");
         }

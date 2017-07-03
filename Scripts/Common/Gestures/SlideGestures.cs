@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 using UnityEngine.EventSystems;
-namespace WZK
+namespace WZK.Common
 {
     /// <summary>
     /// 作者-wzk

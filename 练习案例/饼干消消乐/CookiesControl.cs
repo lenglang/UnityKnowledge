@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using WZK.Common;
+
 public enum PropType
 {
     None,

@@ -152,7 +152,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8C03\u6574\u6444\u50CF\u673Abackground\u989C\u8272\uFF0C\u6765\u663E\u793A\u900F\u660E\u533A\u57DF\u9700\u8981\u7684\u989C\u8272\uFF0C\u8C03\u6574\u767D\u8272\uFF0C\u5373\u90FD\u4E0D\u663E\u793A"
+  m_Text: "\u8C03\u6574\u6444\u50CF\u673Abackground\u989C\u8272\uFF0C\u6765\u663E\u793A\u900F\u660E\u533A\u57DF\u9700\u8981\u7684\u989C\u8272\uFF0C\u53EF\u8C03\u6210\u4E0D\u900F\u660E"
 --- !u!222 &225432563
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -184,7 +184,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0.366}
+  m_BackGroundColor: {r: 0.140559, g: 0.048875432, b: 0.8308824, a: 0.216}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

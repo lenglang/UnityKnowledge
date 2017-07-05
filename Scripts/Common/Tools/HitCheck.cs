@@ -8,7 +8,6 @@ namespace WZK.Common
     /// 功能-检测鼠标(手指)是否在物体上
     /// 使用说明-传入判断物体，配合拖拽功能，实现拖动的物体是否拖到指定位置处
     /// </summary>
-    [AddComponentMenu("Common/Tools/TurnGestures3D")]
     public class HitCheck : MonoBehaviour
     {
         [HideInInspector]

@@ -10,7 +10,7 @@ namespace WZK.Common
     /// 使用说明-直接以组件形式添加到物体上，通过设置_isTurn的bool值来开启和禁用3D物体转动功能，设置_camera来指定照射相机，设置_turnDirection值来改变可转动的手势方向，设置_turnShaft值来改变物体沿着啥轴转动，设置_isGo值放开之后是否继续转动
     /// 注意事项-场景需添加EventSystem事件系统，照射相机需添加物理射线，3D物体需有Collider相关组件
     /// </summary>
-    [AddComponentMenu("Gestures/TurnGestures3D")]
+    [AddComponentMenu("Common/Gestures/TurnGestures3D")]
     public class TurnGestures3D : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [HideInInspector]
@@ -35,10 +35,10 @@ namespace WZK.Common
         private Vector2 _currentDragPosition;//当前鼠标（手指）拖拽的点
         private Vector2 _previousDragPosition;//上个鼠标（手指）拖拽的点
         private bool _isDragEnd = false;//拖拽结束
-                                        /// <summary>
-                                        /// 按下
-                                        /// </summary>
-                                        /// <param name="evenData"></param>
+        /// <summary>
+        /// 按下
+        /// </summary>
+        /// <param name="evenData"></param>
         public void OnPointerDown(PointerEventData evenData)
         {
             if (_isDown || _isTurn == false) return;

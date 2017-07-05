@@ -9,7 +9,7 @@ namespace WZK.Common
     /// 功能-滑动手势
     /// 使用说明-直接以组件形式添加到物体上，通过设置_isSlide的bool值来开启和禁用滑动功能,注意感应的区域！！！！！！！！！
     /// </summary>
-    [AddComponentMenu("Gestures/SlideGestures")]
+    [AddComponentMenu("Common/Gestures/SlideGestures")]
     public class SlideGestures : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         public enum Direction

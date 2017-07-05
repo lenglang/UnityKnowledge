@@ -8,7 +8,7 @@ namespace WZK.Common
     /// 功能-UI拖拽
     /// 使用说明-直接以组件形式添加到物体上，通过设置_isDrag的bool值来开启和禁用UI拖拽功能
     /// </summary>
-    [AddComponentMenu("Gestures/DragGestures2D")]
+    [AddComponentMenu("Common/Gestures/DragGestures2D")]
     public class DragGestures2D : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [HideInInspector]

@@ -9,7 +9,7 @@ namespace WZK.Common
     /// 使用说明-直接以组件形式添加到物体上，通过设置_isDrag的bool值来开启和禁用3D物体拖拽功能，设置_camera来指定照射相机
     /// 注意事项-场景需添加EventSystem事件系统，照射相机需添加物理射线，3D物体需有Collider相关组件
     /// </summary>
-    [AddComponentMenu("Gestures/DragGestures3D")]
+    [AddComponentMenu("Common/Gestures/DragGestures3D")]
     public class DragGestures3D : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [HideInInspector]
@@ -17,7 +17,7 @@ namespace WZK.Common
         [HideInInspector]
         public bool _isDrag = true;//是否可以拖拽
         [HideInInspector]
-        public PointerEventData _evenData;//事件数据
+        public PointerEventData _pointerEventData;//事件数据
         [HideInInspector]
         public Vector3 _offset;//偏移点
         public Action<GameObject> _onDown;//按下委托动作
@@ -46,7 +46,7 @@ namespace WZK.Common
                 _offset = this.transform.position - _camera.ScreenToWorldPoint(new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z));
             }
             _isDown = true;
-            _evenData = evenData;
+            _pointerEventData = evenData;
             if (_onDown != null) _onDown(gameObject);
         }
         public void OnBeginDrag(PointerEventData evenData)
@@ -64,6 +64,7 @@ namespace WZK.Common
         }
         public void UpdatePosition(PointerEventData evenData)
         {
+            _pointerEventData = evenData;
             Vector3 curScreenSpace = new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z);
             if (_camera == null)
             {
@@ -81,12 +82,14 @@ namespace WZK.Common
             //有拖动才会执行
             if (_draging == false || _isDrag == false) return;
             _draging = false;
+            _pointerEventData = evenData;
             if (_onEndDrag != null) _onEndDrag(gameObject);
         }
         public void OnPointerUp(PointerEventData evenData)
         {
             if (_isDown == false || _isDrag == false) return;
             _isDown = false;
+            _pointerEventData = evenData;
             if (_draging == false)
             {
                 if (_onEndDrag != null) _onEndDrag(gameObject);

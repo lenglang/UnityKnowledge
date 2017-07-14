@@ -17,7 +17,7 @@ public class LyricsTest : MonoBehaviour
     private float _countTime = 0;
     void Start ()
     {
-        //获取该文本的宽高
+        //获取该文本的文字实际宽高
         //_text.preferredWidth
         //_text.preferredHeight
         _countTime = Time.time;
@@ -33,5 +33,7 @@ public class LyricsTest : MonoBehaviour
             }
 
         }).SetEase(Ease.Linear).SetLoops(-1,LoopType.Yoyo);
+
+        //更合理方式，通过Image-FillAmount来改变遮罩宽
     }
 }

@@ -5,13 +5,15 @@ namespace WZK.Common
 {
     /// <summary>
     /// 作者-wzk
-    /// 功能-3D物体拖拽
+    /// 功能-3D物体地面水平拖拽
     /// 使用说明-直接以组件形式添加到物体上，通过设置_isDrag的bool值来开启和禁用3D物体拖拽功能，设置_camera来指定照射相机
     /// 注意事项-场景需添加EventSystem事件系统，照射相机需添加物理射线，3D物体需有Collider相关组件
     /// </summary>
-    [AddComponentMenu("Common/Gestures/DragGestures3D")]
-    public class DragGestures3D : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+    [AddComponentMenu("Common/Gestures/DragGestures3D2")]
+    public class DragGestures3D2 : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
+        [Header("检测层")]
+        public string _layerMask = "";
         [HideInInspector]
         public Camera _camera;//照射相机
         [HideInInspector]
@@ -30,22 +32,27 @@ namespace WZK.Common
         private bool _isDown = false;//是否按下
         public void OnPointerDown(PointerEventData evenData)
         {
+            if(string.IsNullOrEmpty(_layerMask)) Debug.LogError("未设置检测层：_layerMask");
             if (_isDown || _isDrag == false) return;
             if (_onDownBefore != null) _onDownBefore(gameObject);
+            Ray ray;
             if (_camera == null)
             {
                 if (Camera.main == null)
                 {
                     Debug.LogError("场景中缺少照射的主摄像机，将照射相机Tag设置为MainCamera或给该类_camera属性赋值照射摄像机");
-                    return;
                 }
-                _screenSpace = Camera.main.WorldToScreenPoint(this.transform.position);
-                _offset = this.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z));
+                ray = Camera.main.ScreenPointToRay(evenData.position);
             }
             else
             {
-                _screenSpace = _camera.WorldToScreenPoint(this.transform.position);
-                _offset = this.transform.position - _camera.ScreenToWorldPoint(new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z));
+                ray = _camera.ScreenPointToRay(evenData.position);
+            }
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask(_layerMask)))
+            {
+                _offset.x = this.transform.position.x- hit.point.x;
+                _offset.z = this.transform.position.z- hit.point.z;
             }
             _isDown = true;
             _pointerEventData = evenData;
@@ -67,16 +74,23 @@ namespace WZK.Common
         public void UpdatePosition(PointerEventData evenData)
         {
             _pointerEventData = evenData;
-            Vector3 curScreenSpace = new Vector3(evenData.position.x, evenData.position.y, _screenSpace.z);
+            Ray ray;
             if (_camera == null)
             {
-                Vector3 CurPosition = Camera.main.ScreenToWorldPoint(curScreenSpace) + _offset;
-                this.transform.position = CurPosition;
+                if (Camera.main == null)
+                {
+                    Debug.LogError("场景中缺少照射的主摄像机，将照射相机Tag设置为MainCamera或给该类_camera属性赋值照射摄像机");
+                }
+                ray = Camera.main.ScreenPointToRay(evenData.position);
             }
             else
             {
-                Vector3 CurPosition = _camera.ScreenToWorldPoint(curScreenSpace) + _offset;
-                this.transform.position = CurPosition;
+                ray = _camera.ScreenPointToRay(evenData.position);
+            }
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100f,LayerMask.GetMask(_layerMask)))
+            {
+                this.transform.position = new Vector3(hit.point.x + _offset.x,this.transform.position.y, hit.point.z + _offset.z);
             }
         }
         public void OnEndDrag(PointerEventData evenData)

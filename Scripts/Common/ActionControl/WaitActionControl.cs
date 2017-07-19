@@ -60,6 +60,7 @@ namespace WZK.Common
         public void RemoveAllWaitAction()
         {
             _waitActionParameterList.Clear();
+            instance = null;
         }
         public void FixedUpdate()
         {
@@ -74,10 +75,6 @@ namespace WZK.Common
                     _waitActionParameterList.RemoveAt(i);
                 }
             }
-        }
-        private void OnDestroy()
-        {
-            instance = null;
         }
     }
     public class WaitActionParameter<T>

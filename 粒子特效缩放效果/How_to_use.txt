@@ -1,0 +1,14 @@
+Particle Scaler
+By: Roel Ezendam
+Contact: Roel@Roelezendam.com (Make sure to e-mail me if you have any issues, I'm happy to help!)
+
+How to use:
+- Simply add the ParticleScaler script to a particle, and change the scale value exposed by the script.
+- The Particle Scaler also works on entire particle systems with multiple emitters in the children. In this case, just apply the ParticleScaler script to the root object of the particle.
+
+Note that if you drag the value up and down too much, some floating point imprecision might occur. 
+This means for example that a number that was 15 will now be 14.9999999. This will not have any impact on the way the particle looks.
+
+Because the particle scaler uses some editor functionality, you will only be able to scale the particles within the editor. You cannot adjust the scale in real-time in an exported build.
+
+Sometimes the particles get cut off, this is because of a bug in Unity itself. These particles can still be scaled, but only without the 'Also scale GameObject' enabled.

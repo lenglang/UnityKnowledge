@@ -50,5 +50,9 @@ namespace WZK.Common
             LoopActionControl<string>.Instance.FixedUpdate();
             LoopActionControl<LoopActionType>.Instance.FixedUpdate();
         }
+        private void OnDestroy()
+        {
+            //清空
+        }
     }
 }

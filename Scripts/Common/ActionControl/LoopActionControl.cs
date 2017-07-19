@@ -61,6 +61,7 @@ namespace WZK.Common
         public void RemoveAllLoopAction()
         {
             _loopActionParameterList.Clear();
+            instance = null;
         }
         public void FixedUpdate()
         {
@@ -81,10 +82,6 @@ namespace WZK.Common
                     }
                 }
             }
-        }
-        private void OnDestroy()
-        {
-            instance = null;
         }
     }
     public class LoopActionParameter<T>

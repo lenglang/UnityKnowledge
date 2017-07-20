@@ -53,6 +53,13 @@ namespace WZK.Common
         private void OnDestroy()
         {
             //清空
+            WaitActionControl<int>.Instance.RemoveAllWaitAction();
+            WaitActionControl<string>.Instance.RemoveAllWaitAction();
+            WaitActionControl<WaitActionType>.Instance.RemoveAllWaitAction();
+
+            LoopActionControl<int>.Instance.RemoveAllLoopAction();
+            LoopActionControl<string>.Instance.RemoveAllLoopAction();
+            LoopActionControl<LoopActionType>.Instance.RemoveAllLoopAction();
         }
     }
 }

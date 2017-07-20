@@ -27,29 +27,15 @@ namespace WZK.Common
         public Action<GameObject> _onBeginDrag;//开始拖拽委托动作
         public Action<GameObject> _onDrag;//拖拽中委托动作
         public Action<GameObject> _onEndDrag;//结束拖拽委托动作
-        private Vector3 _screenSpace;//屏幕坐标
         private bool _draging = false;//是否拖拽中
         private bool _isDown = false;//是否按下
         public void OnPointerDown(PointerEventData evenData)
         {
-            if(string.IsNullOrEmpty(_layerMask)) Debug.LogError("未设置检测层：_layerMask");
+            if(string.IsNullOrEmpty(_layerMask)) Debug.LogError("未设置检测层：LayerMask");
             if (_isDown || _isDrag == false) return;
             if (_onDownBefore != null) _onDownBefore(gameObject);
-            Ray ray;
-            if (_camera == null)
-            {
-                if (Camera.main == null)
-                {
-                    Debug.LogError("场景中缺少照射的主摄像机，将照射相机Tag设置为MainCamera或给该类_camera属性赋值照射摄像机");
-                }
-                ray = Camera.main.ScreenPointToRay(evenData.position);
-            }
-            else
-            {
-                ray = _camera.ScreenPointToRay(evenData.position);
-            }
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask(_layerMask)))
+            if (Physics.Raycast(CreateRay(evenData), out hit, 100f, LayerMask.GetMask(_layerMask)))
             {
                 _offset.x = this.transform.position.x- hit.point.x;
                 _offset.z = this.transform.position.z- hit.point.z;
@@ -74,6 +60,18 @@ namespace WZK.Common
         public void UpdatePosition(PointerEventData evenData)
         {
             _pointerEventData = evenData;
+            RaycastHit hit;
+            if (Physics.Raycast(CreateRay(evenData), out hit, 100f,LayerMask.GetMask(_layerMask)))
+            {
+                this.transform.position = new Vector3(hit.point.x + _offset.x,this.transform.position.y, hit.point.z + _offset.z);
+            }
+        }
+        /// <summary>
+        /// 创建射线
+        /// </summary>
+        /// <returns></returns>
+        private Ray CreateRay(PointerEventData evenData)
+        {
             Ray ray;
             if (_camera == null)
             {
@@ -87,11 +85,7 @@ namespace WZK.Common
             {
                 ray = _camera.ScreenPointToRay(evenData.position);
             }
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100f,LayerMask.GetMask(_layerMask)))
-            {
-                this.transform.position = new Vector3(hit.point.x + _offset.x,this.transform.position.y, hit.point.z + _offset.z);
-            }
+            return ray;
         }
         public void OnEndDrag(PointerEventData evenData)
         {

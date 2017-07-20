@@ -6,7 +6,9 @@ public class ThreadTest : MonoBehaviour {
 	void Start () {
         Person p = new Person(1, "刘备");
         ThreadHelper.QueueOnThreadPool(RunWorkerThread,p);
-	}
+        //ThreadHelper.QueueOnThreadPool(delegate{});
+        //ThreadHelper.QueueOnThreadPool((state)=>{});
+    }
     void RunWorkerThread(object obj)
     {
         Person p = obj as Person;

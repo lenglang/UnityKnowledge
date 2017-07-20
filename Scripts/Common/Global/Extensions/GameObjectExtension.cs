@@ -87,7 +87,7 @@ public static class GameObjectExtension
     /// <param name="n">区域名</param>
     /// <param name="camera"></param>
     /// <returns></returns>
-    private static bool IsPositionInArea(this GameObject obj, string layerMask, string n, Camera camera = null)
+    private static bool IsPositionInArea(this Vector3 p, string layerMask, string n, Camera camera = null)
     {
         Ray ray;
         if (camera == null)
@@ -97,11 +97,11 @@ public static class GameObjectExtension
                 Debug.LogError("场景中缺少照射的主摄像机，将照射相机Tag设置为MainCamera或给该类_camera属性赋值照射摄像机");
                 return false;
             }
-            ray = new Ray(Camera.main.transform.position, obj.transform.position - Camera.main.transform.position);
+            ray = new Ray(Camera.main.transform.position, p - Camera.main.transform.position);
         }
         else
         {
-            ray = new Ray(camera.transform.position, obj.transform.position - camera.transform.position);
+            ray = new Ray(camera.transform.position, p - camera.transform.position);
         }
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask(layerMask)))

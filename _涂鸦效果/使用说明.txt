@@ -1,0 +1,2 @@
+﻿paint1创建SpriteRenderer到一定程度，绘制一次
+paint2改变像素

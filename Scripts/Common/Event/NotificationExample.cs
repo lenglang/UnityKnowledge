@@ -51,5 +51,13 @@ namespace WZK.Common
         {
             Debug.Log("通知方法2:" + data._name.Contains("王"));
         }
+        private void OnDestroy()
+        {
+            //事件移除
+            NotificationControl<int>.Instance.RemoveEvent(1);
+            NotificationControl<string>.Instance.RemoveEvent("2");
+            //不可使用NotificationControl<string>.Instance.RemoveAllEvent();
+            NotificationControl<EventType>.Instance.RemoveAllEvent();
+        }
     }
 }

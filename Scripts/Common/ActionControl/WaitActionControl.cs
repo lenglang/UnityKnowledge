@@ -8,6 +8,7 @@ namespace WZK.Common
 {
     /// <summary>
     /// 等待动作控制
+    /// 注意全局的话，要针对某个事件在OnDestroy移除，不是全局的话，移除所以事件
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class WaitActionControl<T>

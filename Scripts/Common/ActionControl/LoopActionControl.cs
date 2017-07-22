@@ -6,6 +6,7 @@ namespace WZK.Common
 {
     /// <summary>
     /// 循环动作控制
+    /// 注意全局的话，要针对某个事件在OnDestroy移除，不是全局的话，移除所以事件
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class LoopActionControl<T>
@@ -33,10 +34,11 @@ namespace WZK.Common
         /// <param name="type">该动作类型</param>
         /// <param name="isDoNow">是否马上执行放还是隔几秒后执行，默认马上执行</param>
         /// <param name="interval2">第一次间隔结束后，是否改变之后的间隔时间，默认0即不改变，其他值为下次间隔时间</param>
+        /// <param name="add">增加时间</param>
         /// <param name="times">循环次数，默认-1即无限循环</param>
-        public void AddLoopAction(Action action, float interval, T type=default(T),bool isDoNow = true, float interval2 = 0, int times = -1)
+        public void AddLoopAction(Action action, float interval, T type=default(T),bool isDoNow = true, float interval2 = 0,float add=0,int times = -1)
         {
-            LoopActionParameter<T> lp = new LoopActionParameter<T>(type, action, interval, times, interval2);
+            LoopActionParameter<T> lp = new LoopActionParameter<T>(type, action, interval, times, interval2,add);
             _loopActionParameterList.Add(lp);
             if (isDoNow) action();
         }
@@ -72,9 +74,11 @@ namespace WZK.Common
                 lp = _loopActionParameterList[i];
                 if (Time.time - lp._time >= lp._interval)
                 {
+                    lp._countTimes++;
                     lp._action();
                     lp._time = Time.time;
-                    if (lp._interval2 != 0 && lp._interval != lp._interval2) lp._interval = lp._interval2;
+                    if (lp._interval2 != 0 && lp._countTimes==1) lp._interval = lp._interval2;
+                    if (lp._add != 0&&lp._countTimes!=1) lp._interval += lp._add;
                     if (lp._times > 0)
                     {
                         lp._times--;
@@ -92,7 +96,9 @@ namespace WZK.Common
         public T _type;
         public int _times;
         public float _interval2;
-        public LoopActionParameter(T type, Action action, float interval, int times, float interval2)
+        public float _add;
+        public float _countTimes = 0;
+        public LoopActionParameter(T type, Action action, float interval, int times, float interval2,float add)
         {
             _action = action;
             _interval = interval;
@@ -100,6 +106,7 @@ namespace WZK.Common
             _type = type;
             _times = times;
             _interval2 = interval2;
+            _add = add;
         }
     }
 }

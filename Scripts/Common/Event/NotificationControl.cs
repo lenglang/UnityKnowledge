@@ -104,6 +104,7 @@ namespace WZK.Common
                 return;
             for (int i = _eventListeners[eventKey].Count - 1; i >= 0; i--)
             {
+                if (_eventListeners[eventKey][i] == null) Debug.Log("xxxxxxx");
                 try
                 {
                     _eventListeners[eventKey][i]();

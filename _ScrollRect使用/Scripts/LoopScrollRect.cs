@@ -10,22 +10,28 @@ namespace UnityEngine.UI
     [RequireComponent(typeof(RectTransform))]
     public abstract class LoopScrollRect : UIBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IScrollHandler, ICanvasElement, ILayoutElement, ILayoutGroup
     {
-        //==========LoopScrollRect==========
-        public delegate string prefabNameDelegate(int idx);
-        public delegate int prefabCountDelegate(int idx);
-        [Tooltip("Prefab Name in Resources")]
-        public string prefabName;
-        [HideInInspector]
-        public prefabNameDelegate prefabNameFunc = null;
-        [HideInInspector]
-        public prefabCountDelegate prefabCountFunc = null;
+		//==========LoopScrollRect==========
+		[Tooltip("Prefab Source")]
+		public LoopScrollPrefabSource prefabSource;
+
         [Tooltip("Total count, negative means INFINITE mode")]
         public int totalCount;
-        [HideInInspector]
-        public int poolSize = 5;
-        [HideInInspector]
-        [NonSerialized]
-        public object[] objectsToFill = null;
+
+		[HideInInspector]
+		[NonSerialized]
+		public LoopScrollDataSource dataSource = LoopScrollSendIndexSource.Instance;
+		public object[] objectsToFill
+		{
+			// wrapper for forward compatbility
+			set
+			{
+				if(value != null)
+					dataSource = new LoopScrollArraySource<object>(value);
+				else
+					dataSource = LoopScrollSendIndexSource.Instance;
+			}
+		}
+
         [Tooltip("Threshold for preloading")]
         public float threshold = 100;
         [Tooltip("Reverse direction for dragging")]
@@ -269,20 +275,6 @@ namespace UnityEngine.UI
         }
 
         //==========LoopScrollRect==========
-        private void SendMessageToNewObject(Transform go, int idx)
-        {
-            go.SendMessage("ScrollCellIndex", idx);
-            if (objectsToFill != null)
-            {
-                object o = null;
-                if (idx >= 0 && idx < objectsToFill.Length)
-                {
-                    o = objectsToFill[idx];
-                }
-                go.SendMessage("ScrollCellContent", o, SendMessageOptions.DontRequireReceiver);
-            }
-        }
-
         private void ReturnObjectAndSendMessage(Transform go)
         {
             go.SendMessage("ScrollCellReturn", SendMessageOptions.DontRequireReceiver);
@@ -314,7 +306,7 @@ namespace UnityEngine.UI
                 {
                     if (itemTypeEnd < totalCount)
                     {
-                        SendMessageToNewObject(content.GetChild(i), itemTypeEnd);
+						dataSource.ProvideData(content.GetChild(i), itemTypeEnd);
                         itemTypeEnd++;
                     }
                     else
@@ -326,50 +318,84 @@ namespace UnityEngine.UI
             }
         }
 
-        public void RefillCells(int startIdx = 0)
+		public void RefillCellsFromEnd(int offset = 0)
+		{
+			//TODO: unsupported for Infinity or Grid yet
+			if (!Application.isPlaying || totalCount < 0 || contentConstraintCount > 1 || prefabSource == null)
+				return;
+
+			prefabSource.InitPool();
+
+			StopMovement();
+			itemTypeEnd = reverseDirection ? offset : totalCount - offset;
+			itemTypeStart = itemTypeEnd;
+
+			for (int i = m_Content.childCount - 1; i >= 0; i--)
+			{
+				ReturnObjectAndSendMessage(m_Content.GetChild(i));
+			}
+
+			float sizeToFill = 0, sizeFilled = 0;
+			if (directionSign == -1)
+				sizeToFill = viewRect.rect.size.y;
+			else
+				sizeToFill = viewRect.rect.size.x;
+			
+			while(sizeToFill > sizeFilled)
+			{
+				float size = reverseDirection ? NewItemAtEnd() : NewItemAtStart();
+				if(size <= 0) break;
+				sizeFilled += size;
+			}
+
+			Vector2 pos = m_Content.anchoredPosition;
+            float dist = Mathf.Max(0, sizeFilled - sizeToFill);
+            if (reverseDirection)
+                dist = -dist;
+			if (directionSign == -1)
+				pos.y = dist;
+			else if (directionSign == 1)
+				pos.x = dist;
+			m_Content.anchoredPosition = pos;
+		}
+
+        public void RefillCells(int offset = 0)
         {
-            if (Application.isPlaying)
-            {
-                StopMovement();
-                itemTypeStart = reverseDirection ? totalCount - startIdx : startIdx;
-                itemTypeEnd = itemTypeStart;
+			if (!Application.isPlaying || prefabSource == null)
+				return;
 
-                // Don't `Canvas.ForceUpdateCanvases();` here, or it will new/delete cells to change itemTypeStart/End
+			prefabSource.InitPool();
 
-                if (prefabNameFunc != null/* && prefabCountFunc != null*/)
-                {
-                    // since prefabs are not the same, we first return all
-                    for (int i = 0; i < content.childCount; i++)
-                    {
-                        ReturnObjectAndSendMessage(content.GetChild(i));
-                        i--;
-                    }
-                }
-                else
-                {
-                    // recycle items if we can
-                    for (int i = 0; i < content.childCount; i++)
-                    {
-                        if (totalCount >= 0 && itemTypeEnd >= totalCount)
-                        {
-                            ReturnObjectAndSendMessage(content.GetChild(i));
-                            i--;
-                        }
-                        else
-                        {
-                            SendMessageToNewObject(content.GetChild(i), itemTypeEnd);
-                            itemTypeEnd++;
-                        }
-                    }
-                }
+            StopMovement();
+			itemTypeStart = reverseDirection ? totalCount - offset : offset;
+            itemTypeEnd = itemTypeStart;
 
-                Vector2 pos = content.anchoredPosition;
-                if (directionSign == -1)
-                    pos.y = 0;
-                else if (directionSign == 1)
-                    pos.x = 0;
-                content.anchoredPosition = pos;
-            }
+            // Don't `Canvas.ForceUpdateCanvases();` here, or it will new/delete cells to change itemTypeStart/End
+			for (int i = m_Content.childCount - 1; i >= 0; i--)
+			{
+				ReturnObjectAndSendMessage(m_Content.GetChild(i));
+			}
+
+			float sizeToFill = 0, sizeFilled = 0;
+			// m_ViewBounds may be not ready when RefillCells on Start
+			if (directionSign == -1)
+				sizeToFill = viewRect.rect.size.y;
+			else
+				sizeToFill = viewRect.rect.size.x;
+			
+			while(sizeToFill > sizeFilled)
+			{
+				float size = reverseDirection ? NewItemAtStart() : NewItemAtEnd();
+				if(size <= 0) break;
+				sizeFilled += size;
+			}
+
+			Vector2 pos = m_Content.anchoredPosition;
+			if (directionSign == -1)
+				pos.y = 0;
+			else if (directionSign == 1)
+				pos.x = 0;
+			m_Content.anchoredPosition = pos;
         }
 
         protected float NewItemAtStart()
@@ -492,21 +518,11 @@ namespace UnityEngine.UI
         }
 
         private RectTransform InstantiateNextItem(int itemIdx)
-        {
-            string name = prefabName;
-            int count = poolSize;
-            if (prefabNameFunc != null)
-            {
-                name = prefabNameFunc(itemIdx);
-            }
-            if (prefabCountFunc != null)
-            {
-                count = prefabCountFunc(itemIdx);
-            }
-            RectTransform nextItem = ResourceManager.Instance.GetObjectFromPool(name, true, count).GetComponent<RectTransform>();
+		{			
+			RectTransform nextItem = prefabSource.GetObject().GetComponent<RectTransform>();
             nextItem.transform.SetParent(content, false);
             nextItem.gameObject.SetActive(true);
-            SendMessageToNewObject(nextItem, itemIdx);
+			dataSource.ProvideData(nextItem, itemIdx);
             return nextItem;
         }
         //==========LoopScrollRect==========
@@ -833,7 +849,7 @@ namespace UnityEngine.UI
 				//==========LoopScrollRect==========
 				if(totalCount > 0 && itemTypeEnd > itemTypeStart)
                 {
-                    //TODO: space
+					//TODO: consider contentSpacing
                     float elementSize = m_ContentBounds.size.x / (itemTypeEnd - itemTypeStart);
                     float totalSize = elementSize * totalCount;
                     float offset = m_ContentBounds.min.x - elementSize * itemTypeStart;
@@ -860,7 +876,7 @@ namespace UnityEngine.UI
 				//==========LoopScrollRect==========
 				if(totalCount > 0 && itemTypeEnd > itemTypeStart)
 				{
-                    //TODO: space
+					//TODO: consider contentSpacinge
                     float elementSize = m_ContentBounds.size.y / (itemTypeEnd - itemTypeStart);
                     float totalSize = elementSize * totalCount;
                     float offset = m_ContentBounds.max.y + elementSize * itemTypeStart;

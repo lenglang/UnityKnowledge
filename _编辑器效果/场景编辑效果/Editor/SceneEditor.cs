@@ -2,13 +2,13 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(Test))]
+[CustomEditor(typeof(Scene))]
 public class SceneEditor:Editor
 {
     void OnSceneGUI()
     {
         //得到test脚本的对象
-        Test test = (Test)target;
+        Scene test = (Scene)target;
 
         //绘制文本框
         Handles.Label(test.transform.position + Vector3.up * 2,

@@ -38,7 +38,7 @@ class Pool
     public Pool(string poolName, GameObject poolObjectPrefab, GameObject rootPoolObj, int initialCount, PoolInflationType type)
     {
         lastUsedTime = Time.time;
-        Debug.Log(lastUsedTime);
+
         if (poolObjectPrefab == null)
         {
 #if UNITY_EDITOR

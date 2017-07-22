@@ -1,0 +1,13 @@
+﻿SendMessage效率不高，因为每次调用的时候都会去遍历检测自身或者子节点上要调用的方法。
+
+一、方法
+
+GameObject自身的Script
+
+SendMessage("函数名", 参数，SendMessageOptions)
+
+自身和子Object的Script
+BroadcastMessage("函数名", 参数，SendMessageOptions)
+自身和父Object的Script
+SendMessageUpwards("函数名", 参数，SendMessageOptions)
+可以跨语言的，例如Javascript可以调用C#的函数

@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Tools
+public static class Toolkit
 {
 	public static bool IsPointInsideTriangle(ref Vector3 point, ref Vector3 triangle0, ref Vector3 triangle1, ref Vector3 triangle2)
 	{

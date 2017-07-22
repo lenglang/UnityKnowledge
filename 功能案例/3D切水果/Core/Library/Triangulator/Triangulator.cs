@@ -271,7 +271,7 @@ public class Triangulator : ITriangulator
 					Vector3 point = points[reflexPoint];
 					
 					// Does the reflex point lie inside the triangle?
-					if (Tools.IsPointInsideTriangle(ref point, ref triangle0, ref triangle1, ref triangle2, ref planeNormal))
+					if (Toolkit.IsPointInsideTriangle(ref point, ref triangle0, ref triangle1, ref triangle2, ref planeNormal))
 					{
 						return true;
 					}
@@ -330,7 +330,7 @@ public class Triangulator : ITriangulator
 					{
 						Vector3 point = points[edges[otherLoop[j] + 1]];
 						
-						if (Tools.IsPointInsideTriangle(ref point, ref triangle0, ref triangle1, ref triangle2, ref planeNormal))
+						if (Toolkit.IsPointInsideTriangle(ref point, ref triangle0, ref triangle1, ref triangle2, ref planeNormal))
 						{
 							// Calculate the distance from the bottom of the triangle to the point
 							float distance = Vector3.Dot(point - triangle0, firstNormal);

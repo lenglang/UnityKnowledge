@@ -90,7 +90,6 @@ class Pool
     public GameObject NextAvailableObject(bool autoActive)
     {
         lastUsedTime = Time.time;
-
         PoolObject po = null;
         if (availableObjStack.Count > 1)
         {
@@ -110,6 +109,7 @@ class Pool
             }
 #if UNITY_EDITOR
             Debug.Log(string.Format("Growing pool {0}: {1} populated", poolName, increaseSize));
+            if(lastUsedTime>10000000)Debug.Log(lastUsedTime);
 #endif
             if (increaseSize > 0)
             {

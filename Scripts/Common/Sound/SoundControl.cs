@@ -207,7 +207,7 @@ namespace WZK.Common
         }
         public void DestroyAllSound()
         {
-            SoundManager.Instance.ClearSound();
+            SoundManager.Instance.DestroyAllSound();
         }
         float GetSoundLeftTime(Sound sound)
         {

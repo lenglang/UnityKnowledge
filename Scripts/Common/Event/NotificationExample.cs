@@ -12,6 +12,7 @@ namespace WZK.Common
         {
             NotificationControl<EventType>.Instance.AddEventListener(EventType.学生, delegate { Debug.Log("666"); });
             NotificationControl<EventType>.Instance.AddEventListener(EventType.学生, OnComplete1);
+            NotificationControl<EventType>.Instance.AddEventListener(EventType.学生, OnComplete3);
             NotificationControl<EventType>.Instance.DispatchEvent(EventType.学生);
 
             NotificationControl<EventType, NotificationContent>.Instance.AddEventListener(EventType.学生, OnComplete2);
@@ -20,6 +21,10 @@ namespace WZK.Common
         }
 
         private void OnComplete1()
+        {
+            Debug.Log("通知方法1");
+        }
+        private void OnComplete3()
         {
             Debug.Log("通知方法1");
         }

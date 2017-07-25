@@ -7,17 +7,17 @@ namespace WZK.Common
 {
     public class SoundManager : MonoBehaviour
     {
-        private static SoundManager instance;
+        private static SoundManager _instance;
         public static SoundManager Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
                     GameObject obj = new GameObject("SoundManager");
-                    instance = obj.AddComponent<SoundManager>();
+                    _instance = obj.AddComponent<SoundManager>();
                 }
-                return instance;
+                return _instance;
             }
         }
         private List<Sound> soundList = new List<Sound>();
@@ -28,8 +28,8 @@ namespace WZK.Common
             {
                 if (x.isScaleTime == false)
                 {
-                //Time.unscaledDeltaTime 不考虑timescale时候与deltaTime相同，若timescale被设置，则无效。
-                _deltaTime = Time.unscaledDeltaTime;
+                    //Time.unscaledDeltaTime 不考虑timescale时候与deltaTime相同，若timescale被设置，则无效。
+                    _deltaTime = Time.unscaledDeltaTime;
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace WZK.Common
         }
         private void OnDestroy()
         {
-            instance = null;
+            _instance = null;
         }
         //public Sound PlayFromAssetbundle(string name, bool isScaleTime = false)
         //{
@@ -128,7 +128,7 @@ namespace WZK.Common
                 soundList[i].audioSource.UnPause();
             }
         }
-        public void ClearSound()
+        public void DestroyAllSound()
         {
             soundList.ToList().ForEach(x => x.FinishNoComplete());
         }

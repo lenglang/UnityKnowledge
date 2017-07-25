@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 namespace babybus.NavMeshEx
 {
@@ -71,11 +72,12 @@ public class NavMeshObjectEditor : Editor
 
         if (GUILayout.Button("Save NavMeshObject Mesh"))
         {
-            string path = "Assets/NavMeshEx/Assets/";
-            if (!Directory.Exists(path))
+            
+            string path = SceneManager.GetActiveScene().path;
+            path=Path.GetDirectoryName(path)+ "/Assets/";
+                if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-
-            AssetDatabase.CreateAsset(Instantiate(navMeshObject.NavMesh), path + navMeshObject.gameObject.name + ".asset");
+                AssetDatabase.CreateAsset(Instantiate(navMeshObject.NavMesh), path + navMeshObject.gameObject.name + ".asset");
             AssetDatabase.SaveAssets();
         }
     }

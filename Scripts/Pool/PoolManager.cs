@@ -2,15 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PoolManager  {
-    private static PoolManager _instance;
-    public static PoolManager Instance
+public class MyPoolManager  {
+    private static MyPoolManager _instance;
+    public static MyPoolManager Instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = new PoolManager();
+                _instance = new MyPoolManager();
             }
             return _instance;
         }
@@ -33,7 +33,7 @@ public class PoolManager  {
         }
     }
     private Dictionary<string, GameObjectPool> poolDict;
-    private PoolManager()
+    private MyPoolManager()
     {
         GameObjectPoolList poolList = Resources.Load<GameObjectPoolList>(poolConfigPathMiddle);
         poolDict = new Dictionary<string, GameObjectPool>();

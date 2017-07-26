@@ -5,7 +5,7 @@ public class PoolManagerTest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        PoolManager.Instance.GetInst("Cube");
+        MyPoolManager.Instance.GetInst("Cube");
 	}
 	
 	// Update is called once per frame

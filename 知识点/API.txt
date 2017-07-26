@@ -1,0 +1,5 @@
+﻿
+string selectPath = AssetDatabase.GetAssetOrScenePath(Selection.activeObject); //Assets/UnityKnowledge/_导航/_NavMeshEx/demo.unity
+
+string path=SceneManager.GetActiveScene().path;//Assets/UnityKnowledge/_导航/_NavMeshEx/demo.unity
+Path.GetDirectoryName(path);//Assets/UnityKnowledge/_导航/_NavMeshEx

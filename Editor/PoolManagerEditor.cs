@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class PoolManagerEditor  {
     [MenuItem("对象池/创建对象池")]
@@ -22,16 +23,25 @@ public class PoolManagerEditor  {
         //EditorUtility.FocusProjectWindow();
         //Selection.activeObject = poolList;
         //Debug.Log("对象池文件已创建：" + filePath);
-        CreateAsset<GameObjectPoolList>();
+        CreateAsset<SoundConfig>();
     }
     public static void CreateAsset<T>() where T : ScriptableObject
     {
         T asset = ScriptableObject.CreateInstance<T>();
-        string path = AssetDatabase.GetAssetPath(Selection.activeObject);
+        string path = AssetDatabase.GetAssetOrScenePath(Selection.activeObject);
         string assetPathName;
         if (string.IsNullOrEmpty(path))
         {
-            assetPathName = AssetDatabase.GenerateUniqueAssetPath("Assets/" + typeof(T).ToString() + ".asset");
+            path = Path.GetDirectoryName(SceneManager.GetActiveScene().path);
+            if (string.IsNullOrEmpty(path))
+            {
+                assetPathName = AssetDatabase.GenerateUniqueAssetPath("Assets/" + typeof(T).ToString() + ".asset");
+            }
+            else
+            {
+                assetPathName = AssetDatabase.GenerateUniqueAssetPath(path+"/" + typeof(T).ToString() + ".asset");
+            }
+            
         }
         else
         {

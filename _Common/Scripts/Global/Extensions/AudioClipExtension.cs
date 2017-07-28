@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System;
-
 public static class AudioClipExtension
 {
     public static byte[] GetData(this AudioClip clip)

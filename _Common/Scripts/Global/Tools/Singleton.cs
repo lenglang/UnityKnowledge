@@ -52,7 +52,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             if(_instance != null && value != null)
             {
-                DebugBuild.Log(typeof(T) + " Instance is not null");
+                Debug.LogError(typeof(T) + " Instance is not null");
                 return;
             }
             _instance = value;

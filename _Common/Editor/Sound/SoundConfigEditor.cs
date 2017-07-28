@@ -20,6 +20,11 @@ namespace Common.Sound
             SoundConfig soundConfig = target as SoundConfig;
             if (GUILayout.Button("生成枚举配置"))
             {
+                if (string.IsNullOrEmpty(soundConfig._fileName) || string.IsNullOrEmpty(soundConfig._nameSpace))
+                {
+                    EditorUtility.DisplayDialog("警告", "脚本名或命名空间未填写", "知道了");
+                    return;
+                }
                 string path = AssetDatabase.GetAssetOrScenePath(Selection.activeObject);
                 if (string.IsNullOrEmpty(path))
                 {
@@ -168,6 +173,14 @@ namespace Common.Sound
                 }
             }
             audioConfig += "\n}";
+        }
+
+        [MenuItem("GameObject/自定义/创建声音管理对象", false, 16)]
+        private static void CreateSoundControlObject()
+        {
+            GameObject obj = EditorUtility.CreateGameObjectWithHideFlags("声音管理",HideFlags.None);
+            obj.AddComponent<SoundControl>();
+            //GameObject obj = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Common/Prefabs/Sound/声音管理.prefab")).name = "声音管理";
         }
     }
 }

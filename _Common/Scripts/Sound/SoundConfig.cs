@@ -25,10 +25,5 @@ namespace Common.Sound
                 _desc = desc;
             }
         }
-        [MenuItem("GameObject/自定义/创建声音管理对象", false, 16)]
-        private static void CreateSoundControlObject()
-        {
-            Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Common/Prefabs/Sound/声音管理.prefab")).name = "声音管理";
-        }
     }
 }

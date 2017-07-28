@@ -1,4 +1,4 @@
-﻿//.git下创建 .gitignore的文件
+﻿//.git同目录下创建 .gitignore的文件
 
 # 忽略*.o和*.a文件
  *.[oa]

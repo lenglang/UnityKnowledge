@@ -3,3 +3,7 @@ string selectPath = AssetDatabase.GetAssetOrScenePath(Selection.activeObject); /
 
 string path=SceneManager.GetActiveScene().path;//Assets/UnityKnowledge/_导航/_NavMeshEx/demo.unity
 Path.GetDirectoryName(path);//Assets/UnityKnowledge/_导航/_NavMeshEx
+
+GameObject obj = EditorUtility.CreateGameObjectWithHideFlags("声音管理",HideFlags.None);
+obj.AddComponent<SoundControl>();
+//Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Common/Prefabs/Sound/声音管理.prefab")).name = "声音管理";

@@ -23,7 +23,6 @@ public class PoolManagerEditor  {
         //EditorUtility.FocusProjectWindow();
         //Selection.activeObject = poolList;
         //Debug.Log("对象池文件已创建：" + filePath);
-        CreateAsset<SoundConfig>();
     }
     public static void CreateAsset<T>() where T : ScriptableObject
     {

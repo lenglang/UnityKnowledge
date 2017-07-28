@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
+
 namespace Common.Sound
 {
     [CustomEditor(typeof(SoundConfig))]
@@ -178,8 +180,13 @@ namespace Common.Sound
         [MenuItem("GameObject/自定义/创建声音管理对象", false, 16)]
         private static void CreateSoundControlObject()
         {
-            GameObject obj = EditorUtility.CreateGameObjectWithHideFlags("声音管理",HideFlags.None);
-            obj.AddComponent<SoundControl>();
+            GameObject gameObject = new GameObject("声音管理");
+            gameObject.AddComponent<SoundControl>();
+            EditorUtility.FocusProjectWindow();
+            Selection.activeObject = gameObject;
+            EditorGUIUtility.PingObject(Selection.activeObject);
+            Undo.RegisterCreatedObjectUndo(gameObject, "Create GameObject");
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
             //GameObject obj = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Common/Prefabs/Sound/声音管理.prefab")).name = "声音管理";
         }
     }

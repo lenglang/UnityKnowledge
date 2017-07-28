@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 namespace Common.Sound
 {
-    [CreateAssetMenu(fileName = "xxx声音配置管理", menuName = "自定义/创建声音配置", order = 0)]
+    [CreateAssetMenu(fileName = "xxx声音配置", menuName = "自定义/创建声音配置", order = 0)]
     public class SoundConfig : ScriptableObject
     {
         public string _nameSpace = "";//命名空间

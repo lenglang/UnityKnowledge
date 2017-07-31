@@ -1,4 +1,4 @@
-﻿Shader "Unlit/LineMask"
+﻿Shader "Common/LineMask"
 {
 	Properties
 	{

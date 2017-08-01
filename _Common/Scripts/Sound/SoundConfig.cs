@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor;
 namespace Common.Sound
 {
     [CreateAssetMenu(fileName = "xxx声音配置", menuName = "自定义/创建声音配置", order = 0)]

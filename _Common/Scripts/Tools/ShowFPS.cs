@@ -28,7 +28,6 @@ public class ShowFPS : MonoBehaviour {
     void Update() 
     {
         ++i_Frames;
-
         if (Time.realtimeSinceStartup > f_LastInterval + f_UpdateInterval) 
         {
             f_Fps = i_Frames / (Time.realtimeSinceStartup - f_LastInterval);

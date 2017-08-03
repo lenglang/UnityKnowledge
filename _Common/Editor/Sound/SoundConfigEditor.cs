@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
-
 namespace Common.Sound
 {
     [CustomEditor(typeof(SoundConfig))]

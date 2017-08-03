@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using WZK.Common;
-
 public class JoystackCc : MonoBehaviour
 {
     private Vector3 Origin;

@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System;
 using UnityEngine.EventSystems;
 using DG.Tweening;
-using WZK.Common;
 
 public enum PropType
 {

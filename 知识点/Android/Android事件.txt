@@ -1,0 +1,10 @@
+﻿ // Android返回键  
+    if (Application.platform == RuntimePlatform.Android && (Input.GetKeyDown(KeyCode.Escape)))  
+    {  
+        //....  
+    }  
+    // Android 中的 Home键  
+    if (Application.platform == RuntimePlatform.Android && (Input.GetKeyDown(KeyCode.Home)))  
+    {  
+        //.....  
+    }

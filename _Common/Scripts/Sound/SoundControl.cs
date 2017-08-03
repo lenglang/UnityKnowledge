@@ -81,22 +81,8 @@ public class SoundControl:MonoBehaviour
     /// <returns></returns>
     public Sound PlayMusic(Enum type)
     {
-        Sound sound= Play(_musicDictionary, type, SoundID.背景音乐, false, false);
-        if (sound != null) sound.SetVolume(_bgSoundVolume);
-        return sound;
-    }
-    /// <summary>
-    /// path所在文件夹路径 name文件名
-    /// </summary>
-    /// <param name="path"></param>
-    /// <param name="name"></param>
-    /// <param name="isRepeatSame"></param>
-    /// <returns></returns>
-    public Sound PlayFromResource(string path, string name, SoundID id,bool isRepeatSame = true)
-    {
-        AudioClip clip = Resources.Load<AudioClip>(path + name);
-        Sound sound= PlaySound(clip, name, isRepeatSame);
-        if (sound != null) sound.SetID(id.ToString());
+        Sound sound= Play(_musicDictionary, type, SoundID.背景音乐, false, true);
+        if (sound != null) sound.SetVolume(_bgSoundVolume).SetLoop();
         return sound;
     }
     /// <summary>
@@ -106,11 +92,26 @@ public class SoundControl:MonoBehaviour
     /// <param name="type">不能为SoundID</param>
     /// <param name="isRepeatSame"></param>
     /// <returns></returns>
-    public Sound PlayFromResource(string path, Enum type, bool isRepeatSame = true)
+    public Sound PlayFromResource(Enum type, bool isRepeatSame = true)
     {
-        string name = type.ToString();
-        AudioClip clip = Resources.Load<AudioClip>(path + name);
+        string name = type.GetEnumDescription();
+        AudioClip clip = Resources.Load<AudioClip>(name);
         return PlaySound(clip, name, isRepeatSame).SetID(SwitchSoundID(type).ToString());
+    }
+    /// <summary>
+    /// 播放加载场景时不销毁音效-用于点击音效
+    /// </summary>
+    /// <param name="type"></param>
+    public static void PlayDontDestroyOnLoad(Enum type)
+    {
+        string name = type.GetEnumDescription();
+        GameObject obj = new GameObject(name);
+        DontDestroyOnLoad(obj);
+        AudioClip clip = Resources.Load<AudioClip>(name);
+        AudioSource audioSource = obj.AddComponent<AudioSource>();
+        obj.AddComponent<AutoDestroy>()._time = clip.length;
+        audioSource.clip = clip;
+        audioSource.Play();
     }
     private Sound Play(Dictionary<string, AudioClip> dictionary, Enum type, SoundID id, bool isRepeatType, bool isRepeatSame)
     {

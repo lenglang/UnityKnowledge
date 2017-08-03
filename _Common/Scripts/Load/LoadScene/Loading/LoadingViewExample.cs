@@ -10,7 +10,7 @@ public class LoadingViewExample : LoadingControl
     public Image _imageProgress;
     private void Awake()
     {
-        _smooth = 2;//进度增量平滑值，越大越不平滑，默认100即不平滑
+        _smooth = 1;//进度增量平滑值，越大越不平滑，默认100即不平滑
     }
     public override void UpdateProgress(int value)
     {

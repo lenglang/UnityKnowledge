@@ -1,0 +1,5 @@
+﻿设置对象在目标对象后方十米
+Quaternion rot = targetObj.transform.rotation; //获取汽车旋转  
+myTransform.rotation = rot; //将摄像机旋转设置为和汽车旋转一样      
+// 设置摄像机的位置为 汽车后方 距离为  distance=10 的位置  
+myTransform.position = targetObj.transform.position + rot * Vector3.back * distance;  

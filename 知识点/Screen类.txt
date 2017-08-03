@@ -1,0 +1,24 @@
+﻿void Start()  
+    {  
+        Screen.autorotateToLandscapeLeft = true;    //自动旋转屏幕为向左  
+        Screen.autorotateToLandscapeRight = false;  //自动旋转屏幕向右  
+        Screen.autorotateToPortrait = true;     //自动旋转为纵向  
+  
+        Screen.autorotateToPortraitUpsideDown = true; //自动旋转为纵向倒置  
+        print(Screen.currentResolution); //当前屏幕分辨率  
+        Screen.fullScreen = !Screen.fullScreen;  //是否全屏  
+        print(Screen.height); //屏幕分辨率的高度  
+  
+        Screen.lockCursor = !Screen.lockCursor; //是否锁定光标  
+        Screen.showCursor = !Screen.showCursor; //是否显示光标  
+        Screen.orientation = ScreenOrientation.Landscape; //屏幕取向  
+  
+        Resolution[] resolutions = Screen.resolutions; //显示器支持的所有全屏分辨率  
+  
+        foreach (Resolution res in resolutions)  
+        {  
+            print(res.width + "        " + res.height);  
+        }  
+        //参数1宽， 参数 2高， 参数3是否全屏  
+        Screen.SetResolution(resolutions[0].width, resolutions[0].height, true);  
+    }

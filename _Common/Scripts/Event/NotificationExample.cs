@@ -1,36 +1,33 @@
 ﻿using UnityEngine;
-namespace WZK.Common
+namespace Common.MyEvent
 {
     public class NotificationExample : MonoBehaviour
     {
         public enum EventType
         {
-            学生
+            分数
         }
         // Use this for initialization
         void Start()
         {
-            NotificationControl<EventType>.Instance.AddEventListener(EventType.学生, delegate { Debug.Log("666"); });
-            NotificationControl<EventType>.Instance.AddEventListener(EventType.学生, OnComplete1);
-            NotificationControl<EventType>.Instance.AddEventListener(EventType.学生, OnComplete3);
-            NotificationControl<EventType>.Instance.DispatchEvent(EventType.学生);
+            NotificationControl<EventType>.Instance.AddEventListener(EventType.分数, delegate { Debug.Log("666"); });
+            NotificationControl<EventType>.Instance.AddEventListener(EventType.分数, OnComplete1);
+            NotificationControl<EventType>.Instance.DispatchEvent(EventType.分数);
 
-            NotificationControl<EventType, NotificationContent>.Instance.AddEventListener(EventType.学生, OnComplete2);
+            NotificationControl<EventType, NotificationContent>.Instance.AddEventListener(EventType.分数, OnComplete2);
             NotificationContent nc = new NotificationContent();
-            NotificationControl<EventType, NotificationContent>.Instance.DispatchEvent(EventType.学生, nc);
+            nc._sender = this.gameObject;
+            nc._age = 20;
+            nc._name = "宝宝";
+            NotificationControl<EventType, NotificationContent>.Instance.DispatchEvent(EventType.分数, nc);
         }
-
         private void OnComplete1()
         {
-            Debug.Log("通知方法1");
-        }
-        private void OnComplete3()
-        {
-            Debug.Log("通知方法1");
+            Debug.Log("分数更新");
         }
         private void OnComplete2(NotificationContent data)
         {
-            Debug.Log("通知方法2:" + data._name.Contains("王"));
+            Debug.Log("获取数据:" + data.ToString());
         }
         private void OnDestroy()
         {

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SocialPlatforms;
-using WZK.Common;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

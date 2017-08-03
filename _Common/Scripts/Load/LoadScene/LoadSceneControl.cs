@@ -6,20 +6,13 @@ public class LoadSceneControl
     /// <summary>
     /// 加载场景
     /// </summary>
-    /// <param name="sceneName">场景名</param>
-    public static void LoadScene(string sceneName,string LoadingSceneName="Loading")
+    /// <param name="sceneType"></param>
+    /// <param name="loadingSceneName"></param>
+    public static void LoadScene(SceneType nextScene)
     {
         Resources.UnloadUnusedAssets();
-        SceneDataModel.NextScene = sceneName;
-        SceneManager.LoadScene(LoadingSceneName);
-    }
-    /// <summary>
-    /// 返回主场景
-    /// </summary>
-    public static void BackMain()
-    {
-        SoundControl.Instance.DestroyAllSound();
-        //LoadScene("Main");
-        //SoundControl.Instance.PlayFromResource("音效/", SoundType.按钮音效);
+        SceneDataModel.NextScene = nextScene;
+        SceneManager.LoadScene(SceneType.加载页面.GetEnumDescription());
+        
     }
 }

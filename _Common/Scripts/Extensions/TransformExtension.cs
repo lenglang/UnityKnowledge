@@ -196,7 +196,7 @@ public static class TransformExtension
     /// </summary>
     /// <param name="transform"></param>
     /// <returns></returns>
-    public static float ParticleSystemLength(Transform transform)
+    public static float GetParticleSystemLength(this Transform transform)
     {
         ParticleSystem[] particleSystems = transform.GetComponentsInChildren<ParticleSystem>();
         float maxDuration = 0;

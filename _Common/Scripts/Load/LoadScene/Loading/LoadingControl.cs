@@ -11,19 +11,19 @@ namespace Common.LoadScene
         public int _smooth = 100;
         void Start()
         {
-            if (string.IsNullOrEmpty(SceneDataModel.NextScene)==false) StartCoroutine("StartLoading",SceneDataModel.NextScene);
+            StartCoroutine("StartLoading",SceneDataModel.NextScene);
         }
         /// <summary>
         /// 开始加载
         /// </summary>
         /// <param name="sceneName">场景名</param>
         /// <returns></returns>
-        private IEnumerator StartLoading(string sceneName)
+        private IEnumerator StartLoading(SceneType sceneName)
         {
             int displayProgress = 0;
             int progress = 0;
             UpdateProgress(progress);
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName.GetEnumDescription());
             asyncOperation.allowSceneActivation = false;
             while (asyncOperation.progress < 0.9f)
             {
@@ -34,6 +34,7 @@ namespace Common.LoadScene
                     UpdateProgress(displayProgress);
                     yield return new WaitForEndOfFrame();
                 }
+                yield return new WaitForEndOfFrame();
             }
             progress = 100;
             while (displayProgress < progress)

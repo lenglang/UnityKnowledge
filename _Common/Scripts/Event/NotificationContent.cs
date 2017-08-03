@@ -1,16 +1,18 @@
-﻿using System;
-using UnityEngine;
-public class NotificationContent
+﻿using UnityEngine;
+namespace Common.MyEvent
 {
-	/// <summary>
-	/// 通知发送者
-	/// </summary>
-	public GameObject sender;
-	public int _age = 58;
-	public string _name="小王";
-	public override string ToString()
-	{
-		return string.Format("age={0},name={1}", this._age, this._name);
-	}
+    public class NotificationContent
+    {
+        /// <summary>
+        /// 发送者
+        /// </summary>
+        public GameObject _sender;
+        public int _age;
+        public string _name;
+        public override string ToString()
+        {
+            return string.Format("sender={0},age={1},name={2}", _sender.name,_age, _name);
+        }
 
+    }
 }

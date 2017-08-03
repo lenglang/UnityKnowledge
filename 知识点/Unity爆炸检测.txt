@@ -1,0 +1,53 @@
+﻿using UnityEngine;  
+using System.Collections;  
+  
+public class Test : MonoBehaviour {  
+  
+    //爆炸效果  
+    public float radius = 5.0F;  
+    public float power = 10.0F;  
+    void Start() {  
+        Vector3 explosionPos = transform.position;  
+         // 在检测爆炸伤害时， 使用该方法， 会发射一个球形的检测区域，检测一定范围内是否有对象  
+        // Physics.OverlapSphere函数能返回一组对象的集合。而这组对象便是圆内包含的对象。    
+        // 这个圆的中心点是函数的第一个参数，第二个参数是半径大小。  
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);  
+     
+        foreach (Collider hit in colliders)   
+        {  
+            if (!hit)  
+            {  
+                 continue;  
+            }  
+  
+            if (hit.rigidbody)  
+                hit.rigidbody.AddExplosionForce(power, explosionPos, radius, 3.0F);  
+        }  
+    }  
+  
+   //在unity游戏开发中可能会碰到这样的需求，就是必须知道两个物体是否有穿插现象。  
+   //在unity中判断两个物体是否穿插第一个方法就是判断一个物体TriggerStay在另个物  
+   //体中，但是这样判定只能针对于有刚体并且运动的物体，没有刚体或者不运动的两个物体不能使用该方法  
+  
+    //Unity中给开发者提供了这样的方法：Physics.OverlapSphere 相交球    
+    //static function OverlapSphere (position : Vector3, radius : float, layerMask : int = kAllLayers) : Collider[]   
+    //position 参数：代表了这个相交球的位置  
+    //radius 参数：代表了这个相交球的半径大小  
+   //layerMask 参数：代表了你要检测的层  
+   //这个方法返回的是一个Collider数组，返回的是这个相交球中的所有碰撞体。  
+   // 例子：  
+    private void AAA()  
+    {  
+        bool isStayPlank = false;  
+        Collider[]  collidedObj = Physics.OverlapSphere(transform.position, 20);  
+  
+        foreach (Collider obj in collidedObj)  
+        {  
+           if (obj.tag == "ball")  
+           {  
+               isStayPlank = true;  
+               break;  
+           }  
+        }  
+    }  
+} 

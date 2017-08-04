@@ -7,6 +7,7 @@ namespace Common.Sound
     {
         public string _nameSpace = "";//命名空间
         public string _fileName = "";//.cs配置文件名
+        public bool _isResources = false;//是否Resources下资源
         public List<Config> _voiceList = new List<Config>();//人声列表
         public string _voiceEnumType = "VoiceType";//人声枚举类型
         public List<Config> _soundList = new List<Config>();//音效列表
@@ -18,9 +19,11 @@ namespace Common.Sound
         {
             public Object _audioClip;//声音源
             public string _desc;//描述-用于枚举
-            public Config(AudioClip audioClip = null, string desc = "")
+            public string _resourcesPath;//Resources下路径
+            public Config(AudioClip audioClip = null,string resourcesPath="",string desc = "")
             {
                 _audioClip = audioClip;
+                _resourcesPath = resourcesPath;
                 _desc = desc;
             }
         }

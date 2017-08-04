@@ -84,7 +84,7 @@ namespace Common.Sound
             {
                 if (DragAndDrop.objectReferences[0].GetType() == typeof(AudioClip))
                 {
-                    AddAudioClip(scList, (AudioClip)DragAndDrop.objectReferences[0]);
+                    AddAudioClip(scList, (AudioClip)DragAndDrop.objectReferences[0], DragAndDrop.paths[0]);
                 }
                 else
                 {
@@ -98,8 +98,8 @@ namespace Common.Sound
                         for (int i = 0; i < files.Length; i++)
                         {
                             _fileAssetPath = files[i].DirectoryName;
-                            _fileAssetPath = _fileAssetPath.Substring(_fileAssetPath.IndexOf("Assets"));
-                            AddAudioClip(scList, AssetDatabase.LoadAssetAtPath<AudioClip>(_fileAssetPath + "/" + files[i].Name));
+                            _fileAssetPath = _fileAssetPath.Substring(_fileAssetPath.IndexOf("Assets"))+ "/" + files[i].Name;
+                            AddAudioClip(scList, AssetDatabase.LoadAssetAtPath<AudioClip>(_fileAssetPath), _fileAssetPath);
                         }
                     }
                 }
@@ -117,8 +117,11 @@ namespace Common.Sound
         /// <summary>
         /// 添加音频
         /// </summary>
-        private void AddAudioClip(List<SoundConfig.Config> scList, AudioClip ac)
+        private void AddAudioClip(List<SoundConfig.Config> scList, AudioClip ac,string resourcesPath)
         {
+            resourcesPath = resourcesPath.Replace("\\", "/");
+            if (resourcesPath.Contains("Resources"))resourcesPath = resourcesPath.Substring(resourcesPath.IndexOf("Resources/") + 10);
+            resourcesPath = Path.GetDirectoryName(resourcesPath) + "/" + Path.GetFileNameWithoutExtension(resourcesPath);
             _isExist = false;
             for (int i = 0; i < scList.Count; i++)
             {
@@ -129,7 +132,7 @@ namespace Common.Sound
                     break;
                 }
             }
-            if (_isExist == false) scList.Add(new SoundConfig.Config(ac));
+            if (_isExist == false) scList.Add(new SoundConfig.Config(ac,resourcesPath));
         }
         /// <summary>
         /// 创建脚本配置
@@ -165,7 +168,7 @@ namespace Common.Sound
                 + "{" + "\n";
             for (int i = 0; i < scList.Count; i++)
             {
-                audioConfig += "[Description(" + '"' + scList[i]._audioClip.name + '"' + ")]" + "\n";
+                audioConfig += "[Description(" + '"' + scList[i]._resourcesPath + '"' + ")]" + "\n";
                 audioConfig += scList[i]._desc;
                 if (i != scList.Count - 1)
                 {

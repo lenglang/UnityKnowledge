@@ -86,10 +86,9 @@ public class SoundControl:MonoBehaviour
         return sound;
     }
     /// <summary>
-    /// path所在文件夹路径 type枚举名
+    /// 播放Resources文件夹下音乐
     /// </summary>
-    /// <param name="path"></param>
-    /// <param name="type">不能为SoundID</param>
+    /// <param name="type"></param>
     /// <param name="isRepeatSame"></param>
     /// <returns></returns>
     public Sound PlayFromResource(Enum type, bool isRepeatSame = true)

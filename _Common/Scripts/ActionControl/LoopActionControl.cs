@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
 using System.Collections.Generic;
 /// <summary>
 /// 循环动作控制
-/// 注意全局的话，要针对某个事件在OnDestroy移除，不是全局的话，移除所以事件
+/// 注意全局的话，要针对某个事件在OnDestroy移除，不是全局的话，移除所有事件
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public class LoopActionControl<T>
@@ -22,9 +21,9 @@ public class LoopActionControl<T>
         }
     }
     /// <summary>
-    /// 循环动作列表
+    /// 循环动作字典
     /// </summary>
-    private List<LoopActionParameter<T>> _loopActionParameterList = new List<LoopActionParameter<T>>();
+    private Dictionary<T, LoopActionParameter> _loopActionDictionary = new Dictionary<T, LoopActionParameter>();
     /// 添加循环动作
     /// </summary>
     /// <param name="action">动作</param>
@@ -36,9 +35,19 @@ public class LoopActionControl<T>
     /// <param name="times">循环次数，默认-1即无限循环</param>
     public void AddLoopAction(Action action, float interval, T type = default(T), bool isDoNow = true, float interval2 = 0, float add = 0, int times = -1)
     {
-        LoopActionParameter<T> lp = new LoopActionParameter<T>(type, action, interval, times, interval2, add);
-        _loopActionParameterList.Add(lp);
+        if (HasKey(type)) return;
+        LoopActionParameter lp = new LoopActionParameter(action, interval, times, interval2, add);
+        _loopActionDictionary.Add(type,lp);
         if (isDoNow) action();
+    }
+    /// <summary>
+    /// 是否包含Key
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public bool HasKey(T type)
+    {
+        return _loopActionDictionary.ContainsKey(type);
     }
     /// <summary>
     /// 移除某个循环动作
@@ -46,30 +55,23 @@ public class LoopActionControl<T>
     /// <param name="actionName"></param>
     public void RemoveLoopAction(T type)
     {
-        for (int i = 0; i < _loopActionParameterList.Count; i++)
-        {
-            if (type.Equals(_loopActionParameterList[i]._type))
-            {
-                _loopActionParameterList.RemoveAt(i);
-                break;
-            }
-        }
+        if (HasKey(type) == false) return;
+        _loopActionDictionary.Remove(type);
     }
     /// <summary>
     /// 移除所有循环动作
     /// </summary>
     public void RemoveAllLoopAction()
     {
-        _loopActionParameterList.Clear();
+        _loopActionDictionary.Clear();
         instance = null;
     }
     public void FixedUpdate()
     {
-        if (_loopActionParameterList.Count == 0) return;
-        LoopActionParameter<T> lp;
-        for (int i = _loopActionParameterList.Count - 1; i >= 0; i--)
+        LoopActionParameter lp;
+        foreach (KeyValuePair<T,LoopActionParameter> item in _loopActionDictionary)
         {
-            lp = _loopActionParameterList[i];
+            lp = item.Value;
             if (Time.time - lp._time >= lp._interval)
             {
                 lp._countTimes++;
@@ -80,28 +82,29 @@ public class LoopActionControl<T>
                 if (lp._times > 0)
                 {
                     lp._times--;
-                    if (lp._times == 0) _loopActionParameterList.RemoveAt(i);
+                    if (lp._times == 0) _loopActionDictionary.Remove(item.Key);
                 }
             }
         }
     }
 }
-public class LoopActionParameter<T>
+/// <summary>
+/// 循环动作参数类
+/// </summary>
+public class LoopActionParameter
 {
     public Action _action;
     public float _time;
     public float _interval;
-    public T _type;
     public int _times;
     public float _interval2;
     public float _add;
     public float _countTimes = 0;
-    public LoopActionParameter(T type, Action action, float interval, int times, float interval2, float add)
+    public LoopActionParameter(Action action, float interval, int times, float interval2, float add)
     {
         _action = action;
         _interval = interval;
         _time = Time.time;
-        _type = type;
         _times = times;
         _interval2 = interval2;
         _add = add;

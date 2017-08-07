@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace Common.LoadScene
@@ -11,26 +12,55 @@ namespace Common.LoadScene
         public int _smooth = 100;
         void Start()
         {
-            StartCoroutine("StartLoading",SceneDataModel.NextScene);
+            UpdateProgress(0);
+            if (SceneDataModel.IsAssetBundleScene)
+            {
+                string persistentDataPath = Application.persistentDataPath + "/" + SceneDataModel.ScenePath + SceneDataModel.NextScene.GetEnumDescription() + ".unity3d";
+                if (SceneDataModel.IsStreamingAssets && !File.Exists(persistentDataPath))
+                {
+                    StartCoroutine("StartLoadingStreamingAssets", persistentDataPath);
+                }
+                else
+                {
+                    this.CreateAssetBundleFromFile(persistentDataPath, delegate { StartCoroutine("StartLoadingScene"); });
+                }
+            }
+            else
+            {
+                StartCoroutine("StartLoadingScene");
+            }
         }
         /// <summary>
-        /// 开始加载
+        /// 下载StreamingAssets下场景到持久化路径下
         /// </summary>
-        /// <param name="sceneName">场景名</param>
+        /// <param name="persistentDataPath"></param>
         /// <returns></returns>
-        private IEnumerator StartLoading(SceneType sceneName)
+        private IEnumerator StartLoadingStreamingAssets(string persistentDataPath)
+        {
+            string streamingAssetsPath = FileControl.GetStreamingAssetsPath(SceneDataModel.ScenePath + SceneDataModel.NextScene.GetEnumDescription()+".unity3d");
+            Debug.Log(streamingAssetsPath);
+            WWW www = new WWW(streamingAssetsPath);
+            yield return www;
+            FileControl.CreateDirectory(Application.persistentDataPath + "/" + SceneDataModel.ScenePath);
+            File.WriteAllBytes(persistentDataPath, www.bytes);
+            this.CreateAssetBundleFromFile(persistentDataPath, delegate { StartCoroutine("StartLoadingScene"); });
+        }
+        /// <summary>
+        /// 开始加载场景
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator StartLoadingScene()
         {
             int displayProgress = 0;
             int progress = 0;
-            UpdateProgress(progress);
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName.GetEnumDescription());
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneDataModel.NextScene.GetEnumDescription());
             asyncOperation.allowSceneActivation = false;
             while (asyncOperation.progress < 0.9f)
             {
                 progress = (int)asyncOperation.progress * 100;
                 while (displayProgress < progress)
                 {
-                    displayProgress+=_smooth;
+                    displayProgress += _smooth;
                     UpdateProgress(displayProgress);
                     yield return new WaitForEndOfFrame();
                 }
@@ -39,11 +69,11 @@ namespace Common.LoadScene
             progress = 100;
             while (displayProgress < progress)
             {
-                displayProgress +=_smooth;
+                displayProgress += _smooth;
                 UpdateProgress(displayProgress);
                 yield return new WaitForEndOfFrame();
             }
-            SceneDataModel.CurrentScene = sceneName;
+            SceneDataModel.CurrentScene = SceneDataModel.NextScene;
             asyncOperation.allowSceneActivation = true;
             yield return asyncOperation;
         }

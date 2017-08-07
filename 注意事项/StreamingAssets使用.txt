@@ -1,14 +1,14 @@
 ﻿目录文件、文件夹不允许有中文命名
 只能用WWW读取资源
 读取目录
-private string StreamingAssetsPath(string filename)
+private string StreamingAssetsPath(string fileName)
     {
 #if UNITY_ANDROID&&!UNITY_EDITOR
-        return System.IO.Path.Combine(Application.streamingAssetsPath+ "/AssetBundle/Android",filename);
+        return System.IO.Path.Combine(Application.streamingAssetsPath+ "/AssetBundle/Android",fileName);
 #elif UNITY_EDITOR
-        return System.IO.Path.Combine("file://" + Application.streamingAssetsPath + "/AssetBundle/Android", filename);
-		#elif UNITY_IOS //待测
-		return "file://"+System.IO.Path.Combine(Application.streamingAssetsPath + "/AssetBundle/IOS", filename);
+        return System.IO.Path.Combine("file://" + Application.streamingAssetsPath + "/AssetBundle/Android", fileName);
+		#elif UNITY_IOS
+		return "file://"+System.IO.Path.Combine(Application.streamingAssetsPath + "/AssetBundle/IOS", fileName);
 #else
         return "";    
 #endif

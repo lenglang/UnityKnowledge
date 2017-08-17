@@ -72,7 +72,6 @@ public class FileControl
             return;
         if (!File.Exists(sourceFileName))
             return;
-        DebugBuild.Log(sourceFileName + " => " + destFileName);
         CreateDirectory(destFileName);
         DeleteFile(destFileName);
         File.Move(sourceFileName, destFileName);
@@ -82,7 +81,6 @@ public class FileControl
     {
         if (sourceFileName == destFileName)
             return;
-        DebugBuild.Log(sourceFileName + " => " + destFileName);
         CreateDirectory(destFileName);
         File.Copy(sourceFileName, destFileName, overwrite);
         SetNoBackupFlag(destFileName);

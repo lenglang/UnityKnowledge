@@ -4,7 +4,7 @@ using System.Linq;
 using System;
 using Common.Sound;
 [DisallowMultipleComponent]
-public class SoundControl:MonoBehaviour
+public class SoundControl : MonoBehaviour
 {
     public enum SoundID
     {
@@ -12,11 +12,9 @@ public class SoundControl:MonoBehaviour
         人声,
         音效
     }
-    [Header("声音配置")]
-    public SoundConfig _soundConfig=null;
     [Header("背景音乐声音大小")]
     public float _bgSoundVolume = 0.6f;
-    private List<Sound> _soundList = new List<Sound>();
+    private List<Sound> _playingSoundList = new List<Sound>();
     private float _deltaTime;
     private Dictionary<string, AudioClip> _voiceDictionary = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> _soundDictionary = new Dictionary<string, AudioClip>();
@@ -36,19 +34,63 @@ public class SoundControl:MonoBehaviour
     void Awake()
     {
         _instance = this;
-        if (_soundConfig == null) return;
-        foreach (SoundConfig.Config item in _soundConfig._voiceList)
+        foreach (Config item in _voiceList)
         {
-            _voiceDictionary.Add(item._desc, (AudioClip)item._audioClip);
+            _voiceDictionary.Add(item._desc, item._audioClip);
         }
-        foreach (SoundConfig.Config item in _soundConfig._soundList)
+        foreach (Config item in _soundList)
         {
-            _soundDictionary.Add(item._desc, (AudioClip)item._audioClip);
+            _soundDictionary.Add(item._desc, item._audioClip);
         }
-        foreach (SoundConfig.Config item in _soundConfig._musiceList)
+        foreach (Config item in _musiceList)
         {
-            _musicDictionary.Add(item._desc, (AudioClip)item._audioClip);
+            _musicDictionary.Add(item._desc, item._audioClip);
         }
+        if (SystemData.LANGUAGE != "zh")
+        {
+            List<AudioClip> audioClipList = new List<AudioClip>();
+            audioClipList = GetLanguageAudioClip(SystemData.LANGUAGE);
+            if (audioClipList != null)
+            {
+                ReplaceVoiceAudioClip(audioClipList);
+            }
+            else if (SystemData.LANGUAGE != "zht")
+            {
+                audioClipList = GetLanguageAudioClip("en");
+                if(audioClipList!=null) ReplaceVoiceAudioClip(audioClipList);
+            }
+        }
+    }
+    /// <summary>
+    /// 替换人声
+    /// </summary>
+    /// <param name="audioClipList"></param>
+    void ReplaceVoiceAudioClip(List<AudioClip> audioClipList)
+    {
+        for (int i = 0; i < audioClipList.Count; i++)
+        {
+            foreach (KeyValuePair<string, AudioClip> item in _voiceDictionary)
+            {
+                if (item.Value.name == audioClipList[i].name)
+                {
+                    _voiceDictionary[item.Key] = audioClipList[i];
+                    break;
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// 获取语言音频
+    /// </summary>
+    /// <param name="language"></param>
+    /// <returns></returns>
+    List<AudioClip> GetLanguageAudioClip(string language)
+    {
+        for (int i = 0; i < _languageAudioClipList.Count; i++)
+        {
+            if (_languageAudioClipList[i]._language == language) return _languageAudioClipList[i]._audioClipList;
+        }
+        return null;
     }
     /// <summary>
     /// 播放人声
@@ -59,6 +101,7 @@ public class SoundControl:MonoBehaviour
     /// <returns></returns>
     public Sound PlayVoice(Enum type, bool isRepeatType = false, bool isRepeatSame = true)
     {
+        if (SwitchSoundID(type) != SoundID.人声) Debug.LogError("播放类型不对，应用VoiceType！");
         return Play(_voiceDictionary, type, SoundID.人声, isRepeatType, isRepeatSame);
     }
     /// <summary>
@@ -70,6 +113,7 @@ public class SoundControl:MonoBehaviour
     /// <returns></returns>
     public Sound PlaySound(Enum type, bool isRepeatType = true, bool isRepeatSame = true)
     {
+        if (SwitchSoundID(type) != SoundID.音效) Debug.LogError("播放类型不对，应用SoundType！");
         return Play(_soundDictionary, type, SoundID.音效, isRepeatType, isRepeatSame);
     }
     /// <summary>
@@ -81,7 +125,8 @@ public class SoundControl:MonoBehaviour
     /// <returns></returns>
     public Sound PlayMusic(Enum type)
     {
-        Sound sound= Play(_musicDictionary, type, SoundID.背景音乐, false, true);
+        if (SwitchSoundID(type) != SoundID.音效) Debug.LogError("播放类型不对，应用MusiceType！");
+        Sound sound = Play(_musicDictionary, type, SoundID.背景音乐, false, true);
         if (sound != null) sound.SetVolume(_bgSoundVolume).SetLoop();
         return sound;
     }
@@ -98,7 +143,7 @@ public class SoundControl:MonoBehaviour
         return PlaySound(clip, name, isRepeatSame).SetID(SwitchSoundID(type).ToString());
     }
     /// <summary>
-    /// 播放加载场景时不销毁音效-用于点击音效
+    /// 播放Resources文件夹下加载场景时不销毁音效-用于点击音效
     /// </summary>
     /// <param name="type"></param>
     public static void PlayDontDestroyOnLoad(Enum type)
@@ -133,27 +178,27 @@ public class SoundControl:MonoBehaviour
         sound._audioSource = gameObject.AddComponent<AudioSource>();
         sound._audioSource.clip = clip;
         sound._audioSource.Play();
-        _soundList.Add(sound);
+        _playingSoundList.Add(sound);
         return sound;
     }
     public void RemoveSound(Sound sound)
     {
         Destroy(sound._audioSource);
-        _soundList.Remove(sound);
+        _playingSoundList.Remove(sound);
         sound = null;
     }
     public void PauseAllSound()
     {
-        for (int i = 0; i < _soundList.Count; i++)
+        for (int i = 0; i < _playingSoundList.Count; i++)
         {
-            _soundList[i]._audioSource.Pause();
+            _playingSoundList[i]._audioSource.Pause();
         }
     }
     public void ResumeAllSound()
     {
-        for (int i = 0; i < _soundList.Count; i++)
+        for (int i = 0; i < _playingSoundList.Count; i++)
         {
-            _soundList[i]._audioSource.UnPause();
+            _playingSoundList[i]._audioSource.UnPause();
         }
     }
     public bool IsPlaying(Enum type)
@@ -193,7 +238,7 @@ public class SoundControl:MonoBehaviour
     }
     public List<Sound> GetSoundsById(string ID)
     {
-        List<Sound> sound = new List<Sound>(this._soundList.Where(s => s._id.Equals(ID)));
+        List<Sound> sound = new List<Sound>(this._playingSoundList.Where(s => s._id.Equals(ID)));
         return sound;
     }
     public void DestroyAllSound(SoundID soundID)
@@ -206,7 +251,7 @@ public class SoundControl:MonoBehaviour
     }
     public void DestroyAllSound()
     {
-        _soundList.ToList().ForEach(x => x.FinishNoComplete());
+        _playingSoundList.ToList().ForEach(x => x.FinishNoComplete());
     }
     public void DestroySound(Enum type, bool isComplete = false)
     {
@@ -228,7 +273,7 @@ public class SoundControl:MonoBehaviour
     }
     private List<Sound> SearchSound(string soundName)
     {
-        List<Sound> sound = new List<Sound>(this._soundList.Where(s => s._name.Contains(soundName)));
+        List<Sound> sound = new List<Sound>(this._playingSoundList.Where(s => s._name.Contains(soundName)));
         return sound;
     }
     float GetSoundLeftTime(Sound sound)
@@ -266,7 +311,7 @@ public class SoundControl:MonoBehaviour
     }
     void Update()
     {
-        _soundList.ToList().ForEach(x =>
+        _playingSoundList.ToList().ForEach(x =>
         {
             if (x._isScaleTime == false)
             {
@@ -290,5 +335,42 @@ public class SoundControl:MonoBehaviour
         DestroyAllSound();
         _instance = null;
     }
+    #region 声音配置
+    public string _savePath = "";//存储路径
+    public string _nameSpace = "";//命名空间
+    public string _fileName = "";//.cs配置文件名
+    public bool _isResources = false;//是否Resources下资源
+    public List<Config> _voiceList = new List<Config>();//人声列表
+    public string _voiceEnumType = "VoiceType";//人声枚举类型
+    public List<Config> _soundList = new List<Config>();//音效列表
+    public string _soundEnumType = "SoundType";//音效枚举类型
+    public List<Config> _musiceList = new List<Config>();//背景音乐列表
+    public string _musiceEnumType = "MusiceType";//背景音乐枚举类型
+    public List<string> _languageTypeList = new List<string>() { "zht", "en" };//其他语言类型
+    public List<LanguageAudioClip> _languageAudioClipList = new List<LanguageAudioClip>();//国际化音频
+    [System.Serializable]
+    public class Config
+    {
+        public AudioClip _audioClip;//声音源
+        public string _desc;//描述-用于枚举
+        public string _resourcesPath;//Resources下路径
+        public Config(AudioClip audioClip = null, string resourcesPath = "", string desc = "")
+        {
+            _audioClip = audioClip;
+            _resourcesPath = resourcesPath;
+            _desc = desc;
+        }
+    }
+    [System.Serializable]
+    public class LanguageAudioClip
+    {
+        public string _language = "";
+        public List<AudioClip> _audioClipList = new List<AudioClip>();
+        public LanguageAudioClip(string language)
+        {
+            _language = language;
+        }
+    }
+    #endregion
 }
 

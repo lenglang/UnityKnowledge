@@ -1,33 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-public class UIDepth : MonoBehaviour
+namespace WZK
 {
-    [Header("层级")]
-    public int order;
-    [Header("是否UI")]
-    public bool isUI = false;
-    [Header("UI是否可点击")]
-    public bool isClick = false;
-    void Start()
+    public class UIDepth : MonoBehaviour
     {
-        if (isUI)
+        [Header("层级")]
+        public int order;
+        [Header("是否UI")]
+        public bool isUI = false;
+        [Header("UI是否可点击")]
+        public bool isClick = false;
+        void Start()
         {
-            Canvas canvas = GetComponent<Canvas>();
-            if (canvas == null)
+            if (isUI)
             {
-                canvas = gameObject.AddComponent<Canvas>();
-                if(isClick)gameObject.AddComponent<GraphicRaycaster>();
+                Canvas canvas = GetComponent<Canvas>();
+                if (canvas == null)
+                {
+                    canvas = gameObject.AddComponent<Canvas>();
+                    if (isClick) gameObject.AddComponent<GraphicRaycaster>();
+                }
+                canvas.overrideSorting = true;
+                canvas.sortingOrder = order;
             }
-            canvas.overrideSorting = true;
-            canvas.sortingOrder = order;
-        }
-        else
-        {
-            Renderer[] renders = GetComponentsInChildren<Renderer>();
-            foreach (Renderer render in renders)
+            else
             {
-                render.sortingOrder = order;
+                Renderer[] renders = GetComponentsInChildren<Renderer>();
+                foreach (Renderer render in renders)
+                {
+                    render.sortingOrder = order;
+                }
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System;
-namespace Common.Sound
+namespace WZK
 {
     public class Sound
     {

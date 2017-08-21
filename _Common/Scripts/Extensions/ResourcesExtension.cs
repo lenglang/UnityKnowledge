@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-
-public static class ResourcesExtension
+namespace WZK
 {
-    public static void LoadAssetAsync<T>(string path, System.Action<ResourceRequest> action) where T : Object
+    public static class ResourcesExtension
     {
-        ResourceRequest resourceRequest = Resources.LoadAsync<T>(path);
-        Debug.Log(resourceRequest);
-        //GlobalGameObject.Instance.InvokeWaitForYieldInstruction(action, resourceRequest);
+        public static void LoadAssetAsync<T>(string path, System.Action<ResourceRequest> action) where T : Object
+        {
+            ResourceRequest resourceRequest = Resources.LoadAsync<T>(path);
+            Debug.Log(resourceRequest);
+            //GlobalGameObject.Instance.InvokeWaitForYieldInstruction(action, resourceRequest);
+        }
     }
 }

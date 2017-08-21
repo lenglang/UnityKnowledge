@@ -3,8 +3,11 @@ using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
-namespace Common.Sound
+namespace WZK
 {
+    /// <summary>
+    /// 声音管理编辑器扩展
+    /// </summary>
     [CustomEditor(typeof(SoundControl))]
     public class SoundControlEditor : Editor
     {

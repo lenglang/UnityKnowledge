@@ -1,77 +1,79 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+namespace WZK
 {
-    public static bool activeSelf
+    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        get
+        public static bool activeSelf
         {
-            return Instance.gameObject.activeSelf;
-        }
-        set
-        {
-            Instance.gameObject.SetActive(value);
-        }
-    }
-
-    public static bool Enabled
-    {
-        get
-        {
-            return Instance.enabled;
-        }
-        set
-        {
-            Instance.enabled = value;
-        }
-    }
-
-    public static bool isNullOfInstance
-    {
-        get
-        {
-            if (_instance == null)
+            get
             {
-                return true;
+                return Instance.gameObject.activeSelf;
             }
-            else
+            set
             {
-                return false;
+                Instance.gameObject.SetActive(value);
             }
         }
-    }
 
-    /**
-       Returns the instance of this singleton.
-    */
-    private static T _instance;
-    public static T Instance
-    {
-        private set
+        public static bool Enabled
         {
-            if(_instance != null && value != null)
+            get
             {
-                Debug.LogError(typeof(T) + " Instance is not null");
-                return;
+                return Instance.enabled;
             }
-            _instance = value;
+            set
+            {
+                Instance.enabled = value;
+            }
         }
-        get
+
+        public static bool isNullOfInstance
         {
-            if (_instance == null)
-                _instance = GameObject.FindObjectOfType<T>();
-            if (_instance == null)
-                Debug.LogError(typeof(T) + " instance is null");
-            return _instance;
+            get
+            {
+                if (_instance == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
-    }
-    protected virtual void Awake()
-    {
-        Instance = this as T;
-    }
-    protected virtual void OnDestroy()
-    {
-        Instance = null;
+
+        /**
+           Returns the instance of this singleton.
+        */
+        private static T _instance;
+        public static T Instance
+        {
+            private set
+            {
+                if (_instance != null && value != null)
+                {
+                    Debug.LogError(typeof(T) + " Instance is not null");
+                    return;
+                }
+                _instance = value;
+            }
+            get
+            {
+                if (_instance == null)
+                    _instance = GameObject.FindObjectOfType<T>();
+                if (_instance == null)
+                    Debug.LogError(typeof(T) + " instance is null");
+                return _instance;
+            }
+        }
+        protected virtual void Awake()
+        {
+            Instance = this as T;
+        }
+        protected virtual void OnDestroy()
+        {
+            Instance = null;
+        }
     }
 }

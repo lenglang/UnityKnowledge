@@ -3,7 +3,7 @@ using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-
+using WZK;
 public class ResourcesEditor:Editor {
     [MenuItem("Tools/分别打包选中文件为一个AssetBundle")]
     static void BuildAssetBundle()

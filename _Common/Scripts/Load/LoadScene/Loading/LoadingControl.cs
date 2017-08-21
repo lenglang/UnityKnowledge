@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-namespace Common.LoadScene
+namespace WZK
 {
     public class LoadingControl : MonoBehaviour
     {

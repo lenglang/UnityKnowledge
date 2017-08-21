@@ -2,67 +2,69 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Threading;
-
-public class ThreadHelper : MonoBehaviour
+namespace WZK
 {
-    private List<Action> actions = new List<Action>();
-    private Thread mainThread=null;
-    private static ThreadHelper _instance;
-    public static ThreadHelper Instance
+    public class ThreadHelper : MonoBehaviour
     {
-        get
+        private List<Action> actions = new List<Action>();
+        private Thread mainThread = null;
+        private static ThreadHelper _instance;
+        public static ThreadHelper Instance
         {
-            if (_instance == null)
+            get
             {
-                _instance = (new GameObject("ThreadHelper")).AddComponent<ThreadHelper>();
+                if (_instance == null)
+                {
+                    _instance = (new GameObject("ThreadHelper")).AddComponent<ThreadHelper>();
+                }
+                return _instance;
             }
-            return _instance;
         }
-    }
-    public bool IsMainThread()
-    {
-        return mainThread == null || Thread.CurrentThread == mainThread;
-    }
-    // Use this for initialization
-    void Awake()
-    {
-        mainThread = Thread.CurrentThread;
-        DontDestroyOnLoad(gameObject);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        var currentActions = new List<Action>();
-        lock (actions)
+        public bool IsMainThread()
         {
-            currentActions.AddRange(actions);
-            foreach (var item in currentActions)
-                actions.Remove(item);
+            return mainThread == null || Thread.CurrentThread == mainThread;
         }
-        foreach (var action in currentActions)
+        // Use this for initialization
+        void Awake()
         {
-            if (action != null)
+            mainThread = Thread.CurrentThread;
+            DontDestroyOnLoad(gameObject);
+        }
+        // Update is called once per frame
+        void Update()
+        {
+            var currentActions = new List<Action>();
+            lock (actions)
+            {
+                currentActions.AddRange(actions);
+                foreach (var item in currentActions)
+                    actions.Remove(item);
+            }
+            foreach (var action in currentActions)
+            {
+                if (action != null)
+                    action();
+            }
+        }
+        public void QueueOnMainThread(Action action)
+        {
+            if (action == null)
+                return;
+            if (IsMainThread())
+            {
                 action();
+                return;
+            }
+            lock (actions)
+            {
+                actions.Add(action);
+            }
         }
-    }
-    public void QueueOnMainThread(Action action)
-    {
-        if (action == null)
-            return;
-        if (IsMainThread())
+        public void QueueOnThreadPool(WaitCallback callBack, object state = null)
         {
-            action();
-            return;
+            if (callBack == null)
+                return;
+            ThreadPool.QueueUserWorkItem(callBack, state);
         }
-        lock (actions)
-        {
-            actions.Add(action);
-        }
-    }
-    public void QueueOnThreadPool(WaitCallback callBack, object state = null)
-    {
-        if (callBack == null)
-            return;
-        ThreadPool.QueueUserWorkItem(callBack, state);
     }
 }

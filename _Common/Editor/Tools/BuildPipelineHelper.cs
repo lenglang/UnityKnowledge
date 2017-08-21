@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 using UnityEditor;
+namespace WZK
+{
+    /// <summary>
+    /// 打包平台工具
+    /// </summary>
     public class BuildPipelineHelper
     {
         public static string BuildPlayer(string[] levels, string locationPathName, BuildTarget target, BuildOptions options)
@@ -24,3 +29,4 @@ using UnityEditor;
             return BuildPipeline.BuildAssetBundles(outputPath, builds, assetBundleOptions, targetPlatform);
         }
     }
+}

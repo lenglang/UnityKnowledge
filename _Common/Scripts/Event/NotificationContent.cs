@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
-namespace Common.MyEvent
+namespace WZK
 {
+    /// <summary>
+    /// 通知内容
+    /// </summary>
     public class NotificationContent
     {
         /// <summary>

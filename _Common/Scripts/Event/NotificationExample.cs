@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace Common.MyEvent
+namespace WZK
 {
     public class NotificationExample : MonoBehaviour
     {

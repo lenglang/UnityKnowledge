@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Common.LoadScene
+namespace WZK
 {
     public enum SceneType
     {

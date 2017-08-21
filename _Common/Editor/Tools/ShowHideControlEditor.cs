@@ -9,6 +9,7 @@ public class ShowHideControlEditor : Editor
     private int _deleteGameObjectGroupIndex = -1;//删除组索引
     private int _choseAreaIndex = -1;
     private int _deleteGameObjectIndex = -1;//对象索引
+    private bool _isArea = false;//是否在指定的拖拽区域内
     private ShowHideControl.GameObjectGroup.GameObjectInformation _gameObjectInformation;
     public override void OnInspectorGUI()
     {
@@ -20,6 +21,7 @@ public class ShowHideControlEditor : Editor
         }
         GUILayout.Space(30);
         _deleteGameObjectGroupIndex = -1;
+        _isArea = false;
         for (int i = 0; i < _showHide._list.Count; i++)
         {
             EditorGUILayout.BeginHorizontal();
@@ -47,14 +49,14 @@ public class ShowHideControlEditor : Editor
                 }
             }
             EditorGUILayout.EndHorizontal();
-
             var dragArea = GUILayoutUtility.GetRect(0f, 50f, GUILayout.ExpandWidth(true));
             GUI.Box(dragArea, new GUIContent("拖动对象到此区域"));
-            if (dragArea.Contains(Event.current.mousePosition)&& Event.current.type == EventType.DragUpdated)
+            if (dragArea.Contains(Event.current.mousePosition))
             {
+                _isArea = true;
                 _choseAreaIndex = i;
             }
-            else if(Event.current.type==EventType.DragUpdated)
+            else if(Event.current.type == EventType.Repaint&&_isArea==false)
             {
                 _choseAreaIndex = -1;
             }
@@ -75,6 +77,7 @@ public class ShowHideControlEditor : Editor
         }
         if (Event.current.type == EventType.DragExited && _choseAreaIndex != -1)
         {
+            _gameObjectGroup = _showHide._list[_choseAreaIndex];
             DragAndDrop.AcceptDrag();
             if (DragAndDrop.objectReferences.Length != 0)
             {

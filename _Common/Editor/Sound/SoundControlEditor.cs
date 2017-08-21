@@ -14,13 +14,13 @@ namespace Common.Sound
         private string _fileAssetPath;//文件工程目录
         private string[] _typeButtons = { "人声", "音效", "背景音乐", "国际化语言" };//类型按钮切换
         private int _selectType = 0;//选择的类型
-        private int _choseLanguage = 0;//选择的语言
         private bool _isOtherLanguage = false;//是否其他语言
         private SoundControl soundControl;//声音控制
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
             soundControl = target as SoundControl;
+            soundControl._testLanguage = EditorGUILayout.TextField("测试语言-Debug模式下才生效", soundControl._testLanguage);
             soundControl._bgSoundVolume = EditorGUILayout.FloatField("背景音乐音量", soundControl._bgSoundVolume);
             soundControl._savePath = EditorGUILayout.TextField("生成的枚举类存放的Assets下文件夹路径", soundControl._savePath);
             if (GUILayout.Button("生成枚举配置"))
@@ -80,53 +80,7 @@ namespace Common.Sound
             }
             else
             {
-                for (int i = 0; i < scList.Count; i++)
-                {
-                    EditorGUILayout.BeginHorizontal();
-                    scList[i]._audioClip = (AudioClip)EditorGUILayout.ObjectField("声音" + (i + 1), scList[i]._audioClip, typeof(AudioClip), false);
-                    _isDelete = false;
-                    if (GUILayout.Button("删除" + (i + 1)))
-                    {
-                        _isDelete = true;
-                    }
-                    EditorGUILayout.EndHorizontal();
-                    scList[i]._desc = EditorGUILayout.TextField("描述" + (i + 1), scList[i]._desc);
-                    GUILayout.Space(10);
-                    if (scList[i]._desc == "" && scList[i]._audioClip) scList[i]._desc = scList[i]._audioClip.name;
-                    if (_isDelete) scList.RemoveAt(i);
-                }
-                if (Event.current.type == EventType.DragExited)
-                {
-                    if (DragAndDrop.objectReferences[0].GetType() == typeof(AudioClip))
-                    {
-                        AddAudioClip(scList, (AudioClip)DragAndDrop.objectReferences[0], DragAndDrop.paths[0]);
-                    }
-                    else
-                    {
-                        _directionPath = Application.dataPath;
-                        _directionPath = _directionPath.Substring(0, _directionPath.LastIndexOf("/") + 1) + DragAndDrop.paths[0];
-                        string[] strs = _directionPath.Split('.');
-                        if (strs.Length == 1 && Directory.Exists(_directionPath))
-                        {
-                            DirectoryInfo direction = new DirectoryInfo(_directionPath);
-                            FileInfo[] files = direction.GetFiles("*.mp3", SearchOption.AllDirectories);
-                            for (int i = 0; i < files.Length; i++)
-                            {
-                                _fileAssetPath = files[i].DirectoryName;
-                                _fileAssetPath = _fileAssetPath.Substring(_fileAssetPath.IndexOf("Assets")) + "/" + files[i].Name;
-                                AddAudioClip(scList, AssetDatabase.LoadAssetAtPath<AudioClip>(_fileAssetPath), _fileAssetPath);
-                            }
-                        }
-                    }
-                }
-                GUILayout.Space(30);
-                if (GUILayout.Button("清空") && scList.Count != 0)
-                {
-                    if (EditorUtility.DisplayDialog("警告", "你确定要清空列表里的数据吗？", "确定", "取消"))
-                    {
-                        scList.Clear();
-                    }
-                }
+                ChineseLanguage(scList);
             }
             GUILayout.Space(1000);
             serializedObject.ApplyModifiedProperties();
@@ -135,26 +89,6 @@ namespace Common.Sound
             {
                 EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
             }
-        }
-        /// <summary>
-        /// 添加音频
-        /// </summary>
-        private void AddAudioClip(List<SoundControl.Config> scList, AudioClip ac, string resourcesPath)
-        {
-            resourcesPath = resourcesPath.Replace("\\", "/");
-            if (resourcesPath.Contains("Resources")) resourcesPath = resourcesPath.Substring(resourcesPath.IndexOf("Resources/") + 10);
-            resourcesPath = Path.GetDirectoryName(resourcesPath) + "/" + Path.GetFileNameWithoutExtension(resourcesPath);
-            _isExist = false;
-            for (int i = 0; i < scList.Count; i++)
-            {
-                if (scList[i]._audioClip == ac)
-                {
-                    _isExist = true;
-                    Debug.LogError("配置表里已存在该音频");
-                    break;
-                }
-            }
-            if (_isExist == false) scList.Add(new SoundControl.Config(ac, resourcesPath));
         }
         /// <summary>
         /// 创建脚本配置
@@ -200,6 +134,79 @@ namespace Common.Sound
             audioConfig += "\n}";
         }
         /// <summary>
+        /// 中文语言
+        /// </summary>
+        private void ChineseLanguage(List<SoundControl.Config> scList)
+        {
+            for (int i = 0; i < scList.Count; i++)
+            {
+                EditorGUILayout.BeginHorizontal();
+                scList[i]._audioClip = (AudioClip)EditorGUILayout.ObjectField("声音" + (i + 1), scList[i]._audioClip, typeof(AudioClip), false);
+                _isDelete = false;
+                if (GUILayout.Button("删除" + (i + 1)))
+                {
+                    _isDelete = true;
+                }
+                EditorGUILayout.EndHorizontal();
+                scList[i]._desc = EditorGUILayout.TextField("描述" + (i + 1), scList[i]._desc);
+                GUILayout.Space(10);
+                if (scList[i]._desc == "" && scList[i]._audioClip) scList[i]._desc = scList[i]._audioClip.name;
+                if (_isDelete) scList.RemoveAt(i);
+            }
+            if (Event.current.type == EventType.DragExited)
+            {
+                if (DragAndDrop.objectReferences[0].GetType() == typeof(AudioClip))
+                {
+                    AddAudioClip(scList, (AudioClip)DragAndDrop.objectReferences[0], DragAndDrop.paths[0]);
+                }
+                else
+                {
+                    _directionPath = Application.dataPath;
+                    _directionPath = _directionPath.Substring(0, _directionPath.LastIndexOf("/") + 1) + DragAndDrop.paths[0];
+                    string[] strs = _directionPath.Split('.');
+                    if (strs.Length == 1 && Directory.Exists(_directionPath))
+                    {
+                        DirectoryInfo direction = new DirectoryInfo(_directionPath);
+                        FileInfo[] files = direction.GetFiles("*.mp3", SearchOption.AllDirectories);
+                        for (int i = 0; i < files.Length; i++)
+                        {
+                            _fileAssetPath = files[i].DirectoryName;
+                            _fileAssetPath = _fileAssetPath.Substring(_fileAssetPath.IndexOf("Assets")) + "/" + files[i].Name;
+                            AddAudioClip(scList, AssetDatabase.LoadAssetAtPath<AudioClip>(_fileAssetPath), _fileAssetPath);
+                        }
+                    }
+                }
+            }
+            GUILayout.Space(30);
+            if (GUILayout.Button("清空") && scList.Count != 0)
+            {
+                if (EditorUtility.DisplayDialog("警告", "你确定要清空列表里的数据吗？", "确定", "取消"))
+                {
+                    scList.Clear();
+                }
+            }
+        }
+        /// <summary>
+        /// 添加音频
+        /// </summary>
+        private void AddAudioClip(List<SoundControl.Config> scList, AudioClip ac, string resourcesPath)
+        {
+            resourcesPath = resourcesPath.Replace("\\", "/");
+            if (resourcesPath.Contains("Resources")) resourcesPath = resourcesPath.Substring(resourcesPath.IndexOf("Resources/") + 10);
+            resourcesPath = Path.GetDirectoryName(resourcesPath) + "/" + Path.GetFileNameWithoutExtension(resourcesPath);
+            _isExist = false;
+            for (int i = 0; i < scList.Count; i++)
+            {
+                if (scList[i]._audioClip == ac)
+                {
+                    _isExist = true;
+                    Debug.LogError("配置表里已存在该音频");
+                    break;
+                }
+            }
+            if (_isExist == false) scList.Add(new SoundControl.Config(ac, resourcesPath));
+        }
+        /// <summary>
         /// 其他语言
         /// </summary>
         public string _addLanguageType = "";
@@ -232,11 +239,11 @@ namespace Common.Sound
             {
                 languageButtons[i] = soundControl._languageTypeList[i];
             }
-            _choseLanguage = GUILayout.Toolbar(_choseLanguage, languageButtons);
+            soundControl._choseLanguage = GUILayout.Toolbar(soundControl._choseLanguage, languageButtons);//删除时索引会超出的地方，已做了修复
             if (languageButtons.Length != 0)
             {
                 //绘制需放在未添加前绘制，否则会报错
-                List<AudioClip> audioClip = soundControl._languageAudioClipList[_choseLanguage]._audioClipList;
+                List<AudioClip> audioClip = soundControl._languageAudioClipList[soundControl._choseLanguage]._audioClipList;
                 for (int i = 0; i < audioClip.Count; i++)
                 {
                     GUILayout.Space(10);
@@ -246,7 +253,7 @@ namespace Common.Sound
                 {
                     if (DragAndDrop.objectReferences[0].GetType() == typeof(AudioClip))
                     {
-                        AddOtherLanguageAudioClip(soundControl, _choseLanguage, (AudioClip)DragAndDrop.objectReferences[0]);
+                        AddOtherLanguageAudioClip(soundControl, soundControl._choseLanguage, (AudioClip)DragAndDrop.objectReferences[0]);
                     }
                     else
                     {
@@ -261,7 +268,7 @@ namespace Common.Sound
                             {
                                 _fileAssetPath = files[i].DirectoryName;
                                 _fileAssetPath = _fileAssetPath.Substring(_fileAssetPath.IndexOf("Assets")) + "/" + files[i].Name;
-                                AddOtherLanguageAudioClip(soundControl, _choseLanguage, AssetDatabase.LoadAssetAtPath<AudioClip>(_fileAssetPath));
+                                AddOtherLanguageAudioClip(soundControl, soundControl._choseLanguage, AssetDatabase.LoadAssetAtPath<AudioClip>(_fileAssetPath));
                             }
                         }
                     }
@@ -270,9 +277,10 @@ namespace Common.Sound
             GUILayout.Space(30);
             if (GUILayout.Button("删除该类型语言") && languageButtons.Length != 0)
             {
-                soundControl._languageAudioClipList[_choseLanguage]._audioClipList.Clear();
-                soundControl._languageAudioClipList.RemoveAt(_choseLanguage);
-                soundControl._languageTypeList.RemoveAt(_choseLanguage);
+                soundControl._languageAudioClipList[soundControl._choseLanguage]._audioClipList.Clear();
+                soundControl._languageAudioClipList.RemoveAt(soundControl._choseLanguage);
+                soundControl._languageTypeList.RemoveAt(soundControl._choseLanguage);
+                if (soundControl._choseLanguage > 0) soundControl._choseLanguage--;//只有在选择的时候会改变，删除数组它不会自动减少，导致索引超出
             }
         }
         /// <summary>

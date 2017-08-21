@@ -1,8 +1,24 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 [DisallowMultipleComponent]
-public class ShowHideControl:Singleton<ShowHideControl>
+public class ShowHideControl:MonoBehaviour
 {
+    private static ShowHideControl _instance = null;
+    public static ShowHideControl Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = (new GameObject("显示隐藏管理")).AddComponent<ShowHideControl>();
+            }
+            return _instance;
+        }
+    }
+    private void Awake()
+    {
+        _instance = this;
+    }
     public List<GameObjectGroup> _list = new List<GameObjectGroup>();
     [System.Serializable]
     public class GameObjectGroup

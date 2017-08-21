@@ -1,8 +1,24 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 [DisallowMultipleComponent]
-public class MyPosition : Singleton<MyPosition>
+public class MyPosition:MonoBehaviour
 {
+    private static MyPosition _instance = null;
+    public static MyPosition Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = (new GameObject("位置信息管理")).AddComponent<MyPosition>();
+            }
+            return _instance;
+        }
+    }
+    private void Awake()
+    {
+        _instance = this;
+    }
     public List<PositionObject> _list = new List<PositionObject>();
     [System.Serializable]
     public class PositionObject

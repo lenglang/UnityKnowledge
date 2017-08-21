@@ -2,7 +2,7 @@
 using UnityEditor.SceneManagement;
 using UnityEngine;
 [CustomEditor(typeof(MyPosition))]
-public class MyPositionEditorz : Editor
+public class MyPositionEditor : Editor
 {
     private MyPosition _myPosition;
     private MyPosition.PositionObject _positionObject;

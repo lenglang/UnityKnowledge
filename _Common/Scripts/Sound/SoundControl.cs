@@ -46,6 +46,8 @@ public class SoundControl : MonoBehaviour
         {
             _musicDictionary.Add(item._desc, item._audioClip);
         }
+        Debug.LogWarning("接入宝宝巴士框架，这里需给语言赋值，得到当前手机语言");
+        if (string.IsNullOrEmpty(_testLanguage) == false && SystemData.IsDebugBuild) SystemData.LANGUAGE = _testLanguage;
         if (SystemData.LANGUAGE != "zh")
         {
             List<AudioClip> audioClipList = new List<AudioClip>();
@@ -60,6 +62,7 @@ public class SoundControl : MonoBehaviour
                 if(audioClipList!=null) ReplaceVoiceAudioClip(audioClipList);
             }
         }
+        Debug.Log("当前语言:" + SystemData.LANGUAGE);
     }
     /// <summary>
     /// 替换人声
@@ -67,6 +70,7 @@ public class SoundControl : MonoBehaviour
     /// <param name="audioClipList"></param>
     void ReplaceVoiceAudioClip(List<AudioClip> audioClipList)
     {
+        if (SystemData.LANGUAGE != "zht" && _voiceDictionary.Count != audioClipList.Count) Debug.LogError("替换的人声和中文的人声个数不对等，请检查！！！");
         for (int i = 0; i < audioClipList.Count; i++)
         {
             foreach (KeyValuePair<string, AudioClip> item in _voiceDictionary)
@@ -346,6 +350,8 @@ public class SoundControl : MonoBehaviour
     public string _soundEnumType = "SoundType";//音效枚举类型
     public List<Config> _musiceList = new List<Config>();//背景音乐列表
     public string _musiceEnumType = "MusiceType";//背景音乐枚举类型
+    public int _choseLanguage = 0;//选择的国际化语言
+    public string _testLanguage = "";//测试语言
     public List<string> _languageTypeList = new List<string>() { "zht", "en" };//其他语言类型
     public List<LanguageAudioClip> _languageAudioClipList = new List<LanguageAudioClip>();//国际化音频
     [System.Serializable]

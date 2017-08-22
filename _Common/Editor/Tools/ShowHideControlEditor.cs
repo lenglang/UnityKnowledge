@@ -125,7 +125,7 @@ namespace WZK
         [MenuItem("GameObject/自定义/创建显示隐藏管理", false, MenuItemConfig.显示隐藏管理)]
         private static void CreateSoundControlObject()
         {
-            GameObject gameObject = new GameObject("显示隐藏管理");
+            GameObject gameObject = new GameObject("显示隐藏管理对象");
             gameObject.AddComponent<ShowHideControl>();
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = gameObject;

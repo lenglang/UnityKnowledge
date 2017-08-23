@@ -6,11 +6,11 @@ namespace WZK
     /// <summary>
     /// 位置信息编辑器扩展
     /// </summary>
-    [CustomEditor(typeof(MyPosition))]
-    public class MyPositionEditor : Editor
+    [CustomEditor(typeof(MyPositionManager))]
+    public class MyPositionManagerEditor : Editor
     {
-        private MyPosition _myPosition;
-        private MyPosition.PositionObject _positionObject;
+        private MyPositionManager _myPositionManager;
+        private MyPositionManager.PositionObject _positionObject;
         private TransformInformation _information;
         private string _flodOutName;
         private int _deleteObjectIndex = -1;
@@ -18,14 +18,14 @@ namespace WZK
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            _myPosition = target as MyPosition;
+            _myPositionManager = target as MyPositionManager;
             EditorGUILayout.LabelField("拖动场景对象到下面任意区域");
             GUILayout.Space(30);
             _deleteObjectIndex = -1;
             _deletePositionIndex = -1;
-            for (int i = 0; i < _myPosition._list.Count; i++)
+            for (int i = 0; i < _myPositionManager._list.Count; i++)
             {
-                _positionObject = _myPosition._list[i];
+                _positionObject = _myPositionManager._list[i];
                 _flodOutName = "待赋值";
                 if (_positionObject._obj != null) _flodOutName = _positionObject._obj.name;
                 EditorGUILayout.BeginHorizontal();
@@ -41,7 +41,7 @@ namespace WZK
                 if (_positionObject._show)
                 {
                     EditorGUILayout.BeginHorizontal();
-                    _myPosition._list[i]._obj = (GameObject)EditorGUILayout.ObjectField(_myPosition._list[i]._obj, typeof(GameObject), true);
+                    _myPositionManager._list[i]._obj = (GameObject)EditorGUILayout.ObjectField(_myPositionManager._list[i]._obj, typeof(GameObject), true);
                     if (GUILayout.Button("添加位置"))
                     {
                         _positionObject._list.Add(new TransformInformation());
@@ -78,7 +78,7 @@ namespace WZK
                 }
                 GUILayout.Space(50);
             }
-            if (_deleteObjectIndex != -1) _myPosition._list.RemoveAt(_deleteObjectIndex);
+            if (_deleteObjectIndex != -1) _myPositionManager._list.RemoveAt(_deleteObjectIndex);
             if (Event.current.type == EventType.DragExited)
             {
                 if (DragAndDrop.objectReferences.Length != 0)
@@ -87,11 +87,11 @@ namespace WZK
                     {
                         if (DragAndDrop.objectReferences[i].GetType() == typeof(GameObject))
                         {
-                            if (IsExistGameObject(_myPosition, (GameObject)DragAndDrop.objectReferences[i]) == false)
+                            if (IsExistGameObject(_myPositionManager, (GameObject)DragAndDrop.objectReferences[i]) == false)
                             {
-                                _positionObject = new MyPosition.PositionObject();
+                                _positionObject = new MyPositionManager.PositionObject();
                                 _positionObject._obj = (GameObject)DragAndDrop.objectReferences[i];
-                                _myPosition._list.Add(_positionObject);
+                                _myPositionManager._list.Add(_positionObject);
                             }
                             else
                             {
@@ -103,7 +103,7 @@ namespace WZK
             }
             GUILayout.Space(1000);
             serializedObject.ApplyModifiedProperties();
-            EditorUtility.SetDirty(_myPosition);
+            EditorUtility.SetDirty(_myPositionManager);
             if (GUI.changed) EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         }
         /// <summary>
@@ -112,7 +112,7 @@ namespace WZK
         /// <param name="myPosition"></param>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public bool IsExistGameObject(MyPosition myPosition, GameObject obj)
+        public bool IsExistGameObject(MyPositionManager myPosition, GameObject obj)
         {
             for (int i = 0; i < myPosition._list.Count; i++)
             {
@@ -139,7 +139,7 @@ namespace WZK
         private static void CreateSoundControlObject()
         {
             GameObject gameObject = new GameObject("位置信息管理");
-            gameObject.AddComponent<MyPosition>();
+            gameObject.AddComponent<MyPositionManager>();
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = gameObject;
             EditorGUIUtility.PingObject(Selection.activeObject);

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace WZK
 {
-    public class LoadingControl : MonoBehaviour
+    public class LoadingManager : MonoBehaviour
     {
         /// <summary>
         /// 进度增加平滑值
@@ -37,11 +37,11 @@ namespace WZK
         /// <returns></returns>
         private IEnumerator StartLoadingStreamingAssets(string persistentDataPath)
         {
-            string streamingAssetsPath = FileControl.GetStreamingAssetsPath(SceneDataModel.ScenePath + SceneDataModel.NextScene.GetEnumDescription()+".unity3d");
+            string streamingAssetsPath = FileManager.GetStreamingAssetsPath(SceneDataModel.ScenePath + SceneDataModel.NextScene.GetEnumDescription()+".unity3d");
             Debug.Log(streamingAssetsPath);
             WWW www = new WWW(streamingAssetsPath);
             yield return www;
-            FileControl.CreateDirectory(Application.persistentDataPath + "/" + SceneDataModel.ScenePath);
+            FileManager.CreateDirectory(Application.persistentDataPath + "/" + SceneDataModel.ScenePath);
             File.WriteAllBytes(persistentDataPath, www.bytes);
             this.CreateAssetBundleFromFile(persistentDataPath, delegate { StartCoroutine("StartLoadingScene"); });
         }

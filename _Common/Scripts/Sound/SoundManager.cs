@@ -5,7 +5,7 @@ using System;
 namespace WZK
 {
     [DisallowMultipleComponent]
-    public class SoundControl : MonoBehaviour
+    public class SoundManager : MonoBehaviour
     {
         public enum SoundID
         {
@@ -20,14 +20,14 @@ namespace WZK
         private Dictionary<string, AudioClip> _voiceDictionary = new Dictionary<string, AudioClip>();
         private Dictionary<string, AudioClip> _soundDictionary = new Dictionary<string, AudioClip>();
         private Dictionary<string, AudioClip> _musicDictionary = new Dictionary<string, AudioClip>();
-        private static SoundControl _instance = null;
-        public static SoundControl Instance
+        private static SoundManager _instance = null;
+        public static SoundManager Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = (new GameObject("声音管理")).AddComponent<SoundControl>();
+                    _instance = (new GameObject("声音管理")).AddComponent<SoundManager>();
                 }
                 return _instance;
             }

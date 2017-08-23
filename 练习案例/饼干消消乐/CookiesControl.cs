@@ -208,7 +208,7 @@ public class CookiesControl : MonoBehaviour
             }
             CreateNewCookies();
             StartMove();
-            WaitActionControl<int>.Instance.AddWaitAction(delegate
+            WaitActionManager<int>.Instance.AddWaitAction(delegate
             {
                 MoveEnd();
             }, _maxMove * 0.3f);
@@ -332,6 +332,6 @@ public class CookiesControl : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        WaitActionControl<int>.Instance.FixedUpdate();
+        WaitActionManager<int>.Instance.FixedUpdate();
     }
 }

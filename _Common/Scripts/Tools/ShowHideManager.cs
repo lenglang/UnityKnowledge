@@ -3,16 +3,16 @@ using UnityEngine;
 namespace WZK
 {
     [DisallowMultipleComponent]
-    public class ShowHideControl : MonoBehaviour
+    public class ShowHideManager : MonoBehaviour
     {
-        private static ShowHideControl _instance = null;
-        public static ShowHideControl Instance
+        private static ShowHideManager _instance = null;
+        public static ShowHideManager Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = (new GameObject("显示隐藏管理")).AddComponent<ShowHideControl>();
+                    _instance = (new GameObject("显示隐藏管理")).AddComponent<ShowHideManager>();
                 }
                 return _instance;
             }

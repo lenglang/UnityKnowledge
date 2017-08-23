@@ -7,7 +7,7 @@ using UnityEngine.iOS;
 #endif
 namespace WZK
 {
-    public class FileControl
+    public class FileManager
     {
         public static string GetStreamingAssetsPath(string fileName)
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace WZK
 {
-    public class LoadSceneControl
+    public class LoadSceneManager
     {
         /// <summary>
         /// 加载场景

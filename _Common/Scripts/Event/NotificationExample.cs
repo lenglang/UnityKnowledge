@@ -10,16 +10,16 @@ namespace WZK
         // Use this for initialization
         void Start()
         {
-            NotificationControl<EventType>.Instance.AddEventListener(EventType.分数, delegate { Debug.Log("666"); });
-            NotificationControl<EventType>.Instance.AddEventListener(EventType.分数, OnComplete1);
-            NotificationControl<EventType>.Instance.DispatchEvent(EventType.分数);
+            NotificationManager<EventType>.Instance.AddEventListener(EventType.分数, delegate { Debug.Log("666"); });
+            NotificationManager<EventType>.Instance.AddEventListener(EventType.分数, OnComplete1);
+            NotificationManager<EventType>.Instance.DispatchEvent(EventType.分数);
 
-            NotificationControl<EventType, NotificationContent>.Instance.AddEventListener(EventType.分数, OnComplete2);
+            NotificationManager<EventType, NotificationContent>.Instance.AddEventListener(EventType.分数, OnComplete2);
             NotificationContent nc = new NotificationContent();
             nc._sender = this.gameObject;
             nc._age = 20;
             nc._name = "宝宝";
-            NotificationControl<EventType, NotificationContent>.Instance.DispatchEvent(EventType.分数, nc);
+            NotificationManager<EventType, NotificationContent>.Instance.DispatchEvent(EventType.分数, nc);
         }
         private void OnComplete1()
         {
@@ -32,7 +32,7 @@ namespace WZK
         private void OnDestroy()
         {
             //内部使用最好将事件移除
-            NotificationControl<EventType>.Instance.RemoveAllEvent();
+            NotificationManager<EventType>.Instance.RemoveAllEvent();
         }
     }
 }

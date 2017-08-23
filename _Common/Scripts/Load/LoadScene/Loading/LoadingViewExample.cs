@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace WZK
 {
-    public class LoadingViewExample : LoadingControl
+    public class LoadingViewExample : LoadingManager
     {
         [Header("文本进度")]
         public Text _textProgress;

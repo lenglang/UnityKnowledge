@@ -8,16 +8,16 @@ namespace WZK
     /// 注意全局的话，要针对某个事件在OnDestroy移除，不是全局的话，移除所以事件
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class WaitActionControl<T>
+    public class WaitActionManager<T>
     {
-        private static WaitActionControl<T> instance;
-        public static WaitActionControl<T> Instance
+        private static WaitActionManager<T> instance;
+        public static WaitActionManager<T> Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new WaitActionControl<T>();
+                    instance = new WaitActionManager<T>();
                 }
                 return instance;
             }

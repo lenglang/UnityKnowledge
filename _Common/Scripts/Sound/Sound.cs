@@ -8,7 +8,7 @@ namespace WZK
         public AudioClip _clip;
         public bool _loop;
         public Action _competeAction;
-        public SoundControl _soundControl;
+        public SoundManager _soundControl;
         public AudioSource _audioSource;
         public float _playTime;
         public string _id;
@@ -20,7 +20,7 @@ namespace WZK
                 return _playTime >= _clip.length;
             }
         }
-        public Sound(SoundControl soundControl)
+        public Sound(SoundManager soundControl)
         {
             _loop = false;
             _competeAction = null;

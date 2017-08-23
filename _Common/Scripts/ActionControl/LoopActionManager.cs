@@ -8,16 +8,16 @@ namespace WZK
     /// 注意全局的话，要针对某个事件在OnDestroy移除，不是全局的话，移除所有事件
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class LoopActionControl<T>
+    public class LoopActionManager<T>
     {
-        private static LoopActionControl<T> instance;
-        public static LoopActionControl<T> Instance
+        private static LoopActionManager<T> instance;
+        public static LoopActionManager<T> Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new LoopActionControl<T>();
+                    instance = new LoopActionManager<T>();
                 }
                 return instance;
             }

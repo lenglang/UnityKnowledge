@@ -6,31 +6,31 @@ namespace WZK
     /// <summary>
     /// 显示隐藏控制编辑器扩展
     /// </summary>
-    [CustomEditor(typeof(ShowHideControl))]
-    public class ShowHideControlEditor : Editor
+    [CustomEditor(typeof(ShowHideManager))]
+    public class ShowHideManagerEditor : Editor
     {
-        private ShowHideControl _showHide;
-        private ShowHideControl.GameObjectGroup _gameObjectGroup;
+        private ShowHideManager _showHideManager;
+        private ShowHideManager.GameObjectGroup _gameObjectGroup;
         private int _deleteGameObjectGroupIndex = -1;//删除组索引
         private int _choseAreaIndex = -1;
         private int _deleteGameObjectIndex = -1;//对象索引
         private bool _isArea = false;//是否在指定的拖拽区域内
-        private ShowHideControl.GameObjectGroup.GameObjectInformation _gameObjectInformation;
+        private ShowHideManager.GameObjectGroup.GameObjectInformation _gameObjectInformation;
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            _showHide = target as ShowHideControl;
+            _showHideManager = target as ShowHideManager;
             if (GUILayout.Button("添加管理"))
             {
-                _showHide._list.Add(new ShowHideControl.GameObjectGroup());
+                _showHideManager._list.Add(new ShowHideManager.GameObjectGroup());
             }
             GUILayout.Space(30);
             _deleteGameObjectGroupIndex = -1;
             _isArea = false;
-            for (int i = 0; i < _showHide._list.Count; i++)
+            for (int i = 0; i < _showHideManager._list.Count; i++)
             {
                 EditorGUILayout.BeginHorizontal();
-                _gameObjectGroup = _showHide._list[i];
+                _gameObjectGroup = _showHideManager._list[i];
                 _gameObjectGroup._desc = EditorGUILayout.TextField(_gameObjectGroup._desc);
                 if (GUILayout.Button("正执行"))
                 {
@@ -82,7 +82,7 @@ namespace WZK
             }
             if (Event.current.type == EventType.DragExited && _choseAreaIndex != -1)
             {
-                _gameObjectGroup = _showHide._list[_choseAreaIndex];
+                _gameObjectGroup = _showHideManager._list[_choseAreaIndex];
                 DragAndDrop.AcceptDrag();
                 if (DragAndDrop.objectReferences.Length != 0)
                 {
@@ -92,7 +92,7 @@ namespace WZK
                         {
                             if (IsExistGameObject((GameObject)DragAndDrop.objectReferences[j]) == false)
                             {
-                                _gameObjectInformation = new ShowHideControl.GameObjectGroup.GameObjectInformation();
+                                _gameObjectInformation = new ShowHideManager.GameObjectGroup.GameObjectInformation();
                                 _gameObjectInformation._obj = (GameObject)DragAndDrop.objectReferences[j];
                                 _gameObjectGroup._list.Add(_gameObjectInformation);
                             }
@@ -104,10 +104,10 @@ namespace WZK
                     }
                 }
             }
-            if (_deleteGameObjectGroupIndex != -1) _showHide._list.RemoveAt(_deleteGameObjectGroupIndex);
+            if (_deleteGameObjectGroupIndex != -1) _showHideManager._list.RemoveAt(_deleteGameObjectGroupIndex);
             GUILayout.Space(1000);
             serializedObject.ApplyModifiedProperties();
-            EditorUtility.SetDirty(_showHide);
+            EditorUtility.SetDirty(_showHideManager);
             if (GUI.changed) EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         }
         /// <summary>
@@ -126,7 +126,7 @@ namespace WZK
         private static void CreateSoundControlObject()
         {
             GameObject gameObject = new GameObject("显示隐藏管理对象");
-            gameObject.AddComponent<ShowHideControl>();
+            gameObject.AddComponent<ShowHideManager>();
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = gameObject;
             EditorGUIUtility.PingObject(Selection.activeObject);

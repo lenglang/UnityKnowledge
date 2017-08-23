@@ -8,8 +8,8 @@ namespace WZK
     /// <summary>
     /// 声音管理编辑器扩展
     /// </summary>
-    [CustomEditor(typeof(SoundControl))]
-    public class SoundControlEditor : Editor
+    [CustomEditor(typeof(SoundManager))]
+    public class SoundManagerEditor : Editor
     {
         private bool _isDelete;//是否删除
         private bool _isExist;//是否存在
@@ -18,68 +18,68 @@ namespace WZK
         private string[] _typeButtons = { "人声", "音效", "背景音乐", "国际化语言" };//类型按钮切换
         private int _selectType = 0;//选择的类型
         private bool _isOtherLanguage = false;//是否其他语言
-        private SoundControl soundControl;//声音控制
+        private SoundManager soundManager;//声音控制
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            soundControl = target as SoundControl;
-            soundControl._testLanguage = EditorGUILayout.TextField("测试语言-Debug模式下才生效", soundControl._testLanguage);
-            soundControl._bgSoundVolume = EditorGUILayout.FloatField("背景音乐音量", soundControl._bgSoundVolume);
-            soundControl._savePath = EditorGUILayout.TextField("生成的枚举类存放的Assets下文件夹路径", soundControl._savePath);
+            soundManager = target as SoundManager;
+            soundManager._testLanguage = EditorGUILayout.TextField("测试语言-Debug模式下才生效", soundManager._testLanguage);
+            soundManager._bgSoundVolume = EditorGUILayout.FloatField("背景音乐音量", soundManager._bgSoundVolume);
+            soundManager._savePath = EditorGUILayout.TextField("生成的枚举类存放的Assets下文件夹路径", soundManager._savePath);
             if (GUILayout.Button("生成枚举配置"))
             {
-                if (string.IsNullOrEmpty(soundControl._fileName) || string.IsNullOrEmpty(soundControl._nameSpace))
+                if (string.IsNullOrEmpty(soundManager._fileName) || string.IsNullOrEmpty(soundManager._nameSpace))
                 {
                     EditorUtility.DisplayDialog("警告", "脚本名或命名空间未填写", "知道了");
                     return;
                 }
                 string path = AssetDatabase.GetAssetOrScenePath(Selection.activeObject);
-                if (string.IsNullOrEmpty(soundControl._savePath))
+                if (string.IsNullOrEmpty(soundManager._savePath))
                 {
                     path = Application.dataPath + path.Substring(path.IndexOf("/"));
                     path = Path.GetDirectoryName(path);
                 }
                 else
                 {
-                    path = Application.dataPath + "/" + soundControl._savePath;
+                    path = Application.dataPath + "/" + soundManager._savePath;
                 }
-                path += "/" + soundControl._fileName + ".cs";
+                path += "/" + soundManager._fileName + ".cs";
                 if (File.Exists(path) && EditorUtility.DisplayDialog("警告", "已存在该配置，是否覆盖：" + path, "是的", "取消")) //显示对话框  
                 {
-                    CreateCSConfig(soundControl, path);
+                    CreateCSConfig(soundManager, path);
                 }
                 else
                 {
-                    CreateCSConfig(soundControl, path);
+                    CreateCSConfig(soundManager, path);
                 }
             }
-            soundControl._fileName = EditorGUILayout.TextField("脚本名", soundControl._fileName);
-            soundControl._nameSpace = EditorGUILayout.TextField("命名空间", soundControl._nameSpace);
+            soundManager._fileName = EditorGUILayout.TextField("脚本名", soundManager._fileName);
+            soundManager._nameSpace = EditorGUILayout.TextField("命名空间", soundManager._nameSpace);
             _selectType = GUILayout.Toolbar(_selectType, _typeButtons);
-            List<SoundControl.Config> scList;
+            List<SoundManager.Config> scList;
             _isOtherLanguage = false;
             if (_selectType == 3) _isOtherLanguage = true;
             switch (_selectType)
             {
                 case 0:
-                    EditorGUILayout.LabelField("枚举名", soundControl._voiceEnumType);
-                    scList = soundControl._voiceList;
+                    EditorGUILayout.LabelField("枚举名", soundManager._voiceEnumType);
+                    scList = soundManager._voiceList;
                     break;
                 case 1:
-                    EditorGUILayout.LabelField("枚举名", soundControl._soundEnumType);
-                    scList = soundControl._soundList;
+                    EditorGUILayout.LabelField("枚举名", soundManager._soundEnumType);
+                    scList = soundManager._soundList;
                     break;
                 case 2:
-                    EditorGUILayout.LabelField("枚举名", soundControl._musiceEnumType);
-                    scList = soundControl._musiceList;
+                    EditorGUILayout.LabelField("枚举名", soundManager._musiceEnumType);
+                    scList = soundManager._musiceList;
                     break;
                 default:
-                    scList = soundControl._musiceList;
+                    scList = soundManager._musiceList;
                     break;
             }
             if (_isOtherLanguage)
             {
-                OhterLanguage(soundControl);
+                OhterLanguage(soundManager);
             }
             else
             {
@@ -87,7 +87,7 @@ namespace WZK
             }
             GUILayout.Space(1000);
             serializedObject.ApplyModifiedProperties();
-            EditorUtility.SetDirty(soundControl);
+            EditorUtility.SetDirty(soundManager);
             if (GUI.changed)
             {
                 EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
@@ -96,18 +96,18 @@ namespace WZK
         /// <summary>
         /// 创建脚本配置
         /// </summary>
-        /// <param name="soundControl"></param>
+        /// <param name="soundManager"></param>
         /// <param name="path"></param>
-        private void CreateCSConfig(SoundControl soundControl, string path)
+        private void CreateCSConfig(SoundManager soundManager, string path)
         {
             string audioConfig = "";
-            CreateEnum(soundControl._voiceList, ref audioConfig, soundControl._voiceEnumType);
+            CreateEnum(soundManager._voiceList, ref audioConfig, soundManager._voiceEnumType);
             audioConfig += "\n";
-            CreateEnum(soundControl._soundList, ref audioConfig, soundControl._soundEnumType);
+            CreateEnum(soundManager._soundList, ref audioConfig, soundManager._soundEnumType);
             audioConfig += "\n";
-            CreateEnum(soundControl._musiceList, ref audioConfig, soundControl._musiceEnumType);
+            CreateEnum(soundManager._musiceList, ref audioConfig, soundManager._musiceEnumType);
             string config = "using System.ComponentModel;" + "\n"
-                + "namespace " + soundControl._nameSpace + "\n"
+                + "namespace " + soundManager._nameSpace + "\n"
                 + "{" + "\n"
                 + audioConfig
                 + "\n"
@@ -121,7 +121,7 @@ namespace WZK
         /// <param name="scList"></param>
         /// <param name="audioConfig"></param>
         /// <param name="enumType"></param>
-        private void CreateEnum(List<SoundControl.Config> scList, ref string audioConfig, string enumType)
+        private void CreateEnum(List<SoundManager.Config> scList, ref string audioConfig, string enumType)
         {
             audioConfig += "public enum " + enumType + "\n"
                 + "{" + "\n";
@@ -139,7 +139,7 @@ namespace WZK
         /// <summary>
         /// 中文语言
         /// </summary>
-        private void ChineseLanguage(List<SoundControl.Config> scList)
+        private void ChineseLanguage(List<SoundManager.Config> scList)
         {
             for (int i = 0; i < scList.Count; i++)
             {
@@ -192,7 +192,7 @@ namespace WZK
         /// <summary>
         /// 添加音频
         /// </summary>
-        private void AddAudioClip(List<SoundControl.Config> scList, AudioClip ac, string resourcesPath)
+        private void AddAudioClip(List<SoundManager.Config> scList, AudioClip ac, string resourcesPath)
         {
             resourcesPath = resourcesPath.Replace("\\", "/");
             if (resourcesPath.Contains("Resources")) resourcesPath = resourcesPath.Substring(resourcesPath.IndexOf("Resources/") + 10);
@@ -207,46 +207,46 @@ namespace WZK
                     break;
                 }
             }
-            if (_isExist == false) scList.Add(new SoundControl.Config(ac, resourcesPath));
+            if (_isExist == false) scList.Add(new SoundManager.Config(ac, resourcesPath));
         }
         /// <summary>
         /// 其他语言
         /// </summary>
         public string _addLanguageType = "";
-        private void OhterLanguage(SoundControl soundControl)
+        private void OhterLanguage(SoundManager soundManager)
         {
             EditorGUILayout.LabelField("说明：其他语言的音频文件名需要跟中文音频的文件名相同,这样才会在游戏开始时，根据当前语言将中文对应的音频替换掉。");
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("添加国际语言");
-            if (soundControl._languageAudioClipList.Count < soundControl._languageTypeList.Count)
+            if (soundManager._languageAudioClipList.Count < soundManager._languageTypeList.Count)
             {
-                soundControl._languageAudioClipList.Clear();
-                for (int i = 0; i < soundControl._languageTypeList.Count; i++)
+                soundManager._languageAudioClipList.Clear();
+                for (int i = 0; i < soundManager._languageTypeList.Count; i++)
                 {
-                    soundControl._languageAudioClipList.Add(new SoundControl.LanguageAudioClip(soundControl._languageTypeList[i]));
+                    soundManager._languageAudioClipList.Add(new SoundManager.LanguageAudioClip(soundManager._languageTypeList[i]));
                 }
             }
             _addLanguageType = EditorGUILayout.TextField(_addLanguageType);
             if (GUILayout.Button("添加"))
             {
-                if (_addLanguageType != "" && soundControl._languageTypeList.IndexOf(_addLanguageType) == -1)
+                if (_addLanguageType != "" && soundManager._languageTypeList.IndexOf(_addLanguageType) == -1)
                 {
-                    soundControl._languageTypeList.Add(_addLanguageType);
-                    soundControl._languageAudioClipList.Add(new SoundControl.LanguageAudioClip(_addLanguageType));
+                    soundManager._languageTypeList.Add(_addLanguageType);
+                    soundManager._languageAudioClipList.Add(new SoundManager.LanguageAudioClip(_addLanguageType));
                 }
             }
             EditorGUILayout.EndHorizontal();
             string[] languageButtons;
-            languageButtons = new string[soundControl._languageTypeList.Count];
-            for (int i = 0; i < soundControl._languageTypeList.Count; i++)
+            languageButtons = new string[soundManager._languageTypeList.Count];
+            for (int i = 0; i < soundManager._languageTypeList.Count; i++)
             {
-                languageButtons[i] = soundControl._languageTypeList[i];
+                languageButtons[i] = soundManager._languageTypeList[i];
             }
-            soundControl._choseLanguage = GUILayout.Toolbar(soundControl._choseLanguage, languageButtons);//删除时索引会超出的地方，已做了修复
+            soundManager._choseLanguage = GUILayout.Toolbar(soundManager._choseLanguage, languageButtons);//删除时索引会超出的地方，已做了修复
             if (languageButtons.Length != 0)
             {
                 //绘制需放在未添加前绘制，否则会报错
-                List<AudioClip> audioClip = soundControl._languageAudioClipList[soundControl._choseLanguage]._audioClipList;
+                List<AudioClip> audioClip = soundManager._languageAudioClipList[soundManager._choseLanguage]._audioClipList;
                 for (int i = 0; i < audioClip.Count; i++)
                 {
                     GUILayout.Space(10);
@@ -256,7 +256,7 @@ namespace WZK
                 {
                     if (DragAndDrop.objectReferences[0].GetType() == typeof(AudioClip))
                     {
-                        AddOtherLanguageAudioClip(soundControl, soundControl._choseLanguage, (AudioClip)DragAndDrop.objectReferences[0]);
+                        AddOtherLanguageAudioClip(soundManager, soundManager._choseLanguage, (AudioClip)DragAndDrop.objectReferences[0]);
                     }
                     else
                     {
@@ -271,7 +271,7 @@ namespace WZK
                             {
                                 _fileAssetPath = files[i].DirectoryName;
                                 _fileAssetPath = _fileAssetPath.Substring(_fileAssetPath.IndexOf("Assets")) + "/" + files[i].Name;
-                                AddOtherLanguageAudioClip(soundControl, soundControl._choseLanguage, AssetDatabase.LoadAssetAtPath<AudioClip>(_fileAssetPath));
+                                AddOtherLanguageAudioClip(soundManager, soundManager._choseLanguage, AssetDatabase.LoadAssetAtPath<AudioClip>(_fileAssetPath));
                             }
                         }
                     }
@@ -280,19 +280,19 @@ namespace WZK
             GUILayout.Space(30);
             if (GUILayout.Button("删除该类型语言") && languageButtons.Length != 0)
             {
-                soundControl._languageAudioClipList[soundControl._choseLanguage]._audioClipList.Clear();
-                soundControl._languageAudioClipList.RemoveAt(soundControl._choseLanguage);
-                soundControl._languageTypeList.RemoveAt(soundControl._choseLanguage);
-                if (soundControl._choseLanguage > 0) soundControl._choseLanguage--;//只有在选择的时候会改变，删除数组它不会自动减少，导致索引超出
+                soundManager._languageAudioClipList[soundManager._choseLanguage]._audioClipList.Clear();
+                soundManager._languageAudioClipList.RemoveAt(soundManager._choseLanguage);
+                soundManager._languageTypeList.RemoveAt(soundManager._choseLanguage);
+                if (soundManager._choseLanguage > 0) soundManager._choseLanguage--;//只有在选择的时候会改变，删除数组它不会自动减少，导致索引超出
             }
         }
         /// <summary>
         /// 添加其他语言音频
         /// </summary>
-        private void AddOtherLanguageAudioClip(SoundControl soundControl, int choseLanguage, AudioClip ac)
+        private void AddOtherLanguageAudioClip(SoundManager soundManager, int choseLanguage, AudioClip ac)
         {
             List<AudioClip> audioClipList = new List<AudioClip>();
-            audioClipList = soundControl._languageAudioClipList[choseLanguage]._audioClipList;
+            audioClipList = soundManager._languageAudioClipList[choseLanguage]._audioClipList;
             _isExist = false;
             for (int i = 0; i < audioClipList.Count; i++)
             {
@@ -306,10 +306,10 @@ namespace WZK
             if (_isExist == false) audioClipList.Add(ac);
         }
         [MenuItem("GameObject/自定义/创建声音管理对象", false, MenuItemConfig.声音管理)]
-        private static void CreateSoundControlObject()
+        private static void CreateSoundManagerObject()
         {
             GameObject gameObject = new GameObject("声音管理");
-            gameObject.AddComponent<SoundControl>();
+            gameObject.AddComponent<SoundManager>();
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = gameObject;
             EditorGUIUtility.PingObject(Selection.activeObject);

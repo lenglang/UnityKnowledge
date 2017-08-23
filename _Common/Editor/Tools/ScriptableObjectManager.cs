@@ -8,7 +8,7 @@ namespace WZK
     /// <summary>
     /// 序列化脚本对象控制
     /// </summary>
-    public class ScriptableObjectControl
+    public class ScriptableObjectManager
     {
         //[MenuItem("Assets/Create/自定义/创建序列化脚本")]
         public static void CreateScriptableObject()

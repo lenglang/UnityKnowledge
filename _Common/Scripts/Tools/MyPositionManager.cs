@@ -3,16 +3,16 @@ using UnityEngine;
 namespace WZK
 {
     [DisallowMultipleComponent]
-    public class MyPosition : MonoBehaviour
+    public class MyPositionManager : MonoBehaviour
     {
-        private static MyPosition _instance = null;
-        public static MyPosition Instance
+        private static MyPositionManager _instance = null;
+        public static MyPositionManager Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = (new GameObject("位置信息管理")).AddComponent<MyPosition>();
+                    _instance = (new GameObject("位置信息管理")).AddComponent<MyPositionManager>();
                 }
                 return _instance;
             }

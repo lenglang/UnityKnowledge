@@ -7,19 +7,19 @@ namespace WZK
     /// 不带参数通知控制
     /// </summary>
     /// <typeparam name="T1">枚举类型</typeparam>
-    public class NotificationControl<T1>
+    public class NotificationManager<T1>
     {
         /// <summary>
         /// 通知中心单例
         /// </summary>
-        private static NotificationControl<T1> _instance = null;
-        public static NotificationControl<T1> Instance
+        private static NotificationManager<T1> _instance = null;
+        public static NotificationManager<T1> Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new NotificationControl<T1>();
+                    _instance = new NotificationManager<T1>();
                     if (!typeof(T1).IsEnum)
                     {
                         throw new ArgumentException("传递的类型请使用枚举");
@@ -103,19 +103,19 @@ namespace WZK
     /// </summary>
     /// <typeparam name="T1">枚举类型</typeparam>
     /// <typeparam name="T2">传递参数</typeparam>
-    public class NotificationControl<T1, T2>
+    public class NotificationManager<T1, T2>
     {
         /// <summary>
         /// 通知中心单例
         /// </summary>
-        private static NotificationControl<T1, T2> _instance = null;
-        public static NotificationControl<T1, T2> Instance
+        private static NotificationManager<T1, T2> _instance = null;
+        public static NotificationManager<T1, T2> Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new NotificationControl<T1, T2>();
+                    _instance = new NotificationManager<T1, T2>();
                     if (!typeof(T1).IsEnum)
                     {
                         throw new ArgumentException("传递的类型请使用枚举");

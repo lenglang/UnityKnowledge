@@ -9,6 +9,8 @@ private string StreamingAssetsPath(string fileName)
         return System.IO.Path.Combine("file://" + Application.streamingAssetsPath + "/AssetBundle/Android", fileName);
 		#elif UNITY_IOS
 		return "file://"+System.IO.Path.Combine(Application.streamingAssetsPath + "/AssetBundle/IOS", fileName);
+		#elif UNITY_WEBGL
+		return System.IO.Path.Combine(Application.streamingAssetsPath+ "/AssetBundle/Android",fileName);
 #else
         return "";    
 #endif

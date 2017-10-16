@@ -9,14 +9,13 @@ public class BMFont
     [MenuItem("Tools/Font")]
     static void Font()
     {
-        Material mtr = Resources.Load<Material>("Fonts/MyFont"); //把我们创建的材质球加载进来
-        Texture2D texture = Resources.Load<Texture2D>("Fonts/MyFont_0"); //把我们在位图制作工具生成的图片加载进来
+        Material mtr = Resources.Load<Material>("Fonts1/MyFont"); //把我们创建的材质球加载进来
+        Texture2D texture = Resources.Load<Texture2D>("Fonts1/MyFont_0"); //把我们在位图制作工具生成的图片加载进来
         Debug.Log(mtr+","+texture.width);
-        mtr.SetTexture(0, texture);//把图片赋给材质球
-
-        Font font = Resources.Load<Font>("Fonts/MyFont"); //把我们创建的字体加载进来
+        mtr.mainTexture = texture;
+        Font font = Resources.Load<Font>("Fonts1/MyFont"); //把我们创建的字体加载进来
         XmlDocument xml = new XmlDocument();
-        xml.Load(Application.dataPath + "/UnityKnowledge/Resources/Fonts/MyFont.fnt");//这是在BMFont里得到的那个.fnt文件,因为是xml文件，所以我们就用xml来解析
+        xml.Load(Application.dataPath + "/Resources/Fonts1/MyFont.fnt");//这是在BMFont里得到的那个.fnt文件,因为是xml文件，所以我们就用xml来解析
         List<CharacterInfo> chtInfoList = new List<CharacterInfo>();
         XmlNode node = xml.SelectSingleNode("font/chars");
         foreach (XmlNode nd in node.ChildNodes)

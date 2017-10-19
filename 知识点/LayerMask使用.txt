@@ -1,4 +1,18 @@
-﻿void Update ()
+﻿camera.cullingMask = ~(1 << x);  // 渲染除去层x的所有层
+
+          
+
+    camera.cullingMask &= ~(1 << x); // 关闭层x
+
+          
+
+    camera.cullingMask |= (1 << x);  // 打开层x
+
+        
+
+    camera.cullingMask = 1 << x + 1 << y + 1 << z; // 摄像机只显示第x层,y层,z层.
+
+void Update ()
 	{
 		if (Input.GetMouseButtonDown(0)) {
 			// 只检测第6层

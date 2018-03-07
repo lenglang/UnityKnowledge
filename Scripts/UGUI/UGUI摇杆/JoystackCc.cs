@@ -67,7 +67,7 @@ public class JoystackCc : MonoBehaviour
         return result;
     }
 
-    void OnDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject go)
+    void OnDrag(UnityEngine.EventSystems.PointerEventData evenData, GameObject go, EventTriggerListener etl)
     {
         if (!_drag)
         {
@@ -78,14 +78,14 @@ public class JoystackCc : MonoBehaviour
         mTrans.localPosition += new Vector3(_deltaPos.x, _deltaPos.y, 0);
     }
 
-    void OnDragOut(UnityEngine.EventSystems.PointerEventData evenData, GameObject go)
+    void OnDragOut(UnityEngine.EventSystems.PointerEventData evenData, GameObject go, EventTriggerListener etl)
     {
         _drag = false;
         mTrans.localPosition = Origin;
         if (PlayerMoveControl.moveEnd != null) PlayerMoveControl.moveEnd();
     }
 
-    void OnMoveStart(UnityEngine.EventSystems.PointerEventData evenData,GameObject go)
+    void OnMoveStart(UnityEngine.EventSystems.PointerEventData evenData,GameObject obj,EventTriggerListener etl)
     {
         if (PlayerMoveControl.moveStart != null) PlayerMoveControl.moveStart();
     }

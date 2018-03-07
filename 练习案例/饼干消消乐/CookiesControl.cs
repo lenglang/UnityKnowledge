@@ -124,7 +124,7 @@ public class CookiesControl : MonoBehaviour
     /// </summary>
     /// <param name="evenData"></param>
     /// <param name="obj"></param>
-    private void OnCookiesDown(PointerEventData evenData, GameObject obj)
+    private void OnCookiesDown(PointerEventData evenData, GameObject obj, EventTriggerListener etl)
     {
         if (_mouseState != MouseState.弹起) return;
         CookiesAttribute ca = _cookiesAttributeDictionary[obj];
@@ -140,7 +140,7 @@ public class CookiesControl : MonoBehaviour
     /// </summary>
     /// <param name="evenData"></param>
     /// <param name="obj"></param>
-    private void OnCookiesEnter(PointerEventData evenData, GameObject obj)
+    private void OnCookiesEnter(PointerEventData evenData, GameObject obj, EventTriggerListener etl)
     {
         if (_mouseState!=MouseState.按下) return;
         CookiesAttribute ca = _cookiesAttributeDictionary[obj];
@@ -184,7 +184,7 @@ public class CookiesControl : MonoBehaviour
     /// </summary>
     /// <param name="evenData"></param>
     /// <param name="obj"></param>
-    private void OnCookiesUp(PointerEventData evenData, GameObject obj)
+    private void OnCookiesUp(PointerEventData evenData, GameObject obj, EventTriggerListener etl)
     {
         //显示其他饼干
         ShowOther(true);

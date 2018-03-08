@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 93da8b37534f24847bd75e949452eb6b
+labels:
+- BetterTrails
+- TrailRenderer
+- Smoke
+- Trail
+- Effects
+- skidmarks
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

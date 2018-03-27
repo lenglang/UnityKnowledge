@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Custom/NewShader" {
 	Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
@@ -17,7 +19,7 @@ Shader "Custom/NewShader" {
 				};
 
 				data vert (data v) {
-					v.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+					v.vertex = UnityObjectToClipPos(v.vertex);
 					return v;
 				}
 

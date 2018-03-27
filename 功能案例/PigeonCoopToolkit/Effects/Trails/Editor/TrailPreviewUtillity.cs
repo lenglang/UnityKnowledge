@@ -155,7 +155,7 @@ namespace PigeonCoopToolkit.Effects.Trails.Editor
         {
             if (Event.current == null)
                 return;
-            if (Event.current.type != EventType.repaint)
+            if (Event.current.type != EventType.Repaint)
                 return;
 
             CreateMaterial();

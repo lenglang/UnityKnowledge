@@ -1,4 +1,6 @@
-﻿Shader "Unlit/SuperPosition" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Unlit/SuperPosition" {
 	Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_DecalTex ("Decal (RGBA)", 2D) = "black" {}
@@ -52,7 +54,7 @@
 				v2f vert (appdata_t v)
 				{
 					v2f o;
-					o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+					o.vertex = UnityObjectToClipPos(v.vertex);
 					o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 					o.dtexcoord = TRANSFORM_TEX(v.texcoord1, _DecalTex);
 					float3 nw = mul((float3x3)UNITY_MATRIX_IT_MV, SCALED_NORMAL);

@@ -1,4 +1,6 @@
-﻿Shader "Unlit/Melt" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Unlit/Melt" {
     Properties {
         _MainTex("Main Tex", 2D) = "white" {}
         _Noise("Noise Tex", 2D) = "white" {}
@@ -32,7 +34,7 @@
 
             v2f vert(appdata input) {
                 v2f o;
-                o.position = mul(UNITY_MATRIX_MVP, input.vertex);
+                o.position = UnityObjectToClipPos(input.vertex);
                 o.texcoord = input.texcoord;
                 return o;
             }

@@ -1,4 +1,6 @@
-﻿Shader "Custom/VertexFragment" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/VertexFragment" {
 	Properties
 	{
 		_myTexture("Texture", 2D) = "white" {}
@@ -35,7 +37,7 @@
 	{
 		v2f o;
 		// UNITY_MATRIX_MVP 当前模型视图投影矩阵
-		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.pos = UnityObjectToClipPos(v.vertex);
 		// 彩虹色
 		o.color = v.vertex * 0.8 + 0.5;
 		// 纯色

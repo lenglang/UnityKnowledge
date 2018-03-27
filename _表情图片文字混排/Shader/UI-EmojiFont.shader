@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "UI/EmojiFont" {
 	Properties {
 		[PerRendererData] _MainTex ("Font Texture", 2D) = "white" {}
@@ -82,7 +84,7 @@ Shader "UI/EmojiFont" {
 			v2f vert(appdata_t IN)
 			{
 				v2f OUT;
-				OUT.vertex = mul(UNITY_MATRIX_MVP, float4(IN.vertex.x, IN.vertex.y, IN.vertex.z, 1.0));
+				OUT.vertex = UnityObjectToClipPos(float4(IN.vertex.x, IN.vertex.y, IN.vertex.z, 1.0));
 
 				OUT.texcoord = IN.texcoord;
 				OUT.texcoord1 = IN.texcoord1;

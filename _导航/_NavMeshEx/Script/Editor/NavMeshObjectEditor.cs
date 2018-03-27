@@ -67,7 +67,7 @@ public class NavMeshObjectEditor : Editor
         if (GUILayout.Button("Bake NavMesh"))
         {
             GameObjectUtility.SetStaticEditorFlags(navMeshObject.gameObject, StaticEditorFlags.NavigationStatic);
-            NavMeshBuilder.BuildNavMesh();
+            UnityEditor.AI.NavMeshBuilder.BuildNavMesh();
         }
 
         if (GUILayout.Button("Save NavMeshObject Mesh"))
@@ -109,7 +109,7 @@ public class NavMeshObjectEditor : Editor
                 Vector3 delta = Handles.PositionHandle(position, Quaternion.identity) - position;
 
                 GUIUtility.GetControlID(FocusType.Passive);
-                if (e.type == EventType.used)
+                if (e.type == EventType.Used)
                 {
                     Undo.RecordObject(navMeshObject, "PositionHandleAt");
 

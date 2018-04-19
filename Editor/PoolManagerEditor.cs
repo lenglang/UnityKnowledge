@@ -24,7 +24,7 @@ public class PoolManagerEditor  {
         //Selection.activeObject = poolList;
         //Debug.Log("对象池文件已创建：" + filePath);
     }
-    public static void CreateAsset<T>() where T : ScriptableObject
+    public static T CreateAsset<T>() where T : ScriptableObject
     {
         T asset = ScriptableObject.CreateInstance<T>();
         string path = AssetDatabase.GetAssetOrScenePath(Selection.activeObject);
@@ -52,5 +52,6 @@ public class PoolManagerEditor  {
         AssetDatabase.Refresh();
         EditorUtility.FocusProjectWindow();
         Selection.activeObject = asset;
+        return AssetDatabase.LoadAssetAtPath<T>(assetPathName);
     }
 }

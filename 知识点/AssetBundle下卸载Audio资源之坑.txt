@@ -1,5 +1,4 @@
-﻿AssetBundle下加载音频后立即调用Unload(false)，会造成音频播放不出来，且会无限等待
-解决办法：延迟卸载
+﻿AssetBundle下加载音频后立即调用Unload(false)，因音频还为被播放，会造成音频播放不出来，解决办法：延迟卸载
 StartCoroutine(AudioClipReady(ac, assetBundle));
 private IEnumerator AudioClipReady(AudioClip audioClip, AssetBundle assetBundle)
         {

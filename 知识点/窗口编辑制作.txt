@@ -1,1 +1,2 @@
+var armatureIndex = EditorGUILayout.Popup("Armature", _armatureIndex, _armatureNames.ToArray());//像枚举一样可切换
 http://www.jianshu.com/p/183695196f02

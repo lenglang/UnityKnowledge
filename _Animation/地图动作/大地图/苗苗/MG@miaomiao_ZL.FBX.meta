@@ -1,0 +1,775 @@
+fileFormatVersion: 2
+guid: 1f7035bef083ba843b434e8d63292604
+timeCreated: 1463032878
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bone001
+    100002: Bone002
+    100004: Bone052
+    100006: Bone053
+    100008: Bone054
+    100010: Bone055
+    100012: Bone056
+    100014: Bone057
+    100016: Bone058
+    100018: Bone059
+    100020: Bone060
+    100022: Bone061
+    100024: Bone062
+    100026: Bone063
+    100028: Bone064
+    100030: Bone065
+    100032: Bone066
+    100034: Bone067
+    100036: Bone068
+    100038: Bone069
+    100040: Bone070
+    100042: Bone071
+    100044: Bone072
+    100046: Bone073
+    100048: Bone074
+    100050: Bone075
+    100052: Bone076
+    100054: Bone077
+    100056: Bone078
+    100058: Bone079
+    100060: Bone080
+    100062: Bone080(mirrored)
+    100064: Bone081
+    100066: Bone081(mirrored)
+    100068: Bone082
+    100070: Bone082(mirrored)
+    100072: Bone083
+    100074: Bone083(mirrored)
+    100076: Bone084
+    100078: Bone084(mirrored)
+    100080: Bone121
+    100082: Bone122
+    100084: Bone123
+    100086: Bone124
+    100088: Bone125
+    100090: Bone126
+    100092: Bone127
+    100094: Bone128
+    100096: Bone129
+    100098: Bone130
+    100100: Bone131
+    100102: Bone132
+    100104: Bone133
+    100106: Bone134
+    100108: Bone135
+    100110: Bone136
+    100112: Bone137
+    100114: Bone138
+    100116: Bone139
+    100118: Bone140
+    100120: Bone141
+    100122: Bone142
+    100124: Bone143
+    100126: Bone144
+    100128: Bone145
+    100130: Bone146
+    100132: Bone147
+    100134: Bone148
+    100136: Bone149
+    100138: Bone150
+    100140: Bone151
+    100142: Bone152
+    100144: Bone153
+    100146: Bone154
+    100148: //RootNode
+    100150: miaomiao
+    100152: miaomiao_eyeL
+    100154: miaomiao_eyeR
+    100156: miaomiao_hudiejie
+    100158: miaomiao_shenti
+    100160: miaomiao_shetou
+    100162: miaomiao_tou
+    100164: miaomiao_weiba
+    100166: miaomiao_xingxingyanL
+    100168: miaomiao_xingxingyanR
+    100170: "morpher\u63A7\u5236\u5668"
+    100172: Nqiqi_HEAD_poi_
+    100174: pHub001
+    100176: pHub002
+    100178: pHub002Bone001
+    100180: pHub002Bone001Bone001
+    100182: pLArm1
+    100184: pLArm2
+    100186: pLArmCollarbone
+    100188: pLArmPalm
+    100190: pLLeg1
+    100192: pLLeg2
+    100194: pLLegAnkle
+    100196: pLLegDigit11
+    100198: pLLegDigit12
+    100200: pLLegPlatform
+    100202: Point001
+    100204: Point060
+    100206: Point061
+    100208: Point091
+    100210: Point093
+    100212: Point094
+    100214: Point095
+    100216: Point099
+    100218: Point110
+    100220: Point111
+    100222: Point112
+    100224: Point113
+    100226: Point114
+    100228: Point115
+    100230: Point116
+    100232: Point117
+    100234: Point118
+    100236: Point119
+    100238: Point120
+    100240: Point121
+    100242: Point122
+    100244: Point123
+    100246: Point124
+    100248: Point129
+    100250: Point130
+    100252: Point131
+    100254: Point132
+    100256: Point133
+    100258: Point134
+    100260: pPalmBone001
+    100262: pPalmBone001 1
+    100264: pPalmBone001Bone001
+    100266: pPalmBone001Bone001 1
+    100268: pPalmBone002
+    100270: pPalmBone002 1
+    100272: pPalmBone002Bone001
+    100274: pPalmBone002Bone001 1
+    100276: pRArm1
+    100278: pRArm2
+    100280: pRArmCollarbone
+    100282: pRArmPalm
+    100284: pRLeg1
+    100286: pRLeg2
+    100288: pRLegAnkle
+    100290: pRLegDigit11
+    100292: pRLegDigit12
+    100294: pRLegPlatform
+    100296: pSpine2
+    100298: pSpineNew_qiqi_Spine1
+    100300: qiqiBone_eye_L
+    100302: qiqiBone_eye_L_be
+    100304: qiqiBone_eye_L_lc
+    100306: qiqiBone_eye_R
+    100308: qiqiBone_eye_R_be
+    100310: qiqiBone_eye_R_lc
+    100312: qiqiBone_eyeL_lc
+    100314: qiqiBone_eyeR_lcw
+    100316: qiqibone_xiae_001
+    100318: qiqibone_xiae_002
+    100320: qiqibone_xiae_003
+    100322: qiqibone_xiae_004
+    100324: v1.3
+    400000: Bone001
+    400002: Bone002
+    400004: Bone052
+    400006: Bone053
+    400008: Bone054
+    400010: Bone055
+    400012: Bone056
+    400014: Bone057
+    400016: Bone058
+    400018: Bone059
+    400020: Bone060
+    400022: Bone061
+    400024: Bone062
+    400026: Bone063
+    400028: Bone064
+    400030: Bone065
+    400032: Bone066
+    400034: Bone067
+    400036: Bone068
+    400038: Bone069
+    400040: Bone070
+    400042: Bone071
+    400044: Bone072
+    400046: Bone073
+    400048: Bone074
+    400050: Bone075
+    400052: Bone076
+    400054: Bone077
+    400056: Bone078
+    400058: Bone079
+    400060: Bone080
+    400062: Bone080(mirrored)
+    400064: Bone081
+    400066: Bone081(mirrored)
+    400068: Bone082
+    400070: Bone082(mirrored)
+    400072: Bone083
+    400074: Bone083(mirrored)
+    400076: Bone084
+    400078: Bone084(mirrored)
+    400080: Bone121
+    400082: Bone122
+    400084: Bone123
+    400086: Bone124
+    400088: Bone125
+    400090: Bone126
+    400092: Bone127
+    400094: Bone128
+    400096: Bone129
+    400098: Bone130
+    400100: Bone131
+    400102: Bone132
+    400104: Bone133
+    400106: Bone134
+    400108: Bone135
+    400110: Bone136
+    400112: Bone137
+    400114: Bone138
+    400116: Bone139
+    400118: Bone140
+    400120: Bone141
+    400122: Bone142
+    400124: Bone143
+    400126: Bone144
+    400128: Bone145
+    400130: Bone146
+    400132: Bone147
+    400134: Bone148
+    400136: Bone149
+    400138: Bone150
+    400140: Bone151
+    400142: Bone152
+    400144: Bone153
+    400146: Bone154
+    400148: //RootNode
+    400150: miaomiao
+    400152: miaomiao_eyeL
+    400154: miaomiao_eyeR
+    400156: miaomiao_hudiejie
+    400158: miaomiao_shenti
+    400160: miaomiao_shetou
+    400162: miaomiao_tou
+    400164: miaomiao_weiba
+    400166: miaomiao_xingxingyanL
+    400168: miaomiao_xingxingyanR
+    400170: "morpher\u63A7\u5236\u5668"
+    400172: Nqiqi_HEAD_poi_
+    400174: pHub001
+    400176: pHub002
+    400178: pHub002Bone001
+    400180: pHub002Bone001Bone001
+    400182: pLArm1
+    400184: pLArm2
+    400186: pLArmCollarbone
+    400188: pLArmPalm
+    400190: pLLeg1
+    400192: pLLeg2
+    400194: pLLegAnkle
+    400196: pLLegDigit11
+    400198: pLLegDigit12
+    400200: pLLegPlatform
+    400202: Point001
+    400204: Point060
+    400206: Point061
+    400208: Point091
+    400210: Point093
+    400212: Point094
+    400214: Point095
+    400216: Point099
+    400218: Point110
+    400220: Point111
+    400222: Point112
+    400224: Point113
+    400226: Point114
+    400228: Point115
+    400230: Point116
+    400232: Point117
+    400234: Point118
+    400236: Point119
+    400238: Point120
+    400240: Point121
+    400242: Point122
+    400244: Point123
+    400246: Point124
+    400248: Point129
+    400250: Point130
+    400252: Point131
+    400254: Point132
+    400256: Point133
+    400258: Point134
+    400260: pPalmBone001
+    400262: pPalmBone001 1
+    400264: pPalmBone001Bone001
+    400266: pPalmBone001Bone001 1
+    400268: pPalmBone002
+    400270: pPalmBone002 1
+    400272: pPalmBone002Bone001
+    400274: pPalmBone002Bone001 1
+    400276: pRArm1
+    400278: pRArm2
+    400280: pRArmCollarbone
+    400282: pRArmPalm
+    400284: pRLeg1
+    400286: pRLeg2
+    400288: pRLegAnkle
+    400290: pRLegDigit11
+    400292: pRLegDigit12
+    400294: pRLegPlatform
+    400296: pSpine2
+    400298: pSpineNew_qiqi_Spine1
+    400300: qiqiBone_eye_L
+    400302: qiqiBone_eye_L_be
+    400304: qiqiBone_eye_L_lc
+    400306: qiqiBone_eye_R
+    400308: qiqiBone_eye_R_be
+    400310: qiqiBone_eye_R_lc
+    400312: qiqiBone_eyeL_lc
+    400314: qiqiBone_eyeR_lcw
+    400316: qiqibone_xiae_001
+    400318: qiqibone_xiae_002
+    400320: qiqibone_xiae_003
+    400322: qiqibone_xiae_004
+    400324: v1.3
+    4300000: miaomiao_tou
+    4300002: miaomiao_hudiejie
+    4300004: miaomiao_shetou
+    4300006: miaomiao_eyeL
+    4300008: miaomiao_xingxingyanL
+    4300010: miaomiao_xingxingyanR
+    4300012: miaomiao_eyeR
+    4300014: miaomiao_weiba
+    4300016: miaomiao_shenti
+    7400000: miaomiao_ZL
+    9500000: //RootNode
+    13700000: miaomiao_eyeL
+    13700002: miaomiao_eyeR
+    13700004: miaomiao_hudiejie
+    13700006: miaomiao_shenti
+    13700008: miaomiao_shetou
+    13700010: miaomiao_tou
+    13700012: miaomiao_weiba
+    13700014: miaomiao_xingxingyanL
+    13700016: miaomiao_xingxingyanR
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: miaomiao_ZL
+      takeName: MG@miaomiao_ZL
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone052
+        weight: 1
+      - path: Bone052/Bone053
+        weight: 1
+      - path: Bone052/Bone053/Bone054
+        weight: 1
+      - path: Bone052/Bone053/Bone054/Bone055
+        weight: 1
+      - path: Bone052/Bone053/Bone054/Bone055/Bone056
+        weight: 1
+      - path: Bone052/Bone053/Bone054/Bone055/Bone056/Bone057
+        weight: 1
+      - path: Bone052/Bone053/Bone054/Bone055/Bone056/Bone057/Bone058
+        weight: 1
+      - path: miaomiao
+        weight: 1
+      - path: miaomiao_eyeL
+        weight: 1
+      - path: miaomiao_eyeR
+        weight: 1
+      - path: miaomiao_hudiejie
+        weight: 1
+      - path: miaomiao_shenti
+        weight: 1
+      - path: miaomiao_shetou
+        weight: 1
+      - path: miaomiao_tou
+        weight: 1
+      - path: miaomiao_weiba
+        weight: 1
+      - path: miaomiao_xingxingyanL
+        weight: 1
+      - path: miaomiao_xingxingyanR
+        weight: 1
+      - path: pHub001
+        weight: 1
+      - path: pHub001/pLLeg1
+        weight: 1
+      - path: pHub001/pLLeg1/pLLeg2
+        weight: 1
+      - path: pHub001/pLLeg1/pLLeg2/pLLegAnkle
+        weight: 1
+      - path: pHub001/pLLeg1/pLLeg2/pLLegAnkle/pLLegDigit11
+        weight: 1
+      - path: pHub001/pLLeg1/pLLeg2/pLLegAnkle/pLLegDigit11/pLLegDigit12
+        weight: 1
+      - path: pHub001/pRLeg1
+        weight: 1
+      - path: pHub001/pRLeg1/pRLeg2
+        weight: 1
+      - path: pHub001/pRLeg1/pRLeg2/pRLegAnkle
+        weight: 1
+      - path: pHub001/pRLeg1/pRLeg2/pRLegAnkle/pRLegDigit11
+        weight: 1
+      - path: pHub001/pRLeg1/pRLeg2/pRLegAnkle/pRLegDigit11/pRLegDigit12
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/Bone077
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/Bone077/Bone078
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/Bone077/Bone078/Bone079
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/Bone121
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/Bone121/Bone122
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080/Bone081
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080/Bone081/Bone082
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080/Bone081/Bone082/Bone083
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080/Bone081/Bone082/Bone083/Bone084
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Bone082(mirrored)
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Bone082(mirrored)/Bone083(mirrored)
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Bone082(mirrored)/Bone083(mirrored)/Bone084(mirrored)
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone059
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone059/Bone060
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone059/Bone060/Bone061
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone059/Bone060/Bone061/Bone062
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone059/Bone060/Bone061/Bone062/Bone063
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone059/Bone060/Bone061/Bone062/Bone063/Bone064
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone065
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone065/Bone066
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone065/Bone066/Bone067
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone065/Bone066/Bone067/Bone068
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone065/Bone066/Bone067/Bone068/Bone069
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Bone080(mirrored)/Bone081(mirrored)/Point099/Bone065/Bone066/Bone067/Bone068/Bone069/Bone070
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_
+        weight: 1
+      - path: "pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/morpher\u63A7\u5236\u5668"
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118/Point119
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118/Point119/Point120
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118/Point119/Point120/Point121
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118/Point119/Point120/Point121/Point123
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118/Point119/Point120/Point121/Point123/Point124
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118/Point119/Point120/Point121/Point123/Point124/Bone071
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118/Point119/Point120/Point121/Point123/Point124/Bone071/Bone072
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118/Point119/Point120/Point121/Point123/Point124/Bone071/Bone072/Bone073
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118/Point119/Point120/Point121/Point123/Point124/Bone071/Bone072/Bone073/Bone074
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118/Point119/Point120/Point121/Point123/Point124/Bone071/Bone072/Bone073/Bone074/Bone075
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point122/Point116/Point117/Point118/Point119/Point120/Point121/Point123/Point124/Bone071/Bone072/Bone073/Bone074/Bone075/Bone076
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point131
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point131/Point132
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/Point129/Point130/Point131/Point132/Point133
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point001/qiqibone_xiae_001/qiqibone_xiae_002/qiqibone_xiae_003/qiqibone_xiae_004
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point061
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point061/Bone001
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point061/Bone001/Bone002
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/Point061/Point060
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/qiqiBone_eyeL_lc
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/qiqiBone_eyeL_lc/qiqiBone_eye_L_lc
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/qiqiBone_eyeL_lc/qiqiBone_eye_L_lc/qiqiBone_eye_L
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/qiqiBone_eyeL_lc/qiqiBone_eye_L_lc/qiqiBone_eye_L/qiqiBone_eye_L_be
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/qiqiBone_eyeR_lcw
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/qiqiBone_eyeR_lcw/qiqiBone_eye_R_lc
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/qiqiBone_eyeR_lcw/qiqiBone_eye_R_lc/qiqiBone_eye_R
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pHub002Bone001/pHub002Bone001Bone001/v1.3/Nqiqi_HEAD_poi_/qiqiBone_eyeR_lcw/qiqiBone_eye_R_lc/qiqiBone_eye_R/qiqiBone_eye_R_be
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pLArmCollarbone
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pLArmCollarbone/pLArm1
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pLArmCollarbone/pLArm1/pLArm2
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pLArmCollarbone/pLArm1/pLArm2/pLArmPalm
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pLArmCollarbone/pLArm1/pLArm2/pLArmPalm/pPalmBone001
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pLArmCollarbone/pLArm1/pLArm2/pLArmPalm/pPalmBone001/pPalmBone001Bone001
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pLArmCollarbone/pLArm1/pLArm2/pLArmPalm/pPalmBone002
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pLArmCollarbone/pLArm1/pLArm2/pLArmPalm/pPalmBone002/pPalmBone002Bone001
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point091
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point091/Point093
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point091/Point093/Point094
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point091/Point093/Point094/Point095
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone123
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone123/Bone124
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone123/Bone124/Bone125
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone123/Bone124/Bone125/Bone126
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone127
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone127/Bone128
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone127/Bone128/Bone129
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone127/Bone128/Bone129/Bone130
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone131
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone131/Bone132
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone131/Bone132/Bone133
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone131/Bone132/Bone133/Bone134
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone135
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone135/Bone136
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone135/Bone136/Bone137
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone135/Bone136/Bone137/Bone138
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone142
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone142/Bone139
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone142/Bone139/Bone140
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone142/Bone139/Bone140/Bone141
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone146
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone146/Bone143
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone146/Bone143/Bone144
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone146/Bone143/Bone144/Bone145
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone150
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone150/Bone147
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone150/Bone147/Bone148
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone150/Bone147/Bone148/Bone149
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone154
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone154/Bone151
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone154/Bone151/Bone152
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/Point134/Bone154/Bone151/Bone152/Bone153
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pRArmCollarbone
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pRArmCollarbone/pRArm1
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pRArmCollarbone/pRArm1/pRArm2
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pRArmCollarbone/pRArm1/pRArm2/pRArmPalm
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pRArmCollarbone/pRArm1/pRArm2/pRArmPalm/pPalmBone001
+          1
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pRArmCollarbone/pRArm1/pRArm2/pRArmPalm/pPalmBone001
+          1/pPalmBone001Bone001 1
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pRArmCollarbone/pRArm1/pRArm2/pRArmPalm/pPalmBone002
+          1
+        weight: 1
+      - path: pHub001/pSpineNew_qiqi_Spine1/pSpine2/pHub002/pRArmCollarbone/pRArm1/pRArm2/pRArmPalm/pPalmBone002
+          1/pPalmBone002Bone001 1
+        weight: 1
+      - path: pLLegPlatform
+        weight: 1
+      - path: Point110
+        weight: 1
+      - path: Point111
+        weight: 1
+      - path: Point112
+        weight: 1
+      - path: Point113
+        weight: 1
+      - path: Point114
+        weight: 1
+      - path: Point115
+        weight: 1
+      - path: pRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
